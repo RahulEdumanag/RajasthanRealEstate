@@ -13,20 +13,76 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'Service')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 ?>
+<section id="contact" class="bg-color-red">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div class="get-tuch">
+                        <i class="icon-telephone114"></i>
+                        <ul>
+                            <li>
+                                <h4>Phone Number</h4>
+                            </li>
+                            <li>
+                                <p>{{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div class="get-tuch">
+                        <i class="icon-icons74"></i>
+                        <ul>
+                        <li>
+                                <h4> Address</h4>
+                            </li>
+                            <li>
+                                <p>{{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+                    <div class="get-tuch">
+                        <i class="icon-icons142"></i>
+                        <ul>
+                            <li>
+                                <h4>Email Address</h4>
+                            </li>
+                            <li><a href="#.">
+                                    <p>{{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</p>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <div class="container pt-70 pb-40">
     <div class="row border-bottom">
         <div class="col-sm-6 col-md-3">
             <div class="widget dark">
-                <img class="mt-5 mb-20" alt="" src="images/k_logo.png">
-                <p>Babu Molalla kasier gunj Ajmer</p><br />
+                <img class="mt-5 mb-20" alt=""
+                    src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
+                <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p><br />
                 <ul class="list-inline mt-5">
                     <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray"
-                            href="#">+91-8005842231</a> </li>
+                            href="#"> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</a> </li>
                     <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a
-                            class="text-gray" href="#">ajmerproperty25@gmail.com</a> </li>
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-color-2 mr-5"></i> <a
-                            class="text-gray" href="#">www.rajasthanrealestate.com</a> </li>
+                            class="text-gray" href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a> </li>
                 </ul>
+                <div class="d-flex">
+                    <div class="widget dark">
+                        <ul class="socials ">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-sm-6 col-md-3">
@@ -98,58 +154,27 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
             </div>
         </div>
     </div>
-    <div class="row mt-30">
-        <div class="col-md-3 col-sm-4">
-            <div class="widget dark">
-                <h5 class="widget-title mb-10">Call Us Now</h5>
-                <div class="text-gray">
-                    +91-8005842231
-                    <br> +91-9351728335
-                </div>
-            </div>
+    
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-5">
+            <p class="font-11 text-black-777 m-0 copy-right">Copyright: 2024 <a href="#"><span
+                        class="color_red">Kuber Properties & Builders</span></a>. All Rights Reserved</p>
         </div>
-        <div class="col-md-3 col-sm-4">
-            <div class="widget dark">
-                <h5 class="widget-title mb-10">Connect With Us</h5>
-                <ul class="socials">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+        <div class="col-md-6 col-sm-7 text-right">
+            <div class="widget no-border m-0">
+                <ul class="list-inline sm-text-center mt-5 font-12">
+                    <li> <a href="#">FAQ</a> </li>
+                    <li>|</li>
+                    <li> <a href="#">Help Desk</a> </li>
+                    <li>|</li>
+                    <li> <a href="#">Support</a> </li>
                 </ul>
             </div>
         </div>
-        <div class="col-md-6 col-sm-4 text-right">
-            <div class="mb20">
-                <form class="padding-top-30">
-                    <input class="search" placeholder="Enter your Email" type="search">
-                    <a href="#" class="button"><i class="icon-mail-envelope-open"></i></a>
-                </form>
-            </div>
-        </div>
     </div>
-</div>
-<div class="footer-bottom bg-black-333">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-5">
-                <p class="font-11 text-black-777 m-0 copy-right">Copyright: 2024 <a href="#"><span
-                            class="color_red">Kuber Properties & Builders</span></a>. All Rights Reserved</p>
-            </div>
-            <div class="col-md-6 col-sm-7 text-right">
-                <div class="widget no-border m-0">
-                    <ul class="list-inline sm-text-center mt-5 font-12">
-                        <li> <a href="#">FAQ</a> </li>
-                        <li>|</li>
-                        <li> <a href="#">Help Desk</a> </li>
-                        <li>|</li>
-                        <li> <a href="#">Support</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 <!-- Custom JS -->
 <script src="{{ asset('assets/frontend/js/jquery-3.2.1.min.js') }}"></script>

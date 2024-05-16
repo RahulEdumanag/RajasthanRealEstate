@@ -37,7 +37,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
 <div id="header-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 hidden-xs hidden-sm"><a href="index.html"><img src="images/k_logo.png"
+            <div class="col-md-2 hidden-xs hidden-sm"><a href="/"><img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
                         alt="logo" /></a></div>
             <div class="col-md-10 col-sm-12 col-xs-12">
                 <div class="get-tuch text-left top20">
@@ -47,11 +47,11 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                             <h4>Phone Number</h4>
                         </li>
                         <li>
-                            <p>+1 900 234 567 - 68</p>
+                            <p> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
                         </li>
                     </ul>
                 </div>
-                <div class="get-tech-line top20"><img src="images/get-tuch-line.png" alt="line" /></div>
+                <div class="get-tech-line top20"><img src="{{ asset('assets/frontend/images/get-tuch-line.png') }}" alt="line" /></div>
                 <div class="get-tuch text-left top20">
                     <i class="icon-icons74"></i>
                     <ul>
@@ -63,7 +63,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                         </li>
                     </ul>
                 </div>
-                <div class="get-tech-line top20"><img src="images/get-tuch-line.png" alt="line" /></div>
+                <div class="get-tech-line top20"><img src="{{ asset('assets/frontend/images/get-tuch-line.png') }}" alt="line" /></div>
                 <div class="get-tuch text-left top20">
                     <i class=" icon-icons142"></i>
                     <ul>
@@ -71,7 +71,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                             <h4>Email Address</h4>
                         </li>
                         <li>
-                            <p><a href="#">info@ideahomes.com</a></p>
+                            <p><a href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a></p>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +97,8 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i></button>
-                    <a class="navbar-brand sticky_logo" href="index.html"><img src="images/k_logo.png" class="logo"
+                    <a class="navbar-brand sticky_logo" href="/">
+                        <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}" class="logo"
                             alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
@@ -105,7 +106,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="active">
-                            <a href="index.html">Homes</a>
+                            <a href="/">Homes</a>
                         </li>
                         <li class="dropdown">
                             <a href="#." class="dropdown-toggle" data-toggle="dropdown">About Us</a>
@@ -178,7 +179,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                 <div id="nav_slider" class="owl-carousel">
                                                     <div class="item">
                                                         <div class="image bottom15">
-                                                            <img src="images/nav-slider1.jpg" alt="Featured Property">
+                                                            <img src="{{ asset('assets/frontend/images/nav-slider1.jpg') }}" alt="Featured Property">
                                                             <span class="nav_tag yellow text-uppercase">for rent</span>
                                                         </div>
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>
@@ -186,7 +187,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                     </div>
                                                     <div class="item">
                                                         <div class="image bottom15">
-                                                            <img src="images/nav-slider2.jpg" alt="Featured Property">
+                                                            <img src="{{ asset('assets/frontend/images/nav-slider2.jpg') }}" alt="Featured Property">
                                                             <span class="nav_tag yellow text-uppercase">for rent</span>
                                                         </div>
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>
@@ -194,7 +195,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                     </div>
                                                     <div class="item">
                                                         <div class="image bottom15">
-                                                            <img src="images/nav-slider3.jpg" alt="Featured Property">
+                                                            <img src="{{ asset('assets/frontend/images/nav-slider3.jpg') }}" alt="Featured Property">
                                                             <span class="nav_tag yellow text-uppercase">for rent</span>
                                                         </div>
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>
@@ -202,7 +203,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                     </div>
                                                     <div class="item">
                                                         <div class="image bottom15">
-                                                            <img src="images/nav-slider1.jpg" alt="Featured Property">
+                                                            <img src="{{ asset('assets/frontend/images/nav-slider1.jpg') }}" alt="Featured Property">
                                                             <span class="nav_tag yellow text-uppercase">for rent</span>
                                                         </div>
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>
@@ -210,7 +211,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                     </div>
                                                     <div class="item">
                                                         <div class="image bottom15">
-                                                            <img src="images/nav-slider2.jpg" alt="Featured Property">
+                                                            <img src="{{ asset('assets/frontend/images/nav-slider2.jpg') }}" alt="Featured Property">
                                                             <span class="nav_tag yellow text-uppercase">for rent</span>
                                                         </div>
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>
@@ -218,7 +219,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                     </div>
                                                     <div class="item">
                                                         <div class="image bottom15">
-                                                            <img src="images/nav-slider3.jpg" alt="Featured Property">
+                                                            <img src="{{ asset('assets/frontend/images/nav-slider3.jpg') }}" alt="Featured Property">
                                                             <span class="nav_tag yellow text-uppercase">for rent</span>
                                                         </div>
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>

@@ -1,0 +1,20 @@
+ <IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect from php.edumanag.com to the same domain with www prefix
+    RewriteCond %{HTTP_HOST} ^php\.edumanag\.com$ [NC]
+    RewriteRule ^(.*)$ https://www.php.edumanag.com/$1 [L,R=301]
+
+    # Redirect to public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+
+    # Handle Front Controller
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

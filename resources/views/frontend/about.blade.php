@@ -15,10 +15,10 @@
                     </div>
                 </div>
                 <div class="row">
-                   
+
                     <div class="col-md-12">
                         <div class="about_text mt-30">
-                        <p>   {!! $AboutMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
+                            <p> {!! $AboutMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
 
                         </div>
                     </div>
@@ -86,70 +86,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 top40">
-                        <div class="feature_box equal-height">
-                            <span class="icon"> <i class="icon-select-an-objecto-tool"></i></span>
-                            <div class="description">
-                                <h4>Wide Range of Properties</h4>
-                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                                <a href="#" class="link_arrow top20">Read More</a>
+                    @foreach ($ServicesModel as $value)
+                        <div class="col-md-4 col-sm-4 top40">
+                            <div class="feature_box equal-height">
+                                <span class="icon"><i class="{{ $value->Pag_URL }}"></i></span>
+                                <div class="description">
+                                    <h4>{{ $value->Pag_Name }}</h4>
+                                    <p>{{ Str::limit($value->Pag_ShortDesc, 70) }}</p>
+                                    @if ($value->Pag_FullDesc)
+                                        <a href="{{ URL::to('/service-details/' . encodeId($value->Pag_Id)) }}"
+                                            class="link_arrow top20">Read More</a>
+                                    @endif
+                                    
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 top40">
-                        <div class="feature_box equal-height">
-                            <span class="icon"><i class="icon-user-tie"></i></span>
-                            <div class="description">
-                                <h4>14 Agents for Your Service</h4>
-                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                                <a href="#" class="link_arrow top20">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 top40">
-                        <div class="feature_box equal-height">
-                            <span class="icon"><i class="fa fa-money"></i></span>
-                            <div class="description">
-                                <h4>Best Price Guarantee!</h4>
-                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                                <a href="#" class="link_arrow top20">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 top40">
-                        <div class="feature_box equal-height">
-                            <span class="icon"> <i class="icon-select-an-objecto-tool"></i></span>
-                            <div class="description">
-                                <h4>Wide Range of Properties</h4>
-                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                                <a href="#" class="link_arrow top20">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 top40">
-                        <div class="feature_box equal-height">
-                            <span class="icon"><i class="icon-user-tie"></i></span>
-                            <div class="description">
-                                <h4>14 Agents for Your Service</h4>
-                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                                <a href="#" class="link_arrow top20">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 top40">
-                        <div class="feature_box equal-height">
-                            <span class="icon"><i class="fa fa-money"></i></span>
-                            <div class="description">
-                                <h4>Best Price Guarantee!</h4>
-                                <p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi </p>
-                                <a href="#" class="link_arrow top20">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </div>
     <script>

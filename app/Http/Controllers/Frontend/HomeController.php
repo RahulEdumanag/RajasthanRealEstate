@@ -62,6 +62,7 @@ class HomeController extends Controller
                 'Vis_CreatedDate' => now(),
             ]);
         }
+        
         $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->take(4)->get();
         $usefulLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'UsefulLink')->orderBy('Pag_SerialOrder', 'desc')->get();
         $today = Carbon::now('Asia/Kolkata');

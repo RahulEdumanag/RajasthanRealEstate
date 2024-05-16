@@ -93,13 +93,11 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
                     <div class="clearfix"></div>
                 </div>
                 <ul class="list angle-double-right list-border">
-                    <li> <a href="#">Home </a></li>
-                    <li> <a href="#">Services </a></li>
-                    <li> <a href="#">Pages</a></li>
-                    <li> <a href="#">About Us </a></li>
-                    <li> <a href="#">Blogs </a></li>
-                    <li> <a href="#">Portfolio </a></li>
-                    <li> <a href="#">Contact Us </a></li>
+                    @foreach($MenuModel as $value)
+                        @if($value->Men_URL !== null && $value->Men_URL !== '#')
+                            <li> <a href="{{ $value->Men_URL }}"> {{ $value->Men_Name }} </a></li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>

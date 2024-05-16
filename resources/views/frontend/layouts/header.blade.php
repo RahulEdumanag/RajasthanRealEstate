@@ -55,10 +55,10 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                     <i class="icon-icons74"></i>
                     <ul>
                         <li>
-                            <h4>Victoria Hall,</h4>
+                            <h4>Address</h4>
                         </li>
                         <li>
-                            <p>Idea Homes Melbourne, australia</p>
+                            <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
                         </li>
                     </ul>
                 </div>

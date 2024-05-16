@@ -72,21 +72,18 @@
 
                                 @if (Auth::user()->EmpRegistration->Emp_Role == '1')
                                     <div class="col-sm-6">
-                                        <label for="URL" class="form-label">URL<span style="color:red">*</span></label>
+                                        <label for="URL" class="form-label">URL</label>
                                         <input type="text" class="form-control" id="SubMen_URL" name="SubMen_URL"
                                             value="{{ old('SubMen_URL', $model->SubMen_URL) }}" placeholder="">
-                                        <span id="SubMen_URL-error" class="error" style="color: red;"></span>
-                                    </div>
+                                     </div>
                                 @endif
 
 
 
                                 <div class="col-sm-6">
-                                    <label for="SubMen_ShortDesc" class="form-label">ShortDesc<span
-                                            style="color:red">*</span></label>
+                                    <label for="SubMen_ShortDesc" class="form-label">ShortDesc </label>
                                     <textarea class="form-control" id="SubMen_ShortDesc" name="SubMen_ShortDesc" placeholder="">{{ old('SubMen_ShortDesc', $model->SubMen_ShortDesc) }}</textarea>
-                                    <span id="SubMen_ShortDesc-error" class="error" style="color: red;"></span>
-                                </div>
+                                 </div>
                                 <div class="col-sm-6">
                                     <label for="SerialOrder" class="form-label">SerialOrder<span
                                             style="color:red">*</span></label>
@@ -132,18 +129,14 @@
             $("#edit").validate({
                 rules: {
                     SubMen_Name: "required",
-                    SubMen_URL: "required",
-                    SubMen_Men_Id: "required",
-                    SubMen_ShortDesc: "required",
-                    SubMen_FullDesc: "required",
+                     SubMen_Men_Id: "required",
+                     SubMen_FullDesc: "required",
                     SubMen_SerialOrder: "required"
                 },
                 messages: {
                     SubMen_Name: "This field is required",
-                    SubMen_URL: "This field is required",
-                    SubMen_Men_Id: "This field is required",
-                    SubMen_ShortDesc: "This field is required",
-                    SubMen_FullDesc: "This field is required",
+                     SubMen_Men_Id: "This field is required",
+                     SubMen_FullDesc: "This field is required",
                     SubMen_SerialOrder: "This field is required"
                 },
                 errorPlacement: function(error, element) {
@@ -160,9 +153,7 @@
             });
             var fieldErrorMap = {
                 SubMen_Name: "#SubMen_Name-error",
-                SubMen_URL: "#SubMen_URL-error",
-                SubMen_ShortDesc: "#SubMen_ShortDesc-error",
-                SubMen_Men_Id: "#SubMen_Men_Id-error",
+                 SubMen_Men_Id: "#SubMen_Men_Id-error",
                 SubMen_FullDesc: "#SubMen_FullDesc-error",
                 SubMen_SerialOrder: "#SubMen_SerialOrder-error",
             };

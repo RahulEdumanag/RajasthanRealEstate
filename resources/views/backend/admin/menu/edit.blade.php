@@ -48,18 +48,16 @@
 
                                 @if (Auth::user()->EmpRegistration->Emp_Role == '1')
                                     <div class="col-sm-6">
-                                        <label for="URL" class="form-label">URL<span style="color:red">*</span></label>
+                                        <label for="URL" class="form-label">URL </label>
                                         <input type="text" class="form-control" id="Men_URL" name="Men_URL"
                                             value="{{ old('Men_URL', $model->Men_URL) }}" placeholder="">
-                                        <span id="Men_URL-error" class="error" style="color: red;"></span>
-                                    </div>
+                                     </div>
                                 @endif
                                 <div class="col-sm-6">
                                     <label for="ShortDesc" class="form-label">Short Desc<span
                                             style="color:red">*</span></label>
                                     <textarea class="form-control" id="Men_ShortDesc" name="Men_ShortDesc" placeholder="">{{ old('Men_ShortDesc', $model->Men_ShortDesc) }}</textarea>
-                                    <span id="Men_ShortDesc-error" class="error" style="color: red;"></span>
-                                </div>
+                                 </div>
                                 <div class="col-sm-6">
                                     <label for="Serial Order" class="form-label">Serial Order<span
                                             style="color:red">*</span></label>
@@ -96,8 +94,7 @@
                                 </div>
                                 @if (Auth::user()->EmpRegistration->Emp_Role == '1')
                                     <div class="col-sm-3">
-                                        <label for="Admin Exists" class="form-label">Admin Exists<span
-                                                style="color:red">*</span></label>
+                                        <label for="Admin Exists" class="form-label">Admin Exists </label>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="Men_AdminExists"
                                                 name="Men_AdminExists"
@@ -136,17 +133,7 @@
                     Men_Name: {
                         required: true,
                         maxlength: 255
-                    },
-
-                    Men_URL: {
-                        required: true,
-                        maxlength: 255
-                    },
-
-                    Men_ShortDesc: {
-                        required: true,
-                        maxlength: 255
-                    },
+                    }, 
 
                     Men_FullDesc: "required",
                     Men_SerialOrder: "required"
@@ -157,16 +144,9 @@
                         required: "This field is required",
                         maxlength: "Maximum length exceeded"
                     },
-                    Men_URL: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
+               
                     Men_SubMenuExists: "This field is required",
-
-                    Men_ShortDesc: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
+ 
                     Men_FullDesc: "This field is required",
                     Men_SerialOrder: "This field is required"
                 },
@@ -183,11 +163,8 @@
                 }
             });
             var fieldErrorMap = {
-                Men_Name: "#Men_Name-error",
-                Men_URL: "#Men_URL-error",
-                Men_ShortDesc: "#Men_ShortDesc-error",
-                Men_SubMenuExists: "#Men_SubMenuExists-error",
-
+                Men_Name: "#Men_Name-error", 
+                Men_SubMenuExists: "#Men_SubMenuExists-error", 
                 Men_FullDesc: "#Men_FullDesc-error",
                 Men_SerialOrder: "#Men_SerialOrder-error",
             };

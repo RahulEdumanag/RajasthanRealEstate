@@ -56,16 +56,14 @@
                                 </div>
                                 @if (Auth::user()->EmpRegistration->Emp_Role == '1')
                                     <div class="col-sm-6 form-group ">
-                                        <label class="form-label" for="URL">URL <span
-                                                style="color:red">*</span></label>
+                                        <label class="form-label" for="URL">URL  </label>
                                         <div class="input-group input-group-merge">
                                             <input type="text" id="URL" name="SubMen_URL" class="form-control"
                                                 autocomplete="off" placeholder="Enter your URL" aria-describedby="name2" />
                                             <span class="input-group-text cursor-pointer p-1" id="name2"><span
                                                     class="card-type"></span></span>
                                         </div>
-                                        <span id="SubMen_URL-error" class="error" style="color: red;"></span>
-                                    </div>
+                                     </div>
                                 @endif
 
                                 <div class="col-sm-6 form-group">
@@ -81,16 +79,14 @@
                                     <span id="SubMen_SerialOrder-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Short Desc">Short Desc <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Short Desc">Short Desc </label>
                                     <div class="input-group input-group-merge">
                                         <textarea type="text" id="SubMen_ShortDesc" name="SubMen_ShortDesc" class="form-control" autocomplete="off"
                                             placeholder="Enter your ShortDesc" aria-describedby="name2"></textarea>
                                         <span class="input-group-text cursor-pointer p-1" id="name2"><span
                                                 class="card-type"></span></span>
                                     </div>
-                                    <span id="SubMen_ShortDesc-error" class="error" style="color: red;"></span>
-                                </div>
+                                 </div>
 
                                 <div class="col-sm-12 form-group ">
                                     <label class="form-label" for="FullDesc">FullDesc</label>
@@ -141,16 +137,9 @@
                         maxlength: 255
                     },
 
-                    SubMen_URL: {
-                        required: true,
-                        maxlength: 255
-                    },
-
+                  
                     SubMen_Men_Id: "required",
-                    SubMen_ShortDesc: {
-                        required: true,
-                        maxlength: 255
-                    },
+                    
 
                     SubMen_FullDesc: "required",
                     SubMen_SerialOrder: "required"
@@ -160,15 +149,9 @@
                         required: "This field is required",
                         maxlength: "Maximum length exceeded"
                     },
-                    SubMen_URL: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
+                   
                     SubMen_Men_Id: "This field is required",
-                    SubMen_ShortDesc: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
+                   
                     SubMen_FullDesc: "This field is required",
                     SubMen_SerialOrder: "This field is required"
                 },
@@ -186,9 +169,7 @@
             });
             var fieldErrorMap = {
                 SubMen_Name: "#SubMen_Name-error",
-                SubMen_URL: "#SubMen_URL-error",
-                SubMen_ShortDesc: "#SubMen_ShortDesc-error",
-                SubMen_Men_Id: "#SubMen_Men_Id-error",
+                 SubMen_Men_Id: "#SubMen_Men_Id-error",
 
                 SubMen_FullDesc: "#SubMen_FullDesc-error",
                 SubMen_SerialOrder: "#SubMen_SerialOrder-error",

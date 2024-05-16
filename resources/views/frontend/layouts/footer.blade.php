@@ -14,51 +14,50 @@ $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
 $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'Service')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 ?>
 <section id="contact" class="bg-color-red">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="get-tuch">
-                        <i class="icon-telephone114"></i>
-                        <ul>
-                            <li>
-                                <h4>Phone Number</h4>
-                            </li>
-                            <li>
-                                <p>{{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="get-tuch">
-                        <i class="icon-icons74"></i>
-                        <ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+                <div class="get-tuch">
+                    <i class="icon-telephone114"></i>
+                    <ul>
                         <li>
-                                <h4> Address</h4>
-                            </li>
-                            <li>
-                                <p>{{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
-                            </li>
-                           
-                        </ul>
-                    </div>
+                            <h4>Phone Number</h4>
+                        </li>
+                        <li>
+                            <p>{{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-                    <div class="get-tuch">
-                        <i class="icon-icons142"></i>
-                        <ul>
-                            <li>
-                                <h4>Email Address</h4>
-                            </li>
-                            <li><a href="#.">
-                                    <p>{{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</p>
-                                </a></li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+                <div class="get-tuch">
+                    <i class="icon-icons74"></i>
+                    <ul>
+                        <li>
+                            <h4> Address</h4>
+                        </li>
+                        <li>
+                            <p>{{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+                <div class="get-tuch">
+                    <i class="icon-icons142"></i>
+                    <ul>
+                        <li>
+                            <h4>Email Address</h4>
+                        </li>
+                        <li><a href="#.">
+                                <p>{{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</p>
+                            </a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <div class="container pt-70 pb-40">
     <div class="row border-bottom">
         <div class="col-sm-6 col-md-3">
@@ -67,19 +66,19 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
                     src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
                 <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p><br />
                 <ul class="list-inline mt-5">
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray"
-                            href="#"> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a
+                            class="text-gray" href="#"> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</a> </li>
                     <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a
                             class="text-gray" href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a> </li>
                 </ul>
                 <div class="d-flex">
                     <div class="widget dark">
-                        <ul class="socials ">
+                        <ul class="socials">
+                            @foreach ($SocialLinkModel as $model)
+                                <li><a href="{{ $model->Pag_URL }}" target="_blank">{!! $model->Pag_Image !!}
+                                    </a></li>
+                            @endforeach
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,7 +153,6 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
             </div>
         </div>
     </div>
-    
 </div>
 <div class="container">
     <div class="row">
@@ -174,7 +172,6 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
             </div>
         </div>
     </div>
-
 </div>
 <!-- Custom JS -->
 <script src="{{ asset('assets/frontend/js/jquery-3.2.1.min.js') }}"></script>

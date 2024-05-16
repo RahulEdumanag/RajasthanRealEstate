@@ -87,10 +87,12 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
             <div class="col-md-12">
                 <div class="social-icons text-right">
                     <ul class="socials">
+                     @foreach ($SocialLinkModel as $model)
+                        <li><a href="{{ $model->Pag_URL }}" target="_blank">{!! $model->Pag_Image !!}
+                            </a></li>
+                    @endforeach
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                      
                     </ul>
                 </div>
                 <!-- Start Header Navigation -->
@@ -105,15 +107,11 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="active">
-                            <a href="/">Homes</a>
+                        <li >
+                            <a href="{{ URL::to('/') }}">Home</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">About Us</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="about.html">About Us V - 1</a></li>
-                                <li><a href="about-2.html">About Us V - 2</a></li>
-                            </ul>
+                        <li >
+                            <a href="{{ URL::to('/about') }}">About</a>
                         </li>
                         <li class="dropdown">
                             <a href="#." class="dropdown-toggle" data-toggle="dropdown">Properties</a>
@@ -133,16 +131,11 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                             <a href="#." class="dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown">
-                                    <a href="faq.html">FAQ's</a>
+                                    <a href="{{ URL::to('/faqs') }}">FAQ's</a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="#." class="dropdown-toggle" data-toggle="dropdown">Error Pages</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="error-404.html">Error Page 404</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="testimonials.html">Testimonial</a></li>
-                                <li><a href="auto-loan-calculator.html">Loan Calculate</a></li>
+                                 
+                                <li><a href="{{ URL::to('/testimonial') }}">Testimonial</a></li>
+                                <li><a href="{{ URL::to('/calculator') }}">Loan Calculate</a></li>
                             </ul>
                         </li>
                         <li class="dropdown megamenu-fw">
@@ -233,7 +226,7 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="contactus.html">Contact Us</a>
+                            <a href="{{ URL::to('/contact') }}">Contact Us</a>
                         </li>
                     </ul>
                 </div>

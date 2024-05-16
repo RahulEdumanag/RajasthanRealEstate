@@ -109,4 +109,4 @@ Route::get('/covid', [HomeController::class, 'covid'])->name('covid');
 Route::get('/counselling', [HomeController::class, 'counselling'])->name('counselling');
 Route::get('/underconstruction', [HomeController::class, 'underconstruction'])->name('underconstruction');
 Route::get('/franchise', [HomeController::class, 'franchise'])->name('franchise');
-Route::get('/underConstruction', [HomeController::class, 'underConstruction'])->name('underConstruction');
+Route::get('/calculator', [HomeController::class, 'calculator'])->name('calculator');

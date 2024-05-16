@@ -110,3 +110,4 @@ Route::get('/counselling', [HomeController::class, 'counselling'])->name('counse
 Route::get('/underconstruction', [HomeController::class, 'underconstruction'])->name('underconstruction');
 Route::get('/franchise', [HomeController::class, 'franchise'])->name('franchise');
 Route::get('/calculator', [HomeController::class, 'calculator'])->name('calculator');
+Route::get('/property', [HomeController::class, 'property'])->name('property');

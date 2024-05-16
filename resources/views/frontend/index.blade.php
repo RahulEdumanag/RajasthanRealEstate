@@ -79,7 +79,9 @@
                     <h2 class="text-uppercase">Welcome to <span class="color_red">Kuber Properties & Builders</span></h2>
                     <div class="line_1-1"></div>
                     <div class="line_2-2"></div>
-                    <div class="line_3-3"></div>
+                    
+                    <p>   {!! $HomeMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
+                     
                 </div>
                 <div class="col-sm-1 col-md-2"></div>
             </div>

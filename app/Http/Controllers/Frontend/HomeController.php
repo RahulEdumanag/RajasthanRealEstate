@@ -248,4 +248,8 @@ class HomeController extends Controller
     {
         return view('frontend.calculator');
     }
+    public function property()
+    {
+        return view('frontend.property');
+    }
 }

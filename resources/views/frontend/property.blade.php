@@ -423,7 +423,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <!-- <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="project1 clearfix">
                         <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
                             <div class="gri">
@@ -478,7 +478,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row top40">
                 <div class="col-md-12">

@@ -12,13 +12,7 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
     ->get();
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'Service')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
-$usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')
-    ->orderBy('Pag_SerialOrder', 'asc')
-    ->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')
-    ->where('tbl_page.Pag_Reg_Id', '=', $clientId)
-    ->where('Pag_Status', '=', '0')
-    ->orderBy('tbl_page.Pag_SerialOrder', 'asc')
-    ->get();
+$usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->orderBy('Pag_SerialOrder', 'asc')->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')->where('tbl_page.Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 ?>
 <section id="contact" class="bg-color-red">
     <div class="container">
@@ -73,10 +67,14 @@ $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
                     src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
                 <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p><br />
                 <ul class="list-inline mt-5">
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a
-                            class="text-gray" href="#"> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</a> </li>
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a
-                            class="text-gray" href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a> </li>
+                    <li class="m-0 pl-10 pr-10">
+                        <i class="fa fa-phone text-theme-color-2 mr-5"></i>
+                        <a class="text-gray" href="#"> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</a>
+                    </li><br />
+                    <li class="m-0 pl-10 pr-10">
+                        <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i>
+                        <a class="text-gray" href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a>
+                    </li>
                 </ul>
                 <div class="d-flex">
                     <div class="widget dark">

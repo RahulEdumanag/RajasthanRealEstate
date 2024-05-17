@@ -4,21 +4,20 @@
     <section class="rev_slider_wrapper">
         <div id="rev_full" class="rev_slider" data-version="5.0">
             <ul>
-
-            @foreach ($SliderModel as $model)
-                <li data-transition="fade">
-                    <img src="{{ env('Web_CommonURl') }}{{ $model->Pag_Image ?? 'N/A' }}" alt=""
-                        data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
-                    <div class="tp-caption tp-resizeme" data-x="['center','center','center','center']"
-                        data-hoffset="['15','15','0','0']" data-y="['240','200','140','140']"
-                        data-voffset="['0','0','0','0']" data-responsive_offset="on" data-visibility="['on','on','on','on']"
-                        data-transform_idle="o:1;"
-                        data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
-                        data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                        data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="800">
-                        <h2 class="border_heading p-white"> {{ $model->Pag_ShortDesc }} </h2>
-                    </div>
-                </li>
+                @foreach ($SliderModel as $model)
+                    <li data-transition="fade">
+                        <img src="{{ env('Web_CommonURl') }}{{ $model->Pag_Image ?? 'N/A' }}" alt=""
+                            data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
+                        <div class="tp-caption tp-resizeme" data-x="['center','center','center','center']"
+                            data-hoffset="['15','15','0','0']" data-y="['240','200','140','140']"
+                            data-voffset="['0','0','0','0']" data-responsive_offset="on"
+                            data-visibility="['on','on','on','on']" data-transform_idle="o:1;"
+                            data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="800">
+                            <h2 class="border_heading p-white"> {{ $model->Pag_ShortDesc }} </h2>
+                        </div>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -79,13 +78,15 @@
                     <h2 class="text-uppercase">{!! $HomeMenuModel->Men_ShortDesc ?? 'N/A' !!}</span></h2>
                     <div class="line_1-1"></div>
                     <div class="line_2-2"></div>
-                    
-                    <p>   {!! $HomeMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
-                     
+                </div>
+                <div class="col-xs-12 col-sm-10 col-md-12 text-center">
+                    <p> {!! $HomeMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
+                    <div class="line_1-1"></div>
+                    <div class="line_2-2"></div>
                 </div>
                 <div class="col-sm-1 col-md-2"></div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 3%;">
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="welcome top40">
                         <img src="{{ asset('assets/frontend/images/wellcome_1.png') }}" alt="image">
@@ -120,8 +121,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="estimate_image">
-                        <img src="{{ asset('assets/frontend/images/estimate.png') }}" alt="image"
-                            class="img-responsive">
+                        <img src="{{ asset('assets/frontend/images/estimate.png') }}" alt="image" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">

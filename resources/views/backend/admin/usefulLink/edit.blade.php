@@ -32,10 +32,9 @@
                                 </div>
                                 @if (Auth::user()->EmpRegistration->Emp_Role == '1')
                                     <div class="col-sm-6">
-                                        <label for="URL" class="form-label">URL<span style="color:red">*</span></label>
+                                        <label for="URL" class="form-label">URL</label>
                                         <input type="text" class="form-control" id="Pag_URL" name="Pag_URL"
                                             value="{{ old('Pag_URL', $model->Pag_URL) }}" placeholder="">
-                                        <span id="Pag_URL-error" class="error" style="color: red;"></span>
                                     </div>
                                 @endif
                                 <!-- <div class="col-sm-6">
@@ -93,14 +92,12 @@
             $("#edit").validate({
                 rules: {
                     Pag_Name: "required",
-                    Pag_URL: "required",
                     // Pag_ShortDesc: "required",
                     Pag_FullDesc: "required",
                     Pag_SerialOrder: "required"
                 },
                 messages: {
                     Pag_Name: "This field is required",
-                    Pag_URL: "This field is required",
                     // Pag_ShortDesc: "This field is required",
                     Pag_SerialOrder: "This field is required"
                 },
@@ -118,7 +115,6 @@
             });
             var fieldErrorMap = {
                 Pag_Name: "#Pag_Name-error",
-                Pag_URL: "#Pag_URL-error",
                 // Pag_ShortDesc: "#Pag_ShortDesc-error",
                 Pag_SerialOrder: "#Pag_SerialOrder-error"
             };

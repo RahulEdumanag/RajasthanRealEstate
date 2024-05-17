@@ -46,14 +46,12 @@
                                 </div>
                                 @if (Auth::user()->EmpRegistration->Emp_Role == '1')
                                     <div class="col-sm-6 form-group ">
-                                        <label class="form-label" for="URL">URL <span
-                                                style="color:red">*</span></label>
+                                        <label class="form-label" for="URL">URL</label>
                                         <div class="input-group input-group-merge">
                                             <input type="text" id="URL" name="Pag_URL" class="form-control"
                                                 autocomplete="off" placeholder="Enter your Pag_URL"
                                                 aria-describedby="name2" />
                                         </div>
-                                        <span id="Pag_URL-error" class="error" style="color: red;"></span>
                                     </div>
                                 @endif
                                 <!-- <div class="col-sm-6 form-group">
@@ -132,14 +130,12 @@
             $("#register-form").validate({
                 rules: {
                     Pag_Name: "required",
-                    Pag_URL: "required",
                     // Pag_ShortDesc: "required",
                     Pag_FullDesc: "required",
                     Pag_SerialOrder: "required"
                 },
                 messages: {
                     Pag_Name: "This field is required",
-                    Pag_URL: "This field is required",
                     // Pag_ShortDesc: "This field is required",
                     Pag_SerialOrder: "This field is required",
                     Pag_FullDesc: "This field is required"
@@ -158,7 +154,6 @@
             });
             var fieldErrorMap = {
                 Pag_Name: "#Pag_Name-error",
-                Pag_URL: "#Pag_URL-error",
                 // Pag_ShortDesc: "#Pag_ShortDesc-error",
                 Pag_SerialOrder: "#Pag_SerialOrder-error",
                 Pag_FullDesc: "#Pag_FullDesc-error"

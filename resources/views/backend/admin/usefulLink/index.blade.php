@@ -12,7 +12,6 @@
         </div>
     @endif
     <div class="container-xxl flex-grow-1 container-p-y card">
-
         <div class="app-page-title">
             <div class="page-title-wrapper d-flex justify-content-between align-items-center">
                 <div class="page-title-heading">
@@ -23,7 +22,6 @@
                         <span class="text-muted fw-light">Useful Link /</span> List
                     </h5>
                 </div>
-
                 <div class="page-title-actions">
                     <a href="{{ URL::to('admin/usefulLink/create') }}" class="btn btn-primary">
                         <i class="bi bi-plus-lg"></i> Add Useful Link
@@ -31,15 +29,13 @@
                 </div>
             </div>
         </div>
-
-
         <div>
             <div class="card-datatable table-responsive">
                 <table class="invoice-list-table table border-top" id="invoiceTable">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
-                            <th>Short Desc</th>
                             <th> Order</th>
                             <th>Action</th>
                         </tr>
@@ -54,13 +50,11 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td>{{ $value->Pag_Name }} </td>
-                                    <td>{{ $value->Pag_ShortDesc }} </td>
                                     <td> {{ $value->Pag_SerialOrder }} </td>
                                     <td class="d-flex">
                                         <a href="{{ route('admin.usefulLink.edit', encodeId($value->Pag_Id)) }}"
                                             class="btn btn-primary me-2">
                                             <i class="fa fa-pencil"></i>
-
                                         </a>
                                         <span class='me-2'>
                                             @if ($value->Pag_Status == 0)
@@ -94,5 +88,4 @@
             </div>
         </div>
     </div>
-
 @stop

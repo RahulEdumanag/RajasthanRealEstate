@@ -133,6 +133,20 @@ class HomeController extends Controller
             ->first();
         return view('frontend.usefullLink', compact('usefulLinkModel'));
     }
+    public function usefullLink($hashedId)
+    {
+        $id = decodeId($hashedId);
+
+        $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')
+            ->orderBy('Pag_SerialOrder', 'asc')
+            ->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')
+            ->where('tbl_page.Pag_Reg_Id', '=', $this->clientId)
+            ->where('Pag_Status', '=', '0')
+            ->where('tbl_page.Pag_Id', '=', $id)
+            ->first();
+
+        return view('frontend.usefullLink', compact('usefulLinkModel'));
+    }
     public function subMenuDetail($id)
     {
         $subMenuDetailModel = SubMenu::where('tbl_submenu.SubMen_Reg_Id', '=', $this->clientId)

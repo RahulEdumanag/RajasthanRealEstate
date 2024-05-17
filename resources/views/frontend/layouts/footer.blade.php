@@ -60,7 +60,7 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
 </section>
 <div class="container pt-70 pb-40">
     <div class="row border-bottom">
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="widget dark">
                 <img class="mt-5 mb-20" alt=""
                     src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
@@ -75,16 +75,18 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
                     <div class="widget dark">
                         <ul class="socials">
                             @foreach ($SocialLinkModel as $model)
-                                <li><a href="{{ $model->Pag_URL }}" target="_blank">{!! $model->Pag_Image !!}
-                                    </a></li>
+                                <li>
+                                    <a href="{{ $model->Pag_URL }}" target="_blank">
+                                        <i class="{!! $model->Pag_Image !!}"></i>
+                                    </a>
+                                </li>
                             @endforeach
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="widget dark">
                 <h4 class="widget-title">Quick Links</h4>
                 <div class="small-title">
@@ -93,15 +95,15 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
                     <div class="clearfix"></div>
                 </div>
                 <ul class="list angle-double-right list-border">
-                    @foreach($MenuModel as $value)
-                        @if($value->Men_URL !== null && $value->Men_URL !== '#')
+                    @foreach ($MenuModel as $value)
+                        @if ($value->Men_URL !== null && $value->Men_URL !== '#')
                             <li> <a href="{{ $value->Men_URL }}"> {{ $value->Men_Name }} </a></li>
                         @endif
                     @endforeach
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="widget dark">
                 <h4 class="widget-title ">Use Full Links</h4>
                 <div class="small-title">
@@ -120,57 +122,26 @@ $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '='
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="widget dark">
-                <h4 class="widget-title">Opening Hours</h4>
-                <div class="small-title">
-                    <div class="line1 background-color-white"></div>
-                    <div class="line2 background-color-white"></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="opening-hourse">
-                    <ul class="list-border">
-                        <li class="clearfix">
-                            <span> Mon - Tues : </span>
-                            <div class="value pull-right"> 6.00 am - 10.00 pm </div>
-                        </li>
-                        <li class="clearfix">
-                            <span> Wednes - Thurs :</span>
-                            <div class="value pull-right"> 8.00 am - 6.00 pm </div>
-                        </li>
-                        <li class="clearfix">
-                            <span> Fri : </span>
-                            <div class="value pull-right"> 3.00 pm - 8.00 pm </div>
-                        </li>
-                        <li class="clearfix">
-                            <span> Sun : </span>
-                            <div class="value pull-right"> Closed </div>
-                        </li>
-                    </ul>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div
+                    class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
+                    <div style="text-align: center;">
+                        ©
+                        2024
+                        , made with ❤️ by
+                        <a href="https://edumanag.com/" target="_blank" class="fw-medium">Edumanag</a>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-sm-5">
-            <p class="font-11 text-black-777 m-0 copy-right">Copyright: 2024 <a href="#"><span
-                        class="color_red">Kuber Properties & Builders</span></a>. All Rights Reserved</p>
-        </div>
-        <div class="col-md-6 col-sm-7 text-right">
-            <div class="widget no-border m-0">
-                <ul class="list-inline sm-text-center mt-5 font-12">
-                    <li> <a href="#">FAQ</a> </li>
-                    <li>|</li>
-                    <li> <a href="#">Help Desk</a> </li>
-                    <li>|</li>
-                    <li> <a href="#">Support</a> </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Custom JS -->
 <script src="{{ asset('assets/frontend/js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>

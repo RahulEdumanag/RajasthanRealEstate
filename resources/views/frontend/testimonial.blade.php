@@ -28,57 +28,23 @@
                 </div>
             </div>
             <div id="js-grid-masonry" class="cbp">
+
+            @foreach($TestimonialModel as $value)
                 <div class="cbp-item">
                     <div class="cbp-caption-defaultWrap">
                         <div class="testinomial_wrap">
                             <div class="testinomial_text blue_dark  text-center">
-                                <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum
-                                    soluta nobis consectetuer.</p>
+                                <p>{{$value->Pag_ShortDesc}}</p>
                                 <img src="{{ asset('assets/frontend/images/quote.png') }}" alt="quote" class="quote">
                             </div>
                             <div class="testinomial_pic">
-                                <img src="{{ asset('assets/frontend/images/testinomils.png') }}" alt="testinomial" width="59">
-                                <h4 class="color">SAM NICHOLSON</h4>
-                                <span class="post_img">( NorthMarq Capital )</span>
+                                <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}" alt="testinomial" width="59">
+                                <h4 class="color">{{$value->Pag_Name}}</h4>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="cbp-item">
-                    <div class="cbp-caption-defaultWrap">
-                        <div class="testinomial_wrap">
-                            <div class="testinomial_text blue_dark  text-center">
-                                <p>We offer the most complete house renovating services in the country, from kitchen design
-                                    to bathroom remodeling. Innovativeness is
-                                    the pledge of our stable development. We tap into the most successful international
-                                    management data, forestalling market.</p>
-                                <img src="{{ asset('assets/frontend/images/quote.png') }}" alt="quote" class="quote">
-                            </div>
-                            <div class="testinomial_pic">
-                                <img src="{{ asset('assets/frontend/images/testinomils.png') }}" alt="testinomial" width="59">
-                                <h4 class="color">SAM NICHOLSON</h4>
-                                <span class="post_img">( NorthMarq Capital )</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cbp-item">
-                    <div class="cbp-caption-defaultWrap">
-                        <div class="testinomial_wrap">
-                            <div class="testinomial_text blue_dark  text-center">
-                                <p>We offer the most complete house renovating services in the country, from kitchen design
-                                    to bathroom remodeling.
-                                    Innovativeness is the pledge of our stable development. We tap into successful.</p>
-                                <img src="{{ asset('assets/frontend/images/quote.png') }}" alt="quote" class="quote">
-                            </div>
-                            <div class="testinomial_pic">
-                                <img src="{{ asset('assets/frontend/images/testinomils.png') }}" alt="testinomial" width="59">
-                                <h4 class="color">SAM NICHOLSON</h4>
-                                <span class="post_img">( NorthMarq Capital )</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              @endforeach
               
             </div>
         </div>

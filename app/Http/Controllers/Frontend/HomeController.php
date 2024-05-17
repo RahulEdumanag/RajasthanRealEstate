@@ -227,7 +227,9 @@ class HomeController extends Controller
     }
     public function testimonial()
     {
-        return view('frontend.testimonial');
+        $TestimonialModel = $this->getTestimonialModel();
+ 
+        return view('frontend.testimonial',compact('TestimonialModel'));
     }
     public function faqs()
     {

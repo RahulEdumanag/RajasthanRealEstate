@@ -94,10 +94,12 @@
                                             <p><i class="icon-icons74"></i> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
                                         </div>
                                         <ul class="socials">
-                                            <li><a href="#."><i class="fa fa-facebook"></i></a></li>
                                             @foreach ($SocialLinkModel as $model)
-                                                <li><a href="{{ $model->Pag_URL }}" target="_blank">{!! $model->Pag_Image !!}
-                                                    </a></li>
+                                                <li>
+                                                    <a href="{{ $model->Pag_URL }}" target="_blank">
+                                                        <i class="{!! $model->Pag_Image !!}"></i>
+                                                    </a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -110,7 +112,7 @@
                                     <h2 class="text-uppercase">Our <span class="color_red"> Location </span></h2>
                                     <div class="line_1"></div>
                                     <div class="line_2"></div>
-                                    <div class="line_3"></div>
+                                    <!-- <div class="line_3"></div> -->
                                 </div>
                                 <div class="contact">
                                     <div id="map"></div>

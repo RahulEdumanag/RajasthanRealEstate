@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-sm-1 col-md-2"></div>
                 <div class="col-xs-12 col-sm-10 col-md-8 text-center">
-                    <h2 class="text-uppercase">Welcome to <span class="color_red">Kuber Properties & Builders</span></h2>
+                    <h2 class="text-uppercase">{!! $HomeMenuModel->Men_ShortDesc ?? 'N/A' !!}</span></h2>
                     <div class="line_1-1"></div>
                     <div class="line_2-2"></div>
                     
@@ -343,7 +343,7 @@
                 <div class="col-md-12 text-center">
                     <div class="image-text-heading top30 bottom30">
                         <h2 class="bottom40">We Don't Just Find<br><span>Great Deals</span> We Create Them</h2>
-                        <a href="#" class="link_arrow white_border top10">View All Listing</a>
+                        <a href="{{ URL::to('/property') }}" class="link_arrow white_border top10">View All Listing</a>
                     </div>
                 </div>
             </div>

@@ -22,9 +22,9 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
             <div class="col-md-8 col-sm-8 col-xs-12 text-right">
                 <div class="header-top-links">
                     <ul>
-                        <li><a href="#"><i class="icon-heart2"></i>Favorites</a></li>
-                        <li class="af-line"></li>
-                        <li><a href="submitproperty.html"><i class="icon-icons215"></i>Submit Property</a></li>
+                        <li><a href="#">OPENING HOURS:{{ $WebInfoModel->WebInf_openingHours ?? 'N/A' }}</a></li>
+                     
+                       
                     </ul>
                 </div>
             </div>
@@ -86,10 +86,12 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <div class="social-icons text-right">
                     <ul class="socials">
                         @foreach ($SocialLinkModel as $model)
-                            <li><a href="{{ $model->Pag_URL }}" target="_blank">{!! $model->Pag_Image !!}
-                                </a></li>
+                            <li>
+                                <a href="{{ $model->Pag_URL }}" target="_blank">
+                                    <i class="{!! $model->Pag_Image !!}"></i>
+                                </a>
+                            </li>
                         @endforeach
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     </ul>
                 </div>
                 <div class="navbar-header">

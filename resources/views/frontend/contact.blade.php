@@ -30,41 +30,43 @@
                                     <div class="line_2"></div>
                                     <div class="line_3"></div>
                                 </div>
-                                <form class="contact-form">
+                                <form method="post" action="{{ route('contact.Cstore') }}" id="contact-form"
+                                    class="contact-form">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <input type="text" name="name" class="keyword-input"
-                                                    placeholder="Your Name">
+                                                <input type="text"id="Con_Name" name='Con_Name' class="keyword-input"
+                                                    placeholder="Your Name" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <input type="email" name="email" class="keyword-input"
-                                                    placeholder="Your E-mail">
+                                                <input type="email" id="Con_Email" name='Con_Email' class="keyword-input"
+                                                    placeholder="Your E-mail" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <input type="text" name="name" class="keyword-input"
-                                                    placeholder="Web Site">
+                                                <input type="number" name='Con_Number' id="Con_Number"
+                                                    class="keyword-input" placeholder="Number" required autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group single-query">
-                                                <textarea name="message" placeholder="Message" id="message"></textarea>
+                                                <textarea name='Con_Desc' placeholder="Message" id="Con_Desc"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <div class="form-group single-query">
                                                 <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
                                                     class="img-responsive" alt="image">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-12 top20">
                                             <div class="form-group single-query">
                                                 <button type="submit" class="btn_fill" id="btn_submit"

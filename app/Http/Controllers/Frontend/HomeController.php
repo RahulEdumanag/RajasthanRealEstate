@@ -190,16 +190,12 @@ class HomeController extends Controller
     public function Cstore(Request $request)
     {
         try {
-            $model = new Enquirie();
-            $model->Enq_Reg_Id = $request->input('ConCat_Reg_Id', $this->clientId);
-            $model->Enq_ConCat_Id = $request->Enq_ConCat_Id;
-            // dd($model);
-            $model->Enq_Name = $request->Enq_Name;
-            $model->Enq_Number = $request->Enq_Number;
-            $model->Enq_Email = $request->Enq_Email;
-            $model->Enq_Dob = $request->Enq_Dob;
-            $model->Enq_Birthplace = $request->Enq_Birthplace;
-            $model->Enq_Time = $request->Enq_Time;
+            $model = new Contact();
+            $model->Con_Reg_Id = $request->input('Con_Reg_Id', $this->clientId);
+            $model->Con_Name = $request->Con_Name;
+            $model->Con_Email = $request->Con_Email;
+            $model->Con_Number = $request->Con_Number;
+            $model->Con_Desc = $request->Con_Desc;
             $model->save();
             return back()->with('success', 'Message sent successfully.');
         } catch (Exception $e) {

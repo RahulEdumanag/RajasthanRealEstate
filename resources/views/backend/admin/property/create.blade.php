@@ -1,19 +1,16 @@
 @extends('backend.layouts.master')
 @section('title', 'Create')
-
 @section('content')
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
-
     @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
     @endif
-
     <div class="container-fluid">
         @if (Auth::user()->EmpRegistration->Emp_Role == '1')
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -27,7 +24,6 @@
                 </div>
             </div>
         @endif
-
         <div class="row">
             <div class="col-md-12 mx-auto">
                 <div class="card mb-4">
@@ -36,83 +32,190 @@
                             method="post" accept-charset="utf-8">
                             @csrf
                             <div class="row g-3">
-
-
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="Name">Name <span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PName" name="PName" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Name" aria-describedby="name2" />
-                                    </div>
-                                    <span id="PName-error" class="error" style="color: red;"></span>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type"> Property Type <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PPTyp_Id" name="PPTyp_Id">
+                                        <option selected disabled>Select Property Type</option>
+                                        @foreach ($PropertyTypeModel as $value)
+                                            <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Contact No">Contact No <span
+                                    <label class="form-label" for="type"> City <span style="color:red">*</span></label>
+                                    <select class="form-control" id="PCit_Id" name="PCit_Id">
+                                        <option selected disabled>Select City</option>
+                                        @foreach ($CityModel as $value)
+                                            <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="col-sm-12 form-group ">
+                                    <label class="form-label" for="type">Property Features<span
+                                            style="color:red">*</span></label>
+                                    <div class="row">
+                                        @foreach ($PropertyFeaturesModel as $value)
+                                            <div class="col-3 mb-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="PFea_Id[]"
+                                                        id="PFea_Id_{{ $value->PFea_Id }}" value="{{ $value->PFea_Id }}">
+                                                    <label class="form-check-label"
+                                                        for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <span id="PFea_Id-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Property Code">Property Code <span
                                             style="color:red">*</span></label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" id="PContactNo" name="PContactNo"
-                                            class="form-control" autocomplete="off" placeholder="Enter your Contact No"
+                                        <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                            autocomplete="off" placeholder="Enter your Property Code"
                                             aria-describedby="name2" />
                                     </div>
-                                    <span id="PContactNo-error" class="error" style="color: red;"></span>
+                                    <span id="PPropertycode-error" class="error" style="color: red;"></span>
                                 </div>
+
+
+
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Email Id">Email Id <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Title">Title <span style="color:red">*</span></label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" id="PEmailId" name="PEmailId" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Email Id" aria-describedby="name2" />
+                                        <input type="text" id="PTitle" name="PTitle" class="form-control"
+                                            autocomplete="off" placeholder="Enter your Title" aria-describedby="name2" />
                                     </div>
-                                    <span id="PEmailId-error" class="error" style="color: red;"></span>
+                                    <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
 
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Tagline">Tagline <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Tag">Tag <span style="color:red">*</span></label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" id="PTagline" name="PTagline" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Tagline" aria-describedby="name2" />
+                                        <input type="text" id="PTag" name="PTag" class="form-control"
+                                            autocomplete="off" placeholder="Enter your Tag" aria-describedby="name2" />
                                     </div>
-                                    <span id="PTagline-error" class="error" style="color: red;"></span>
-                                </div>
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Map">Map <span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PMap" name="PMap" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Map Link" aria-describedby="name2" />
-                                    </div>
-                                    <span id="PMap-error" class="error" style="color: red;"></span>
+                                    <span id="PTag-error" class="error" style="color: red;"></span>
                                 </div>
 
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="About">About <span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PAbout" name="PAbout" class="form-control"
-                                            autocomplete="off" placeholder="Enter About Website "
-                                            aria-describedby="name2" />
-                                    </div>
-                                    <span id="PAbout-error" class="error" style="color: red;"></span>
-                                </div>
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Opening Hours">Opening Hours <span
+
+
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label" for="Short Desc">Short Desc <span
                                             style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PopeningHours" name="PopeningHours"
-                                            class="form-control" autocomplete="off"
-                                            placeholder="Enter your Opening Hours" aria-describedby="name2" />
-                                    </div>
-                                    <span id="PopeningHours-error" class="error" style="color: red;"></span>
+                                    <textarea id="PShortDesc" name="PShortDesc" class="form-control" autocomplete="off"
+                                        placeholder="Enter your ShortInfo1" aria-describedby="name2"></textarea>
+                                    <span id="PShortDesc-error" class="error" style="color: red;"></span>
                                 </div>
+
+                                <div class="col-sm-12 form-group ">
+                                    <label class="form-label" for="Full Desc">Full Desc</label>
+                                    <textarea class="applyCK form-control" id="PFullDesc" name="PFullDesc" class="form-control"></textarea>
+                                    <span id="PFullDesc-error" class="error" style="color: red;"></span>
+                                </div>
+
+
+
+
+
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type"> Featured <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PFeatured" name="PFeatured">
+                                        <option selected disabled>Select Featured</option>
+
+                                        <option value='1'>Yes</option>
+                                        <option value='0'>No</option>
+
+                                    </select>
+                                    <span id="PFeatured-error" class="error" style="color: red;"></span>
+                                </div>
+
+
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="Address">Address <span
                                             style="color:red">*</span></label>
                                     <div class="input-group input-group-merge">
-                                        <textarea id="PAddress" name="PAddress" class="form-control" autocomplete="off"
-                                            placeholder="Enter your Address" aria-describedby="name2"></textarea>
+                                        <textarea id="PAddress" name="PAddress" class="form-control" autocomplete="off" placeholder="Enter your Address"
+                                            aria-describedby="name2"></textarea>
                                     </div>
                                     <span id="PAddress-error" class="error" style="color: red;"></span>
                                 </div>
-                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
+
+
+
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type"> BedRoom <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PBedRoom" name="PBedRoom">
+                                        <option selected disabled>Select BedRoom</option>
+
+                                        <option value='1'>1</option>
+                                        <option value='0'>1</option>
+
+                                    </select>
+                                    <span id="PBedRoom-error" class="error" style="color: red;"></span>
+                                </div>
+
+
+
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type"> BathRoom <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PBathRoom" name="PBathRoom">
+                                        <option selected disabled>Select BathRoom</option>
+
+                                        <option value='1'>1</option>
+                                        <option value='0'>1</option>
+
+                                    </select>
+                                    <span id="PBathRoom-error" class="error" style="color: red;"></span>
+                                </div>
+
+
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="SqureFeet">SqureFeet <span
+                                            style="color:red">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="PSqureFeet" name="PSqureFeet" class="form-control"
+                                            autocomplete="off" placeholder="Enter your SqureFeet"
+                                            aria-describedby="name2" />
+                                    </div>
+                                    <span id="PSqureFeet-error" class="error" style="color: red;"></span>
+                                </div>
+
+
+
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Map">Map Link<span style="color:red">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="PMapLink" name="PMapLink" class="form-control"
+                                            autocomplete="off" placeholder="Enter your Map Link"
+                                            aria-describedby="name2" />
+                                    </div>
+                                    <span id="PMapLink-error" class="error" style="color: red;"></span>
+                                </div>
+
+
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Map">Amount<span style="color:red">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="PAmount" name="PAmount" class="form-control"
+                                            autocomplete="off" placeholder="Enter your Amount"
+                                            aria-describedby="name2" />
+                                    </div>
+                                    <span id="PAmount-error" class="error" style="color: red;"></span>
+                                </div>
+
+
+
+
+                                 
+                              
+                                <!-- <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="color: #6a6a6af5;">Short Information</legend>
                                     <div class="row g-3">
                                         <div class="col-sm-6 form-group">
@@ -143,79 +246,9 @@
                                                 placeholder="Enter your ShortInfo4" aria-describedby="name2"></textarea>
                                             <span id="PShortInfo4-error" class="error" style="color: red;"></span>
                                         </div>
-
                                     </div>
-                                </fieldset>
-
-                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
-                                    <legend style="  color: #6a6a6af5;">Upload Images</legend>
-                                    <div class="row g-3">
-
-                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4 form-group">
-                                            <label class="form-label" for="FooterLogo">Footer Logo <span
-                                                    style="color:red">*</span></label>
-                                            <div class="input-group">
-                                                <input id="photo1" type="file" name="PFooterLogo"
-                                                    style="display:none"
-                                                    onchange="displaySelectedImage(this, 'SelectedFileName1', 'selectedImagePreview1')">
-                                                <div class="input-group-prepend">
-                                                    <a class="btn btn-dark text-white"
-                                                        onclick="selectImage('photo1')">Image</a>
-                                                </div>
-                                                <input type="text" name="PFooterLogo" class="form-control"
-                                                    id="SelectedFileName1" value="" readonly>
-                                                <span id="PFooterLogo-error" class="error"
-                                                    style="color: red;"></span>
-                                            </div>
-                                            <img id="selectedImagePreview1" src="" alt="Selected Image"
-                                                style="display:none; max-width: 10%; margin-top: 10px;">
-                                            <span id="PFooterLogo-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4 form-group">
-                                            <label class="form-label" for="Logo">Logo <span
-                                                    style="color:red">*</span></label>
-                                            <div class="input-group">
-                                                <input id="photo2" type="file" name="PHeaderLogo"
-                                                    style="display:none"
-                                                    onchange="displaySelectedImage(this, 'SelectedFileName2', 'selectedImagePreview2')">
-                                                <div class="input-group-prepend">
-                                                    <a class="btn btn-dark text-white"
-                                                        onclick="selectImage('photo2')">Image</a>
-                                                </div>
-                                                <input type="text" name="PHeaderLogo" class="form-control"
-                                                    id="SelectedFileName2" value="" readonly>
-                                                <span id="PHeaderLogo-error" class="error"
-                                                    style="color: red;"></span>
-
-                                            </div>
-                                            <img id="selectedImagePreview2" src="" alt="Selected Image"
-                                                style="display:none; max-width: 10%; margin-top: 10px;">
-                                            <span id="PHeaderLogo-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4 form-group">
-                                            <label class="form-label" for="Fav icon">Fav icon <span
-                                                    style="color:red">*</span></label>
-                                            <div class="input-group">
-                                                <input id="photo3" type="file" name="PFavicon"
-                                                    style="display:none"
-                                                    onchange="displaySelectedImage(this, 'SelectedFileName3', 'selectedImagePreview3')">
-                                                <div class="input-group-prepend">
-                                                    <a class="btn btn-dark text-white"
-                                                        onclick="selectImage('photo3')">Image</a>
-                                                </div>
-                                                <input type="text" name="PFavicon" class="form-control"
-                                                    id="SelectedFileName3" value="" readonly>
-                                                <span id="PFavicon-error" class="error"
-                                                    style="color: red;"></span>
-                                            </div>
-                                            <img id="selectedImagePreview3" src="" alt="Selected Image"
-                                                style="display:none; max-width: 10%; margin-top: 10px;">
-                                            <span id="PFavicon-error" class="error" style="color: red;"></span>
-                                        </div>
-
-
-                                    </div>
-                                </fieldset>
+                                </fieldset> -->
+                           
                                 <div class="form-group mt-3">
                                     <div class=" d-flex col-xl-6">
                                         <div class="col-xl-3 col-md-6 col-sm-12 mb-4">
@@ -226,7 +259,6 @@
                                             </button>
                                         </div>
                                         <div class="col-xl-3 col-md-6 col-sm-12 mb-4">
-
                                             <button type="button" class="btn btn-secondary" onclick="confirmReset()">
                                                 <i class="fa fa-refresh fa-fw"></i> Reset
                                             </button>
@@ -245,10 +277,8 @@
             const icon = checkbox.parentElement.querySelector('.icon');
             if (checkbox.checked) {
                 icon.classList.add('icon-moved');
-
             } else {
                 icon.classList.remove('icon-moved');
-
             }
         }
     </script>
@@ -258,7 +288,6 @@
 
             function handleFileSizeValidation(fp, maxSize, errorSelector, clearSelectors) {
                 var fileSize = Array.from(fp[0].files).reduce((size, file) => size + file.size, 0);
-
                 if (fileSize > maxSize) {
                     isFileSizeValid = false;
                     $(errorSelector).html(`File size must not be more than 
@@ -278,37 +307,31 @@
                     '#PFooterLogo', '#SelectedFileName1'
                 ], 'selectedImagePreview1');
             });
-
             // File input 2
             $('#photo2').change(function() {
                 handleFileSizeValidation($("#photo2"), 102400, "#PHeaderLogo-error", [
                     '#PHeaderLogo', '#SelectedFileName2'
                 ], 'selectedImagePreview2');
             });
-
             // File input 3
             $('#photo3').change(function() {
                 handleFileSizeValidation($("#photo3"), 102400, "#PFavicon-error", ['#PFavicon',
                     '#SelectedFileName3'
                 ], 'selectedImagePreview3');
             });
-
             $("#register-form").validate({
                 rules: {
                     PName: {
                         required: true,
                         maxlength: 255
                     },
-
                     PContactNo: {
                         required: true,
-
                         minlength: 10
                     },
                     PEmailId: {
                         required: true,
                         email: true,
-
                     },
                     PAddress: {
                         required: true,
@@ -341,7 +364,6 @@
                         required: true,
                         maxlength: 255
                     },
-
                     PShortInfo3: {
                         required: true,
                         maxlength: 255
@@ -356,7 +378,6 @@
                         required: "This field is required",
                         maxlength: "Maximum length exceeded"
                     },
-
                     PContactNo: {
                         required: "This field is required",
                         digits: "Please enter only digits",
@@ -365,7 +386,6 @@
                     PEmailId: {
                         required: "This field is required",
                         email: "Please enter a valid email address",
-
                     },
                     PAddress: {
                         required: "This field is required",
@@ -412,8 +432,8 @@
                         form.submit();
                     } else {
                         alert(
-                                'File size must not be more than @if ($ImgMaxSizeModel){{ $ImgMaxSizeModel->imgsize->Img_Value }}@endif '
-                            );
+                            'File size must not be more than @if ($ImgMaxSizeModel){{ $ImgMaxSizeModel->imgsize->Img_Value }}@endif '
+                        );
                     }
                 },
                 errorPlacement: function(error, element) {
@@ -425,11 +445,9 @@
                     }
                 }
                 // File input 1
-
             });
             var fieldErrorMap = {
                 PName: "#PName-error",
-
                 PContactNo: "#PContactNo-error",
                 PAddress: "#PAddress-error",
                 PEmailId: "#PEmailId-error",

@@ -70,6 +70,8 @@ Route::resources([
     'expiryPeriod' => 'ExpiryPeriodController',
     'state' => 'StateController',
     'city' => 'CityController',
+    'property' => 'PropertyController',
+
 
 ]);
 Route::post('/admin/slider/updateOrder', 'SliderController@updateOrder')->name('admin.slider.updateOrder');
@@ -128,6 +130,7 @@ $controllers = [
     'ExpiryPeriodController' => 'expiryPeriod',
     'StateController' => 'state',
     'CityController' => 'city',
+    'PropertyController' => 'property',
 
 ];
 

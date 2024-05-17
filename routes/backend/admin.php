@@ -71,6 +71,7 @@ Route::resources([
     'state' => 'StateController',
     'city' => 'CityController',
     'property' => 'PropertyController',
+    'propertyType' => 'PropertyTypeController',
 
 
 ]);
@@ -131,6 +132,7 @@ $controllers = [
     'StateController' => 'state',
     'CityController' => 'city',
     'PropertyController' => 'property',
+    'PropertyTypeController' => 'propertyType',
 
 ];
 

@@ -41,25 +41,25 @@
                         @foreach ($model as $value)
                             <tr>
                                 <td class="serial-number"> {{ $loop->iteration }}</td>
-                                <td>{{ $value->Pro_Name }} </td>
-                                <td>{{ $value->Pro_ContactNo }} </td>
-                                <td>{{ $value->Pro_EmailId }} </td>
+                                <td>{{ $value->PName }} </td>
+                                <td>{{ $value->PContactNo }} </td>
+                                <td>{{ $value->PEmailId }} </td>
 
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.property.edit', encodeId($value->Pro_Id)) }}"
+                                    <a href="{{ route('admin.property.edit', encodeId($value->PId)) }}"
                                         class="btn btn-primary me-2">
                                         <i class="fa fa-pencil"></i>
 
                                     </a>
                                     <span class='me-2'>
 
-                                        @if ($value->Pro_Status == 0)
+                                        @if ($value->PStatus == 0)
                                             <a class="btn btn-success"
-                                                href="{{ URL::to('admin/property/active', $value->Pro_Id) }}"> <i
+                                                href="{{ URL::to('admin/property/active', $value->PId) }}"> <i
                                                     class="fa fa-check-circle active"></i> </a>
-                                        @elseif ($value->Pro_Status == 1)
+                                        @elseif ($value->PStatus == 1)
                                             <a class="btn btn-danger"
-                                                href="{{ URL::to('admin/property/inactive', $value->Pro_Id) }}"> <i
+                                                href="{{ URL::to('admin/property/inactive', $value->PId) }}"> <i
                                                     class="fa fa-times-circle inactive"></i>
                                             </a>
                                         @else
@@ -69,7 +69,7 @@
                                     </span>
 
 
-                                    <form action=" {{ route('admin.property.destroy', $value->Pro_Id) }}" method="POST"
+                                    <form action=" {{ route('admin.property.destroy', $value->PId) }}" method="POST"
                                         id="deleteForm">
                                         @method('DELETE')
                                         @csrf

@@ -3,6 +3,10 @@ namespace App\Http\Controllers\Backend\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\Master;
+use App\Models\City;
+use App\Models\PropertyType;
+use App\Models\PropertyFeatures;
+
 use App\Models\Registration;
 use App\Models\Admin;
 use DB;
@@ -17,55 +21,46 @@ class PropertyController extends Controller
     public function index(Request $request)
     {
         if (getSelectedValue() == 1) {
-            $model = Property::where('Pro_Status', '!=', 2)->where('Pro_Id', '!=', 1)->orderBy('Pro_CreatedDate', 'desc')->get();
+            $model = Property::where('PStatus', '!=', 2)->where('PId', '!=', 1)->orderBy('PCreatedDate', 'desc')->get();
         } else {
-            $model = Property::where('Pro_Status', '!=', 2)->where('Pro_Id', '!=', 1)->where('Pro_Reg_Id', getSelectedValue())->orderBy('Pro_CreatedDate', 'desc')->get();
+            $model = Property::where('PStatus', '!=', 2)->where('PId', '!=', 1)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
         }
         return view('backend.admin.property.index', compact('model'));
     }
     public function create()
     {
+       
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->get(); 
         $ImgMaxSizeModel = getImgMaxSizeModel();
-        $adminuser = Registration::where('Reg_Id', '!=', 1)->whereNull('Reg_DeletedDate')->get();
-        return view('backend.admin.property.create', compact('adminuser', 'ImgMaxSizeModel'));
+    //    dd($PropertyFeaturesModel);
+        return view('backend.admin.property.create', compact('ImgMaxSizeModel','PropertyTypeModel','PropertyFeaturesModel','CityModel'));
     }
     public function store(Request $request)
     {
         try {
             $model = new Property();
-            $model->Pro_Reg_Id = getSelectedValue();
-            $model->Pro_Name = $request->Pro_Name;
-            $model->Pro_Address = $request->Pro_Address;
-            $model->Pro_Tagline = $request->Pro_Tagline;
-            $model->Pro_EmailId = $request->Pro_EmailId;
-            $model->Pro_ContactNo = $request->Pro_ContactNo;
-            $model->Pro_Map = $request->Pro_Map;
-            $model->Pro_ShortInfo1 = $request->Pro_ShortInfo1;
-            $model->Pro_ShortInfo2 = $request->Pro_ShortInfo2;
-            $model->Pro_ShortInfo3 = $request->Pro_ShortInfo3;
-            $model->Pro_ShortInfo4 = $request->Pro_ShortInfo4;
-            $model->Pro_About = $request->Pro_About;
-            $model->Pro_openingHours = $request->Pro_openingHours;
-            $model->Pro_CreatedDate = Carbon::now('Asia/Kolkata');
-            $model->Pro_CreatedBy = Auth::user()->Log_Id;
-            foreach (['Pro_FooterLogo', 'Pro_HeaderLogo', 'Pro_Favicon'] as $imageField) {
-                if ($request->hasFile($imageField)) {
-                    $file = $request->file($imageField);
-                    if ($file->isValid()) {
-                        $subfolderName = getSelectedValue();
-                        $folderName = 'Propert_images';
-                        $webInfPath = public_path("uploads/{$subfolderName}/{$folderName}");
-                        if (!file_exists($webInfPath)) {
-                            mkdir($webInfPath, 0755, true);
-                        }
-                        $destinationPath = $webInfPath;
-                        $extension = $file->getClientOriginalExtension();
-                        $fileName = time() . '_' . uniqid() . '.' . $extension;
-                        $file->move($destinationPath, $fileName);
-                        $model->$imageField = "{$subfolderName}/{$folderName}/{$fileName}";
-                    }
-                }
-            }
+            $model->PReg_Id = getSelectedValue();
+            $model->PPTyp_Id = $request->PPTyp_Id;
+            $model->PFea_Id = $request->PFea_Id;
+            $model->PCit_Id = $request->PCit_Id;
+            $model->PPropertycode = $request->PPropertycode;
+            $model->PTitle = $request->PTitle;
+            $model->PTag = $request->PTag;
+            $model->PShortDesc = $request->PShortDesc;
+            $model->PFullDesc = $request->PFullDesc;
+            $model->PFeatured = $request->PFeatured;
+            $model->PAddress = $request->PAddress;
+            $model->PBedRoom = $request->PBedRoom;
+            $model->PBathRoom = $request->PBathRoom;
+            $model->PSqureFeet = $request->PSqureFeet;
+            $model->PMapLink = $request->PMapLink;
+            $model->PAmount = $request->PAmount;
+            $model->PImages = $request->PImages;
+            $model->PPlansImage = $request->PPlansImage;
+            $model->PCreatedDate = Carbon::now('Asia/Kolkata');
+            $model->PCreatedBy = Auth::user()->Log_Id;
             $model->save();
             return redirect()->route('admin.property.create')->with('success', 'Record added successfully.');
         } catch (Exception $e) {
@@ -77,55 +72,36 @@ class PropertyController extends Controller
     }
     public function edit($hashedId)
     {
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->get(); 
         $ImgMaxSizeModel = getImgMaxSizeModel();
-        $Pro_Id = decodeId($hashedId);
-        $model = Property::where('Pro_Id', $Pro_Id)->first();
-        return view('backend.admin.property.edit', compact('model', 'ImgMaxSizeModel'));
+        $PId = decodeId($hashedId);
+        $model = Property::where('PId', $PId)->first();
+        return view('backend.admin.property.edit', compact('model', 'ImgMaxSizeModel','PropertyTypeModel','PropertyFeaturesModel','CityModel'));
     }
-    public function update(Request $request, $Pro_Id)
+    public function update(Request $request, $PId)
     {
         try {
-            $model = Property::findOrFail($Pro_Id);
-            $model->Pro_Name = $request->Pro_Name;
-            $model->Pro_Address = $request->Pro_Address;
-            $model->Pro_Tagline = $request->Pro_Tagline;
-            $model->Pro_EmailId = $request->Pro_EmailId;
-            $model->Pro_ContactNo = $request->Pro_ContactNo;
-            $model->Pro_Map = $request->Pro_Map;
-            $model->Pro_ShortInfo1 = $request->Pro_ShortInfo1;
-            $model->Pro_ShortInfo2 = $request->Pro_ShortInfo2;
-            $model->Pro_ShortInfo3 = $request->Pro_ShortInfo3;
-            $model->Pro_ShortInfo4 = $request->Pro_ShortInfo4;
-            $model->Pro_About = $request->Pro_About;
-            $model->Pro_openingHours = $request->Pro_openingHours;
-            $model->Pro_UpdatedDate = Carbon::now('Asia/Kolkata');
-            $model->Pro_UpdatedBy = Auth::user()->Log_Id;
-            $oldPro_FooterLogo = $model->Pro_FooterLogo;
-            $oldPro_HeaderLogo = $model->Pro_HeaderLogo;
-            $oldPro_Favicon = $model->Pro_Favicon;
-            $model->fill($request->except(['Pro_FooterLogo', 'Pro_HeaderLogo', 'Pro_Favicon']));
-            foreach (['Pro_FooterLogo', 'Pro_HeaderLogo', 'Pro_Favicon'] as $imageField) {
-                if ($request->hasFile($imageField)) {
-                    $file = $request->file($imageField);
-                    if ($file->isValid()) {
-                        $subfolderName = getSelectedValue();
-                        $folderName = 'Propertyrmation_images';
-                        $webInfPath = public_path("uploads/{$subfolderName}/{$folderName}");
-                        if (!file_exists($webInfPath)) {
-                            mkdir($webInfPath, 0755, true);
-                        }
-                        $destinationPath = $webInfPath;
-                        $extension = $file->getClientOriginalExtension();
-                        $fileName = time() . '_' . uniqid() . '.' . $extension;
-                        $file->move($destinationPath, $fileName);
-                        $model->$imageField = "{$subfolderName}/{$folderName}/{$fileName}";
-                    }
-                }
-            }
+            $model = Property::findOrFail($PId);
+            $model->PPTyp_Id = $request->PPTyp_Id;
+            $model->PFea_Id = $request->PFea_Id;
+            $model->PCit_Id = $request->PCit_Id;
+            $model->PPropertycode = $request->PPropertycode;
+            $model->PTitle = $request->PTitle;
+            $model->PTag = $request->PTag;
+            $model->PShortDesc = $request->PShortDesc;
+            $model->PFullDesc = $request->PFullDesc;
+            $model->PFeatured = $request->PFeatured;
+            $model->PAddress = $request->PAddress;
+            $model->PBedRoom = $request->PBedRoom;
+            $model->PBathRoom = $request->PBathRoom;
+            $model->PSqureFeet = $request->PSqureFeet;
+            $model->PMapLink = $request->PMapLink;
+            $model->PAmount = $request->PAmount;
+            $model->PImages = $request->PImages;
+            $model->PPlansImage = $request->PPlansImage;
             $model->save();
-            deleteOldImages($oldPro_FooterLogo, $model->Pro_FooterLogo); 
-            deleteOldImages($oldPro_HeaderLogo, $model->Pro_HeaderLogo); 
-            deleteOldImages($oldPro_Favicon, $model->Pro_Favicon); 
             return redirect()->route('admin.property.index')->with('success', 'Record updated successfully.');
         } catch (Exception $e) {
             session()->flash('sticky_error', $e->getMessage());
@@ -139,7 +115,7 @@ class PropertyController extends Controller
             if (!$model) {
                 return back()->with('error', 'Record not found.');
             }
-            foreach (['Pro_FooterLogo', 'Pro_HeaderLogo', 'Pro_Favicon'] as $imageField) {
+            foreach (['PFooterLogo', 'PHeaderLogo', 'PFavicon'] as $imageField) {
                 $fileToDelete = $model->$imageField;
                 if (!empty($fileToDelete)) {
                     $filePath = public_path('uploads') . '/' . $fileToDelete;
@@ -148,7 +124,7 @@ class PropertyController extends Controller
                     }
                 }
             }
-            $model->update(['Pro_Status' => 2]);
+            $model->update(['PStatus' => 2]);
             return back()->with('success', 'Record deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
@@ -158,7 +134,7 @@ class PropertyController extends Controller
     {
         try {
             $page = Property::findOrFail($id);
-            $page->update(['Pro_Status' => '1']);
+            $page->update(['PStatus' => '1']);
             return redirect()->route('admin.property.index')->with('success', 'Property marked as inactive.');
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
@@ -168,7 +144,7 @@ class PropertyController extends Controller
     {
         try {
             $page = Property::findOrFail($id);
-            $page->update(['Pro_Status' => '0']);
+            $page->update(['PStatus' => '0']);
             return redirect()->route('admin.property.index')->with('success', 'Property marked as active.');
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());

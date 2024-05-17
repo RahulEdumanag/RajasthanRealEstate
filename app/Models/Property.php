@@ -9,9 +9,9 @@ class Property extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_website_information';
+    protected $table = 'tbl_property';
     public $timestamps = false;
-    protected $primaryKey = 'Pro_Id';
+    protected $primaryKey = 'PId';
 
-    protected $fillable = ['Pro_Status'];
+    protected $fillable = ['PStatus'];
 }

@@ -68,7 +68,8 @@ Route::resources([
     'imgsize' => 'ImgsizeController',
     'counselling' => 'CounsellingController',
     'expiryPeriod' => 'ExpiryPeriodController',
-
+    'state' => 'StateController',
+    'city' => 'CityController',
 
 ]);
 Route::post('/admin/slider/updateOrder', 'SliderController@updateOrder')->name('admin.slider.updateOrder');
@@ -125,7 +126,8 @@ $controllers = [
     'ImgsizeController' => 'imgsize',
     'CounsellingController' => 'counselling',
     'ExpiryPeriodController' => 'expiryPeriod',
-
+    'StateController' => 'state',
+    'CityController' => 'city',
 
 ];
 

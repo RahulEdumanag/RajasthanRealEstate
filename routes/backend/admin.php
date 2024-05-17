@@ -72,7 +72,8 @@ Route::resources([
     'city' => 'CityController',
     'property' => 'PropertyController',
     'propertyType' => 'PropertyTypeController',
-
+    'propertyFeatures' => 'PropertyFeaturesController',
+ 
 
 ]);
 Route::post('/admin/slider/updateOrder', 'SliderController@updateOrder')->name('admin.slider.updateOrder');
@@ -133,6 +134,7 @@ $controllers = [
     'CityController' => 'city',
     'PropertyController' => 'property',
     'PropertyTypeController' => 'propertyType',
+    'PropertyFeaturesController' => 'propertyFeatures',
 
 ];
 

@@ -23,8 +23,8 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <div class="header-top-links">
                     <ul>
                         <li><a href="#">OPENING HOURS:{{ $WebInfoModel->WebInf_openingHours ?? 'N/A' }}</a></li>
-                     
-                       
+
+
                     </ul>
                 </div>
             </div>
@@ -103,6 +103,84 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li><a href="/">Home</a></li>
+
+
+
+
+
+
+
+                        <li class="dropdown megamenu-fw">
+                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">Showcase</a>
+                            <ul class="dropdown-menu megamenu-content" role="menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-menu col-md-2">
+                                            <h5 class="title">Showcase List</h5>
+                                            <div class="content">
+                                                <ul class="menu-col">
+                                                    <li><a href="#">Properties List</a></li>
+                                                    <li><a href="#">Single Property</a></li>
+                                                    <li><a href="#">Search by City</a></li>
+                                                    <li><a href="#">Search by Category</a></li>
+                                                    <li><a href="#">Search by Type</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-menu col-md-8">
+                                            <div class="row">
+                                                <div id="nav_slider" class="owl-carousel">
+                                                    <div class="item">
+                                                        <div class="image bottom15">
+                                                            <img src="images/nav-slider1.jpg" alt="Featured Property">
+                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
+                                                        </div>
+                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
+                                                        <p>Towson London, MR 21501</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="image bottom15">
+                                                            <img src="images/nav-slider2.jpg" alt="Featured Property">
+                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
+                                                        </div>
+                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
+                                                        <p>Towson London, MR 21501</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="image bottom15">
+                                                            <img src="images/nav-slider3.jpg" alt="Featured Property">
+                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
+                                                        </div>
+                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
+                                                        <p>Towson London, MR 21501</p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <div class="image bottom15">
+                                                            <img src="images/nav-slider1.jpg" alt="Featured Property">
+                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
+                                                        </div>
+                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
+                                                        <p>Towson London, MR 21501</p>
+                                                    </div>
+                                                    
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+
+
+
+
+
+
                         @foreach ($MenuModel as $key => $value)
                             <li class="" @if ($key !== 0) style="" @endif>
                                 @if ($value->Men_SubMenuExists == 'on')

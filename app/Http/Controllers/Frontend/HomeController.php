@@ -34,10 +34,7 @@ class HomeController extends Controller
     {
         return $this->baseQuery()->where('tbl_pagecategory.PagCat_Name', 'Service')->take(4)->get();
     }
-    protected function getServicesModelAbout()
-    {
-        return $this->baseQuery()->where('tbl_pagecategory.PagCat_Name', 'Service')->get();
-    }
+    
     public function index(Request $request)
     {
         $ip = $request->ip();

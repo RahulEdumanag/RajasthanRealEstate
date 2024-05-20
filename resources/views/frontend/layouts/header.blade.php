@@ -23,8 +23,6 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <div class="header-top-links">
                     <ul>
                         <li><a href="#">OPENING HOURS:{{ $WebInfoModel->WebInf_openingHours ?? 'N/A' }}</a></li>
-
-
                     </ul>
                 </div>
             </div>
@@ -104,13 +102,6 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><a href="/">Home</a></li>
-
-
-
-
-
-
-
                         <li class="dropdown megamenu-fw">
                             <a href="#." class="dropdown-toggle" data-toggle="dropdown">Showcase</a>
                             <ul class="dropdown-menu megamenu-content" role="menu">
@@ -163,8 +154,6 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                                         <h4><a href="#.">Park Avenue Apartment</a></h4>
                                                         <p>Towson London, MR 21501</p>
                                                     </div>
-                                                    
-                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -172,47 +161,46 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                 </li>
                             </ul>
                         </li>
-
-
-
-
-
-
-
-
-
                         @foreach ($MenuModel as $key => $value)
-                            <li class="" @if ($key !== 0) style="" @endif>
-                                @if ($value->Men_SubMenuExists == 'on')
+                            @if ($value->Men_Name != 'Home')
+                                <li class="" @if ($key !== 0) style="" @endif>
+                                    @if ($value->Men_SubMenuExists == 'on')
+                                        @php
+                                            $subMenuItems = $SubMenuModel->where('SubMen_Men_Id', $value->Men_Id);
+                                        @endphp
+                                        @if ($subMenuItems->isNotEmpty())
+                                <li class="dropdown">
                                     @php
-                                        $subMenuItems = $SubMenuModel->where('SubMen_Men_Id', $value->Men_Id);
+                                        $menuUrl = $value->Men_URL
+                                            ? URL::to($value->Men_URL)
+                                            : route('showDetails', [
+                                                'type' => 'menu',
+                                                'id' => encodeId($value->Men_Id),
+                                            ]);
                                     @endphp
-
-
-                                    @if ($subMenuItems->isNotEmpty())
-                            <li class="dropdown">
-                                @php
-                                    $menuUrl = $value->Men_URL
-                                        ? URL::to($value->Men_URL)
-                                        : route('showDetails', ['type' => 'menu', 'id' => encodeId($value->Men_Id)]);
-                                @endphp
-
-                                <a class=" dropdown-toggle" href="{{ $menuUrl }}"
-                                    id="navbarDropdown{{ $value->Men_Id }}" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    {{ $value->Men_Name }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown">
-                                        @foreach ($subMenuItems as $submenu)
-                                            <a class="dropdown-item"
-                                                href="{{ $submenu->SubMen_URL ? URL::to($submenu->SubMen_URL) : route('showSubMenuDetails', ['type' => 'submenu', 'id' => encodeId($submenu->SubMen_Id)]) }}
+                                    <a class=" dropdown-toggle" href="{{ $menuUrl }}"
+                                        id="navbarDropdown{{ $value->Men_Id }}" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ $value->Men_Name }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown">
+                                            @foreach ($subMenuItems as $submenu)
+                                                <a class="dropdown-item"
+                                                    href="{{ $submenu->SubMen_URL ? URL::to($submenu->SubMen_URL) : route('showSubMenuDetails', ['type' => 'submenu', 'id' => encodeId($submenu->SubMen_Id)]) }}
                                                          ">{{ $submenu->SubMen_Name }}</a>
-                                        @endforeach
-                                    </li>
-
-                                </ul>
-                            </li>
+                                            @endforeach
+                                        </li>
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="">
+                                    <a class=""
+                                        href="{{ $value->Men_URL ? URL::to($value->Men_URL) : route('showDetails', ['type' => 'menu', 'id' => encodeId($value->Men_Id)]) }}">
+                                        {{ $value->Men_Name }}
+                                    </a>
+                                </li>
+                            @endif
                         @else
                             <li class="">
                                 <a class=""
@@ -221,17 +209,9 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                 </a>
                             </li>
                         @endif
-                    @else
-                        <li class="">
-                            <a class=""
-                                href="{{ $value->Men_URL ? URL::to($value->Men_URL) : route('showDetails', ['type' => 'menu', 'id' => encodeId($value->Men_Id)]) }}">
-                                {{ $value->Men_Name }}
-                            </a>
                         </li>
                         @endif
-                        </li>
                         @endforeach
-
                     </ul>
                 </div>
             </div>

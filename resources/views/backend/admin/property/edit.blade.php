@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 @section('title', 'Edit')
-
 @section('content')
     <div class="container-fluid">
         <h4 class="py-3 mb-4">
@@ -16,167 +15,231 @@
                             {{ method_field('PATCH') }}
                             <div class="row g-3">
                                 <div class="col-sm-6">
-                                    <label for="Name" class="form-label">Name<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PName" name="PName"
-                                        value="{{ old('PName', $model->PName) }}" placeholder="">
-                                    <span id="PName-error" class="error" style="color: red;"></span>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="Contact No" class="form-label">Contact No<span
+                                    <label class="form-label" for="type"> City <span 3
                                             style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PContactNo" name="PContactNo"
-                                        value="{{ old('PContactNo', $model->PContactNo) }}" placeholder="">
-                                    <span id="PContactNo-error" class="error" style="color: red;"></span>
+                                    <select class="form-control" id="PCit_Id" name="PCit_Id">
+                                        <option selected disabled>Select City</option>
+                                        @foreach ($CityModel as $value)
+                                            <option value='{{ $value->Cit_Id }}'
+                                                @if ($value->Cit_Id == $model->PCit_Id) selected @endif>{{ $value->Cit_Name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <span id="PCit_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Email Id" class="form-label">Email Id<span
+                                    <label class="form-label" for="type"> Property Type <span 3
                                             style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PEmailId" name="PEmailId"
-                                        value="{{ old('PEmailId', $model->PEmailId) }}" placeholder="">
-                                    <span id="PEmailId-error" class="error" style="color: red;"></span>
+                                    <select class="form-control" id="PPTyp_Id" name="PPTyp_Id">
+                                        <option selected disabled>Select Property Type</option>
+                                        @foreach ($PropertyTypeModel as $value)
+                                            <option value='{{ $value->PTyp_Id }}'
+                                                @if ($value->PTyp_Id == $model->PPTyp_Id) selected @endif>{{ $value->PTyp_Name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
-
-
-                                <div class="col-sm-6">
-                                    <label for="Tagline" class="form-label">Tagline<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PTagline" name="PTagline"
-                                        value="{{ old('PTagline', $model->PTagline) }}" placeholder="">
-                                    <span id="PTagline-error" class="error" style="color: red;"></span>
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="Featured">Featured<span style="color:red">*</span></label>
+                                    <select class="form-control" id="PFeatured" name="PFeatured">
+                                        <option selected disabled>Select</option>
+                                        <option value='1' {{ $model->PFeatured == 1 ? 'selected' : '' }}>Yes
+                                        </option>
+                                        <option value='0' {{ $model->PFeatured == 0 ? 'selected' : '' }}>No
+                                        </option>
+                                    </select>
+                                    <span id="PFeatured-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="Bath Room">Bath Room<span style="color:red">*</span></label>
+                                    <select class="form-control" id="PBathRoom" name="PBathRoom">
+                                        <option selected disabled>Select</option>
+                                        <option value='1' {{ $model->PBathRoom == 1 ? 'selected' : '' }}>1
+                                        </option>
+                                        <option value='2' {{ $model->PBathRoom == 2 ? 'selected' : '' }}>2
+                                        </option>
+                                        <option value='3' {{ $model->PBathRoom == 3 ? 'selected' : '' }}>3
+                                        </option>
+                                        <option value='4' {{ $model->PBathRoom == 4 ? 'selected' : '' }}>4
+                                        </option>
+                                        <option value='5' {{ $model->PBathRoom == 5 ? 'selected' : '' }}>5
+                                        </option>
+                                    </select>
+                                    <span id="PBathRoom-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="Bed Room">Bed Room<span style="color:red">*</span></label>
+                                    <select class="form-control" id="PBedRoom" name="PBedRoom">
+                                        <option selected disabled>Select</option>
+                                        <option value='1' {{ $model->PBedRoom == 1 ? 'selected' : '' }}>1
+                                        </option>
+                                        <option value='2' {{ $model->PBedRoom == 2 ? 'selected' : '' }}>2
+                                        </option>
+                                        <option value='3' {{ $model->PBedRoom == 3 ? 'selected' : '' }}>3
+                                        </option>
+                                        <option value='4' {{ $model->PBedRoom == 4 ? 'selected' : '' }}>4
+                                        </option>
+                                        <option value='5' {{ $model->PBedRoom == 5 ? 'selected' : '' }}>5
+                                        </option>
+                                        <option value='6' {{ $model->PBedRoom == 6 ? 'selected' : '' }}>6
+                                        </option>
+                                        <option value='7' {{ $model->PBedRoom == 7 ? 'selected' : '' }}>7
+                                        </option>
+                                        <option value='8' {{ $model->PBedRoom == 8 ? 'selected' : '' }}>8
+                                        </option>
+                                    </select>
+                                    <span id="PBedRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Map" class="form-label">Map<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PMap" name="PMap"
-                                        value="{{ old('PMap', $model->PMap) }}" placeholder="">
-                                    <span id="PMap-error" class="error" style="color: red;"></span>
+                                    <label for="Title" class="form-label">Title<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="PTitle" name="PTitle"
+                                        value="{{ old('PTitle', $model->PTitle) }}" placeholder="">
+                                    <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
-
-
                                 <div class="col-sm-6">
-                                    <label for="About" class="form-label">About<span style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PAbout" name="PAbout"
-                                        value="{{ old('PAbout', $model->PAbout) }}" placeholder="">
-                                    <span id="PAbout-error" class="error" style="color: red;"></span>
+                                    <label for="Amount" class="form-label">Amount<span style="color:red">*</span></label>
+                                    <input type="number" class="form-control" id="PAmount" name="PAmount"
+                                        value="{{ old('PAmount', $model->PAmount) }}" placeholder="">
+                                    <span id="PAmount-error" class="error" style="color: red;"></span>
                                 </div>
-
                                 <div class="col-sm-6">
-                                    <label for="Opening Hours" class="form-label">Opening Hours<span
+                                    <label for="Tag" class="form-label">Tag<span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="PTag" name="PTag"
+                                        value="{{ old('PTag', $model->PTag) }}" placeholder="">
+                                    <span id="PTag-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="Squre Feet" class="form-label">Squre Feet<span
                                             style="color:red">*</span></label>
-                                    <input type="text" class="form-control" id="PopeningHours"
-                                        name="PopeningHours"
-                                        value="{{ old('PopeningHours', $model->PopeningHours) }}"
-                                        placeholder="">
-                                    <span id="PopeningHours-error" class="error" style="color: red;"></span>
+                                    <input type="text" class="form-control" id="PSqureFeet" name="PSqureFeet"
+                                        value="{{ old('PSqureFeet', $model->PSqureFeet) }}" placeholder="">
+                                    <span id="PSqureFeet-error" class="error" style="color: red;"></span>
                                 </div>
-
+                                <div class="col-sm-6">
+                                    <label for="Map Link" class="form-label">Map Link<span
+                                            style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="PMapLink" name="PMapLink"
+                                        value="{{ old('PMapLink', $model->PMapLink) }}" placeholder="">
+                                    <span id="PMapLink-error" class="error" style="color: red;"></span>
+                                </div>
                                 <div class="col-sm-6">
                                     <label for="Address" class="form-label">Address<span
                                             style="color:red">*</span></label>
                                     <textarea class="form-control" id="PAddress" name="PAddress" placeholder="">{{ old('PAddress', $model->PAddress) }}</textarea>
                                     <span id="PAddress-error" class="error" style="color: red;"></span>
                                 </div>
-
-
-
-                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
-                                    <legend style="color: #6a6a6af5;">Short Information</legend>
-                                    <div class="row g-3">
-
-                                        <div class="col-sm-6 form-group">
-                                            <label for="Part 1" class="form-label">Part 1<span
-                                                    style="color:red">*</span></label>
-                                            <textarea class="form-control" id="PShortInfo1" name="PShortInfo1" placeholder="">{{ old('PShortInfo1', $model->PShortInfo1) }}</textarea>
-                                            <span id="PShortInfo1-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label for="Part 2" class="form-label">Part 2<span
-                                                    style="color:red">*</span></label>
-                                            <textarea class="form-control" id="PShortInfo2" name="PShortInfo2" placeholder="">{{ old('PShortInfo2', $model->PShortInfo2) }}</textarea>
-                                            <span id="PShortInfo2-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label for="Part 3" class="form-label">Part 3<span
-                                                    style="color:red">*</span></label>
-                                            <textarea class="form-control" id="PShortInfo3" name="PShortInfo3" placeholder="">{{ old('PShortInfo3', $model->PShortInfo3) }}</textarea>
-                                            <span id="PShortInfo3-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label for="Part 4" class="form-label">Part 4<span
-                                                    style="color:red">*</span></label>
-                                            <textarea class="form-control" id="PShortInfo4" name="PShortInfo4" placeholder="">{{ old('PShortInfo4', $model->PShortInfo4) }}</textarea>
-                                            <span id="PShortInfo4-error" class="error" style="color: red;"></span>
-                                        </div>
-
-
-                                    </div>
-                                </fieldset>
-                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
-                                    <legend style="  color: #6a6a6af5;">Upload Images</legend>
-                                    <div class="row g-3">
-
-                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="FooterLogo">FooterLogo <span
-                                                    style="color:red">*</span></label>
-                                            <div class="input-group">
-                                                <input id="photo1" type="file" name="PFooterLogo"
-                                                    style="display:none"
-                                                    onchange="displaySelectedImage(this, 'SelectedFileName1', 'selectedImagePreview1')">
-                                                <div class="input-group-prepend">
-                                                    <a class="btn btn-dark text-white"
-                                                        onclick="selectImage('photo1')">Image</a>
-                                                </div>
-                                                <span id="PFooterLogo-error" class="error"
-                                                    style="color: red;"></span>
-                                            </div>
-
-                                            <img id="selectedImagePreview2"
-                                                src="{{ imageOrDefault('uploads/' . $model->PFooterLogo, '/assets/images/default.jpg') }}"
-                                                alt="Selected Image" style="max-width: 19%; margin-top: 10px;">
-
-                                        </div>
-                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="HeaderLogo">HeaderLogo <span
-                                                    style="color:red">*</span></label>
-                                            <div class="input-group">
-                                                <input id="photo2" type="file" name="PHeaderLogo"
-                                                    style="display:none"
-                                                    onchange="displaySelectedImage(this, 'SelectedFileName2', 'selectedImagePreview2')">
-                                                <div class="input-group-prepend">
-                                                    <a class="btn btn-dark text-white"
-                                                        onclick="selectImage('photo2')">Image</a>
-                                                </div>
-                                                <span id="PHeaderLogo-error" class="error"
-                                                    style="color: red;"></span>
-                                            </div>
-                                            <img id="selectedImagePreview2"
-                                                src="{{ imageOrDefault('uploads/' . $model->PHeaderLogo, '/assets/images/default.jpg') }}"
-                                                alt="Selected Image" style="max-width: 19%; margin-top: 10px;">
-                                        </div>
-                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="Favicon">Favicon <span
-                                                    style="color:red">*</span></label>
-                                            <div class="input-group">
-                                                <input id="photo3" type="file" name="PFavicon"
-                                                    style="display:none"
-                                                    onchange="displaySelectedImage(this, 'SelectedFileName3', 'selectedImagePreview3')">
-                                                <div class="input-group-prepend">
-                                                    <a class="btn btn-dark text-white"
-                                                        onclick="selectImage('photo3')">Image</a>
-                                                </div>
-                                                <span id="PFavicon-error" class="error"
-                                                    style="color: red;"></span>
-                                            </div>
-                                            <img id="selectedImagePreview2"
-                                                src="{{ imageOrDefault('uploads/' . $model->PFavicon, '/assets/images/default.jpg') }}"
-                                                alt="Selected Image" style="max-width: 19%; margin-top: 10px;">
-                                        </div>
-                                    </div>
-                                </fieldset>
-
-                                <div class="form-group col-md-12">
-                                    <button type="submit" class="btn " style="background-color:#7367f0;color:white"
-                                        data-loading-text="Loading..."><span class="fa fa-save fa-fw"></span> Save
-                                    </button>
+                                <div class="col-sm-6">
+                                    <label for="Short Desc" class="form-label">Short Desc<span
+                                            style="color:red">*</span></label>
+                                    <textarea class="form-control" id="PShortDesc" name="PShortDesc" placeholder="">{{ old('PShortDesc', $model->PShortDesc) }}</textarea>
+                                    <span id="PShortDesc-error" class="error" style="color: red;"></span>
                                 </div>
+                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
+                                    <legend style="color: #6a6a6af5;">Property Features</legend>
+                                    <div class="row g-3">
+                                        <div class="col-sm-12 form-group">
+                                            <label class="form-label" for="type">Features<span
+                                                    style="color:red">*</span></label>
+                                            <div class="row">
+                                                @foreach ($PropertyFeaturesModel as $value)
+                                                    <div class="col-3 mb-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="PFea_Id[]" id="PFea_Id_{{ $value->PFea_Id }}"
+                                                                value="{{ $value->PFea_Id }}"
+                                                                {{ in_array($value->PFea_Id, json_decode($model->PFea_Id)) ? 'checked' : '' }}>
+                                                            <label class="form-check-label"
+                                                                for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <span id="PFea_Id-error" class="error" style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
+                                    <legend style="color: #6a6a6af5;">Images</legend>
+                                    <div class="d-flex">
+                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                            <label class="form-label" for="Image">Property Images <span
+                                                    style="color:red">*</span></label>
+                                            <br>
+                                            (upload a maximum of 10 images)
+                                            <div class="input-group">
+                                                <input id="photo" type="file" name="PImages[]"
+                                                    style="display:none" multiple data-rule-maxsize="10240"
+                                                    onchange="displaySelectedImages(this, 'SelectedFileNames', 'selectedImagesPreview')">
+                                                <div class="input-group-prepend">
+                                                    <a class="btn btn-dark text-white"
+                                                        onclick="$('input[id=photo]').click();">Images</a>
+                                                </div>
+                                                <input type="text" name="PImages" style="color: white;border: white;"
+                                                    id="SelectedFileNames"
+                                                    value="{{ old('PImages') ?? $model->PImages }}" readonly>
+                                            </div>
+                                            <div id="selectedImagesPreview" style="display:none; margin-top: 10px;">
+                                                @foreach (explode(',', $model->PImages) as $image)
+                                                    <img src="{{ asset($image) }}" alt="Selected Image"
+                                                        style="width: 100px; height: 100px; margin-right: 5px;">
+                                                @endforeach
+                                            </div>
+                                            @if ($model->PImages)
+                                                @foreach (explode(',', $model->PImages) as $image)
+                                                    <img src="{{ asset('uploads/' . trim($image)) }}"
+                                                        alt="Selected Image" style="width: 50px; height: 50px; margin-right: 5px;">
+                                                @endforeach
+                                            
+                                            @endif
+
+                                            <span id="PImages-error" class="image-error" style="color: red;"></span>
+                                        </div>
+                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                            <label class="form-label" for="Image">Plans Images <span
+                                                    style="color:red">*</span></label>
+                                            <br>
+                                            (upload a maximum of 10 images)
+                                            <div class="input-group">
+                                                <input id="photo2" type="file" name="PPlansImage[]"
+                                                    style="display:none" multiple data-rule-maxsize="10240"
+                                                    onchange="displaySelectedImages2(this, 'SelectedFileNames2', 'selectedImagesPreview2')">
+                                                <div class="input-group-prepend">
+                                                    <a class="btn btn-dark text-white"
+                                                        onclick="$('input[id=photo2]').click();">Images</a>
+                                                </div>
+                                                <input type="text" name="PPlansImage"
+                                                    style="color: white;border: white;" id="SelectedFileNames2"
+                                                    value="{{ old('PPlansImage') ?? $model->PPlansImage }}" readonly>
+                                            </div>
+                                            <div id="selectedImagesPreview2" style="display:none; margin-top: 10px;">
+                                                @foreach (explode(',', $model->PPlansImage) as $image)
+                                                    <img src="{{ asset($image) }}" alt="Selected Image"
+                                                        style="width: 100px; height: 100px; margin-right: 5px;">
+                                                @endforeach
+                                            </div>
+
+
+                                            @if ($model->PPlansImage)
+                                                @foreach (explode(',', $model->PPlansImage) as $image)
+                                                    <img src="{{ asset('uploads/' . trim($image)) }}"
+                                                        alt="Selected Image" style="width: 50px; height: 50px; margin-right: 5px;">
+                                                @endforeach
+                                            
+                                            @endif
+                                            <span id="PPlansImage-error" class="image-error" style="color: red;"></span>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="col-sm-12">
+                                    <label for="Full Desc" class="form-label">Full Desc</label>
+                                    <textarea class="ckeditor form-control" id="PFullDesc" name="PFullDesc" placeholder="">{!! old('PFullDesc', $model->PFullDesc) !!}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12 mt-3">
+                                <button type="submit" class="btn " style="background-color:#7367f0;color:white"
+                                    data-loading-text="Loading..."><span class="fa fa-save fa-fw"></span> Save
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -186,164 +249,33 @@
     </div>
     <script>
         $(document).ready(function($) {
-            var isFileSizeValid = true;
-
-            function handleFileSizeValidation(fp, maxSize, errorSelector, clearSelectors) {
-                var fileSize = fp[0].files[0].size; // Get the file size directly
-
-                if (fileSize > maxSize) {
-                    isFileSizeValid = false;
-                    $(errorSelector).html(
-                        `File size must not be more than @if ($ImgMaxSizeModel){{ $ImgMaxSizeModel->imgsize->Img_Value }}@endif `
-                        );
-                    $(clearSelectors.join(',')).val('').hide();
-                } else {
-                    isFileSizeValid = true;
-                    $(errorSelector).html('');
-                }
-            }
-            // File input 1
-            $('#photo1').change(function() {
-                handleFileSizeValidation($("#photo1"), 102400, "#PFooterLogo-error", [
-                    '#PFooterLogo', '#SelectedFileName1'
-                ], 'selectedImagePreview1');
-            });
-
-            // File input 2
-            $('#photo2').change(function() {
-                handleFileSizeValidation($("#photo2"), 102400, "#PHeaderLogo-error", [
-                    '#PHeaderLogo', '#SelectedFileName2'
-                ], 'selectedImagePreview2');
-            });
-
-            // File input 3
-            $('#photo3').change(function() {
-                handleFileSizeValidation($("#photo3"), 102400, "#PFavicon-error", ['#PFavicon',
-                    '#SelectedFileName3'
-                ], 'selectedImagePreview3');
-            });
-
             $("#edit").validate({
                 rules: {
-                    PName: {
+                    PCit_Id: "required",
+                    PPTyp_Id: "required",
+                    PFeatured: "required",
+                    PBedRoom: "required",
+                    PBathRoom: "required",
+                    PTitle: "required",
+                    PAmount: "required",
+                    PAddress: "required",
+                    PShortDesc: "required",
+                    'PFea_Id[]': {
                         required: true,
-                        maxlength: 255
+                        minlength: 1
                     },
-
-                    PContactNo: {
-                        required: true,
-
-                        minlength: 10
-                    },
-                    PEmailId: {
-                        required: true,
-                        email: true,
-
-                    },
-                    PAddress: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PFavicon: "required",
-                    PHeaderLogo: "required",
-                    PFooterLogo: "required",
-                    PTagline: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PMap: {
-                        required: true,
-                        maxlength: 500
-                    },
-                    PAbout: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PopeningHours: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo1: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo2: {
-                        required: true,
-                        maxlength: 255
-                    },
-
-                    PShortInfo3: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo4: {
-                        required: true,
-                        maxlength: 255
-                    }
                 },
                 messages: {
-                    PName: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-
-                    PContactNo: {
-                        required: "This field is required",
-                        digits: "Please enter only digits",
-                        maxlength: "Maximum length allowed is 10 digits"
-                    },
-                    PEmailId: {
-                        required: "This field is required",
-                        email: "Please enter a valid email address",
-
-                    },
-                    PAddress: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PFavicon: "This field is required",
-                    PHeaderLogo: "This field is required",
-                    PFooterLogo: "This field is required",
-                    PTagline: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PMap: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PAbout: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PopeningHours: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo1: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo2: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo3: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo4: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    }
-                },
-                submitHandler: function(form) {
-                    if (isFileSizeValid) {
-                        form.submit();
-                    } else {
-                        alert(
-                            'File size must not be more than @if ($ImgMaxSizeModel){{ $ImgMaxSizeModel->imgsize->Img_Value }}@endif ');
-                    }
+                    PCit_Id: "This field is required",
+                    PPTyp_Id: "This field is required",
+                    PFeatured: "This field is required",
+                    PBedRoom: "This field is required",
+                    PBathRoom: "This field is required",
+                    PTitle: "This field is required",
+                    PAmount: "This field is required",
+                    PAddress: "This field is required",
+                    PShortDesc: "This field is required",
+                    'PFea_Id[]': "This field is required"
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -352,29 +284,74 @@
                     } else {
                         error.insertAfter(element);
                     }
-                }
-                // File input 1
-
+                },
+            });
+            $('#photo').change(function() {
+                var maxSize = {{ $ImgMaxSizeModel->imgsize->Img_Title ?? '' }};
+                var errorSelector = "#PImages-error";
+                var additionalSelectors = ['#photo',
+                    '#SelectedFileName'
+                ];
+                handleFileSizeValidation($("#photo"), maxSize, errorSelector, additionalSelectors);
+            });
+            $('#photo2').change(function() {
+                var maxSize = {{ $ImgMaxSizeModel->imgsize->Img_Title ?? '' }};
+                var errorSelector = "#PImages-error";
+                var additionalSelectors = ['#photo2',
+                    '#SelectedFileName'
+                ];
+                handleFileSizeValidation($("#photo2"), maxSize, errorSelector, additionalSelectors);
             });
             var fieldErrorMap = {
-                PName: "#PName-error",
-
-                PContactNo: "#PContactNo-error",
+                PCit_Id: "#PCit_Id-error",
+                PPTyp_Id: "#PPTyp_Id-error",
+                PFeatured: "#PFeatured-error",
+                PBedRoom: "#PBedRoom-error",
+                PBathRoom: "#PBathRoom-error",
+                PTitle: "#PTitle-error",
+                PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
-                PEmailId: "#PEmailId-error",
-                PFavicon: "#PFavicon-error",
-                PHeaderLogo: "#PHeaderLogo-error",
-                PFooterLogo: "#PFooterLogo-error",
-                PTagline: "#PTagline-error",
-                PMap: "#PMap-error",
-                PAbout: "#PAbout-error",
-                PopeningHours: "#PopeningHours-error",
-                PShortInfo1: "#PShortInfo1-error",
-                PShortInfo2: "#PShortInfo2-error",
-                PShortInfo3: "#PShortInfo3-error",
-                PShortInfo4: "#PShortInfo4-error"
+                PShortDesc: "#PShortDesc-error",
+                'PFea_Id[]': "#PFea_Id-error",
             };
         });
-    </script>
 
+        function displaySelectedImages(input, fileNameElementId, previewElementId) {
+            var files = input.files;
+            var fileNameList = [];
+            for (var i = 0; i < files.length; i++) {
+                fileNameList.push(files[i].name);
+            }
+            document.getElementById(fileNameElementId).value = fileNameList.join(', ');
+            var previewContainer = document.getElementById(previewElementId);
+            previewContainer.innerHTML = '';
+            for (var i = 0; i < files.length; i++) {
+                var img = document.createElement('img');
+                img.src = URL.createObjectURL(files[i]);
+                img.style.maxWidth = '10%';
+                img.style.marginRight = '5px';
+                previewContainer.appendChild(img);
+            }
+            previewContainer.style.display = 'flex';
+        }
+
+        function displaySelectedImages2(input, fileNameElementId, previewElementId) {
+            var files = input.files;
+            var fileNameList = [];
+            for (var i = 0; i < files.length; i++) {
+                fileNameList.push(files[i].name);
+            }
+            document.getElementById(fileNameElementId).value = fileNameList.join(', ');
+            var previewContainer = document.getElementById(previewElementId);
+            previewContainer.innerHTML = '';
+            for (var i = 0; i < files.length; i++) {
+                var img = document.createElement('img');
+                img.src = URL.createObjectURL(files[i]);
+                img.style.maxWidth = '10%';
+                img.style.marginRight = '5px';
+                previewContainer.appendChild(img);
+            }
+            previewContainer.style.display = 'flex';
+        }
+    </script>
 @stop

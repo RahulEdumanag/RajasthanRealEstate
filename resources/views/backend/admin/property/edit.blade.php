@@ -257,7 +257,7 @@
                     'PFea_Id[]': {
                         required: true,
                         minlength: 1
-                    },
+                    }
                 },
                 messages: {
                     PCit_Id: "This field is required",
@@ -306,7 +306,7 @@
                 PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
                 PShortDesc: "#PShortDesc-error",
-                'PFea_Id[]': "#PFea_Id-error",
+                'PFea_Id[]': "#PFea_Id-error"
             };
         });
 

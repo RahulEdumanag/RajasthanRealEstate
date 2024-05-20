@@ -1,17 +1,27 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class Property extends Model
 {
     use HasFactory;
-
     protected $table = 'tbl_property';
     public $timestamps = false;
     protected $primaryKey = 'PId';
+    protected $fillable = ['PReg_Id', 'PPTyp_Id', 'PFea_Id', 'PCit_Id', 'PPropertycode', 'PTitle', 'PShortDesc', 'PFullDesc', 'PAddress', 'PTag', 'PFeatured', 'PBedRoom', 'PBathRoom', 'PSqureFeet', 'PMapLink', 'PAmount', 'PImages', 'PPlansImage', 'PStatus', 'PCreatedBy', 'PCreatedDate', 'PUpdatedBy', 'PUpdatedDate'];
+    // Define the relationship with PropertyType
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class, 'PPTyp_Id', 'PTyp_Id');
+    }
 
-    protected $fillable = ['PStatus'];
+    public function propertyFeatures()
+    {
+        return $this->belongsTo(PropertyFeatures::class, 'PFea_Id', 'PFea_Id');
+    }
+    public function getRandomImage()
+    {
+        $images = explode(',', $this->PImages);
+        return trim($images[array_rand($images)]);
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{Property,Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
@@ -88,7 +88,14 @@ class HomeController extends Controller
             ->first();
         $HoroscopeModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Horoscope')->get();
         // dd($HoroscopeModel);
-        return View::make('frontend.index', compact('BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+
+ 
+        $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
+        ->where('PStatus', '=', '0')
+        ->with('propertyType') // Eager load the propertyType relationship
+        ->get();
+
+        return View::make('frontend.index', compact('PropertyModel','BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
     {
@@ -221,13 +228,24 @@ class HomeController extends Controller
     public function serviceDetails($hashedId)
     {
         $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->get();
-        $categoryId = decodeId($hashedId);
+        $PId = decodeId($hashedId);
         $ServiceDetails = Page::where('Pag_Id', $categoryId)
             ->where('Pag_Reg_Id', $this->clientId)
             ->where('Pag_Status', '=', '0')
             ->first();
         return view('frontend.serviceDetails ', compact('ServiceDetails', 'FacilityModel'));
     }
+
+    public function propertyDetails($hashedId)
+    {
+         $categoryId = decodeId($hashedId);
+        $propertyDetails = Property::where('PId', $categoryId)
+        ->with('propertyFeatures') // Eager load the propertyType relationship
+             ->first();
+        return view('frontend.propertyDetails ', compact('propertyDetails'));
+    }
+
+
     public function error()
     {
         return view('frontend.error');

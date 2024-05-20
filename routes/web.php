@@ -101,6 +101,7 @@ Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/Team-Details/{Pag_Id}', [HomeController::class, 'teamDetails'])->name('teamDetails');
 Route::get('/testimonial', [HomeController::class, 'testimonial'])->name('testimonial');
 Route::get('/facility', [HomeController::class, 'facility'])->name('facility');
+Route::get('/property-Details/{PId}', [HomeController::class, 'propertyDetails'])->name('propertyDetails');
 
 Route::get('/service-details/{Pag_Id}', [HomeController::class, 'serviceDetails'])->name('serviceDetails');
 Route::get('/blogs-details/{Pag_Id}', [HomeController::class, 'blogDetails'])->name('blogDetails');

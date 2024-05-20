@@ -162,7 +162,7 @@
                                                     style="color:red">*</span></label>
                                             <div class="row">
                                                 @foreach ($PropertyFeaturesModel as $value)
-                                                    <div class="col-3 mb-2">
+                                                <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                 name="PFea_Id[]" id="PFea_Id_{{ $value->PFea_Id }}"

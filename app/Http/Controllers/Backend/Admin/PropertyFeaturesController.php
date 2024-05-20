@@ -11,7 +11,7 @@ class PropertyFeaturesController extends Controller
 {
     public function index(Request $request)
     {
-        $model = PropertyFeatures::where('PFea_Status', '!=', 2)->get();
+        $model = PropertyFeatures::where('PFea_Status', '!=', 2)->where('PFea_Reg_Id', getSelectedValue())->get();
         return view('backend.admin.propertyFeatures.index', compact('model'));
     }
     public function create(Request $request)

@@ -41,7 +41,7 @@
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label for="Featured">Featured<span style="color:red">*</span></label>
+                                    <label class="form-label">Featured<span style="color:red">*</span></label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PFeatured == 1 ? 'selected' : '' }}>Yes
@@ -52,7 +52,7 @@
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label for="Bath Room">Bath Room<span style="color:red">*</span></label>
+                                    <label  class="form-label" for="Bath Room">Bath Room<span style="color:red">*</span></label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PBathRoom == 1 ? 'selected' : '' }}>1
@@ -69,7 +69,7 @@
                                     <span id="PBathRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label for="Bed Room">Bed Room<span style="color:red">*</span></label>
+                                    <label class="form-label" for="Bed Room">Bed Room<span style="color:red">*</span></label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PBedRoom == 1 ? 'selected' : '' }}>1
@@ -104,25 +104,20 @@
                                     <span id="PAmount-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Tag" class="form-label">Tag<span style="color:red">*</span></label>
+                                    <label for="Tag" class="form-label">Tag</label>
                                     <input type="text" class="form-control" id="PTag" name="PTag"
                                         value="{{ old('PTag', $model->PTag) }}" placeholder="">
-                                    <span id="PTag-error" class="error" style="color: red;"></span>
-                                </div>
+                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Squre Feet" class="form-label">Squre Feet<span
-                                            style="color:red">*</span></label>
+                                    <label for="Squre Feet" class="form-label">Squre Feet </label>
                                     <input type="text" class="form-control" id="PSqureFeet" name="PSqureFeet"
                                         value="{{ old('PSqureFeet', $model->PSqureFeet) }}" placeholder="">
-                                    <span id="PSqureFeet-error" class="error" style="color: red;"></span>
-                                </div>
+                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Map Link" class="form-label">Map Link<span
-                                            style="color:red">*</span></label>
+                                    <label for="Map Link" class="form-label">Map Link</label>
                                     <input type="text" class="form-control" id="PMapLink" name="PMapLink"
                                         value="{{ old('PMapLink', $model->PMapLink) }}" placeholder="">
-                                    <span id="PMapLink-error" class="error" style="color: red;"></span>
-                                </div>
+                                 </div>
                                 <div class="col-sm-6">
                                     <label for="Address" class="form-label">Address<span
                                             style="color:red">*</span></label>
@@ -135,15 +130,15 @@
                                     <textarea class="form-control" id="PShortDesc" name="PShortDesc" placeholder="">{{ old('PShortDesc', $model->PShortDesc) }}</textarea>
                                     <span id="PShortDesc-error" class="error" style="color: red;"></span>
                                 </div>
+                                
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="color: #6a6a6af5;">Property Features</legend>
-                                    <div class="row g-3">
-                                        <div class="col-sm-12 form-group">
+                                  
                                             <label class="form-label" for="type">Features<span
                                                     style="color:red">*</span></label>
                                             <div class="row">
                                                 @foreach ($PropertyFeaturesModel as $value)
-                                                    <div class="col-3 mb-2">
+                                                    <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
                                                                 name="PFea_Id[]" id="PFea_Id_{{ $value->PFea_Id }}"
@@ -156,12 +151,11 @@
                                                 @endforeach
                                             </div>
                                             <span id="PFea_Id-error" class="error" style="color: red;"></span>
-                                        </div>
-                                    </div>
+                                        
                                 </fieldset>
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="color: #6a6a6af5;">Images</legend>
-                                    <div class="d-flex">
+                                    <div class="row">
                                         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
                                             <label class="form-label" for="Image">Property Images <span
                                                     style="color:red">*</span></label>

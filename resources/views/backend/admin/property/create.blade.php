@@ -99,15 +99,15 @@
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
                                 <!-- <div class="col-sm-6 form-group ">
-                                                                        <label class="form-label" for="Property Code">Property Code <span
-                                                                                style="color:red">*</span></label>
-                                                                        <div class="input-group input-group-merge">
-                                                                            <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
-                                                                                autocomplete="off" placeholder="Enter Property Code"
-                                                                                aria-describedby="name2" />
-                                                                        </div>
-                                                                        <span id="PPropertycode-error" class="error" style="color: red;"></span>
-                                                                    </div> -->
+                                                                                        <label class="form-label" for="Property Code">Property Code <span
+                                                                                                style="color:red">*</span></label>
+                                                                                        <div class="input-group input-group-merge">
+                                                                                            <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                                                                                autocomplete="off" placeholder="Enter Property Code"
+                                                                                                aria-describedby="name2" />
+                                                                                        </div>
+                                                                                        <span id="PPropertycode-error" class="error" style="color: red;"></span>
+                                                                                    </div> -->
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="Map">Amount <span
                                             style="color:red">*</span></label>
@@ -177,40 +177,55 @@
                                         </div>
                                     </div>
                                 </fieldset>
-
-
-
-
-
-
-
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="  color: #6a6a6af5;">Images</legend>
-                                    <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                        <label class="form-label" for="Image">Images <span
-                                                style="color:red">*</span></label>
-                                        (upload a maximum of 10 images)
-                                        <div class="input-group">
-                                            <input id="photo" type="file" name="PImages[]"
-                                                style="display:none" multiple data-rule-maxsize="10240"
-                                                onchange="displaySelectedImages(this, 'SelectedFileNames', 'selectedImagesPreview')">
-                                            <div class="input-group-prepend">
-                                                <a class="btn btn-dark text-white"
-                                                    onclick="$('input[id=photo]').click();">Images</a>
+                                    <div class="d-flex">
+
+
+                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                            <label class="form-label" for="Image">Property Images <span
+                                                    style="color:red">*</span></label>
+                                            </br>
+                                            (upload a maximum of 10 images)
+                                            <div class="input-group">
+                                                <input id="photo" type="file" name="PImages[]"
+                                                    style="display:none" multiple data-rule-maxsize="10240"
+                                                    onchange="displaySelectedImages(this, 'SelectedFileNames', 'selectedImagesPreview')">
+                                                <div class="input-group-prepend">
+                                                    <a class="btn btn-dark text-white"
+                                                        onclick="$('input[id=photo]').click();">Images</a>
+                                                </div>
+                                                <input type="text" name="PImages" style="color: white;border: white;"
+                                                    id="SelectedFileNames" value="" readonly>
                                             </div>
-                                            <input type="text" name="PImages" style="color: white;border: white;"  id="SelectedFileNames" value="" readonly>
-
+                                            <div id="selectedImagesPreview" style="display:none; margin-top: 10px;"></div>
+                                            <span id="PImages-error" class="image-error" style="color: red;"></span>
                                         </div>
-                                        <div id="selectedImagesPreview" style="display:none; margin-top: 10px;"></div>
 
-                                        <span id="PImages-error" class="image-error" style="color: red;"></span>
+                                        <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                            <label class="form-label" for="Image">Plans Images <span
+                                                    style="color:red">*</span></label>
+                                            </br>
+                                            (upload a maximum of 10 images)
+                                            <div class="input-group">
+                                                <input id="photo2" type="file" name="PPlansImage[]"
+                                                    style="display:none" multiple data-rule-maxsize="10240"
+                                                    onchange="displaySelectedImages2(this, 'SelectedFileNames2', 'selectedImagesPreview2')">
+                                                <div class="input-group-prepend">
+                                                    <a class="btn btn-dark text-white"
+                                                        onclick="$('input[id=photo2]').click();">Images</a>
+                                                </div>
+                                                <input type="text" name="PPlansImage" style="color: white;border: white;"
+                                                    id="SelectedFileNames2" value="" readonly>
+                                            </div>
+                                            <div id="selectedImagesPreview2" style="display:none; margin-top: 10px;"></div>
+                                            <span id="PPlansImage-error" class="image-error" style="color: red;"></span>
+                                        </div>
 
                                     </div>
+
+
                                 </fieldset>
-
-
-
-
                                 <div class="col-sm-12 form-group ">
                                     <label class="form-label" for="Full Desc">Full Desc</label>
                                     <textarea class="applyCK form-control" id="PFullDesc" name="PFullDesc" class="form-control"></textarea>
@@ -252,7 +267,7 @@
                     PAmount: "required",
                     PAddress: "required",
                     PShortDesc: "required",
-                   'PFea_Id[]': {
+                    'PFea_Id[]': {
                         required: true,
                         minlength: 1
                     },
@@ -278,18 +293,23 @@
                     }
                 },
             });
-
-
             $('#photo').change(function() {
                 var maxSize = {{ $ImgMaxSizeModel->imgsize->Img_Title ?? '' }};
                 var errorSelector = "#PImages-error";
                 var additionalSelectors = ['#photo',
                     '#SelectedFileName'
                 ];
-
                 handleFileSizeValidation($("#photo"), maxSize, errorSelector, additionalSelectors);
             });
 
+            $('#photo2').change(function() {
+                var maxSize = {{ $ImgMaxSizeModel->imgsize->Img_Title ?? '' }};
+                var errorSelector = "#PImages-error";
+                var additionalSelectors = ['#photo2',
+                    '#SelectedFileName'
+                ];
+                handleFileSizeValidation($("#photo2"), maxSize, errorSelector, additionalSelectors);
+            });
 
 
             var fieldErrorMap = {
@@ -306,22 +326,15 @@
             };
         });
 
-
-
-
         function displaySelectedImages(input, fileNameElementId, previewElementId) {
             var files = input.files;
             var fileNameList = [];
-
             for (var i = 0; i < files.length; i++) {
                 fileNameList.push(files[i].name);
             }
-
             document.getElementById(fileNameElementId).value = fileNameList.join(', ');
-
             var previewContainer = document.getElementById(previewElementId);
             previewContainer.innerHTML = '';
-
             for (var i = 0; i < files.length; i++) {
                 var img = document.createElement('img');
                 img.src = URL.createObjectURL(files[i]);
@@ -329,7 +342,24 @@
                 img.style.marginRight = '5px';
                 previewContainer.appendChild(img);
             }
-
+            previewContainer.style.display = 'flex';
+        }
+        function displaySelectedImages2(input, fileNameElementId, previewElementId) {
+            var files = input.files;
+            var fileNameList = [];
+            for (var i = 0; i < files.length; i++) {
+                fileNameList.push(files[i].name);
+            }
+            document.getElementById(fileNameElementId).value = fileNameList.join(', ');
+            var previewContainer = document.getElementById(previewElementId);
+            previewContainer.innerHTML = '';
+            for (var i = 0; i < files.length; i++) {
+                var img = document.createElement('img');
+                img.src = URL.createObjectURL(files[i]);
+                img.style.maxWidth = '10%';
+                img.style.marginRight = '5px';
+                previewContainer.appendChild(img);
+            }
             previewContainer.style.display = 'flex';
         }
     </script>

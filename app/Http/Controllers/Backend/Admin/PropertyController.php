@@ -7,6 +7,8 @@ use App\Models\City;
 use App\Models\PropertyType;
 use App\Models\PropertyFeatures;
 use App\Models\Registration;
+use Illuminate\Support\Facades\Log;
+
 use App\Models\Admin;
 use DB;
 use Carbon\Carbon;
@@ -19,9 +21,7 @@ class PropertyController extends Controller
 {
     public function index(Request $request)
     {
-       
-            $model = Property::where('PStatus', '!=', 2)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
-     
+        $model = Property::where('PStatus', '!=', 2)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
         return view('backend.admin.property.index', compact('model'));
     }
     public function create()
@@ -36,24 +36,27 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         try {
-            // Retrieve the last property code from the database
             $lastProperty = Property::orderBy('PPropertycode', 'desc')->first();
-            
-            // Determine the new property code
-            if ($lastProperty) {
-                $newPropertyCode = 1000;
-                $newPropertyCode = $lastProperty->PPropertycode + 1;
-            } else {
-                $newPropertyCode = 1000;
+            $newPropertyCode = $lastProperty ? $lastProperty->PPropertycode + 1 : 1000;
+
+            if ($request->hasFile('PImages') && is_array($request->file('PImages'))) {
+                if (count($request->file('PImages')) > 10) {
+                    return redirect()->back()->with('error', 'You can only upload a maximum of 10 images at once.');
+                }
             }
-    
-            // Create and save the new property
+
+            if ($request->hasFile('PPlansImage') && is_array($request->file('PPlansImage'))) {
+                if (count($request->file('PPlansImage')) > 10) {
+                    return redirect()->back()->with('error', 'You can only upload a maximum of 10 images at once.');
+                }
+            }
+
             $model = new Property();
             $model->PReg_Id = getSelectedValue();
             $model->PPTyp_Id = $request->PPTyp_Id;
-            $model->PFea_Id = json_encode($request->PFea_Id); // JSON encode the array
+            $model->PFea_Id = json_encode($request->PFea_Id);
             $model->PCit_Id = $request->PCit_Id;
-            $model->PPropertycode = $newPropertyCode; // Set the new property code
+            $model->PPropertycode = $newPropertyCode;
             $model->PTitle = $request->PTitle;
             $model->PTag = $request->PTag;
             $model->PShortDesc = $request->PShortDesc;
@@ -65,8 +68,53 @@ class PropertyController extends Controller
             $model->PSqureFeet = $request->PSqureFeet;
             $model->PMapLink = $request->PMapLink;
             $model->PAmount = $request->PAmount;
-            $model->PImages = $request->PImages;
-            $model->PPlansImage = $request->PPlansImage;
+
+            $images = [];
+            $planImages = [];
+
+            if ($request->hasFile('PImages')) {
+                foreach ($request->file('PImages') as $file) {
+                    if ($file->isValid()) {
+                        $extension = strtolower($file->getClientOriginalExtension());
+                        if (in_array($extension, ['jpg', 'jpeg', 'png', 'svg', 'webp'])) {
+                            $subfolderName = getSelectedValue();
+                            $folderName = 'Gallery_images';
+                            $destinationPath = public_path("uploads/{$subfolderName}/{$folderName}");
+
+                            if (!file_exists($destinationPath)) {
+                                mkdir($destinationPath, 0777, true);
+                            }
+                            $fileName = time() . '_' . $file->getClientOriginalName();
+                            $file->move($destinationPath, $fileName);
+                            $images[] = "{$subfolderName}/{$folderName}/{$fileName}";
+                        }
+                    }
+                }
+            }
+
+            if ($request->hasFile('PPlansImage')) {
+                foreach ($request->file('PPlansImage') as $file) {
+                    if ($file->isValid()) {
+                        $extension = strtolower($file->getClientOriginalExtension());
+                        if (in_array($extension, ['jpg', 'jpeg', 'png', 'svg', 'webp'])) {
+                            $subfolderName = getSelectedValue();
+                            $folderName = 'Plan_images';
+                            $destinationPath = public_path("uploads/{$subfolderName}/{$folderName}");
+
+                            if (!file_exists($destinationPath)) {
+                                mkdir($destinationPath, 0777, true);
+                            }
+                            $fileName = time() . '_' . $file->getClientOriginalName();
+                            $file->move($destinationPath, $fileName);
+                            $planImages[] = "{$subfolderName}/{$folderName}/{$fileName}";
+                        }
+                    }
+                }
+            }
+
+            $model->PImages = implode(',', $images);
+            $model->PPlansImage = implode(',', $planImages);
+
             $model->PCreatedDate = Carbon::now('Asia/Kolkata');
             $model->PCreatedBy = Auth::user()->Log_Id;
             $model->save();
@@ -123,21 +171,35 @@ class PropertyController extends Controller
             if (!$model) {
                 return back()->with('error', 'Record not found.');
             }
-            foreach (['PFooterLogo', 'PHeaderLogo', 'PFavicon'] as $imageField) {
-                $fileToDelete = $model->$imageField;
-                if (!empty($fileToDelete)) {
-                    $filePath = public_path('uploads') . '/' . $fileToDelete;
-                    if (file_exists($filePath)) {
-                        unlink($filePath);
-                    }
+    
+            // Delete PImages and PPlansImage
+            $imagesToDelete = [];
+    
+            if (!empty($model->PImages)) {
+                $imagesToDelete = array_merge($imagesToDelete, explode(',', $model->PImages));
+            }
+            if (!empty($model->PPlansImage)) {
+                $imagesToDelete = array_merge($imagesToDelete, explode(',', $model->PPlansImage));
+            }
+    
+            foreach ($imagesToDelete as $image) {
+                $imagePath = public_path("uploads/{$image}"); // Adjust the folder structure as needed
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
                 }
             }
+    
+            // Update property status
             $model->update(['PStatus' => 2]);
+    
             return back()->with('success', 'Record deleted successfully');
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
         }
     }
+    
+
+    
     public function active($id)
     {
         try {

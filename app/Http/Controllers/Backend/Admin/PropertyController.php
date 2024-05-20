@@ -6,7 +6,6 @@ use App\Models\Master;
 use App\Models\City;
 use App\Models\PropertyType;
 use App\Models\PropertyFeatures;
-
 use App\Models\Registration;
 use App\Models\Admin;
 use DB;
@@ -20,32 +19,41 @@ class PropertyController extends Controller
 {
     public function index(Request $request)
     {
-        if (getSelectedValue() == 1) {
-            $model = Property::where('PStatus', '!=', 2)->where('PId', '!=', 1)->orderBy('PCreatedDate', 'desc')->get();
-        } else {
-            $model = Property::where('PStatus', '!=', 2)->where('PId', '!=', 1)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
-        }
+       
+            $model = Property::where('PStatus', '!=', 2)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
+     
         return view('backend.admin.property.index', compact('model'));
     }
     public function create()
     {
-       
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
-        $CityModel = City::where('Cit_Status', '=', 0)->get(); 
+        $CityModel = City::where('Cit_Status', '=', 0)->get();
         $ImgMaxSizeModel = getImgMaxSizeModel();
-    //    dd($PropertyFeaturesModel);
-        return view('backend.admin.property.create', compact('ImgMaxSizeModel','PropertyTypeModel','PropertyFeaturesModel','CityModel'));
+        //    dd($PropertyFeaturesModel);
+        return view('backend.admin.property.create', compact('ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
     public function store(Request $request)
     {
         try {
+            // Retrieve the last property code from the database
+            $lastProperty = Property::orderBy('PPropertycode', 'desc')->first();
+            
+            // Determine the new property code
+            if ($lastProperty) {
+                $newPropertyCode = 1000;
+                $newPropertyCode = $lastProperty->PPropertycode + 1;
+            } else {
+                $newPropertyCode = 1000;
+            }
+    
+            // Create and save the new property
             $model = new Property();
             $model->PReg_Id = getSelectedValue();
             $model->PPTyp_Id = $request->PPTyp_Id;
-            $model->PFea_Id = $request->PFea_Id;
+            $model->PFea_Id = json_encode($request->PFea_Id); // JSON encode the array
             $model->PCit_Id = $request->PCit_Id;
-            $model->PPropertycode = $request->PPropertycode;
+            $model->PPropertycode = $newPropertyCode; // Set the new property code
             $model->PTitle = $request->PTitle;
             $model->PTag = $request->PTag;
             $model->PShortDesc = $request->PShortDesc;
@@ -74,11 +82,11 @@ class PropertyController extends Controller
     {
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
-        $CityModel = City::where('Cit_Status', '=', 0)->get(); 
+        $CityModel = City::where('Cit_Status', '=', 0)->get();
         $ImgMaxSizeModel = getImgMaxSizeModel();
         $PId = decodeId($hashedId);
         $model = Property::where('PId', $PId)->first();
-        return view('backend.admin.property.edit', compact('model', 'ImgMaxSizeModel','PropertyTypeModel','PropertyFeaturesModel','CityModel'));
+        return view('backend.admin.property.edit', compact('model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
     public function update(Request $request, $PId)
     {

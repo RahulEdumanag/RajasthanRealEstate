@@ -12,18 +12,16 @@
         </div>
     @endif
     <div class="container-fluid">
-        @if (Auth::user()->EmpRegistration->Emp_Role == '1')
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="py-3">
-                    <span class="text-muted fw-light">Property/</span> Add Property
-                </h5>
-                <div class="page-title-actions">
-                    <a href="{{ URL::to('admin/property') }}" class="btn btn-primary">
-                        <i class="bi bi-plus-lg"></i> Property List
-                    </a>
-                </div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="py-3">
+                <span class="text-muted fw-light">Property/</span> Add Property
+            </h5>
+            <div class="page-title-actions">
+                <a href="{{ URL::to('admin/property') }}" class="btn btn-primary">
+                    <i class="bi bi-plus-lg"></i> Property List
+                </a>
             </div>
-        @endif
+        </div>
         <div class="row">
             <div class="col-md-12 mx-auto">
                 <div class="card mb-4">
@@ -32,6 +30,16 @@
                             method="post" accept-charset="utf-8">
                             @csrf
                             <div class="row g-3">
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type"> City <span style="color:red">*</span></label>
+                                    <select class="form-control" id="PCit_Id" name="PCit_Id">
+                                        <option selected disabled>Select City</option>
+                                        @foreach ($CityModel as $value)
+                                            <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="PCit_Id-error" class="error" style="color: red;"></span>
+                                </div>
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type"> Property Type <span
                                             style="color:red">*</span></label>
@@ -44,97 +52,92 @@
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type"> City <span style="color:red">*</span></label>
-                                    <select class="form-control" id="PCit_Id" name="PCit_Id">
-                                        <option selected disabled>Select City</option>
-                                        @foreach ($CityModel as $value)
-                                            <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
-                                </div>
-                                <div class="col-sm-12 form-group ">
-                                    <label class="form-label" for="type">Property Features<span
-                                            style="color:red">*</span></label>
-                                    <div class="row">
-                                        @foreach ($PropertyFeaturesModel as $value)
-                                            <div class="col-3 mb-2">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="PFea_Id[]"
-                                                        id="PFea_Id_{{ $value->PFea_Id }}" value="{{ $value->PFea_Id }}">
-                                                    <label class="form-check-label"
-                                                        for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <span id="PFea_Id-error" class="error" style="color: red;"></span>
-                                </div>
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Property Code">Property Code <span
-                                            style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Property Code"
-                                            aria-describedby="name2" />
-                                    </div>
-                                    <span id="PPropertycode-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Title">Title <span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PTitle" name="PTitle" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Title" aria-describedby="name2" />
-                                    </div>
-                                    <span id="PTitle-error" class="error" style="color: red;"></span>
-                                </div>
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Tag">Tag <span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PTag" name="PTag" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Tag" aria-describedby="name2" />
-                                    </div>
-                                    <span id="PTag-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="Short Desc">Short Desc <span
-                                            style="color:red">*</span></label>
-                                    <textarea id="PShortDesc" name="PShortDesc" class="form-control" autocomplete="off"
-                                        placeholder="Enter your ShortInfo1" aria-describedby="name2"></textarea>
-                                    <span id="PShortDesc-error" class="error" style="color: red;"></span>
-                                </div>
-
-                                <div class="col-sm-12 form-group ">
-                                    <label class="form-label" for="Full Desc">Full Desc</label>
-                                    <textarea class="applyCK form-control" id="PFullDesc" name="PFullDesc" class="form-control"></textarea>
-                                    <span id="PFullDesc-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-
-
-
-                                <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type"> Featured <span
                                             style="color:red">*</span></label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
                                         <option selected disabled>Select Featured</option>
-
                                         <option value='1'>Yes</option>
                                         <option value='0'>No</option>
-
                                     </select>
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
                                 </div>
-
-
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type">Bath Room<span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PBathRoom" name="PBathRoom">
+                                        <option selected disabled>Select Bath Room</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                    </select>
+                                    <span id="PBathRoom-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type">Bed Room <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PBedRoom" name="PBedRoom">
+                                        <option selected disabled>Select Bed Room</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                        <option value='6'>6</option>
+                                        <option value='7'>7</option>
+                                        <option value='8'>8</option>
+                                    </select>
+                                    <span id="PBedRoom-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Title">Title <span style="color:red">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="PTitle" name="PTitle" class="form-control"
+                                            autocomplete="off" placeholder="Enter Title" aria-describedby="name2" />
+                                    </div>
+                                    <span id="PTitle-error" class="error" style="color: red;"></span>
+                                </div>
+                                <!-- <div class="col-sm-6 form-group ">
+                                                                        <label class="form-label" for="Property Code">Property Code <span
+                                                                                style="color:red">*</span></label>
+                                                                        <div class="input-group input-group-merge">
+                                                                            <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                                                                autocomplete="off" placeholder="Enter Property Code"
+                                                                                aria-describedby="name2" />
+                                                                        </div>
+                                                                        <span id="PPropertycode-error" class="error" style="color: red;"></span>
+                                                                    </div> -->
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Map">Amount <span
+                                            style="color:red">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="number" id="PAmount" name="PAmount" class="form-control"
+                                            autocomplete="off" placeholder="Enter Amount" aria-describedby="name2" />
+                                    </div>
+                                    <span id="PAmount-error" class="error" style="color: red;"></span>
+                                </div>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Tag">Tag</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="PTag" name="PTag" class="form-control"
+                                            autocomplete="off" placeholder="Enter your Tag" aria-describedby="name2" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="SqureFeet">Squre Feet</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="P " name="PSqureFeet" class="form-control"
+                                            autocomplete="off" placeholder="Enter Squre Feet" aria-describedby="name2" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="Map">Map Link</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" id="PMapLink" name="PMapLink" class="form-control"
+                                            autocomplete="off" placeholder="Enter Map Link" aria-describedby="name2" />
+                                    </div>
+                                </div>
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="Address">Address <span
                                             style="color:red">*</span></label>
@@ -144,111 +147,75 @@
                                     </div>
                                     <span id="PAddress-error" class="error" style="color: red;"></span>
                                 </div>
-
-
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type"> BedRoom <span
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label" for="Short Desc">Short Desc <span
                                             style="color:red">*</span></label>
-                                    <select class="form-control" id="PBedRoom" name="PBedRoom">
-                                        <option selected disabled>Select BedRoom</option>
-
-                                        <option value='1'>1</option>
-                                        <option value='0'>1</option>
-
-                                    </select>
-                                    <span id="PBedRoom-error" class="error" style="color: red;"></span>
+                                    <textarea id="PShortDesc" name="PShortDesc" class="form-control" autocomplete="off" placeholder="Enter Short Info"
+                                        aria-describedby="name2"></textarea>
+                                    <span id="PShortDesc-error" class="error" style="color: red;"></span>
                                 </div>
-
-
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type"> BathRoom <span
-                                            style="color:red">*</span></label>
-                                    <select class="form-control" id="PBathRoom" name="PBathRoom">
-                                        <option selected disabled>Select BathRoom</option>
-
-                                        <option value='1'>1</option>
-                                        <option value='0'>1</option>
-
-                                    </select>
-                                    <span id="PBathRoom-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="SqureFeet">SqureFeet <span
-                                            style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PSqureFeet" name="PSqureFeet" class="form-control"
-                                            autocomplete="off" placeholder="Enter your SqureFeet"
-                                            aria-describedby="name2" />
-                                    </div>
-                                    <span id="PSqureFeet-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Map">Map Link<span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PMapLink" name="PMapLink" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Map Link"
-                                            aria-describedby="name2" />
-                                    </div>
-                                    <span id="PMapLink-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-                                <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="Map">Amount<span style="color:red">*</span></label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="PAmount" name="PAmount" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Amount"
-                                            aria-describedby="name2" />
-                                    </div>
-                                    <span id="PAmount-error" class="error" style="color: red;"></span>
-                                </div>
-
-
-
-
-                                 
-                              
-                                <!-- <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
-                                    <legend style="color: #6a6a6af5;">Short Information</legend>
+                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
+                                    <legend style="  color: #6a6a6af5;">Property Features</legend>
                                     <div class="row g-3">
-                                        <div class="col-sm-6 form-group">
-                                            <label class="form-label" for="Part 1">Part 1 <span
+                                        <div class="col-sm-12 form-group ">
+                                            <label class="form-label" for="type">Features<span
                                                     style="color:red">*</span></label>
-                                            <textarea id="PShortInfo1" name="PShortInfo1" class="form-control" autocomplete="off"
-                                                placeholder="Enter your ShortInfo1" aria-describedby="name2"></textarea>
-                                            <span id="PShortInfo1-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label class="form-label" for="Part 2">Part 2 <span
-                                                    style="color:red">*</span></label>
-                                            <textarea id="PShortInfo2" name="PShortInfo2" class="form-control" autocomplete="off"
-                                                placeholder="Enter your ShortInfo2" aria-describedby="name2"></textarea>
-                                            <span id="PShortInfo2-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-sm-6 form-group">
-                                            <label class="form-label" for="Part 3">Part 3 <span
-                                                    style="color:red">*</span></label>
-                                            <textarea id="PShortInfo3" name="PShortInfo3" class="form-control" autocomplete="off"
-                                                placeholder="Enter your ShortInfo3" aria-describedby="name2"></textarea>
-                                            <span id="PShortInfo3-error" class="error" style="color: red;"></span>
-                                        </div>
-                                        <div class="col-sm-6 form-group mb-3">
-                                            <label class="form-label" for="Part 4">Part 4 <span
-                                                    style="color:red">*</span></label>
-                                            <textarea id="PShortInfo4" name="PShortInfo4" class="form-control" autocomplete="off"
-                                                placeholder="Enter your ShortInfo4" aria-describedby="name2"></textarea>
-                                            <span id="PShortInfo4-error" class="error" style="color: red;"></span>
+                                            <div class="row">
+                                                @foreach ($PropertyFeaturesModel as $value)
+                                                    <div class="col-3 mb-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="PFea_Id[]" id="PFea_Id_{{ $value->PFea_Id }}"
+                                                                value="{{ $value->PFea_Id }}">
+                                                            <label class="form-check-label"
+                                                                for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <span id="PFea_Id-error" class="error" style="color: red;"></span>
                                         </div>
                                     </div>
-                                </fieldset> -->
-                           
+                                </fieldset>
+
+
+
+
+
+
+
+                                <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
+                                    <legend style="  color: #6a6a6af5;">Images</legend>
+                                    <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                        <label class="form-label" for="Image">Images <span
+                                                style="color:red">*</span></label>
+                                        (upload a maximum of 10 images)
+                                        <div class="input-group">
+                                            <input id="photo" type="file" name="PImages[]"
+                                                style="display:none" multiple data-rule-maxsize="10240"
+                                                onchange="displaySelectedImages(this, 'SelectedFileNames', 'selectedImagesPreview')">
+                                            <div class="input-group-prepend">
+                                                <a class="btn btn-dark text-white"
+                                                    onclick="$('input[id=photo]').click();">Images</a>
+                                            </div>
+                                            <input type="text" name="PImages" style="color: white;border: white;"  id="SelectedFileNames" value="" readonly>
+
+                                        </div>
+                                        <div id="selectedImagesPreview" style="display:none; margin-top: 10px;"></div>
+
+                                        <span id="PImages-error" class="image-error" style="color: red;"></span>
+
+                                    </div>
+                                </fieldset>
+
+
+
+
+                                <div class="col-sm-12 form-group ">
+                                    <label class="form-label" for="Full Desc">Full Desc</label>
+                                    <textarea class="applyCK form-control" id="PFullDesc" name="PFullDesc" class="form-control"></textarea>
+                                    <span id="PFullDesc-error" class="error" style="color: red;"></span>
+                                </div>
                                 <div class="form-group mt-3">
                                     <div class=" d-flex col-xl-6">
                                         <div class="col-xl-3 col-md-6 col-sm-12 mb-4">
@@ -273,168 +240,34 @@
         </div>
     </div>
     <script>
-        function handleCheckboxChange(checkbox) {
-            const icon = checkbox.parentElement.querySelector('.icon');
-            if (checkbox.checked) {
-                icon.classList.add('icon-moved');
-            } else {
-                icon.classList.remove('icon-moved');
-            }
-        }
-    </script>
-    <script>
         $(document).ready(function($) {
-            var isFileSizeValid = true;
-
-            function handleFileSizeValidation(fp, maxSize, errorSelector, clearSelectors) {
-                var fileSize = Array.from(fp[0].files).reduce((size, file) => size + file.size, 0);
-                if (fileSize > maxSize) {
-                    isFileSizeValid = false;
-                    $(errorSelector).html(`File size must not be more than 
-                        @if ($ImgMaxSizeModel)
-                        {{ $ImgMaxSizeModel->imgsize->Img_Value }}
-                        @endif
-                        `);
-                    $(clearSelectors.join(',')).val('').hide();
-                } else {
-                    isFileSizeValid = true;
-                    $(errorSelector).html('');
-                }
-            }
-            // File input 1
-            $('#photo1').change(function() {
-                handleFileSizeValidation($("#photo1"), 102400, "#PFooterLogo-error", [
-                    '#PFooterLogo', '#SelectedFileName1'
-                ], 'selectedImagePreview1');
-            });
-            // File input 2
-            $('#photo2').change(function() {
-                handleFileSizeValidation($("#photo2"), 102400, "#PHeaderLogo-error", [
-                    '#PHeaderLogo', '#SelectedFileName2'
-                ], 'selectedImagePreview2');
-            });
-            // File input 3
-            $('#photo3').change(function() {
-                handleFileSizeValidation($("#photo3"), 102400, "#PFavicon-error", ['#PFavicon',
-                    '#SelectedFileName3'
-                ], 'selectedImagePreview3');
-            });
             $("#register-form").validate({
                 rules: {
-                    PName: {
+                    PCit_Id: "required",
+                    PPTyp_Id: "required",
+                    PFeatured: "required",
+                    PBedRoom: "required",
+                    PBathRoom: "required",
+                    PTitle: "required",
+                    PAmount: "required",
+                    PAddress: "required",
+                    PShortDesc: "required",
+                   'PFea_Id[]': {
                         required: true,
-                        maxlength: 255
+                        minlength: 1
                     },
-                    PContactNo: {
-                        required: true,
-                        minlength: 10
-                    },
-                    PEmailId: {
-                        required: true,
-                        email: true,
-                    },
-                    PAddress: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PFavicon: "required",
-                    PHeaderLogo: "required",
-                    PFooterLogo: "required",
-                    PTagline: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PMap: {
-                        required: true,
-                        maxlength: 500
-                    },
-                    PAbout: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PopeningHours: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo1: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo2: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo3: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    PShortInfo4: {
-                        required: true,
-                        maxlength: 255
-                    }
                 },
                 messages: {
-                    PName: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PContactNo: {
-                        required: "This field is required",
-                        digits: "Please enter only digits",
-                        maxlength: "Maximum length allowed is 10 digits"
-                    },
-                    PEmailId: {
-                        required: "This field is required",
-                        email: "Please enter a valid email address",
-                    },
-                    PAddress: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PFavicon: "This field is required",
-                    PHeaderLogo: "This field is required",
-                    PFooterLogo: "This field is required",
-                    PTagline: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PMap: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PAbout: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PopeningHours: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo1: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo2: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo3: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    },
-                    PShortInfo4: {
-                        required: "This field is required",
-                        maxlength: "Maximum length exceeded"
-                    }
-                },
-                submitHandler: function(form) {
-                    if (isFileSizeValid) {
-                        form.submit();
-                    } else {
-                        alert(
-                            'File size must not be more than @if ($ImgMaxSizeModel){{ $ImgMaxSizeModel->imgsize->Img_Value }}@endif '
-                        );
-                    }
+                    PCit_Id: "This field is required",
+                    PPTyp_Id: "This field is required",
+                    PFeatured: "This field is required",
+                    PBedRoom: "This field is required",
+                    PBathRoom: "This field is required",
+                    PTitle: "This field is required",
+                    PAmount: "This field is required",
+                    PAddress: "This field is required",
+                    PShortDesc: "This field is required",
+                    'PFea_Id[]': "This field is required"
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -443,42 +276,61 @@
                     } else {
                         error.insertAfter(element);
                     }
-                }
-                // File input 1
+                },
             });
+
+
+            $('#photo').change(function() {
+                var maxSize = {{ $ImgMaxSizeModel->imgsize->Img_Title ?? '' }};
+                var errorSelector = "#PImages-error";
+                var additionalSelectors = ['#photo',
+                    '#SelectedFileName'
+                ];
+
+                handleFileSizeValidation($("#photo"), maxSize, errorSelector, additionalSelectors);
+            });
+
+
+
             var fieldErrorMap = {
-                PName: "#PName-error",
-                PContactNo: "#PContactNo-error",
+                PCit_Id: "#PCit_Id-error",
+                PPTyp_Id: "#PPTyp_Id-error",
+                PFeatured: "#PFeatured-error",
+                PBedRoom: "#PBedRoom-error",
+                PBathRoom: "#PBathRoom-error",
+                PTitle: "#PTitle-error",
+                PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
-                PEmailId: "#PEmailId-error",
-                PFavicon: "#PFavicon-error",
-                PHeaderLogo: "#PHeaderLogo-error",
-                PFooterLogo: "#PFooterLogo-error",
-                PTagline: "#PTagline-error",
-                PMap: "#PMap-error",
-                PAbout: "#PAbout-error",
-                PopeningHours: "#PopeningHours-error",
-                PShortInfo1: "#PShortInfo1-error",
-                PShortInfo2: "#PShortInfo2-error",
-                PShortInfo3: "#PShortInfo3-error",
-                PShortInfo4: "#PShortInfo4-error"
+                PShortDesc: "#PShortDesc-error",
+                'PFea_Id[]': "#PFea_Id-error",
             };
         });
-    </script>
-    <script>
-        function displaySelectedImage(input, fileNameId, previewId) {
-            var selectedFileName = input.files[0].name;
-            document.getElementById(fileNameId).value = selectedFileName;
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById(previewId).src = e.target.result;
-                document.getElementById(previewId).style.display = 'block';
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
 
-        function selectImage(inputId) {
-            $('#' + inputId).click();
+
+
+
+        function displaySelectedImages(input, fileNameElementId, previewElementId) {
+            var files = input.files;
+            var fileNameList = [];
+
+            for (var i = 0; i < files.length; i++) {
+                fileNameList.push(files[i].name);
+            }
+
+            document.getElementById(fileNameElementId).value = fileNameList.join(', ');
+
+            var previewContainer = document.getElementById(previewElementId);
+            previewContainer.innerHTML = '';
+
+            for (var i = 0; i < files.length; i++) {
+                var img = document.createElement('img');
+                img.src = URL.createObjectURL(files[i]);
+                img.style.maxWidth = '10%';
+                img.style.marginRight = '5px';
+                previewContainer.appendChild(img);
+            }
+
+            previewContainer.style.display = 'flex';
         }
     </script>
 @endsection

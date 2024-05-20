@@ -11,7 +11,7 @@ class PropertyTypeController extends Controller
 {
     public function index(Request $request)
     {
-        $model = PropertyType::where('PTyp_Status', '!=', 2)->get();
+        $model = PropertyType::where('PTyp_Status', '!=', 2)->orderBy('PTyp_CreatedDate', 'desc')->get();
         return view('backend.admin.propertyType.index', compact('model'));
     }
     public function create(Request $request)

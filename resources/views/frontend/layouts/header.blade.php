@@ -3,6 +3,7 @@ use App\Models\WebInfo;
 use App\Models\SubMenu;
 use App\Models\Menu;
 use App\Models\Page;
+use App\Models\Property;
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
 $MenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $clientId)->where('Men_Status', '=', '0')->orderBy('Men_SerialOrder', 'asc')->get();
@@ -11,7 +12,7 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
     ->orderBy('SubMen_SerialOrder', 'asc')
     ->get();
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('Pag_SerialOrder', 'asc')->get();
-$AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('tbl_pagecategory.PagCat_Name', 'Announcement')->where('Pag_Status', '=', '0')->orderBy('tbl_page.Pag_CreatedDate', 'asc')->get();
+$PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
 ?>
 <div id="header-top">
     <div class="container">
@@ -122,38 +123,26 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                         <div class="col-menu col-md-8">
                                             <div class="row">
                                                 <div id="nav_slider" class="owl-carousel">
-                                                    <div class="item">
-                                                        <div class="image bottom15">
-                                                            <img src="images/nav-slider1.jpg" alt="Featured Property">
-                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
+                                                    @foreach ($PropertyModel as $value)
+                                                        <div class="item">
+                                                            <div class="image bottom15">
+                                                                @php
+                                                                    $randomImage = $value->getRandomImage();
+                                                                @endphp
+                                                                <img src="{{ asset('uploads/' . $randomImage) }}"
+                                                                    alt="Featured Property">
+                                                                <span
+                                                                    class="nav_tag yellow text-uppercase">{{ $value->propertyType->PTyp_Name }}</span>
+                                                            </div>
+                                                            <h4><a
+                                                                    href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
+                                                            </h4>
+                                                            @foreach ($value->cities as $city)
+                                                                <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                </p>
+                                                            @endforeach
                                                         </div>
-                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
-                                                        <p>Towson London, MR 21501</p>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="image bottom15">
-                                                            <img src="images/nav-slider2.jpg" alt="Featured Property">
-                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
-                                                        </div>
-                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
-                                                        <p>Towson London, MR 21501</p>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="image bottom15">
-                                                            <img src="images/nav-slider3.jpg" alt="Featured Property">
-                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
-                                                        </div>
-                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
-                                                        <p>Towson London, MR 21501</p>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="image bottom15">
-                                                            <img src="images/nav-slider1.jpg" alt="Featured Property">
-                                                            <span class="nav_tag yellow text-uppercase">for rent</span>
-                                                        </div>
-                                                        <h4><a href="#.">Park Avenue Apartment</a></h4>
-                                                        <p>Towson London, MR 21501</p>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -179,8 +168,8 @@ $AnnouncementModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id'
                                             ]);
                                     @endphp
                                     <a class=" dropdown-toggle" href="{{ $menuUrl }}"
-                                        id="navbarDropdown{{ $value->Men_Id }}" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        id="navbarDropdown{{ $value->Men_Id }}" role="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
                                         {{ $value->Men_Name }}
                                     </a>
                                     <ul class="dropdown-menu">

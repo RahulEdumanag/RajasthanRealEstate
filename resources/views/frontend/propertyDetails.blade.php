@@ -47,27 +47,27 @@
                             </div>
                         @endforeach
                         <!-- <div class="item">
-                                                                                        <div class="property_item heading_space">
-                                                                                          <div class="image">
-                                                                                            <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                                                                            <div class="price"><span class="tag">For Sale</span></div>
-                                                                                            <div class="property_meta">
-                                                                                              <h4>$8,600</h4><p>For Small Family House</p>
-                                                                                            </div>
-                                                                                          </div>
-                                                                                        </div>
-                                                                                      </div>
-                                                                                      <div class="item">
-                                                                                        <div class="property_item heading_space">
-                                                                                          <div class="image">
-                                                                                            <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                                                                            <div class="price"><span class="tag">For Sale</span></div>
-                                                                                            <div class="property_meta">
-                                                                                              <h4>$8,600</h4><p>For Small Family House</p>
-                                                                                            </div>
-                                                                                          </div>
-                                                                                        </div>
-                                                                                      </div> -->
+                                                                                                <div class="property_item heading_space">
+                                                                                                  <div class="image">
+                                                                                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
+                                                                                                    <div class="price"><span class="tag">For Sale</span></div>
+                                                                                                    <div class="property_meta">
+                                                                                                      <h4>$8,600</h4><p>For Small Family House</p>
+                                                                                                    </div>
+                                                                                                  </div>
+                                                                                                </div>
+                                                                                              </div>
+                                                                                              <div class="item">
+                                                                                                <div class="property_item heading_space">
+                                                                                                  <div class="image">
+                                                                                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
+                                                                                                    <div class="price"><span class="tag">For Sale</span></div>
+                                                                                                    <div class="property_meta">
+                                                                                                      <h4>$8,600</h4><p>For Small Family House</p>
+                                                                                                    </div>
+                                                                                                  </div>
+                                                                                                </div>
+                                                                                              </div> -->
                     </div>
                 </div>
             </div>
@@ -95,8 +95,8 @@
                                 {!! $propertyDetails->PFullDesc !!}
                                 <div class="property_meta bottom40"style="margin-top: 40px;">
                                     <span><i class="fa fa-object-group"></i>{{ $propertyDetails->PSqureFeet }} sq ft </span>
-                                    <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bedrooms</span>
-                                    <span><i class="fa fa-bath"></i>{{ $propertyDetails->PBathRoom }} Bathroom</span>
+                                    <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
+                                    <span><i class="fa fa-bath"></i>{{ $propertyDetails->PBathRoom }} Bath Room</span>
                                     <!-- <span><i class="fa fa-car"></i>1 Garage</span> -->
                                 </div>
                                 <!-- <a class="link_arrow" href="#.">Read More</a> -->
@@ -123,17 +123,14 @@
                                                     <td class="text-right">{{ $propertyDetails->PSqureFeet }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Bedrooms</b></td>
+                                                    <td><b>Bed Rooms</b></td>
                                                     <td class="text-right">{{ $propertyDetails->PBedRoom }} </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Bathrooms</b></td>
+                                                    <td><b>Bath Rooms</b></td>
                                                     <td class="text-right">{{ $propertyDetails->PBathRoom }} </td>
                                                 </tr>
-                                                <tr>
-                                                    <td><b>Available From</b></td>
-                                                    <td class="text-right">22-04-2017</td>
-                                                </tr>
+                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -141,29 +138,37 @@
                                         <table class="table table-striped table-responsive">
                                             <tbody>
                                                 <tr>
-                                                    <td><b>Status</b></td>
+                                                    <td><b>Property Type</b></td>
                                                     <td class="text-right">{{ $propertyDetails->propertyType->PTyp_Name }}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Year Built</b></td>
-                                                    <td class="text-right">1991</td>
+                                                    <td><b>Amount</b></td>
+                                                    <td class="text-right">₹{{ $propertyDetails->PAmount }}/-</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Garages</b></td>
-                                                    <td class="text-right">1</td>
+                                                    <td><b>City</b></td>
+                                                    <td class="text-right">
+                                                        @foreach ($propertyDetails->cities as $city)
+                                                            <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                                        @endforeach
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Cross Streets</b></td>
-                                                    <td class="text-right">Nordoff</td>
+                                                    <td><b>Featured</b></td>
+                                                    <td class="text-right">
+                                                        @if ($propertyDetails->PFeatured == 1)
+                                                            Yes
+                                                        @else
+                                                            No
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Floors</b></td>
-                                                    <td class="text-right">Carpet - Ceramic Tile</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Plumbing</b></td>
-                                                    <td class="text-right">Full Copper Plumbing</td>
+                                                    <td><b>Available From</b></td>
+                                                    <td class="text-right">
+                                                        {{ \Carbon\Carbon::parse($propertyDetails->PCreatedDate)->diffForHumans() }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -269,7 +274,7 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="single-query">
-                                                        
+
                                                         <input type="text" autocomplete="off" placeholder="Your Name"
                                                             id="Con_Name" name='Con_Name' class="keyword-input">
                                                     </div>
@@ -399,9 +404,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                <li><a href="#."><i class="icon-like"></i></a></li>
-                                                            </ul> -->
+                                                                        <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                        <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                    </ul> -->
                                     </div>
                                 </div>
                             </div>

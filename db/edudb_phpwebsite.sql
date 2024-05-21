@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2024 at 10:22 AM
+-- Generation Time: May 21, 2024 at 01:05 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -329,9 +329,14 @@ INSERT INTO `tbl_adminmenu` (`AddMen_Id`, `AddMen_Reg_Id`, `AddMen_Name`, `AddMe
 (29, 1, 'covid-19', '22', 'covid', '2', 1, '2024-03-09 16:40:19', NULL, NULL),
 (30, 29, 'covid-19', '19', 'covid', '0', 1, '2024-03-09 16:42:53', 1, '2024-03-09 16:43:08'),
 (31, 30, 'Contact Category', '111', 'contactCategory', '2', 1, '2024-04-01 14:28:28', NULL, NULL),
-(32, 30, 'Horoscope', '19', 'horoscope', '0', 1, '2024-04-02 12:04:36', 1, '2024-04-02 12:04:52'),
-(33, 28, 'Clients', '20', 'clients', '0', 1, '2024-04-05 10:22:26', 1, '2024-04-05 10:22:48'),
-(34, 1, 'Counselling', '21', 'counselling', '0', 1, '2024-04-15 16:03:04', 1, '2024-04-15 16:03:18');
+(32, 30, 'Horoscope', '20', 'horoscope', '0', 1, '2024-04-02 12:04:36', 1, '2024-05-17 12:13:40'),
+(33, 28, 'Clients', '21', 'clients', '0', 1, '2024-04-05 10:22:26', 1, '2024-05-17 12:13:52'),
+(34, 1, 'Counselling', '22', 'counselling', '0', 1, '2024-04-15 16:03:04', 1, '2024-05-17 12:14:01'),
+(35, 38, 'State', '23', 'state', '0', 1, '2024-05-17 12:13:05', 1, '2024-05-17 12:14:11'),
+(36, 38, 'City', '24', 'city', '0', 1, '2024-05-17 12:13:18', 1, '2024-05-17 12:14:19'),
+(37, 38, 'Property', '25', 'property', '0', 1, '2024-05-17 14:27:53', NULL, NULL),
+(38, 38, 'Property Type', '26', 'propertyType', '0', 1, '2024-05-17 16:58:02', NULL, NULL),
+(39, 38, 'Property Features', '27', 'propertyFeatures', '0', 1, '2024-05-17 17:07:14', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -360,7 +365,36 @@ INSERT INTO `tbl_adminmenuallotment` (`Add_MenAllo_Id`, `Add_MenAllo_Reg_Id`, `A
 (7, 28, '1,9,10,13,15,17,3,33,4,20,7,8', 0, 28, '2024-02-14 11:23:10', 28, '2024-04-05 17:33:00'),
 (10, 29, '9,10,11,13,15,17,28,30,3,34,4,20,5,6,7,8', 0, 29, '2024-03-08 12:21:19', 29, '2024-04-15 16:04:27'),
 (15, 30, '9,31,13,17,32,3,4,7', 0, 30, '2024-04-01 13:50:23', 30, '2024-04-02 16:00:39'),
-(27, 1, '1,9,10,11,12,13,15,16,17,28,30,32,3,33,26,4,20,5,6,7,8', 0, 1, '2024-04-06 11:31:53', 1, '2024-04-08 10:54:32');
+(27, 1, '1,9,10,11,12,13,15,16,17,28,30,32,3,33,26,4,20,5,6,7,8', 0, 1, '2024-04-06 11:31:53', 1, '2024-04-08 10:54:32'),
+(28, 38, '9,10,13,15,3,33,35,36,37,38,39,4,20,7,8', 0, 38, '2024-05-16 15:55:42', 38, '2024-05-17 17:07:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_city`
+--
+
+CREATE TABLE `tbl_city` (
+  `Cit_Id` int(11) NOT NULL,
+  `Cit_Sta_Id` int(11) DEFAULT 0,
+  `Cit_Name` varchar(255) DEFAULT NULL,
+  `Cit_Code` varchar(10) DEFAULT NULL,
+  `Cit_Status` int(11) NOT NULL DEFAULT 0,
+  `Cit_CreatedBy` int(11) DEFAULT 0,
+  `Cit_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Cit_UpdatedBy` int(11) DEFAULT 0,
+  `Cit_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_city`
+--
+
+INSERT INTO `tbl_city` (`Cit_Id`, `Cit_Sta_Id`, `Cit_Name`, `Cit_Code`, `Cit_Status`, `Cit_CreatedBy`, `Cit_CreatedDate`, `Cit_UpdatedBy`, `Cit_UpdatedDate`) VALUES
+(1, 1, 'Jaipur', 'RJ0141', 0, 1, '2024-05-07 12:44:42', 1, '2024-05-09 12:14:23'),
+(2, 2, 'Sapporo', 'HK000', 0, 1, '2024-05-07 12:44:48', 1, '2024-05-09 12:14:35'),
+(3, 1, 'Jodhpur', 'Rj19', 0, 1, '2024-05-09 12:16:40', 0, '2024-05-09 12:16:40'),
+(4, 1, 'Ajmer', '01', 0, 1, '2024-05-13 13:33:09', 1, '2024-05-20 14:15:56');
 
 -- --------------------------------------------------------
 
@@ -394,6 +428,7 @@ CREATE TABLE `tbl_contact` (
   `Con_Id` int(20) NOT NULL,
   `Con_Reg_Id` int(20) NOT NULL,
   `Con_ConCat_Id` varchar(255) DEFAULT NULL,
+  `Con_PId` int(20) DEFAULT NULL,
   `Con_Attachment` varchar(255) DEFAULT NULL,
   `Con_Name` varchar(255) DEFAULT NULL,
   `Con_Email` varchar(255) NOT NULL,
@@ -401,19 +436,19 @@ CREATE TABLE `tbl_contact` (
   `Con_Desc` text DEFAULT NULL,
   `Con_Status` int(11) DEFAULT NULL,
   `Con_CreatedBy` int(11) DEFAULT NULL,
-  `Con_CreatedDate` datetime DEFAULT NULL,
+  `Con_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Con_UpdatedBy` int(11) DEFAULT NULL,
-  `Con_UpdatedDate` datetime DEFAULT NULL
+  `Con_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_contact`
 --
 
-INSERT INTO `tbl_contact` (`Con_Id`, `Con_Reg_Id`, `Con_ConCat_Id`, `Con_Attachment`, `Con_Name`, `Con_Email`, `Con_Number`, `Con_Desc`, `Con_Status`, `Con_CreatedBy`, `Con_CreatedDate`, `Con_UpdatedBy`, `Con_UpdatedDate`) VALUES
-(1, 28, '1', '28/Pdf/1712653072.pdf', 'a', 'a@gmai.com', '3', 'a', NULL, NULL, NULL, NULL, NULL),
-(2, 28, '0', NULL, 'a', 'a@gmai.com', '323232', '32', NULL, NULL, NULL, NULL, NULL),
-(3, 28, NULL, NULL, 'no', 'rahul@GMAILx.COM', '23423423423', 's', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_contact` (`Con_Id`, `Con_Reg_Id`, `Con_ConCat_Id`, `Con_PId`, `Con_Attachment`, `Con_Name`, `Con_Email`, `Con_Number`, `Con_Desc`, `Con_Status`, `Con_CreatedBy`, `Con_CreatedDate`, `Con_UpdatedBy`, `Con_UpdatedDate`) VALUES
+(1, 38, NULL, 1, NULL, 'abc', 's@gmail.com', '333', 'message', NULL, NULL, '2024-05-21 13:00:35', NULL, '2024-05-21 13:00:35'),
+(2, 38, NULL, 2, NULL, '2', '2@gmail.com', '2', '12', NULL, NULL, '2024-05-21 13:01:12', NULL, '2024-05-21 13:01:12'),
+(3, 38, NULL, NULL, NULL, 's', 's@gmail.com', '34', 'hsad', NULL, NULL, '2024-05-21 13:09:06', NULL, '2024-05-21 13:09:06');
 
 -- --------------------------------------------------------
 
@@ -478,7 +513,8 @@ INSERT INTO `tbl_credential_log` (`CreLog_Id`, `CreLog_Reg_Id`, `CreLog_Emp_Id`,
 (44, 29, 55, 'mindsup@gmail.com', '$2y$10$usYuv47avJ3/n4uA8gWybOkScU0mv6HGRLWXeUoJwtqbJOHDtr68.', 1, 1, '2024-03-08 11:52:02', NULL, NULL, NULL, NULL),
 (45, 30, 56, 'jyodikastro@gmail.com', '$2y$10$R4iCiwAmEZ.Hped.kNaKgev8ZI57dkcnMSZuofSgoMTYwjZI8G68a', 1, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL),
 (47, 32, 58, 'test@gmail.com', '$2y$10$3xE0Mp/nMg9iW3VOMO2m0.F9NM7QzDC9bmd402HfPXu2S7r6ZXQLm', 1, 1, '2024-05-10 12:51:12', NULL, NULL, NULL, NULL),
-(50, 37, 63, 'newuser@gmail.com', '$2y$10$4RxFx2Gpe8EIfroghchk3O5AATJkyHJDjoKdxko5g/rUI7S8hHJ8a', 1, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL);
+(50, 37, 63, 'newuser@gmail.com', '$2y$10$4RxFx2Gpe8EIfroghchk3O5AATJkyHJDjoKdxko5g/rUI7S8hHJ8a', 1, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL),
+(51, 38, 64, 'rajasthanrealrstate@gmail.com', '$2y$10$1riOoPhBX/1S1EvgbVRoR.UpUZshSi7jJ/kfgkSZMgAgThV3jKX7a', 1, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -520,7 +556,8 @@ INSERT INTO `tbl_employee_registration` (`Emp_Id`, `Emp_Reg_Id`, `Emp_Role`, `Em
 (54, 28, 2, 'RajasthanConsultancy', '1/Registration_images/1707820861.png', 'RajasthanConsultancy', '9876543210', 'rajasthanconsultancy@gmail.com', 'Dummy Address', 'Remark', '2024-02-14', '4', NULL, 0, 1, '2024-02-13 16:11:01', NULL, NULL, NULL, NULL),
 (55, 29, 2, 'MindsUp', '28/Registration_images/1709878922.png', 'MindsUp', '9876543210', 'mindsup@gmail.com', 'MindsUp Address', 'Remark', '2024-03-09', '111', NULL, 0, 1, '2024-03-08 11:52:02', NULL, NULL, NULL, NULL),
 (56, 30, 2, 'Astrology', '1/Registration_images/1711959406.jpg', 'Astrology', '9352398463', 'jyodikastro@gmail.com', 'NY 10018, California, USA', 'Remark', '2024-05-01', '1', NULL, 0, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL),
-(63, 37, 2, 'new user', '1/Registration_images/1715327181.png', 'new user', '4785484848', 'newuser@gmail.com', 'address', 'remark new', NULL, NULL, NULL, 0, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL);
+(63, 37, 2, 'new user', '1/Registration_images/1715327181.png', 'new user', '4785484848', 'newuser@gmail.com', 'address', 'remark new', NULL, NULL, NULL, 0, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL),
+(64, 38, 2, 'RajasthanRealEstate', '1/Registration_images/1715845893.png', 'Rajasthan Real Estate', '9696584562', 'rajasthanrealrstate@gmail.com', 'Ajmer(Rajasthan)', 'Remark', NULL, NULL, NULL, 0, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -644,12 +681,7 @@ CREATE TABLE `tbl_expiryperiod` (
 --
 
 INSERT INTO `tbl_expiryperiod` (`ExpPer_Id`, `ExpPer_Reg_Id`, `ExpPer_StartDate`, `ExpPer_EndDate`, `ExpPer_Amount`, `ExpPer_Remark`, `ExpPer_Status`, `ExpPer_CreatedBy`, `ExpPer_CreatedDate`, `ExpPer_UpdatedBy`, `ExpPer_UpdatedDate`) VALUES
-(5, 30, '2024-04-20', '2024-05-09', '2020', 'remark', 1, 1, '2024-05-10 13:29:46', 1, '2024-05-10 13:42:14'),
-(6, 4, '2024-04-20', '2024-05-09', '2020', 'remark', 0, 1, '2024-05-10 13:29:46', 1, '2024-05-10 13:42:14'),
-(7, 13, '2024-04-20', '2024-05-09', '2020', 'remark', 0, 1, '2024-05-10 13:29:46', 1, '2024-05-10 13:42:14'),
-(8, 28, '2024-04-20', '2024-05-09', '2020', 'remark', 0, 1, '2024-05-10 13:29:46', 1, '2024-05-10 13:42:14'),
-(9, 29, '2024-04-20', '2024-05-09', '2020', 'remark', 0, 1, '2024-05-10 13:29:46', 1, '2024-05-10 13:42:14'),
-(10, 30, '2024-04-20', '2024-05-09', '2020', 'remark', 0, 1, '2024-05-10 13:29:46', 1, '2024-05-10 13:42:14');
+(1, 38, '2024-05-16 13:21:33', '2025-05-16 13:21:33', '600', 'Remark', 0, 1, '2024-05-16 13:21:33', 0, '2024-05-16 13:21:33');
 
 -- --------------------------------------------------------
 
@@ -811,7 +843,8 @@ INSERT INTO `tbl_login` (`Log_Id`, `Log_Reg_Id`, `Log_Emp_Id`, `Log_Username`, `
 (77, 28, 54, 'rajasthanconsultancy@gmail.com', '$2y$10$Fhd1kFHb6f0Ej2bDznIIOOHTy2n1hdOy0wlWfgGcBTT7TrxAY5zt6', 1, 1, '2024-02-13 16:11:01', NULL, NULL, NULL, NULL),
 (78, 29, 55, 'mindsup@gmail.com', '$2y$10$DztGpgq/0n24hVk4b094le6gHp0a5mQ25DCT8wIFxAeo5Ae4XB9f6', 1, 1, '2024-03-08 11:52:02', NULL, NULL, NULL, NULL),
 (79, 30, 56, 'jyodikastro@gmail.com', '$2y$10$3lSN.krEW8o5r0sHjuXZguv7/f0.o9gNR5ni3SziM/cEBHgYRWbhy', 1, 1, '2024-04-01 13:46:46', 1, '2024-04-06 12:18:26', NULL, NULL),
-(84, 37, 63, 'newuser@gmail.com', '$2y$10$4RxFx2Gpe8EIfroghchk3O5AATJkyHJDjoKdxko5g/rUI7S8hHJ8a', 1, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL);
+(84, 37, 63, 'newuser@gmail.com', '$2y$10$4RxFx2Gpe8EIfroghchk3O5AATJkyHJDjoKdxko5g/rUI7S8hHJ8a', 1, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL),
+(85, 38, 64, 'realrstate@gmail.com', '$2y$10$AXvKHxnh2.DkiNiV7xLyQeE8Nk1.VpnWr2zr9Oo4tdGAAGq2zrKge', 1, 1, '2024-05-16 13:21:33', 1, '2024-05-16 13:22:49', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -879,7 +912,12 @@ INSERT INTO `tbl_menu` (`Men_Id`, `Men_Reg_Id`, `Men_Name`, `Men_URL`, `Men_SubM
 (52, 30, 'a', 'a', NULL, 'a', '<p>a</p>', '7', NULL, 2, 1, '2024-04-04 13:21:19', NULL, NULL),
 (53, 29, 'test', NULL, NULL, 'test', '<p>test</p>', '8', NULL, 0, 1, '2024-04-17 14:50:23', 78, '2024-04-17 16:19:46'),
 (54, 1, 'a', 'aa', NULL, 'a', '<p>a</p>', '1', NULL, 0, 1, '2024-04-17 14:55:42', NULL, NULL),
-(55, 28, 'd', NULL, NULL, 'd', '<p>d</p>', '10', NULL, 0, 1, '2024-04-17 14:56:15', NULL, NULL);
+(55, 28, 'd', NULL, NULL, 'd', '<p>d</p>', '10', NULL, 0, 1, '2024-04-17 14:56:15', NULL, NULL),
+(57, 38, 'About', 'about', NULL, 'COMPANY OVERVIEW', '<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>\r\n\r\n<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anythingThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text.</p>', '2', NULL, 0, 1, '2024-05-16 16:22:05', 1, '2024-05-16 17:24:05'),
+(58, 38, 'Properties', 'property', 'on', 'Properties', '<p>Properties</p>', '3', NULL, 0, 1, '2024-05-16 16:23:09', 1, '2024-05-16 17:04:06'),
+(59, 38, 'Pages', '#', 'on', 'Properties', '#', '4', NULL, 0, 1, '2024-05-16 16:23:42', 1, '2024-05-16 16:26:56'),
+(61, 38, 'Contact Us', 'contact', NULL, 'Contact Us', NULL, '6', NULL, 0, 1, '2024-05-16 16:24:25', NULL, NULL),
+(62, 38, 'Home', '/', NULL, 'WELCOME TO KUBER PROPERTIES & BUILDERS', '<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>', '7', 'on', 0, 1, '2024-05-17 13:56:14', 1, '2024-05-20 15:58:42');
 
 -- --------------------------------------------------------
 
@@ -1330,7 +1368,36 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (586, 29, 115, 'Increase Your Confidence Level', NULL, '29/Counselling_images/1713270753.webp', 'To many people, confidence doesn’t come naturally. Our counsellors would help you find the confidence you need.', '<p>To many people, confidence doesn&rsquo;t come naturally. Our counsellors would help you find the confidence you need.</p>', 2, NULL, NULL, 0, 1, '2024-04-15 16:10:37', 1, '2024-04-16 18:02:33'),
 (587, 29, 115, 'Thrive in a Work Environment', NULL, '29/Counselling_images/1713270563.png', 'Many people don’t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.', '<p>Many people don&rsquo;t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.</p>\r\n\r\n<p><a href=\"https://www.onlinecounselling4u.com/appointment/\">Counselling for Work</a></p>', 3, NULL, NULL, 0, 1, '2024-04-15 16:12:49', 1, '2024-04-16 17:59:23'),
 (588, 29, 106, 'Personalized Learning', NULL, '29/Testimonial_images/1713255934.webp', 'Get certified, master modern tech skills, and level up your career whether you’re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.', '<p>Get certified, master modern tech skills, and level up your career whether you&rsquo;re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.Get certified, master modern tech skills, and level up your career whether you&rsquo;re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.</p>', 6, NULL, NULL, 0, 1, '2024-04-16 13:55:34', NULL, NULL),
-(589, 29, 115, 'Thrive in a Work Environment', NULL, '29/Counselling_images/1713332904.jpg', 'Many people don’t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.', '<p>Many people don&rsquo;t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.</p>', 4, NULL, NULL, 0, 1, '2024-04-17 11:18:24', NULL, NULL);
+(589, 29, 115, 'Thrive in a Work Environment', NULL, '29/Counselling_images/1713332904.jpg', 'Many people don’t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.', '<p>Many people don&rsquo;t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.</p>', 4, NULL, NULL, 0, 1, '2024-04-17 11:18:24', NULL, NULL),
+(590, 38, 93, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, 1, '2024-05-16 15:56:08', NULL, NULL),
+(591, 38, 93, 'Slider 1', NULL, '38/Slider_images/1715855340.jpg', 'We Complete Your Dreams', NULL, 2, NULL, NULL, 0, 1, '2024-05-16 15:59:00', NULL, NULL),
+(592, 38, 93, 'Slider 2', NULL, '38/Slider_images/1715855363.jpg', 'We Complete Your Dreams', NULL, 3, NULL, NULL, 0, 1, '2024-05-16 15:59:23', NULL, NULL),
+(593, 38, 93, 'Slider 3', NULL, '38/Slider_images/1715855381.jpg', 'We Complete Your Dreams', NULL, 4, NULL, NULL, 0, 1, '2024-05-16 15:59:41', NULL, NULL),
+(594, 38, 93, 'Slider 4', NULL, '38/Slider_images/1715855400.jpg', 'We Complete Your Dreams', NULL, 5, NULL, NULL, 0, 1, '2024-05-16 16:00:00', NULL, NULL),
+(595, 38, 106, 'Wide Range of Properties', 'icon-select-an-objecto-tool', NULL, 'Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi', '<p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 1, NULL, NULL, 0, 1, '2024-05-16 17:42:27', NULL, NULL),
+(596, 38, 106, '14 Agents for Your Service', 'icon-user-tie', NULL, 'Aliquam gravida magna et fringilla convallis. Pellentesque habitant morAliquam gravida magna et fringilla convallis. Pellentesque habitant morbibi', '<p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 2, NULL, NULL, 0, 1, '2024-05-16 17:43:01', NULL, NULL),
+(597, 38, 106, 'Best Price Guarantee', 'fa fa-money', NULL, 'Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi', '<p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 3, NULL, NULL, 0, 1, '2024-05-16 17:43:29', NULL, NULL),
+(598, 38, 106, '14 Agents for Your Service', 'icon-user-tie', NULL, 'uam gravida magna et fringilla convallis. Pellentesque habitant morbi', '<p>uam gravida magna et fringilla convallis. Pellentesque habitant morbiuam gravida magna et fringilla convallis. Pellentesque habitant morbiuam gravida magna et fringilla convallis. Pellentesque habitant morbiuam gravida magna et fringilla convallis. Pellentesque habitant morbiuam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 4, NULL, NULL, 0, 1, '2024-05-16 17:44:05', NULL, NULL),
+(599, 38, 92, 'Support', 'Support', NULL, NULL, '<ul>\r\n	<li><a href=\"http://127.0.0.1:8000/contact#\">Support</a></li>\r\n</ul>', 2, NULL, NULL, 0, 38, '2024-05-16 18:07:19', NULL, NULL),
+(600, 38, 94, 'Instagram', '#', 'fa fa-instagram', NULL, NULL, 1, NULL, NULL, 0, 38, '2024-05-17 10:20:37', 1, '2024-05-17 10:23:04'),
+(601, 38, 94, 'Facebook', '#', 'fa fa-facebook', NULL, NULL, 2, NULL, NULL, 0, 38, '2024-05-17 10:27:42', NULL, NULL),
+(602, 38, 94, 'YouTube', '#', 'fa fa-youtube', NULL, NULL, 3, NULL, NULL, 0, 38, '2024-05-17 10:28:08', NULL, NULL),
+(603, 38, 94, 'Telegram', '#', 'fa fa-telegram', NULL, NULL, 4, NULL, NULL, 0, 38, '2024-05-17 10:28:21', NULL, NULL),
+(604, 38, 95, 'SAM NICHOLSON', NULL, '38/Testimonial_images/1715922290.png', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer.', NULL, 1, NULL, NULL, 0, 1, '2024-05-17 10:34:50', NULL, NULL),
+(605, 38, 95, 'SAM NICHOLSON', NULL, '38/Testimonial_images/1715922302.png', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer.', NULL, 2, NULL, NULL, 0, 1, '2024-05-17 10:35:02', NULL, NULL),
+(606, 38, 95, 'SAM NICHOLSON', NULL, '38/Testimonial_images/1715922315.png', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer.', NULL, 3, NULL, NULL, 0, 1, '2024-05-17 10:35:15', NULL, NULL),
+(607, 38, 95, 'SAM NICHOLSON', NULL, '38/Testimonial_images/1715922324.png', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer.', NULL, 4, NULL, NULL, 0, 1, '2024-05-17 10:35:24', NULL, NULL),
+(608, 38, 95, 'SAM NICHOLSON', NULL, '38/Testimonial_images/1715922336.png', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer.', NULL, 5, NULL, NULL, 0, 1, '2024-05-17 10:35:36', NULL, NULL),
+(609, 38, 95, 'SAM NICHOLSON', NULL, '38/Testimonial_images/1715922347.png', 'Lorem ipsum dolor sit amet consectetuer adipiscing elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer.', NULL, 6, NULL, NULL, 0, 1, '2024-05-17 10:35:47', NULL, NULL),
+(610, 38, 92, 'Support1', 'https://www.rajasthanrealestate.com/', NULL, NULL, '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n\r\n<p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\r\n\r\n<h3>Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>\r\n\r\n<h3>Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>', 1, NULL, NULL, 0, 38, '2024-05-17 12:50:10', 1, '2024-05-17 13:03:30'),
+(611, 38, 92, 'terms & conditions', NULL, NULL, NULL, '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n\r\n<p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\r\n\r\n<h3>Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>\r\n\r\n<h3>Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>', 3, NULL, NULL, 0, 38, '2024-05-17 13:04:04', NULL, NULL),
+(612, 38, 109, 'p1', NULL, '38/Clients_images/1716277559.png', NULL, NULL, 1, NULL, NULL, 0, 1, '2024-05-21 13:15:59', NULL, NULL),
+(613, 38, 109, 'p2', NULL, '38/Clients_images/1716277577.png', NULL, NULL, 2, NULL, NULL, 0, 1, '2024-05-21 13:16:17', NULL, NULL),
+(614, 38, 109, 'p3', NULL, '38/Clients_images/1716277593.png', NULL, NULL, 3, NULL, NULL, 0, 1, '2024-05-21 13:16:33', NULL, NULL),
+(615, 38, 109, 'p4', NULL, '38/Clients_images/1716277602.png', NULL, NULL, 4, NULL, NULL, 0, 1, '2024-05-21 13:16:42', NULL, NULL),
+(616, 38, 109, 'p5', NULL, '38/Clients_images/1716277619.png', NULL, NULL, 5, NULL, NULL, 0, 1, '2024-05-21 13:16:59', NULL, NULL),
+(617, 38, 109, 'p7', NULL, '38/Clients_images/1716277636.png', NULL, NULL, 6, NULL, NULL, 0, 1, '2024-05-21 13:17:16', NULL, NULL),
+(618, 38, 109, 'p8', NULL, '38/Clients_images/1716278010.png', NULL, NULL, 7, NULL, NULL, 0, 1, '2024-05-21 13:23:30', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1387,6 +1454,124 @@ INSERT INTO `tbl_pagecategory` (`PagCat_Id`, `PagCat_Reg_Id`, `PagCat_Name`, `Pa
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_property`
+--
+
+CREATE TABLE `tbl_property` (
+  `PId` int(20) NOT NULL,
+  `PReg_Id` int(20) NOT NULL DEFAULT 0,
+  `PPTyp_Id` int(20) NOT NULL DEFAULT 0,
+  `PPFea_Id` text DEFAULT NULL,
+  `PCit_Id` int(20) NOT NULL DEFAULT 0,
+  `PPropertycode` int(20) DEFAULT 0,
+  `PTitle` varchar(255) DEFAULT NULL,
+  `PShortDesc` text DEFAULT NULL,
+  `PFullDesc` text DEFAULT NULL,
+  `PAddress` varchar(255) DEFAULT NULL,
+  `PTag` varchar(255) DEFAULT NULL,
+  `PFeatured` int(20) NOT NULL DEFAULT 0,
+  `PBedRoom` int(20) NOT NULL DEFAULT 0,
+  `PBathRoom` int(20) NOT NULL DEFAULT 0,
+  `PSqureFeet` varchar(255) DEFAULT NULL,
+  `PMapLink` text DEFAULT NULL,
+  `PAmount` int(20) NOT NULL DEFAULT 0,
+  `PImages` text DEFAULT NULL,
+  `PPlansImage` text DEFAULT NULL,
+  `PStatus` int(20) NOT NULL DEFAULT 0,
+  `PCreatedBy` int(20) NOT NULL DEFAULT 0,
+  `PCreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `PUpdatedBy` int(20) NOT NULL DEFAULT 0,
+  `PUpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_property`
+--
+
+INSERT INTO `tbl_property` (`PId`, `PReg_Id`, `PPTyp_Id`, `PPFea_Id`, `PCit_Id`, `PPropertycode`, `PTitle`, `PShortDesc`, `PFullDesc`, `PAddress`, `PTag`, `PFeatured`, `PBedRoom`, `PBathRoom`, `PSqureFeet`, `PMapLink`, `PAmount`, `PImages`, `PPlansImage`, `PStatus`, `PCreatedBy`, `PCreatedDate`, `PUpdatedBy`, `PUpdatedDate`) VALUES
+(1, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"6\",\"7\",\"9\",\"10\",\"11\"]', 3, 1000, 'Jodhpur Properties', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 'Ajmer(Raj)', 'Tag', 1, 6, 3, '100', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114487.29602410013!2d72.94814050318439!3d26.27048982290148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418c4eaa06ccb9%3A0x8114ea5b0ae1abb8!2sJodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716270353909!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', 5000, '38/Gallery_images/1716195367_img3.jpg', '38/Plan_images/1716195367_img10.webp', 0, 1, '2024-05-20 14:26:07', 0, '2024-05-20 14:26:07'),
+(2, 38, 3, '[\"1\",\"5\",\"7\",\"9\",\"10\"]', 1, 1001, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 0, 3, 2, '200', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 2000, '38/Gallery_images/1716202480_property-d-1-1.jpg,38/Gallery_images/1716202480_property-listing-1.jpg,38/Gallery_images/1716202480_property-listing-2.jpg', '38/Plan_images/1716202480_news2.jpg,38/Plan_images/1716202480_news-2.jpg,38/Plan_images/1716202480_nospace9.jpg,38/Plan_images/1716202480_paralax-half.jpg', 0, 1, '2024-05-18 16:24:40', 0, '2024-05-20 16:24:40'),
+(3, 38, 2, '[\"4\",\"6\",\"8\",\"10\"]', 3, 1002, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 1, 3, 2, '300', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 2000000, '38/Gallery_images/1716202498_property-d-1-2.jpg,38/Gallery_images/1716202498_property-d-s-1-1.jpg,38/Gallery_images/1716202498_property-listing-1.jpg,38/Gallery_images/1716202498_property-listing-2.jpg,38/Gallery_images/1716202498_property-listing-3.jpg,38/Gallery_images/1716202498_property-listing-4.jpg', '38/Plan_images/1716202498_property-d-1-f-1.jpg,38/Plan_images/1716202498_property-d-1-f-2.jpg,38/Plan_images/1716202498_property-d-1-f-3.jpg,38/Plan_images/1716202498_property-d-1-f-5.jpg,38/Plan_images/1716202498_property-d-1-f-6.jpg,38/Plan_images/1716202498_property-d-s-1-1.jpg,38/Plan_images/1716202498_property-d-s-1-2.jpg,38/Plan_images/1716202498_property-d-s-1-3.jpg,38/Plan_images/1716202498_property-d-s-1-4.jpg', 0, 1, '2024-03-20 16:24:58', 0, '2024-05-20 16:24:58'),
+(4, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\"]', 4, 1003, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 1, 4, 5, '400', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 50500, '38/Gallery_images/1716202500_about-3.jpg,38/Gallery_images/1716202500_property-d-1-1.jpg,38/Gallery_images/1716202500_property-d-1-2.jpg,38/Gallery_images/1716202500_property-listing-1.jpg,38/Gallery_images/1716202500_property-listing-2.jpg,38/Gallery_images/1716202500_property-listing-3.jpg', '38/Plan_images/1716202500_image3.jpg,38/Plan_images/1716202500_news-2.jpg,38/Plan_images/1716202500_news3.jpg', 0, 1, '2023-05-20 16:25:00', 0, '2024-05-20 16:25:00'),
+(5, 38, 1, '[\"1\",\"5\",\"9\"]', 4, 1004, '1', '1', '<p>1</p>', '1', '1', 1, 1, 2, '1', '1', 1, '38/Gallery_images/1716267222_about-4.jpg', '', 2, 1, '2024-05-21 10:23:42', 0, '2024-05-21 10:23:42'),
+(6, 38, 1, '[\"1\",\"2\",\"3\",\"4\"]', 1, 1005, '2', '2', '<p>2</p>', '2', '2', 0, 2, 2, '2', '2', 2, '', '', 2, 1, '2024-05-21 10:32:50', 0, '2024-05-21 10:32:50'),
+(7, 38, 1, '[\"1\",\"5\",\"9\"]', 4, 1004, '1', '1', '<p>1</p>', '1', '1', 1, 1, 2, '1', '1', 1, '38/Gallery_images/1716267222_about-4.jpg', '', 2, 1, '2024-05-21 10:23:42', 0, '2024-05-21 10:23:42'),
+(8, 38, 1, '[\"1\",\"2\",\"3\",\"4\"]', 1, 1005, '2', '2', '<p>2</p>', '2', '2', 0, 2, 2, '2', '2', 2, '', '', 2, 1, '2024-05-21 10:32:50', 0, '2024-05-21 10:32:50'),
+(9, 38, 3, '[\"1\",\"5\",\"7\",\"9\",\"10\"]', 1, 1001, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 0, 3, 2, '200', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 2000, '38/Gallery_images/1716202480_property-d-1-1.jpg,38/Gallery_images/1716202480_property-listing-1.jpg,38/Gallery_images/1716202480_property-listing-2.jpg', '38/Plan_images/1716202480_news2.jpg,38/Plan_images/1716202480_news-2.jpg,38/Plan_images/1716202480_nospace9.jpg,38/Plan_images/1716202480_paralax-half.jpg', 0, 1, '2024-05-18 16:24:40', 0, '2024-05-20 16:24:40'),
+(10, 38, 2, '[\"4\",\"6\",\"8\",\"10\"]', 3, 1002, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 1, 3, 2, '300', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 2000000, '38/Gallery_images/1716202498_property-d-1-2.jpg,38/Gallery_images/1716202498_property-d-s-1-1.jpg,38/Gallery_images/1716202498_property-listing-1.jpg,38/Gallery_images/1716202498_property-listing-2.jpg,38/Gallery_images/1716202498_property-listing-3.jpg,38/Gallery_images/1716202498_property-listing-4.jpg', '38/Plan_images/1716202498_property-d-1-f-1.jpg,38/Plan_images/1716202498_property-d-1-f-2.jpg,38/Plan_images/1716202498_property-d-1-f-3.jpg,38/Plan_images/1716202498_property-d-1-f-5.jpg,38/Plan_images/1716202498_property-d-1-f-6.jpg,38/Plan_images/1716202498_property-d-s-1-1.jpg,38/Plan_images/1716202498_property-d-s-1-2.jpg,38/Plan_images/1716202498_property-d-s-1-3.jpg,38/Plan_images/1716202498_property-d-s-1-4.jpg', 0, 1, '2024-03-20 16:24:58', 0, '2024-05-20 16:24:58'),
+(11, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\"]', 4, 1003, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 1, 4, 5, '400', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 50500, '38/Gallery_images/1716202500_about-3.jpg,38/Gallery_images/1716202500_property-d-1-1.jpg,38/Gallery_images/1716202500_property-d-1-2.jpg,38/Gallery_images/1716202500_property-listing-1.jpg,38/Gallery_images/1716202500_property-listing-2.jpg,38/Gallery_images/1716202500_property-listing-3.jpg', '38/Plan_images/1716202500_image3.jpg,38/Plan_images/1716202500_news-2.jpg,38/Plan_images/1716202500_news3.jpg', 0, 1, '2023-05-20 16:25:00', 0, '2024-05-20 16:25:00'),
+(12, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"6\",\"7\",\"9\",\"10\",\"11\"]', 3, 1000, 'Jodhpur Properties', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 'Ajmer(Raj)', 'Tag', 1, 6, 3, '100', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114487.29602410013!2d72.94814050318439!3d26.27048982290148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418c4eaa06ccb9%3A0x8114ea5b0ae1abb8!2sJodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716270353909!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', 5000, '38/Gallery_images/1716195367_img3.jpg', '38/Plan_images/1716195367_img10.webp', 0, 1, '2024-05-20 14:26:07', 0, '2024-05-20 14:26:07'),
+(13, 38, 3, '[\"1\",\"5\",\"7\",\"9\",\"10\"]', 1, 1001, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 0, 3, 2, '200', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 2000, '38/Gallery_images/1716202480_property-d-1-1.jpg,38/Gallery_images/1716202480_property-listing-1.jpg,38/Gallery_images/1716202480_property-listing-2.jpg', '38/Plan_images/1716202480_news2.jpg,38/Plan_images/1716202480_news-2.jpg,38/Plan_images/1716202480_nospace9.jpg,38/Plan_images/1716202480_paralax-half.jpg', 0, 1, '2024-05-18 16:24:40', 0, '2024-05-20 16:24:40'),
+(14, 38, 2, '[\"4\",\"6\",\"8\",\"10\"]', 3, 1002, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 1, 3, 2, '300', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 2000000, '38/Gallery_images/1716202498_property-d-1-2.jpg,38/Gallery_images/1716202498_property-d-s-1-1.jpg,38/Gallery_images/1716202498_property-listing-1.jpg,38/Gallery_images/1716202498_property-listing-2.jpg,38/Gallery_images/1716202498_property-listing-3.jpg,38/Gallery_images/1716202498_property-listing-4.jpg', '38/Plan_images/1716202498_property-d-1-f-1.jpg,38/Plan_images/1716202498_property-d-1-f-2.jpg,38/Plan_images/1716202498_property-d-1-f-3.jpg,38/Plan_images/1716202498_property-d-1-f-5.jpg,38/Plan_images/1716202498_property-d-1-f-6.jpg,38/Plan_images/1716202498_property-d-s-1-1.jpg,38/Plan_images/1716202498_property-d-s-1-2.jpg,38/Plan_images/1716202498_property-d-s-1-3.jpg,38/Plan_images/1716202498_property-d-s-1-4.jpg', 0, 1, '2024-03-20 16:24:58', 0, '2024-05-20 16:24:58'),
+(15, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\"]', 4, 1003, 'House in New York City', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus. Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum a. Curabitur sit amet pretium lectus, nec consequat orci.</p>\r\n\r\n<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis et metus in libero sollicitudin venenatis eu sed enim. Nam felis lorem, suscipit ac nisl ac, iaculis dapibus tellus. Cras ante justo, aliquet quis placerat nec, molestie id turpis.</p>', 'Merrick Way, Miami, USA', 'Tag', 1, 4, 5, '400', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57144.3451536498!2d74.59520161503906!3d26.471146473762154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716201752959!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 50500, '38/Gallery_images/1716202500_about-3.jpg,38/Gallery_images/1716202500_property-d-1-1.jpg,38/Gallery_images/1716202500_property-d-1-2.jpg,38/Gallery_images/1716202500_property-listing-1.jpg,38/Gallery_images/1716202500_property-listing-2.jpg,38/Gallery_images/1716202500_property-listing-3.jpg', '38/Plan_images/1716202500_image3.jpg,38/Plan_images/1716202500_news-2.jpg,38/Plan_images/1716202500_news3.jpg', 0, 1, '2023-05-20 16:25:00', 0, '2024-05-20 16:25:00'),
+(16, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"6\",\"7\",\"9\",\"10\",\"11\"]', 3, 1000, 'Jodhpur Properties', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 'Ajmer(Raj)', 'Tag', 1, 6, 3, '100', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114487.29602410013!2d72.94814050318439!3d26.27048982290148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418c4eaa06ccb9%3A0x8114ea5b0ae1abb8!2sJodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716270353909!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', 5000, '38/Gallery_images/1716195367_img3.jpg', '38/Plan_images/1716195367_img10.webp', 0, 1, '2024-05-20 14:26:07', 0, '2024-05-20 14:26:07'),
+(17, 38, 5, '[\"1\",\"2\",\"3\",\"4\",\"6\",\"7\",\"9\",\"10\",\"11\"]', 3, 1000, 'Jodhpur Properties', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 'Ajmer(Raj)', 'Tag', 1, 6, 3, '100', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114487.29602410013!2d72.94814050318439!3d26.27048982290148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418c4eaa06ccb9%3A0x8114ea5b0ae1abb8!2sJodhpur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716270353909!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', 5000, '38/Gallery_images/1716195367_img3.jpg', '38/Plan_images/1716195367_img10.webp', 0, 1, '2024-05-20 14:26:07', 0, '2024-05-20 14:26:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_propertyfeatures`
+--
+
+CREATE TABLE `tbl_propertyfeatures` (
+  `PFea_Id` int(20) NOT NULL,
+  `PFea_Reg_Id` int(20) NOT NULL DEFAULT 0,
+  `PFea_Name` varchar(255) DEFAULT NULL,
+  `PFea_Status` int(20) NOT NULL DEFAULT 0,
+  `PFea_CreatedBy` int(20) NOT NULL DEFAULT 0,
+  `PFea_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `PFea_UpdatedBy` int(20) NOT NULL DEFAULT 0,
+  `PFea_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_propertyfeatures`
+--
+
+INSERT INTO `tbl_propertyfeatures` (`PFea_Id`, `PFea_Reg_Id`, `PFea_Name`, `PFea_Status`, `PFea_CreatedBy`, `PFea_CreatedDate`, `PFea_UpdatedBy`, `PFea_UpdatedDate`) VALUES
+(1, 38, 'Air Conditioning', 0, 1, '2024-05-17 17:11:54', 1, '2024-05-20 12:53:37'),
+(2, 38, 'Microwave', 0, 1, '2024-05-17 17:51:39', 1, '2024-05-20 12:53:43'),
+(3, 38, 'Quiet Neighbourhood', 0, 1, '2024-05-17 17:51:47', 1, '2024-05-20 12:53:50'),
+(4, 38, 'Barbeque', 0, 1, '2024-05-17 17:51:52', 1, '2024-05-20 12:53:59'),
+(5, 38, 'Outdoor Shower', 0, 1, '2024-05-17 17:56:01', 1, '2024-05-20 12:54:08'),
+(6, 38, 'TV Cable & WIFI', 0, 1, '2024-05-17 17:56:15', 1, '2024-05-20 12:54:16'),
+(7, 38, 'Dryer', 0, 1, '2024-05-17 17:56:21', 1, '2024-05-20 12:54:24'),
+(8, 38, 'Refrigerator', 0, 1, '2024-05-17 17:56:26', 1, '2024-05-20 12:54:36'),
+(9, 38, 'Window Coverings', 0, 1, '2024-05-17 17:56:31', 1, '2024-05-20 12:54:43'),
+(10, 38, 'Laundry', 0, 1, '2024-05-17 17:56:35', 1, '2024-05-20 12:54:51'),
+(11, 38, 'Others', 0, 1, '2024-05-21 10:21:26', 0, '2024-05-21 10:21:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_propertytype`
+--
+
+CREATE TABLE `tbl_propertytype` (
+  `PTyp_Id` int(20) NOT NULL,
+  `PTyp_Reg_Id` int(20) NOT NULL DEFAULT 0,
+  `PTyp_Name` varchar(255) DEFAULT NULL,
+  `PTyp_Status` int(20) NOT NULL DEFAULT 0,
+  `PTyp_CreatedBy` int(20) NOT NULL DEFAULT 0,
+  `PTyp_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `PTyp_UpdatedBy` int(20) NOT NULL DEFAULT 0,
+  `PTyp_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_propertytype`
+--
+
+INSERT INTO `tbl_propertytype` (`PTyp_Id`, `PTyp_Reg_Id`, `PTyp_Name`, `PTyp_Status`, `PTyp_CreatedBy`, `PTyp_CreatedDate`, `PTyp_UpdatedBy`, `PTyp_UpdatedDate`) VALUES
+(1, 38, 'Rent', 0, 1, '2024-05-17 17:01:09', 1, '2024-05-20 12:47:50'),
+(2, 38, 'Sale', 0, 1, '2024-05-20 10:17:36', 1, '2024-05-20 12:47:57'),
+(3, 38, 'Commercial', 0, 1, '2024-05-20 12:48:04', 0, '2024-05-20 12:48:04'),
+(4, 38, 'Residential', 0, 1, '2024-05-20 12:48:09', 0, '2024-05-20 12:48:09'),
+(5, 38, 'Luxury', 0, 1, '2024-05-20 12:48:13', 0, '2024-05-20 12:48:13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_registration`
 --
 
@@ -1424,7 +1609,8 @@ INSERT INTO `tbl_registration` (`Reg_Id`, `Reg_Organization_Name`, `Reg_Logo`, `
 (13, 'AMD', 'AMD_Images/Registration_images/1706511252.png', 'AMD', '+821 (2365) 456 90', 'AMD', '503 Old Buffalo Street Northwest #205, New York-3087.', 'Remark', '2024-01-05', '4', NULL, NULL, 0, 1, '2024-01-29 12:54:12', 1, '2024-02-01 12:59:45', NULL, NULL, NULL, NULL),
 (28, 'RajasthanConsultancy', '1/Registration_images/1707820861.png', 'RajasthanConsultancy', '9876543210', 'rajasthanconsultancy@gmail.com', 'Dummy Address', 'Remark', '2024-02-14', '4', NULL, NULL, 0, 1, '2024-02-13 16:11:01', NULL, NULL, NULL, NULL, NULL, NULL),
 (29, 'MindsUp', '1/Registration_images/1710739447.png', 'MindsUp', '9876543210', 'mindsup@gmail.com', 'MindsUp Address', 'Remark', '2024-03-09', '111', NULL, NULL, 0, 1, '2024-03-08 11:52:02', 1, '2024-03-18 10:54:07', NULL, NULL, NULL, NULL),
-(30, 'Astrology', '1/Registration_images/1711959406.jpg', 'Astrology', '9352398463', 'jyodikastro@gmail.com', 'NY 10018, California, USA', 'Remark', '2024-05-01', '1', NULL, NULL, 0, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL, NULL, NULL);
+(30, 'Astrology', '1/Registration_images/1711959406.jpg', 'Astrology', '9352398463', 'jyodikastro@gmail.com', 'NY 10018, California, USA', 'Remark', '2024-05-01', '1', NULL, NULL, 0, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 'RajasthanRealEstate', '1/Registration_images/1715845893.png', 'Rajasthan Real Estate', '9696584562', 'rajasthanrealrstate@gmail.com', 'Ajmer(Rajasthan)', 'Remark', NULL, NULL, NULL, '600', 0, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1450,7 +1636,35 @@ CREATE TABLE `tbl_setting` (
 
 INSERT INTO `tbl_setting` (`Set_Id`, `Set_Reg_Id`, `Set_Img_Id`, `Set_Website`, `Set_Status`, `Set_CreatedBy`, `Set_CreatedDate`, `Set_UpdatedBy`, `Set_UpdatedDate`) VALUES
 (1, 30, 2, '0', 0, 1, '2024-04-08 17:28:52', 1, '2024-04-08 17:29:02'),
-(2, 29, 2, '0', 0, 1, '2024-04-15 10:50:07', NULL, '2024-04-15 10:50:07');
+(2, 29, 2, '0', 0, 1, '2024-04-15 10:50:07', NULL, '2024-04-15 10:50:07'),
+(3, 38, 6, '0', 0, 1, '2024-05-16 15:56:28', 1, '2024-05-16 15:58:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_state`
+--
+
+CREATE TABLE `tbl_state` (
+  `Sta_Id` int(11) NOT NULL,
+  `Sta_Cou_Id` int(11) NOT NULL DEFAULT 0,
+  `Sta_Name` varchar(255) DEFAULT NULL,
+  `Sta_Code` varchar(10) DEFAULT NULL,
+  `Sta_Status` int(11) NOT NULL DEFAULT 0,
+  `Sta_CreatedBy` int(11) NOT NULL DEFAULT 0,
+  `Sta_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Sta_UpdatedBy` int(11) NOT NULL DEFAULT 0,
+  `Sta_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_state`
+--
+
+INSERT INTO `tbl_state` (`Sta_Id`, `Sta_Cou_Id`, `Sta_Name`, `Sta_Code`, `Sta_Status`, `Sta_CreatedBy`, `Sta_CreatedDate`, `Sta_UpdatedBy`, `Sta_UpdatedDate`) VALUES
+(1, 1, 'Rajasthan', 'RJ', 0, 1, '2024-05-07 12:44:01', 1, '2024-05-17 12:31:11'),
+(2, 2, 'Hokkaido', 'HK', 0, 1, '2024-05-07 12:44:05', 1, '2024-05-09 12:13:28'),
+(3, 0, 'old', '123213', 2, 1, '2024-05-17 12:31:24', 1, '2024-05-17 12:31:37');
 
 -- --------------------------------------------------------
 
@@ -1498,7 +1712,20 @@ INSERT INTO `tbl_submenu` (`SubMen_Id`, `SubMen_Reg_Id`, `SubMen_Men_Id`, `SubMe
 (23, 29, 42, 'New', 'ad', 'sad', '<p>asd</p>', '4', NULL, 0, 1, '2024-04-16 17:01:05', NULL, NULL),
 (24, 29, 42, 'New', 'ad', 'sad', '<p>asd</p>', '4', NULL, 0, 1, '2024-04-16 17:01:05', NULL, NULL),
 (25, 29, 42, 'New', 'ad', 'sad', '<p>asd</p>', '4', NULL, 0, 1, '2024-04-16 17:01:05', NULL, NULL),
-(26, 29, 42, 'd', 's', 'f', NULL, '5', NULL, 0, 1, '2024-04-17 14:52:35', NULL, NULL);
+(26, 29, 42, 'd', 's', 'f', NULL, '5', NULL, 0, 1, '2024-04-17 14:52:35', NULL, NULL),
+(27, 38, 58, 'Property Listing', '', 'Property Listing', NULL, '1', NULL, 1, 1, '2024-05-16 16:28:04', NULL, NULL),
+(28, 38, 58, 'Property Details', '', 'Property Details', '<p>Property Details</p>', '2', NULL, 1, 1, '2024-05-16 16:28:45', NULL, NULL),
+(29, 38, 58, 'Creat New Property', '', 'Creat New Property', NULL, '3', NULL, 1, 1, '2024-05-16 16:28:59', NULL, NULL),
+(30, 38, 59, 'FAQ\'s', 'faqs', 'faqs', NULL, '4', NULL, 0, 1, '2024-05-16 16:29:33', NULL, NULL),
+(31, 38, 59, 'Testimonial', 'testimonial', 'testimonial', NULL, '5', NULL, 0, 1, '2024-05-16 16:29:50', NULL, NULL),
+(32, 38, 59, 'Loan Calculate', 'calculator', 'calculator', NULL, '6', NULL, 0, 1, '2024-05-16 16:30:10', 1, '2024-05-16 17:16:39'),
+(33, 38, 60, 'Properties List', '', 'Properties List', NULL, '7', NULL, 0, 1, '2024-05-16 16:30:46', NULL, NULL),
+(34, 38, 60, 'Single Property', '', 'Single Property', NULL, '8', NULL, 0, 1, '2024-05-16 16:31:00', NULL, NULL),
+(35, 38, 60, 'Search by City', '', 'Search by City', NULL, '9', NULL, 0, 1, '2024-05-16 16:31:20', NULL, NULL),
+(36, 38, 60, 'Search by Category', '', 'Search by Category', NULL, '10', NULL, 0, 1, '2024-05-16 16:31:30', NULL, NULL),
+(37, 38, 60, 'Search by Type', '', 'Search by Type', NULL, '11', NULL, 0, 1, '2024-05-16 16:31:41', 1, '2024-05-16 16:32:29'),
+(38, 38, 58, 'new', NULL, NULL, NULL, '10', NULL, 2, 1, '2024-05-16 16:59:44', NULL, NULL),
+(39, 38, 58, 'new', '/', NULL, NULL, '10', NULL, 2, 1, '2024-05-16 17:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1546,7 +1773,16 @@ INSERT INTO `tbl_visitorcounter` (`id`, `Vis_Reg_Id`, `Vis_Ip`, `Vis_Country`, `
 (23, 28, '127.0.0.1', NULL, NULL, NULL, '2024-04-17 14:56:53'),
 (24, 30, '127.0.0.1', NULL, NULL, NULL, '2024-04-24 13:37:29'),
 (25, 29, '127.0.0.1', NULL, NULL, NULL, '2024-05-07 17:46:07'),
-(26, 30, '127.0.0.1', NULL, NULL, NULL, '2024-05-10 10:47:14');
+(26, 30, '127.0.0.1', NULL, NULL, NULL, '2024-05-10 10:47:14'),
+(27, 13, '127.0.0.1', NULL, NULL, NULL, '2024-05-10 14:26:49'),
+(28, 4, '127.0.0.1', NULL, NULL, NULL, '2024-05-10 15:09:59'),
+(29, 29, '127.0.0.1', NULL, NULL, NULL, '2024-05-10 15:12:40'),
+(30, 28, '127.0.0.1', NULL, NULL, NULL, '2024-05-10 15:19:11'),
+(31, 30, '127.0.0.1', NULL, NULL, NULL, '2024-05-16 13:17:09'),
+(32, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-16 13:28:18'),
+(33, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-17 13:00:50'),
+(34, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-20 10:15:45'),
+(35, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-21 10:15:04');
 
 -- --------------------------------------------------------
 
@@ -1590,7 +1826,8 @@ INSERT INTO `tbl_website_information` (`WebInf_Id`, `WebInf_Reg_Id`, `WebInf_Nam
 (10, 28, 'Rajasthan Consultancy', 'Dummy Address', 'RAJASTHAN CONSULTANCY SERVICES', '28/WebInformation_images/1709710719_65e81d7f74fe4.jpeg', '28/WebInformation_images/1709641608_65e70f883baab.jpeg', 'rajasthanconsultancy@gmai.com', '9876543210,9829999193', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d892.8056402350932!2d74.631249!3d26.480778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1709632572837!5m2!1sen!2sin', '28/WebInformation_images/1712310896_660fca709777a.png', '24', '95', '5', '05', 'Dummy About', 'Mon – Sat: 8.00 – 18.00', 0, 1, '2024-02-13 16:14:32', 1, '2024-04-10 16:57:21'),
 (11, 1, 'a', 'd', 's', '1/WebInformation_images/1712310995_660fcad34162a.png', '1/WebInformation_images/1712310995_660fcad3411b7.png', 'ra@gmail.com', '1211111111', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d892.8056402350932!2d74.631249!3d26.480778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1709632572837!5m2!1sen!2sin', '1/WebInformation_images/1712311073_660fcb214e935.png', 'd', 'd', 'd', 'd', 'd', 'd', 2, 1, '2024-02-29 16:07:09', 1, '2024-04-05 15:27:53'),
 (12, 29, 'MindsUp', 'MindsUp Address', 'MindsUp MindsUp', '29/WebInformation_images/1712565361_6613ac712d65d.png', '29/WebInformation_images/1712310922_660fca8a06014.png', 'mindsup@gmail.com', '9876543210', 'MindsUp map link', '29/WebInformation_images/1712310922_660fca8a06850.png', '1', '2', '3', '4', 'MindsUp About', '8:00am to 9:00pm', 0, 1, '2024-03-08 11:56:01', 1, '2024-04-08 14:06:01'),
-(13, 30, 'Astrology', 'Jyodik Astro & Gemstone (opc) Pvt Ltd\r\n 1.) 20 LIC Colony Anasagar \r\nCircular Road, Vaishali Nagar,\r\nAjmer Rajasthan 305001\r\n\r\n 2.) B 58 Friends Colony\r\nNear Lions Club\r\nVaishali Nagar, Ajmer', 'Astrology', '30/WebInformation_images/1712560662_66139a163d2b1.jpg', '30/WebInformation_images/1712310954_660fcaaa0c422.png', 'jyodikastro@gmail.com', '9352398463', 'N/A', '30/WebInformation_images/1712310954_660fcaaa0c9d2.png', '100', '30', '55', '90', 'Astrology', '24Hrs Open', 0, 1, '2024-04-01 13:49:15', 1, '2024-04-15 14:47:31');
+(13, 30, 'Astrology', 'Jyodik Astro & Gemstone (opc) Pvt Ltd\r\n 1.) 20 LIC Colony Anasagar \r\nCircular Road, Vaishali Nagar,\r\nAjmer Rajasthan 305001\r\n\r\n 2.) B 58 Friends Colony\r\nNear Lions Club\r\nVaishali Nagar, Ajmer', 'Astrology', '30/WebInformation_images/1712560662_66139a163d2b1.jpg', '30/WebInformation_images/1712310954_660fcaaa0c422.png', 'jyodikastro@gmail.com', '9352398463', 'N/A', '30/WebInformation_images/1712310954_660fcaaa0c9d2.png', '100', '30', '55', '90', 'Astrology', '24Hrs Open', 0, 1, '2024-04-01 13:49:15', 1, '2024-04-15 14:47:31'),
+(14, 38, 'RajasthanRealEstate', 'Babu Molalla kasier gunj Ajmer', 'Tagline', '38/WebInformation_images/1715846276_6645bc84c5485.png', '38/WebInformation_images/1715846276_6645bc84c4ea8.png', 'rajasthanrealrstate@gmail.com', '9666985658', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114306.4675799101!2d74.6357137!3d26.453243199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716289175582!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '38/WebInformation_images/1715846276_6645bc84c571a.png', '1', '2', '3', '4', 'About', 'Mon - Tues :6.00 am - 10.00 pm', 0, 1, '2024-05-16 13:27:56', 1, '2024-05-21 16:30:03');
 
 -- --------------------------------------------------------
 
@@ -1733,6 +1970,13 @@ ALTER TABLE `tbl_adminmenuallotment`
   ADD PRIMARY KEY (`Add_MenAllo_Id`) USING BTREE;
 
 --
+-- Indexes for table `tbl_city`
+--
+ALTER TABLE `tbl_city`
+  ADD PRIMARY KEY (`Cit_Id`),
+  ADD KEY `FK_Cit_Sta_Id` (`Cit_Sta_Id`);
+
+--
 -- Indexes for table `tbl_clients`
 --
 ALTER TABLE `tbl_clients`
@@ -1830,6 +2074,24 @@ ALTER TABLE `tbl_pagecategory`
   ADD PRIMARY KEY (`PagCat_Id`);
 
 --
+-- Indexes for table `tbl_property`
+--
+ALTER TABLE `tbl_property`
+  ADD PRIMARY KEY (`PId`);
+
+--
+-- Indexes for table `tbl_propertyfeatures`
+--
+ALTER TABLE `tbl_propertyfeatures`
+  ADD PRIMARY KEY (`PFea_Id`);
+
+--
+-- Indexes for table `tbl_propertytype`
+--
+ALTER TABLE `tbl_propertytype`
+  ADD PRIMARY KEY (`PTyp_Id`);
+
+--
 -- Indexes for table `tbl_registration`
 --
 ALTER TABLE `tbl_registration`
@@ -1841,6 +2103,13 @@ ALTER TABLE `tbl_registration`
 --
 ALTER TABLE `tbl_setting`
   ADD PRIMARY KEY (`Set_Id`);
+
+--
+-- Indexes for table `tbl_state`
+--
+ALTER TABLE `tbl_state`
+  ADD PRIMARY KEY (`Sta_Id`),
+  ADD KEY `FK_Sta_Cou_Id` (`Sta_Cou_Id`);
 
 --
 -- Indexes for table `tbl_submenu`
@@ -1929,13 +2198,19 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `tbl_adminmenu`
 --
 ALTER TABLE `tbl_adminmenu`
-  MODIFY `AddMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `AddMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `tbl_adminmenuallotment`
 --
 ALTER TABLE `tbl_adminmenuallotment`
-  MODIFY `Add_MenAllo_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `Add_MenAllo_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `tbl_city`
+--
+ALTER TABLE `tbl_city`
+  MODIFY `Cit_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_clients`
@@ -1959,13 +2234,13 @@ ALTER TABLE `tbl_contactcategory`
 -- AUTO_INCREMENT for table `tbl_credential_log`
 --
 ALTER TABLE `tbl_credential_log`
-  MODIFY `CreLog_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `CreLog_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `tbl_employee_registration`
 --
 ALTER TABLE `tbl_employee_registration`
-  MODIFY `Emp_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `Emp_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `tbl_enquirie`
@@ -1983,7 +2258,7 @@ ALTER TABLE `tbl_errors`
 -- AUTO_INCREMENT for table `tbl_expiryperiod`
 --
 ALTER TABLE `tbl_expiryperiod`
-  MODIFY `ExpPer_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ExpPer_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
@@ -2007,13 +2282,13 @@ ALTER TABLE `tbl_imagesize`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `Log_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `Log_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `Men_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `Men_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tbl_metatags`
@@ -2025,7 +2300,7 @@ ALTER TABLE `tbl_metatags`
 -- AUTO_INCREMENT for table `tbl_page`
 --
 ALTER TABLE `tbl_page`
-  MODIFY `Pag_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
+  MODIFY `Pag_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=619;
 
 --
 -- AUTO_INCREMENT for table `tbl_pagecategory`
@@ -2034,34 +2309,58 @@ ALTER TABLE `tbl_pagecategory`
   MODIFY `PagCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
+-- AUTO_INCREMENT for table `tbl_property`
+--
+ALTER TABLE `tbl_property`
+  MODIFY `PId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tbl_propertyfeatures`
+--
+ALTER TABLE `tbl_propertyfeatures`
+  MODIFY `PFea_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tbl_propertytype`
+--
+ALTER TABLE `tbl_propertytype`
+  MODIFY `PTyp_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tbl_registration`
 --
 ALTER TABLE `tbl_registration`
-  MODIFY `Reg_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `Reg_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tbl_setting`
 --
 ALTER TABLE `tbl_setting`
-  MODIFY `Set_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Set_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_state`
+--
+ALTER TABLE `tbl_state`
+  MODIFY `Sta_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_submenu`
 --
 ALTER TABLE `tbl_submenu`
-  MODIFY `SubMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `SubMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `tbl_visitorcounter`
 --
 ALTER TABLE `tbl_visitorcounter`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_website_information`
 --
 ALTER TABLE `tbl_website_information`
-  MODIFY `WebInf_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `WebInf_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -52,7 +52,8 @@
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label  class="form-label" for="Bath Room">Bath Room<span style="color:red">*</span></label>
+                                    <label class="form-label" for="Bath Room">Bath Room<span
+                                            style="color:red">*</span></label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PBathRoom == 1 ? 'selected' : '' }}>1
@@ -69,7 +70,8 @@
                                     <span id="PBathRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label class="form-label" for="Bed Room">Bed Room<span style="color:red">*</span></label>
+                                    <label class="form-label" for="Bed Room">Bed Room<span
+                                            style="color:red">*</span></label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PBedRoom == 1 ? 'selected' : '' }}>1
@@ -107,17 +109,17 @@
                                     <label for="Tag" class="form-label">Tag</label>
                                     <input type="text" class="form-control" id="PTag" name="PTag"
                                         value="{{ old('PTag', $model->PTag) }}" placeholder="">
-                                 </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <label for="Squre Feet" class="form-label">Squre Feet </label>
                                     <input type="text" class="form-control" id="PSqureFeet" name="PSqureFeet"
                                         value="{{ old('PSqureFeet', $model->PSqureFeet) }}" placeholder="">
-                                 </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <label for="Map Link" class="form-label">Map Link</label>
                                     <input type="text" class="form-control" id="PMapLink" name="PMapLink"
                                         value="{{ old('PMapLink', $model->PMapLink) }}" placeholder="">
-                                 </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <label for="Address" class="form-label">Address<span
                                             style="color:red">*</span></label>
@@ -130,28 +132,31 @@
                                     <textarea class="form-control" id="PShortDesc" name="PShortDesc" placeholder="">{{ old('PShortDesc', $model->PShortDesc) }}</textarea>
                                     <span id="PShortDesc-error" class="error" style="color: red;"></span>
                                 </div>
-                                
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="color: #6a6a6af5;">Property Features</legend>
-                                  
-                                            <label class="form-label" for="type">Features<span
-                                                    style="color:red">*</span></label>
-                                            <div class="row">
-                                                @foreach ($PropertyFeaturesModel as $value)
-                                                    <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                name="PFea_Id[]" id="PFea_Id_{{ $value->PFea_Id }}"
-                                                                value="{{ $value->PFea_Id }}"
-                                                                {{ in_array($value->PFea_Id, json_decode($model->PFea_Id)) ? 'checked' : '' }}>
-                                                            <label class="form-check-label"
-                                                                for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                    <label class="form-label" for="type">Features<span
+                                            style="color:red">*</span></label>
+                                    <div class="row">
+                                        @foreach ($PropertyFeaturesModel as $value)
+                                            <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
+                                                <div class="form-check">
+                                                    @php
+                                                        $featuresArray = json_decode($model->PPFea_Id, true);
+                                                        if (!is_array($featuresArray)) {
+                                                            $featuresArray = [];
+                                                        }
+                                                    @endphp
+                                                    <input class="form-check-input" type="checkbox" name="PPFea_Id[]"
+                                                        id="PPFea_Id_{{ $value->PFea_Id }}"
+                                                        value="{{ $value->PFea_Id }}"
+                                                        {{ in_array($value->PFea_Id, $featuresArray) ? 'checked' : '' }}>
+                                                    <label class="form-check-label"
+                                                        for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
+                                                </div>
                                             </div>
-                                            <span id="PFea_Id-error" class="error" style="color: red;"></span>
-                                        
+                                        @endforeach
+                                    </div>
+                                    <span id="PPFea_Id-error" class="error" style="color: red;"></span>
                                 </fieldset>
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="color: #6a6a6af5;">Images</legend>
@@ -182,11 +187,10 @@
                                             @if ($model->PImages)
                                                 @foreach (explode(',', $model->PImages) as $image)
                                                     <img src="{{ asset('uploads/' . trim($image)) }}"
-                                                        alt="Selected Image" style="width: 50px; height: 50px; margin-right: 5px;">
+                                                        alt="Selected Image"
+                                                        style="width: 50px; height: 50px; margin-right: 5px;">
                                                 @endforeach
-                                            
                                             @endif
-
                                             <span id="PImages-error" class="image-error" style="color: red;"></span>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
@@ -212,14 +216,12 @@
                                                         style="width: 100px; height: 100px; margin-right: 5px;">
                                                 @endforeach
                                             </div>
-
-
                                             @if ($model->PPlansImage)
                                                 @foreach (explode(',', $model->PPlansImage) as $image)
                                                     <img src="{{ asset('uploads/' . trim($image)) }}"
-                                                        alt="Selected Image" style="width: 50px; height: 50px; margin-right: 5px;">
+                                                        alt="Selected Image"
+                                                        style="width: 50px; height: 50px; margin-right: 5px;">
                                                 @endforeach
-                                            
                                             @endif
                                             <span id="PPlansImage-error" class="image-error" style="color: red;"></span>
                                         </div>
@@ -254,7 +256,7 @@
                     PAmount: "required",
                     PAddress: "required",
                     PShortDesc: "required",
-                    'PFea_Id[]': {
+                    'PPFea_Id[]': {
                         required: true,
                         minlength: 1
                     }
@@ -269,7 +271,7 @@
                     PAmount: "This field is required",
                     PAddress: "This field is required",
                     PShortDesc: "This field is required",
-                    'PFea_Id[]': "This field is required"
+                    'PPFea_Id[]': "This field is required"
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -306,7 +308,7 @@
                 PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
                 PShortDesc: "#PShortDesc-error",
-                'PFea_Id[]': "#PFea_Id-error"
+                'PPFea_Id[]': "#PPFea_Id-error"
             };
         });
 

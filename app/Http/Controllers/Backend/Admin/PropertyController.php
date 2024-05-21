@@ -50,7 +50,7 @@ class PropertyController extends Controller
             $model = new Property();
             $model->PReg_Id = getSelectedValue();
             $model->PPTyp_Id = $request->PPTyp_Id;
-            $model->PFea_Id = json_encode($request->PFea_Id);
+            $model->PPFea_Id = json_encode($request->PPFea_Id);
             $model->PCit_Id = $request->PCit_Id;
             $model->PPropertycode = $newPropertyCode;
             $model->PTitle = $request->PTitle;
@@ -131,7 +131,7 @@ class PropertyController extends Controller
             $model = Property::findOrFail($PId);
             // Update other properties
             $model->PPTyp_Id = $request->PPTyp_Id;
-            $model->PFea_Id = $request->PFea_Id;
+            $model->PPFea_Id = $request->PPFea_Id;
             $model->PCit_Id = $request->PCit_Id;
             $model->PTitle = $request->PTitle;
             $model->PTag = $request->PTag;

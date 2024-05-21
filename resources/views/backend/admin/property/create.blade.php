@@ -165,7 +165,7 @@
                                                 <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                                name="PFea_Id[]" id="PFea_Id_{{ $value->PFea_Id }}"
+                                                                name="PPFea_Id[]" id="PPFea_Id_{{ $value->PFea_Id }}"
                                                                 value="{{ $value->PFea_Id }}">
                                                             <label class="form-check-label"
                                                                 for="PFea_Id_{{ $value->PFea_Id }}">{{ $value->PFea_Name }}</label>
@@ -173,7 +173,7 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <span id="PFea_Id-error" class="error" style="color: red;"></span>
+                                            <span id="PPFea_Id-error" class="error" style="color: red;"></span>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -267,7 +267,7 @@
                     PAmount: "required",
                     PAddress: "required",
                     PShortDesc: "required",
-                    'PFea_Id[]': {
+                    'PPFea_Id[]': {
                         required: true,
                         minlength: 1
                     },
@@ -282,7 +282,7 @@
                     PAmount: "This field is required",
                     PAddress: "This field is required",
                     PShortDesc: "This field is required",
-                    'PFea_Id[]': "This field is required"
+                    'PPFea_Id[]': "This field is required"
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -322,7 +322,7 @@
                 PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
                 PShortDesc: "#PShortDesc-error",
-                'PFea_Id[]': "#PFea_Id-error",
+                'PPFea_Id[]': "#PPFea_Id-error",
             };
         });
 

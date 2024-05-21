@@ -39,7 +39,7 @@
                                         </a>
                                         <div class="price"><span
                                                 class="tag">{{ $propertyDetails->propertyType->PTyp_Name }}</span></div>
-                                       <div class="property_meta">
+                                        <div class="property_meta">
                                             <h4>₹{{ $propertyDetails->PAmount }}/-</h4>
                                         </div>
                                     </div>
@@ -47,27 +47,27 @@
                             </div>
                         @endforeach
                         <!-- <div class="item">
-                                <div class="property_item heading_space">
-                                  <div class="image">
-                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                    <div class="price"><span class="tag">For Sale</span></div>
-                                    <div class="property_meta">
-                                      <h4>$8,600</h4><p>For Small Family House</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <div class="property_item heading_space">
-                                  <div class="image">
-                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                    <div class="price"><span class="tag">For Sale</span></div>
-                                    <div class="property_meta">
-                                      <h4>$8,600</h4><p>For Small Family House</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div> -->
+                                                                <div class="property_item heading_space">
+                                                                  <div class="image">
+                                                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
+                                                                    <div class="price"><span class="tag">For Sale</span></div>
+                                                                    <div class="property_meta">
+                                                                      <h4>$8,600</h4><p>For Small Family House</p>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="item">
+                                                                <div class="property_item heading_space">
+                                                                  <div class="image">
+                                                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
+                                                                    <div class="price"><span class="tag">For Sale</span></div>
+                                                                    <div class="property_meta">
+                                                                      <h4>$8,600</h4><p>For Small Family House</p>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div> -->
                     </div>
                 </div>
             </div>
@@ -75,7 +75,6 @@
                 <div class="col-md-12">
                     <div class="property-tab">
                         <!-- Nav tabs -->
-                        
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a href="#description" aria-controls="description"
                                     role="tab" data-toggle="tab">Description</a></li>
@@ -93,7 +92,7 @@
                             <div role="tabpanel" class="tab-pane active" id="description">
                                 <h3 class="text-uppercase  bottom20 top10">Property <span
                                         class="color_red">Description</span></h3>
-                                    {!! $propertyDetails->PFullDesc !!} 
+                                {!! $propertyDetails->PFullDesc !!}
                                 <div class="property_meta bottom40"style="margin-top: 40px;">
                                     <span><i class="fa fa-object-group"></i>{{ $propertyDetails->PSqureFeet }} sq ft </span>
                                     <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bedrooms</span>
@@ -143,7 +142,8 @@
                                             <tbody>
                                                 <tr>
                                                     <td><b>Status</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->propertyType->PTyp_Name }}</td>
+                                                    <td class="text-right">{{ $propertyDetails->propertyType->PTyp_Name }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Year Built</b></td>
@@ -173,54 +173,21 @@
                             <div role="tabpanel" class="tab-pane" id="features">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-uppercase  bottom30 top10">Proprty <span
+                                        <h3 class="text-uppercase  bottom30 top10">Property <span
                                                 class="color_red">Features</span></h3>
                                     </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <ul class="pro-list">
-                                            <li>
-                                                Air Conditioning
-                                            </li>
-                                            <li>
-                                                Barbeque
-                                            </li>
-                                            <li>
-                                                Dryer
-                                            </li>
-                                            <li>
-                                                Laundry
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <ul class="pro-list">
-                                            <li>
-                                                Microwave
-                                            </li>
-                                            <li>
-                                                Outdoor Shower
-                                            </li>
-                                            <li>
-                                                Refrigerator
-                                            </li>
-                                            <li>
-                                                Swimming Pool
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <ul class="pro-list">
-                                            <li>
-                                                Quiet Neighbourhood
-                                            </li>
-                                            <li>
-                                                TV Cable & WIFI
-                                            </li>
-                                            <li>
-                                                Window Coverings
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    @foreach (json_decode($propertyDetails->PPFea_Id) as $featureId)
+                                        @php
+                                            $feature = \App\Models\PropertyFeatures::find($featureId);
+                                        @endphp
+                                        @if ($feature)
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                                <ul class="pro-list">
+                                                    <li>{{ $feature->PFea_Name }}</li>
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane bg_light" id="plan">
@@ -230,19 +197,19 @@
                                         </h3>
                                     </div>
                                     @php
-                                    $planImages = explode(',', $propertyDetails->PPlansImage);
+                                        $planImages = explode(',', $propertyDetails->PPlansImage);
                                     @endphp
                                     @foreach ($planImages as $image)
-                                    <div class="col-md-4 col-sm-4 col-xs-12 top10">
-                                        <div class="image">
-                                            <img src="{{ asset('uploads/' . trim($image)) }}"
-                                                alt="image" />
-                                            <div class="overlay border_radius">
-                                                <a class="fancybox centered" href="{{ asset('uploads/' . trim($image)) }}"
-                                                    data-fancybox-group="gallery"><i class="icon-focus"></i></a>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 top10">
+                                            <div class="image">
+                                                <img src="{{ asset('uploads/' . trim($image)) }}" alt="image" />
+                                                <div class="overlay border_radius">
+                                                    <a class="fancybox centered"
+                                                        href="{{ asset('uploads/' . trim($image)) }}"
+                                                        data-fancybox-group="gallery"><i class="icon-focus"></i></a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -260,30 +227,26 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="agent-p-contact">
                                             <div class="our-agent-box">
-                                                <h3 class="bottom10">Kristen Kononets</h3>
-                                                <p class="bottom30">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                                    elit, sed diam nonummy nibh tempor cum soluta nobis consectetuer
-                                                    adipiscing eleifend option congue nihil imperdiet doming…</p>
+                                                <h3 class="bottom10">{{ $WebInfoModel->WebInf_Name ?? 'N/A' }}</h3>
+                                                <p class="bottom30">{{ $WebInfoModel->WebInf_Tagline ?? 'N/A' }}</p>
                                             </div>
                                             <div class="agetn-contact">
                                                 <h6>Phone:</h6>
-                                                <h6>Mobile:</h6>
                                                 <h6>Email Adress:</h6>
-                                                <h6>Skype:</h6>
                                             </div>
                                             <div class="agetn-contact-2">
-                                                <p>(+01) 34 56 7890</p>
-                                                <p>(+033) 34 56 7890</p>
-                                                <p>bohdan@ideahomes.com</p>
-                                                <p>bohdan.kononets</p>
+                                                <p>{{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
+                                                <p>{{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</p>
                                             </div>
                                         </div>
                                         <ul class="socials">
-                                            <li><a href="#."><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#."><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#."><i class="fa fa-youtube"></i></a></li>
-                                            <li><a href="#."><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#."><i class="fa fa-pinterest"></i></a></li>
+                                            @foreach ($SocialLinkModel as $model)
+                                                <li>
+                                                    <a href="{{ $model->Pag_URL }}" target="_blank">
+                                                        <i class="{!! $model->Pag_Image !!}"></i>
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -322,9 +285,14 @@
                                         <div class="social-networks top40">
                                             <div class="social-icons-2">
                                                 <span class="share-it">Share: </span>
-                                                <span><a href="#."> Facebook</a></span>
-                                                <span><a href="#.">Twitter</a></span>
-                                                <span><a href="#."> Google +</a></span>
+                                                <span><a href="https://www.facebook.com/sharer/sharer.php?u={{ request()->fullUrl() }}"
+                                                        target="_blank">Facebook</a></span>
+                                                <span><a href="https://twitter.com/intent/tweet?url={{ request()->fullUrl() }}"
+                                                        target="_blank">Twitter</a></span>
+                                                <span><a href="https://plus.google.com/share?url={{ request()->fullUrl() }}"
+                                                        target="_blank">Google+</a></span>
+                                                <span><a href="https://api.whatsapp.com/send?text={{ urlencode(request()->fullUrl()) }}"
+                                                        target="_blank">WhatsApp</a></span>
                                             </div>
                                         </div>
                                     </div>
@@ -351,7 +319,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div id="map_canvas"></div>
+                <iframe src="{{ $propertyDetails->PMapLink }}" width="100%" height="520px" style="border:0;"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>

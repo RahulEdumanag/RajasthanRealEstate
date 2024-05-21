@@ -25,4 +25,7 @@ class PropertyFeatures extends Authenticatable
     {
         return $this->hasMany(City::class, 'Cit_PFea_Id', 'PFea_Id');
     }
+
+
+    
 }

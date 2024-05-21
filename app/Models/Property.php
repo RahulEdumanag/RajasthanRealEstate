@@ -8,7 +8,7 @@ class Property extends Model
     protected $table = 'tbl_property';
     public $timestamps = false;
     protected $primaryKey = 'PId';
-    protected $fillable = ['PReg_Id', 'PPTyp_Id', 'PFea_Id', 'PCit_Id', 'PPropertycode', 'PTitle', 'PShortDesc', 'PFullDesc', 'PAddress', 'PTag', 'PFeatured', 'PBedRoom', 'PBathRoom', 'PSqureFeet', 'PMapLink', 'PAmount', 'PImages', 'PPlansImage', 'PStatus', 'PCreatedBy', 'PCreatedDate', 'PUpdatedBy', 'PUpdatedDate'];
+    protected $fillable = ['PReg_Id', 'PPTyp_Id', 'PPFea_Id', 'PCit_Id', 'PPropertycode', 'PTitle', 'PShortDesc', 'PFullDesc', 'PAddress', 'PTag', 'PFeatured', 'PBedRoom', 'PBathRoom', 'PSqureFeet', 'PMapLink', 'PAmount', 'PImages', 'PPlansImage', 'PStatus', 'PCreatedBy', 'PCreatedDate', 'PUpdatedBy', 'PUpdatedDate'];
     // Define the relationship with PropertyType
     public function propertyType()
     {
@@ -17,7 +17,7 @@ class Property extends Model
 
     public function propertyFeatures()
     {
-        return $this->belongsTo(PropertyFeatures::class, 'PFea_Id', 'PFea_Id');
+        return $this->belongsTo(PropertyFeatures::class, 'PPFea_Id', 'PFea_Id');
     }
     public function getRandomImage()
     {

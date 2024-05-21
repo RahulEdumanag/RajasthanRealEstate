@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{Property,Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
@@ -34,7 +34,6 @@ class HomeController extends Controller
     {
         return $this->baseQuery()->where('tbl_pagecategory.PagCat_Name', 'Service')->take(4)->get();
     }
-    
     public function index(Request $request)
     {
         $ip = $request->ip();
@@ -59,7 +58,6 @@ class HomeController extends Controller
                 'Vis_CreatedDate' => now(),
             ]);
         }
-        
         $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->take(4)->get();
         $usefulLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'UsefulLink')->orderBy('Pag_SerialOrder', 'desc')->get();
         $today = Carbon::now('Asia/Kolkata');
@@ -88,14 +86,11 @@ class HomeController extends Controller
             ->first();
         $HoroscopeModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Horoscope')->get();
         // dd($HoroscopeModel);
-
- 
         $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
-        ->where('PStatus', '=', '0')
-        ->with('propertyType') // Eager load the propertyType relationship
-        ->get();
-
-        return View::make('frontend.index', compact('PropertyModel','BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+            ->where('PStatus', '=', '0')
+            ->with('propertyType') // Eager load the propertyType relationship
+            ->get();
+        return View::make('frontend.index', compact('PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
     {
@@ -140,7 +135,6 @@ class HomeController extends Controller
     public function usefullLink($hashedId)
     {
         $id = decodeId($hashedId);
-
         $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')
             ->orderBy('Pag_SerialOrder', 'asc')
             ->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')
@@ -148,7 +142,6 @@ class HomeController extends Controller
             ->where('Pag_Status', '=', '0')
             ->where('tbl_page.Pag_Id', '=', $id)
             ->first();
-
         return view('frontend.usefullLink', compact('usefulLinkModel'));
     }
     public function subMenuDetail($id)
@@ -169,11 +162,9 @@ class HomeController extends Controller
             ->where('ConCat_Status', '=', 0)
             ->orderBy('ConCat_CreatedDate', 'desc')
             ->get();
-            $SocialLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Social')->get();
-
-            
+        $SocialLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Social')->get();
         // dd($ContactCategoryModel);
-        return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel','SocialLinkModel'));
+        return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel'));
     }
     public function talk()
     {
@@ -235,17 +226,24 @@ class HomeController extends Controller
             ->first();
         return view('frontend.serviceDetails ', compact('ServiceDetails', 'FacilityModel'));
     }
-
     public function propertyDetails($hashedId)
     {
-         $categoryId = decodeId($hashedId);
-        $propertyDetails = Property::where('PId', $categoryId)
-        ->with('propertyFeatures') // Eager load the propertyType relationship
-             ->first();
-        return view('frontend.propertyDetails ', compact('propertyDetails'));
+        $categoryId = decodeId($hashedId);
+        $propertyDetails = Property::where('PId', $categoryId)->with('propertyFeatures')->first();
+        $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+            ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+            ->where('WebInf_Status', '=', '0')
+            ->first();
+        $SocialLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Social')->get();
+        $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')
+            ->where('Pag_Reg_Id', '=', $this->clientId)
+            ->where('Pag_Status', '=', '0')
+            ->where('tbl_pagecategory.PagCat_Name', 'SocialLink')
+            ->orderBy('Pag_SerialOrder', 'asc')
+            ->get();
+        //    dd($SocialLinkModel);
+        return view('frontend.propertyDetails ', compact('propertyDetails', 'WebInfoModel', 'SocialLinkModel'));
     }
-
-
     public function error()
     {
         return view('frontend.error');
@@ -253,20 +251,11 @@ class HomeController extends Controller
     public function testimonial()
     {
         $TestimonialModel = $this->getTestimonialModel();
- 
-        return view('frontend.testimonial',compact('TestimonialModel'));
+        return view('frontend.testimonial', compact('TestimonialModel'));
     }
     public function faqs()
     {
         return view('frontend.faqs');
-    }
-    public function franchise()
-    {
-        $ContactCategoryModel = ContactCategory::where('ConCat_Reg_Id', '=', $this->clientId)
-            ->where('ConCat_Status', '=', 0)
-            ->orderBy('ConCat_CreatedDate', 'desc')
-            ->get();
-        return view('frontend.franchise', compact('ContactCategoryModel'));
     }
     public function underConstruction()
     {

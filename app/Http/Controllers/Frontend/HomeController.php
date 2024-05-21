@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{PropertyType,City,Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
@@ -96,6 +96,8 @@ class HomeController extends Controller
             ->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Clients'))
             ->orderBy('Pag_SerialOrder', 'asc')
             ->get();
+
+     
         return View::make('frontend.index', compact('ClientModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
@@ -283,6 +285,12 @@ class HomeController extends Controller
             ->with('propertyType') // Eager load the propertyType relationship
             ->paginate(10);
         // dd($PropertyModel);
-        return view('frontend.property', compact('PropertyModel'));
+
+        $CityModel = City::where('Cit_Status', '=', 0)->get();
+        // dd($CityModel);
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+
+
+        return view('frontend.property', compact('PropertyTypeModel','CityModel','PropertyModel'));
     }
 }

@@ -2,9 +2,16 @@
 @section('title', 'Edit')
 @section('content')
     <div class="container-fluid">
-        <h4 class="py-3 mb-4">
-            <span class="text-muted fw-light">Contact/</span> View Contact
-        </h4>
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="py-3">
+                <span class="text-muted fw-light">Contact/</span> View Contact
+            </h5>
+            <div class="page-title-actions">
+                <a href="{{ url()->previous() }}" class="btn btn-primary">
+                    <i class="bi bi-plus-lg"></i> Back to List
+                </a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12 mx-auto">
                 <div class="card mb-4">
@@ -14,11 +21,22 @@
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="row g-3">
+                                @if ($model->Con_PId)
+                                    <div class="col-sm-6">
+                                        <label for="Name" class="form-label">Property Title</label>
+                                        <input type="text" class="form-control" id="Con_PId" name="Con_PId"
+                                            value="{{ optional($model->property)->PTitle }}" placeholder="" readonly>
+                                    </div>
+                                @endif
+
+                                @if ($model->Con_ConCat_Id)
                                 <div class="col-sm-6">
                                     <label for="Name" class="form-label">Contact Category</label>
                                     <input type="text" class="form-control" id="Con_Name" name="Con_Name"
-                                        value="{{ $value->Con_ConCat_Id ?? 'N/A' }}" placeholder="" readonly>
+                                        value="{{ $model->Con_ConCat_Id ?? 'N/A' }}" placeholder="" readonly>
                                 </div>
+                                @endif
+
                                 <div class="col-sm-6">
                                     <label for="Name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="Con_Name" name="Con_Name"

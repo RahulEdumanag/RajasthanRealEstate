@@ -24,4 +24,9 @@ class Property extends Model
         $images = explode(',', $this->PImages);
         return trim($images[array_rand($images)]);
     }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class, 'Cit_Id', 'PCit_Id');
+    }
 }

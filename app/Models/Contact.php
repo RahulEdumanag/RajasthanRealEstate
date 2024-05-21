@@ -20,6 +20,15 @@ class Contact extends Model
         'Con_Number',
         'Con_Desc',
         'Con_ConCat_Id',
-        'Con_Attachment', // Add Con_Attachment to the fillable array
+        'Con_Attachment', 
+        'Con_PId',
     ];
+
+    // Contact.php
+
+public function property()
+{
+    return $this->belongsTo(Property::class, 'Con_PId', 'PId');
+}
+
 }

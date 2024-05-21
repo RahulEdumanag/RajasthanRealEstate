@@ -47,27 +47,27 @@
                             </div>
                         @endforeach
                         <!-- <div class="item">
-                                                                        <div class="property_item heading_space">
-                                                                          <div class="image">
-                                                                            <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                                                            <div class="price"><span class="tag">For Sale</span></div>
-                                                                            <div class="property_meta">
-                                                                              <h4>$8,600</h4><p>For Small Family House</p>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                      </div>
-                                                                      <div class="item">
-                                                                        <div class="property_item heading_space">
-                                                                          <div class="image">
-                                                                            <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                                                            <div class="price"><span class="tag">For Sale</span></div>
-                                                                            <div class="property_meta">
-                                                                              <h4>$8,600</h4><p>For Small Family House</p>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                      </div> -->
+                                                                                        <div class="property_item heading_space">
+                                                                                          <div class="image">
+                                                                                            <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
+                                                                                            <div class="price"><span class="tag">For Sale</span></div>
+                                                                                            <div class="property_meta">
+                                                                                              <h4>$8,600</h4><p>For Small Family House</p>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      <div class="item">
+                                                                                        <div class="property_item heading_space">
+                                                                                          <div class="image">
+                                                                                            <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
+                                                                                            <div class="price"><span class="tag">For Sale</span></div>
+                                                                                            <div class="property_meta">
+                                                                                              <h4>$8,600</h4><p>For Small Family House</p>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div> -->
                     </div>
                 </div>
             </div>
@@ -252,25 +252,41 @@
                                 </div>
                                 <div class="row top30">
                                     <div class="col-xs-12">
-                                        <form class="findus">
+                                        @if (session('success'))
+                                            <div class="alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+                                        @if (session('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
+                                        <form method="post" action="{{ route('contact.Cstore') }}" class="findus">
+                                            @csrf
+                                            <input type="hidden" name="Con_PId" value="{{ $propertyDetails->PId }}">
+
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="single-query">
-                                                        <input type="text" placeholder="Your Name"
+                                                        
+                                                        <input type="text" autocomplete="off" placeholder="Your Name"
+                                                            id="Con_Name" name='Con_Name' class="keyword-input">
+                                                    </div>
+                                                    <div class="single-query">
+                                                        <input type="number" autocomplete="off"
+                                                            placeholder="Phone Number" name='Con_Number' id="Con_Number"
                                                             class="keyword-input">
                                                     </div>
                                                     <div class="single-query">
-                                                        <input type="text" placeholder="Phone Number"
-                                                            class="keyword-input">
-                                                    </div>
-                                                    <div class="single-query">
-                                                        <input type="text" placeholder="Email Adress"
+                                                        <input type="email" autocomplete="off"
+                                                            placeholder="Email Adress" id="Con_Email" name='Con_Email'
                                                             class="keyword-input">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="single-query">
-                                                        <textarea placeholder="Massege"></textarea>
+                                                        <textarea name='Con_Desc' id="Con_Desc" autocomplete="off" placeholder="Massege"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
@@ -370,7 +386,12 @@
                                         <h3><a
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                         </h3>
-                                        <span class="bottom10">{{ $value->PAddress }}</span>
+                                        <span class="bottom10">
+
+                                            @foreach ($value->cities as $city)
+                                                <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                            @endforeach
+                                        </span>
                                         <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                     </div>
                                     <div class="favroute clearfix">
@@ -378,15 +399,14 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                <li><a href="#."><i class="icon-video"></i></a></li>
-                                                <li><a href="#."><i class="icon-like"></i></a></li>
-                                            </ul> -->
+                                                                <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                <li><a href="#."><i class="icon-like"></i></a></li>
+                                                            </ul> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>

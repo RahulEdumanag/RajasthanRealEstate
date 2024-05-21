@@ -265,6 +265,13 @@
                                             <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
                                             <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                         </div>
+                                        @if ($value->PFeatured == 1)
+                                            <div class="feature">
+                                                <span class="tag" style="z-index:2;">
+                                                    Featured
+                                                </span>
+                                            </div>
+                                        @endif
                                         @if ($value->propertyType)
                                             <div class="price"><span
                                                     class="tag">{{ $value->propertyType->PTyp_Name }}</span></div>
@@ -281,7 +288,13 @@
                                         <div class="proerty_text">
                                             <h3><a href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
                                                 </a></h3>
-                                            <span class="bottom10">{{ $value->PAddress }}</span>
+                                            <span class="bottom10">
+
+
+                                                @foreach ($value->cities as $city)
+                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                                @endforeach
+                                            </span>
                                             <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                         </div>
                                         <div class="favroute clearfix">
@@ -295,61 +308,61 @@
                             </div>
                         @endforeach
                         <!-- <div class="item">
-                                                    <div class="property_item bottom40">
-                                                        <div class="image">
-                                                            <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin"
-                                                                class="img-responsive">
-                                                            <div class="property_meta">
-                                                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                                                <span><i class="fa fa-bed"></i>2</span>
-                                                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                                            </div>
-                                                            <div class="price"><span class="tag">For Sale</span></div>
-                                                            <div class="overlay">
-                                                                <div class="centered"><a class="link_arrow white_border" href="#">View
-                                                                        Detail</a></div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="proerty_content">
-                                                            <div class="proerty_text">
-                                                                <h3><a href="#">House in New York City</a></h3>
-                                                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                                                <p><strong>₹83,600,200</strong></p>
-                                                            </div>
-                                                            <div class="favroute clearfix">
-                                                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="property_item bottom40">
-                                                        <div class="image">
-                                                            <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}"
-                                                                alt="listin" class="img-responsive">
-                                                            <div class="property_meta">
-                                                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                                                <span><i class="fa fa-bed"></i>2</span>
-                                                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                                            </div>
-                                                            <div class="price"><span class="tag">For Rent</span></div>
-                                                            <div class="overlay">
-                                                                <div class="centered"><a class="link_arrow white_border" href="#">View
-                                                                        Detail</a></div>
+                                                            <div class="property_item bottom40">
+                                                                <div class="image">
+                                                                    <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin"
+                                                                        class="img-responsive">
+                                                                    <div class="property_meta">
+                                                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                                                        <span><i class="fa fa-bed"></i>2</span>
+                                                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                                                    </div>
+                                                                    <div class="price"><span class="tag">For Sale</span></div>
+                                                                    <div class="overlay">
+                                                                        <div class="centered"><a class="link_arrow white_border" href="#">View
+                                                                                Detail</a></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="proerty_content">
+                                                                    <div class="proerty_text">
+                                                                        <h3><a href="#">House in New York City</a></h3>
+                                                                        <span class="bottom10">Merrick Way, Miami, USA</span>
+                                                                        <p><strong>₹83,600,200</strong></p>
+                                                                    </div>
+                                                                    <div class="favroute clearfix">
+                                                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="proerty_content">
-                                                            <div class="proerty_text">
-                                                                <h3><a href="#">House in New York City</a></h3>
-                                                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                                                <p><strong>₹8,600 Per Month</strong></p>
+                                                        <div class="item">
+                                                            <div class="property_item bottom40">
+                                                                <div class="image">
+                                                                    <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}"
+                                                                        alt="listin" class="img-responsive">
+                                                                    <div class="property_meta">
+                                                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                                                        <span><i class="fa fa-bed"></i>2</span>
+                                                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                                                    </div>
+                                                                    <div class="price"><span class="tag">For Rent</span></div>
+                                                                    <div class="overlay">
+                                                                        <div class="centered"><a class="link_arrow white_border" href="#">View
+                                                                                Detail</a></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="proerty_content">
+                                                                    <div class="proerty_text">
+                                                                        <h3><a href="#">House in New York City</a></h3>
+                                                                        <span class="bottom10">Merrick Way, Miami, USA</span>
+                                                                        <p><strong>₹8,600 Per Month</strong></p>
+                                                                    </div>
+                                                                    <div class="favroute clearfix">
+                                                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="favroute clearfix">
-                                                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+                                                        </div> -->
                     </div>
                 </div>
             </div>

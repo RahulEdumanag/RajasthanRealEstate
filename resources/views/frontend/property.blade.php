@@ -223,13 +223,10 @@
                 </div>
             </div>
             <div class="row bottom30">
-
-
                 @foreach ($PropertyModel as $value)
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="property_item heading_space">
                             <div class="image">
-
                                 @php
                                     $randomImage = $value->getRandomImage();
                                 @endphp
@@ -260,34 +257,26 @@
                                     <h3><a
                                             href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                     </h3>
-                                    <span class="bottom10">{{ $value->PAddress }}</span>
+                                    <span class="bottom10">
+                                        @foreach ($value->cities as $city)
+                                            <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                        @endforeach
+                                    </span>
                                     <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                 </div>
-
                                 <div class="favroute clearfix">
                                     <p class="pull-left"><i class="icon-calendar2"></i>
                                         {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                     </p>
-                                    <!-- <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
-
-
             </div>
             <div class="row top40">
                 <div class="col-md-12">
-                    <ul class="pager">
-                        <li><a href="#.">1</a></li>
-                        <li class="active"><a href="#.">2</a></li>
-                        <li><a href="#.">3</a></li>
-                    </ul>
+                    {{ $PropertyModel->links() }} <!-- Display pagination links -->
                 </div>
             </div>
         </div>

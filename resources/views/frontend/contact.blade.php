@@ -30,6 +30,16 @@
                                     <div class="line_2"></div>
                                     <div class="line_3"></div>
                                 </div>
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                 <form method="post" action="{{ route('contact.Cstore') }}" id="contact-form"
                                     class="contact-form">
                                     @csrf
@@ -62,11 +72,11 @@
                                     </div>
                                     <div class="row">
                                         <!-- <div class="col-md-12">
-                                            <div class="form-group single-query">
-                                                <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
-                                                    class="img-responsive" alt="image">
-                                            </div>
-                                        </div> -->
+                                                <div class="form-group single-query">
+                                                    <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
+                                                        class="img-responsive" alt="image">
+                                                </div>
+                                            </div> -->
                                         <div class="col-md-12 top20">
                                             <div class="form-group single-query">
                                                 <button type="submit" class="btn_fill" id="btn_submit"

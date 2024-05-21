@@ -187,6 +187,7 @@ class HomeController extends Controller
         try {
             $model = new Contact();
             $model->Con_Reg_Id = $request->input('Con_Reg_Id', $this->clientId);
+            $model->Con_PId = $request->Con_PId;
             $model->Con_Name = $request->Con_Name;
             $model->Con_Email = $request->Con_Email;
             $model->Con_Number = $request->Con_Number;
@@ -220,7 +221,7 @@ class HomeController extends Controller
     {
         $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->get();
         $PId = decodeId($hashedId);
-        $ServiceDetails = Page::where('Pag_Id', $categoryId)
+        $ServiceDetails = Page::where('Pag_Id', $PId)
             ->where('Pag_Reg_Id', $this->clientId)
             ->where('Pag_Status', '=', '0')
             ->first();
@@ -277,7 +278,7 @@ class HomeController extends Controller
         $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
         ->where('PStatus', '=', '0')
         ->with('propertyType') // Eager load the propertyType relationship
-        ->get();
+       -> paginate(10); 
 // dd($PropertyModel);
         return view('frontend.property',compact('PropertyModel'));
     }

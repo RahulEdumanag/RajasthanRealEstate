@@ -25,4 +25,12 @@ class State extends Authenticatable
     {
         return $this->hasMany(City::class, 'Cit_Sta_Id', 'Sta_Id');
     }
+
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'Cit_Sta_Id', 'Sta_Id');
+    }
+
+    
 }

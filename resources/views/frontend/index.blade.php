@@ -1,6 +1,23 @@
 @extends('frontend.layouts.master')
 @section('title', 'Home')
 @section('content')
+<style>
+        .no-results-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .no-results-text {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .no-results-image img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
     <?php
     use Carbon\Carbon;
     ?>
@@ -237,6 +254,17 @@
                     <div class="line_3"></div>
                 </div>
             </div>
+            @if ($PropertyModel->isEmpty())
+                    <div class="col-md-12">
+                        <div class="no-results-container">
+                            <h4 class="no-results-text">No results found, please try again.</h4>
+                            <div class="no-results-image">
+                                <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
+                                    alt="No results found image"style="height: 25%; width: 25%;">
+                            </div>
+                        </div>
+                    </div>
+                @else
             <div class="col-md-12">
                 <div class="row">
                     <div id="property-2-slider" class="owl-carousel">
@@ -353,6 +381,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </section>
     <section id="image-text" class="padding-bottom-top-120 parallaxie">

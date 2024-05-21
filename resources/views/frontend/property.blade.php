@@ -24,19 +24,20 @@
                     <div class="line_3"></div>
                 </div>
             </div>
+            <form class="findus">
             <div class="row">
-                <form class="findus">
+               
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
                             <label>Keyword</label>
-                            <input class="keyword-input" placeholder="Any" required type="text" name="keyword">
+                            <input class="keyword-input" placeholder="Any"  type="text" name="keyword">
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
                             <label>Loction</label>
-                            <select class="selectpicker" data-live-search="true">
-                                <option selected disabled>Select City</option>
+                            <select class="selectpicker" data-live-search="true" name="location">
+                                <option selected disabled >Select City</option>
                                 @foreach ($CityModel as $value)
                                     <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
                                 @endforeach
@@ -46,7 +47,7 @@
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
                             <label>Property Type</label>
-                            <select class="selectpicker" data-live-search="true">
+                            <select class="selectpicker" data-live-search="true" name="property_type">
                                 <option selected disabled>Select Property Type</option>
                                 @foreach ($PropertyTypeModel as $value)
                                     <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}</option>
@@ -54,68 +55,65 @@
                             </select>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="row search-2">
-                <form class="findus">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="single-query form-group">
-                                    <label>Bed Room</label>
-                                    <select class="selectpicker" data-live-search="true">
-                                        <option class="active">Bed Room </option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-
-                                    </select>
-                                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="single-query form-group">
+                                <label>Bed Room</label>
+                                <select class="selectpicker" data-live-search="true" name="bedroom">
+                                <option selected disabled>Bed Room</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                </select>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="single-query form-group">
-                                    <label>Bath Room</label>
-                                    <select class="selectpicker" data-live-search="true">
-                                        <option class="active">Bed Room</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="single-query form-group">
+                                <label>Bath Room</label>
+                                <select class="selectpicker" data-live-search="true" name="bathroom">
+                                    <option selected disabled>Bath Room</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="single-query form-group">
-                                    <label>Squre Fit Min</label>
-                                    <input class="keyword-input" placeholder="Any" type="text">
-                                </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="single-query form-group" >
+                                <label>Squre Fit Min</label>
+                                <input class="keyword-input" placeholder="Any" type="text" name="square_fit_min">
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="single-query form-group">
-                                    <label>Squre Fit Max</label>
-                                    <input class="keyword-input" placeholder="Any" type="text">
-                                </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="single-query form-group">
+                                <label>Squre Fit Max</label>
+                                <input class="keyword-input" placeholder="Any" type="text" name="square_fit_max">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 col-sm-6 col-xs-12 text-right">
-                        <div class="query-submit-button top10">
-                            <input class="btn_fill" value="Search" type="submit">
-                        </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-12 text-right">
+                    <div class="query-submit-button top10">
+                        <input class="btn_fill" value="Search" type="submit">
                     </div>
-                </form>
+                </div>
+                
             </div>
-
+            </form>
         </div>
     </section>
     <section id="listings" class="padding">

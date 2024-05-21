@@ -140,70 +140,59 @@
                                     <div class="col-md-12">
                                         <div class="single-query">
                                             <input class="keyword-input" placeholder="Keyword (e.g. 'office')"
-                                                type="text">
+                                                type="text" name="keyword">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="single-query">
-                                            <select class="selectpicker" data-live-search="true">
-                                                <option class="active">Loction</option>
-                                                <option>Loction - 1</option>
-                                                <option>Loction - 2</option>
-                                                <option>Loction - 3</option>
+                                            <select class="selectpicker" data-live-search="true" name="location">
+                                                <option selected disabled>Select City</option>
+                                                @foreach ($CityModel as $value)
+                                                    <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="single-query">
-                                            <select class="selectpicker" data-live-search="true">
-                                                <option class="active">Property Type</option>
-                                                <option>Property Type - 1</option>
-                                                <option>Property Type - 2</option>
-                                                <option>Property Type - 3</option>
-                                                <option>Property Type - 4</option>
+                                            <select class="selectpicker" data-live-search="true" name="property_type">
+                                                <option selected disabled>Select Property Type</option>
+                                                @foreach ($PropertyTypeModel as $value)
+                                                    <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="single-query">
-                                            <select class="selectpicker" data-live-search="true">
-                                                <option class="active">Property Status</option>
-                                                <option>Property Status - 1</option>
-                                                <option>Property Status - 2</option>
-                                                <option>Property Status - 3</option>
-                                                <option>Property Status - 4</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                 </div>
-                            </form>
-                            <div class="row search-2">
-                                <form class="findus">
+                                <div class="row search-2">
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
-                                                    <select class="selectpicker" data-live-search="true">
-                                                        <option class="active">Min Beds</option>
+                                                    <select class="selectpicker" data-live-search="true" name="bedroom">
+                                                        <option selected disabled>Min Beds</option>
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
                                                         <option>5</option>
                                                         <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
-                                                    <select class="selectpicker" data-live-search="true">
-                                                        <option class="active">Min Baths</option>
+                                                    <select class="selectpicker" data-live-search="true" name="bathroom">
+                                                        <option selected disabled>Min Baths</option>
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
                                                         <option>4</option>
                                                         <option>5</option>
-                                                        <option>6</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -213,13 +202,13 @@
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
-                                                    <input class="keyword-input" placeholder="Min Area (sq ft)"
+                                                    <input class="keyword-input" name="square_fit_min" placeholder="Min Area (sq ft)"
                                                         type="text">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
-                                                    <input class="keyword-input" placeholder="Max Area (sq ft)"
+                                                    <input class="keyword-input" name="square_fit_max" placeholder="Max Area (sq ft)"
                                                         type="text">
                                                 </div>
                                             </div>
@@ -230,8 +219,8 @@
                                             <button type="submit" class="btn_fill">Search</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -306,61 +295,61 @@
                             </div>
                         @endforeach
                         <!-- <div class="item">
-                                                                <div class="property_item bottom40">
-                                                                    <div class="image">
-                                                                        <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin"
-                                                                            class="img-responsive">
-                                                                        <div class="property_meta">
-                                                                            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                                                            <span><i class="fa fa-bed"></i>2</span>
-                                                                            <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                                                        </div>
-                                                                        <div class="price"><span class="tag">For Sale</span></div>
-                                                                        <div class="overlay">
-                                                                            <div class="centered"><a class="link_arrow white_border" href="#">View
-                                                                                    Detail</a></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="proerty_content">
-                                                                        <div class="proerty_text">
-                                                                            <h3><a href="#">House in New York City</a></h3>
-                                                                            <span class="bottom10">Merrick Way, Miami, USA</span>
-                                                                            <p><strong>₹83,600,200</strong></p>
-                                                                        </div>
-                                                                        <div class="favroute clearfix">
-                                                                            <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item">
-                                                                <div class="property_item bottom40">
-                                                                    <div class="image">
-                                                                        <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}"
-                                                                            alt="listin" class="img-responsive">
-                                                                        <div class="property_meta">
-                                                                            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                                                            <span><i class="fa fa-bed"></i>2</span>
-                                                                            <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                                                        </div>
-                                                                        <div class="price"><span class="tag">For Rent</span></div>
-                                                                        <div class="overlay">
-                                                                            <div class="centered"><a class="link_arrow white_border" href="#">View
-                                                                                    Detail</a></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="proerty_content">
-                                                                        <div class="proerty_text">
-                                                                            <h3><a href="#">House in New York City</a></h3>
-                                                                            <span class="bottom10">Merrick Way, Miami, USA</span>
-                                                                            <p><strong>₹8,600 Per Month</strong></p>
-                                                                        </div>
-                                                                        <div class="favroute clearfix">
-                                                                            <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div> -->
+                                                                                    <div class="property_item bottom40">
+                                                                                        <div class="image">
+                                                                                            <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin"
+                                                                                                class="img-responsive">
+                                                                                            <div class="property_meta">
+                                                                                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                                                                                <span><i class="fa fa-bed"></i>2</span>
+                                                                                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                                                                            </div>
+                                                                                            <div class="price"><span class="tag">For Sale</span></div>
+                                                                                            <div class="overlay">
+                                                                                                <div class="centered"><a class="link_arrow white_border" href="#">View
+                                                                                                        Detail</a></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="proerty_content">
+                                                                                            <div class="proerty_text">
+                                                                                                <h3><a href="#">House in New York City</a></h3>
+                                                                                                <span class="bottom10">Merrick Way, Miami, USA</span>
+                                                                                                <p><strong>₹83,600,200</strong></p>
+                                                                                            </div>
+                                                                                            <div class="favroute clearfix">
+                                                                                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="item">
+                                                                                    <div class="property_item bottom40">
+                                                                                        <div class="image">
+                                                                                            <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}"
+                                                                                                alt="listin" class="img-responsive">
+                                                                                            <div class="property_meta">
+                                                                                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                                                                                <span><i class="fa fa-bed"></i>2</span>
+                                                                                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                                                                            </div>
+                                                                                            <div class="price"><span class="tag">For Rent</span></div>
+                                                                                            <div class="overlay">
+                                                                                                <div class="centered"><a class="link_arrow white_border" href="#">View
+                                                                                                        Detail</a></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="proerty_content">
+                                                                                            <div class="proerty_text">
+                                                                                                <h3><a href="#">House in New York City</a></h3>
+                                                                                                <span class="bottom10">Merrick Way, Miami, USA</span>
+                                                                                                <p><strong>₹8,600 Per Month</strong></p>
+                                                                                            </div>
+                                                                                            <div class="favroute clearfix">
+                                                                                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div> -->
                     </div>
                 </div>
             </div>
@@ -392,7 +381,8 @@
                         <div id="partner_slider_2" class="owl-carousel">
                             @foreach ($ClientModel as $value)
                                 <div class="item">
-                                    <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}" alt="Our Partner">
+                                    <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
+                                        alt="Our Partner">
                                 </div>
                             @endforeach
                         </div>

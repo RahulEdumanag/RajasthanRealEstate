@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{PropertyType,City,Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
@@ -86,19 +86,45 @@ class HomeController extends Controller
             ->first();
         $HoroscopeModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Horoscope')->get();
         // dd($HoroscopeModel);
-        $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
-            ->where('PStatus', '=', '0')
-            ->with('propertyType') // Eager load the propertyType relationship
-            ->get();
         $ClientModel = Page::where('Pag_Status', '=', 0)
             ->where('Pag_Reg_Id', '=', $this->clientId)
             ->with('category')
             ->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Clients'))
             ->orderBy('Pag_SerialOrder', 'asc')
             ->get();
-
-     
-        return View::make('frontend.index', compact('ClientModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+        $query = Property::where('PReg_Id', '=', $this->clientId)
+            ->where('PStatus', '=', '0')
+            ->where('PFeatured', '=', 1)
+            ->with('propertyType');
+        if ($request->filled('keyword')) {
+            $query->where('PTitle', 'like', '%' . $request->keyword . '%');
+        }
+        if ($request->filled('location')) {
+            $query->whereHas('cities', function ($q) use ($request) {
+                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            });
+        }
+        if ($request->filled('property_type')) {
+            $query->whereHas('propertyType', function ($q) use ($request) {
+                $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
+            });
+        }
+        if ($request->filled('bedroom')) {
+            $query->where('PBedRoom', $request->bedroom);
+        }
+        if ($request->filled('bathroom')) {
+            $query->where('PBathRoom', $request->bathroom);
+        }
+        if ($request->filled('square_fit_min')) {
+            $query->where('PSqureFeet', '>=', $request->square_fit_min);
+        }
+        if ($request->filled('square_fit_max')) {
+            $query->where('PSqureFeet', '<=', $request->square_fit_max);
+        }
+        $PropertyModel = $query->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        return View::make('frontend.index', compact('ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
     {
@@ -278,19 +304,39 @@ class HomeController extends Controller
     {
         return view('frontend.calculator');
     }
-    public function property()
+    public function property(Request $request)
     {
-        $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
+        $query = Property::where('PReg_Id', '=', $this->clientId)
             ->where('PStatus', '=', '0')
-            ->with('propertyType') // Eager load the propertyType relationship
-            ->paginate(10);
-        // dd($PropertyModel);
-
+            ->with('propertyType');
+        if ($request->filled('keyword')) {
+            $query->where('PTitle', 'like', '%' . $request->keyword . '%');
+        }
+        if ($request->filled('location')) {
+            $query->whereHas('cities', function ($q) use ($request) {
+                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            });
+        }
+        if ($request->filled('property_type')) {
+            $query->whereHas('propertyType', function ($q) use ($request) {
+                $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
+            });
+        }
+        if ($request->filled('bedroom')) {
+            $query->where('PBedRoom', $request->bedroom);
+        }
+        if ($request->filled('bathroom')) {
+            $query->where('PBathRoom', $request->bathroom);
+        }
+        if ($request->filled('square_fit_min')) {
+            $query->where('PSqureFeet', '>=', $request->square_fit_min);
+        }
+        if ($request->filled('square_fit_max')) {
+            $query->where('PSqureFeet', '<=', $request->square_fit_max);
+        }
+        $PropertyModel = $query->paginate(15);
         $CityModel = City::where('Cit_Status', '=', 0)->get();
-        // dd($CityModel);
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
-
-
-        return view('frontend.property', compact('PropertyTypeModel','CityModel','PropertyModel'));
+        return view('frontend.property', compact('PropertyTypeModel', 'CityModel', 'PropertyModel'));
     }
 }

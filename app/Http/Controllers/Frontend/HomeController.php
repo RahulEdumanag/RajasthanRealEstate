@@ -90,7 +90,13 @@ class HomeController extends Controller
             ->where('PStatus', '=', '0')
             ->with('propertyType') // Eager load the propertyType relationship
             ->get();
-        return View::make('frontend.index', compact('PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+        $ClientModel = Page::where('Pag_Status', '=', 0)
+            ->where('Pag_Reg_Id', '=', $this->clientId)
+            ->with('category')
+            ->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Clients'))
+            ->orderBy('Pag_SerialOrder', 'asc')
+            ->get();
+        return View::make('frontend.index', compact('ClientModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
     {
@@ -242,15 +248,12 @@ class HomeController extends Controller
             ->where('tbl_pagecategory.PagCat_Name', 'SocialLink')
             ->orderBy('Pag_SerialOrder', 'asc')
             ->get();
-
-            $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
+        $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
             ->where('PStatus', '=', '0')
             ->with('propertyType') // Eager load the propertyType relationship
             ->get();
-
-
         //    dd($SocialLinkModel);
-        return view('frontend.propertyDetails ', compact('propertyDetails', 'WebInfoModel', 'SocialLinkModel','PropertyModel'));
+        return view('frontend.propertyDetails ', compact('propertyDetails', 'WebInfoModel', 'SocialLinkModel', 'PropertyModel'));
     }
     public function error()
     {
@@ -276,10 +279,10 @@ class HomeController extends Controller
     public function property()
     {
         $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
-        ->where('PStatus', '=', '0')
-        ->with('propertyType') // Eager load the propertyType relationship
-       -> paginate(10); 
-// dd($PropertyModel);
-        return view('frontend.property',compact('PropertyModel'));
+            ->where('PStatus', '=', '0')
+            ->with('propertyType') // Eager load the propertyType relationship
+            ->paginate(10);
+        // dd($PropertyModel);
+        return view('frontend.property', compact('PropertyModel'));
     }
 }

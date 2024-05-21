@@ -241,8 +241,15 @@ class HomeController extends Controller
             ->where('tbl_pagecategory.PagCat_Name', 'SocialLink')
             ->orderBy('Pag_SerialOrder', 'asc')
             ->get();
+
+            $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
+            ->where('PStatus', '=', '0')
+            ->with('propertyType') // Eager load the propertyType relationship
+            ->get();
+
+
         //    dd($SocialLinkModel);
-        return view('frontend.propertyDetails ', compact('propertyDetails', 'WebInfoModel', 'SocialLinkModel'));
+        return view('frontend.propertyDetails ', compact('propertyDetails', 'WebInfoModel', 'SocialLinkModel','PropertyModel'));
     }
     public function error()
     {
@@ -267,6 +274,11 @@ class HomeController extends Controller
     }
     public function property()
     {
-        return view('frontend.property');
+        $PropertyModel = Property::where('PReg_Id', '=', $this->clientId)
+        ->where('PStatus', '=', '0')
+        ->with('propertyType') // Eager load the propertyType relationship
+        ->get();
+// dd($PropertyModel);
+        return view('frontend.property',compact('PropertyModel'));
     }
 }

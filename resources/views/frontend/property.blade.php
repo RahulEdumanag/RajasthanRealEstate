@@ -223,262 +223,63 @@
                 </div>
             </div>
             <div class="row bottom30">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="property_item heading_space">
-                        <div class="image">
-                            <img src="{{ asset('assets/frontend/images/property-listing-1.jpg') }}" alt="listin" class="img-responsive">
-                            <div class="overlay">
-                                <div class="centered"><a class="link_arrow white_border" href="#">View Detail</a>
-                                </div>
-                            </div>
-                            <div class="feature"><span class="tag">Featured</span></div>
-                            <div class="price"><span class="tag">For Sale</span></div>
-                            <div class="property_meta">
-                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                <span><i class="fa fa-bed"></i>2</span>
-                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                            </div>
-                        </div>
-                        <div class="proerty_content">
-                            <div class="proerty_text">
-                                <h3><a href="#">House in New York City</a></h3>
-                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                <p><strong>$83,600,200</strong></p>
-                            </div>
-                            <div class="favroute clearfix">
-                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                <ul class="pull-right">
-                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="property_item heading_space">
-                        <div class="image">
-                            <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin" class="img-responsive">
-                            <div class="feature"><span class="tag">Featured</span></div>
-                            <div class="price"><span class="tag">For Sale</span></div>
-                            <div class="overlay">
-                                <div class="centered"><a class="link_arrow white_border" href="#">View Detail</a>
-                                </div>
-                            </div>
-                            <div class="property_meta">
-                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                <span><i class="fa fa-bed"></i>2</span>
-                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                            </div>
-                        </div>
-                        <div class="proerty_content">
-                            <div class="proerty_text">
-                                <h3><a href="#">House in New York City</a></h3>
-                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                <p><strong>$83,600,200</strong></p>
-                            </div>
-                            <div class="favroute clearfix">
-                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                <ul class="pull-right">
-                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="property_item heading_space">
-                        <div class="image">
-                            <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}" alt="listin" class="img-responsive">
-                            <div class="feature"><span class="tag">Featured</span></div>
-                            <div class="price"><span class="tag">For Rent</span></div>
-                            <div class="overlay">
-                                <div class="centered"><a class="link_arrow white_border" href="#">View Detail</a>
-                                </div>
-                            </div>
-                            <div class="property_meta">
-                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                <span><i class="fa fa-bed"></i>2</span>
-                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                            </div>
-                        </div>
-                        <div class="proerty_content">
-                            <div class="proerty_text">
-                                <h3><a href="#">House in New York City</a></h3>
-                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                <p><strong>$83,600,200</strong></p>
-                            </div>
-                            <div class="favroute clearfix">
-                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                <ul class="pull-right">
-                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="property_item heading_space">
-                        <div class="property_head default_clr text-center">
-                            <a href="#.">
-                                <h3 class="captlize p-white ">The Helux villa</h3>
-                            </a>
-                            <img src="{{ asset('assets/frontend/images/listing.png') }}" alt="listin" class="start_tag">
-                            <p class="p-font-15 p-white ">45 Regent Street, London, UK</p>
-                        </div>
-                        <div class="image">
-                            <img src="{{ asset('assets/frontend/images/property-listing-4.jpg') }}" alt="listin" class="img-responsive">
-                            <div class="price"><span class="tag">For Sale</span></div>
-                            <div class="overlay">
-                                <div class="centered"><a class="link_arrow white_border" href="#">View Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property_meta">
-                            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                            <span><i class="fa fa-bed"></i>2</span>
-                            <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                        </div>
-                        <div class="proerty_content">
-                            <div class="proerty_text">
-                                <p><strong>$83,600,200</strong></p>
-                            </div>
-                            <div class="favroute clearfix">
-                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                <ul class="pull-right">
-                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="property_item heading_space">
-                        <div class="property_head text-center">
-                            <a href="#.">
-                                <h3 class="captlize">The Helux villa</h3>
-                            </a>
-                            <p class="p-font-15">45 Regent Street, London, UK</p>
-                        </div>
-                        <div class="image">
-                            <img src="{{ asset('assets/frontend/images/property-listing-5.jpg') }}" alt="listin" class="img-responsive">
-                            <div class="overlay">
-                                <div class="centered"><a class="link_arrow white_border" href="#">View Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property_meta">
-                            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                            <span><i class="fa fa-bed"></i>2</span>
-                            <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                        </div>
-                        <div class="proerty_content">
-                            <div class="proerty_text">
-                                <p><strong>$83,600,200</strong></p>
-                            </div>
-                            <div class="favroute clearfix">
-                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                <ul class="pull-right">
-                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="property_item heading_space">
-                        <div class="property_head text-center">
-                            <a href="#.">
-                                <h3 class="captlize">The Helux villa</h3>
-                            </a>
-                            <p class="p-font-15">45 Regent Street, London, UK</p>
-                        </div>
-                        <div class="image">
-                            <img src="{{ asset('assets/frontend/images/property-listing-1.jpg') }}" alt="listin" class="img-responsive">
-                            <div class="overlay">
-                                <div class="centered"><a class="link_arrow white_border" href="#">View Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="property_meta">
-                            <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                            <span><i class="fa fa-bed"></i>2</span>
-                            <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                        </div>
-                        <div class="proerty_content">
-                            <div class="proerty_text">
-                                <p><strong>$83,600,200</strong></p>
-                            </div>
-                            <div class="favroute clearfix">
-                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                <ul class="pull-right">
-                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="project1 clearfix">
-                        <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
-                            <div class="gri">
-                                <figure class="effect-layla">
-                                    <img src="{{ asset('assets/frontend/images/b-d-property.jpg') }}" alt="img" />
-                                    <figcaption> </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
-                                <div class="item background-color-white">
-                                    <h4>Residential Project-d05</h4>
-                                    <div class="small-title">
-                                        <div class="line1"></div>
-                                        <div class="line2"></div>
-                                        <div class="clearfix"></div>
+
+
+                @foreach ($PropertyModel as $value)
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="property_item heading_space">
+                            <div class="image">
+
+                                @php
+                                    $randomImage = $value->getRandomImage();
+                                @endphp
+                                <img src="{{ asset('uploads/' . $randomImage) }}" alt="listin" class="img-responsive">
+                                <div class="overlay">
+                                    <div class="centered"><a class="link_arrow white_border"
+                                            href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
+                                            Detail</a>
                                     </div>
-                                    <div class="client-loc">
-                                        <p><span>Client:</span> Bryan Doe Joe</p>
-                                        <p><span>Location:</span> Mountain Line CA 62548</p>
-                                        <p><span>Value:</span> $15,000</p>
+                                </div>
+                                @if ($value->PFeatured == 1)
+                                    <div class="feature">
+                                        <span class="tag">
+                                            Featured
+                                        </span>
                                     </div>
-                                    <a href="#." class="link_arrow">read more</a>
+                                @endif
+                                <div class="price"><span class="tag">{{ $value->propertyType->PTyp_Name }}</span>
+                                </div>
+                                <div class="property_meta">
+                                    <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} sq ft </span>
+                                    <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
+                                    <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
+                                </div>
+                            </div>
+                            <div class="proerty_content">
+                                <div class="proerty_text">
+                                    <h3><a
+                                            href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
+                                    </h3>
+                                    <span class="bottom10">{{ $value->PAddress }}</span>
+                                    <p><strong>₹{{ $value->PAmount }}/-</strong></p>
+                                </div>
+
+                                <div class="favroute clearfix">
+                                    <p class="pull-left"><i class="icon-calendar2"></i>
+                                        {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
+                                    </p>
+                                    <!-- <ul class="pull-right">
+                                            <li><a href="#."><i class="icon-video"></i></a></li>
+                                            <li><a href="#."><i class="icon-like"></i></a></li>
+                                        </ul> -->
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="project1 clearfix">
-                        <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
-                            <div class="gri">
-                                <figure class="effect-layla">
-                                    <img src="{{ asset('assets/frontend/images/b-d-property-2.jpg') }}" alt="img" />
-                                    <figcaption> </figcaption>
-                                </figure>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
-                                <div class="item background-color-white">
-                                    <h4>Residential Project-d05</h4>
-                                    <div class="small-title">
-                                        <div class="line1"></div>
-                                        <div class="line2"></div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="client-loc">
-                                        <p><span>Client:</span> Bryan Doe Joe</p>
-                                        <p><span>Location:</span> Mountain Line CA 62548</p>
-                                        <p><span>Value:</span> $15,000</p>
-                                    </div>
-                                    <a href="#." class="link_arrow">read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                @endforeach
+
+
+
             </div>
             <div class="row top40">
                 <div class="col-md-12">

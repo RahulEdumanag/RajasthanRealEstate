@@ -151,7 +151,7 @@ $CityModel = City::where('Cit_Status', '=', 0)->get();
                 </div>
             </div>
         </div>
- 
+
 
 
     </div>
@@ -162,8 +162,9 @@ $CityModel = City::where('Cit_Status', '=', 0)->get();
                     class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
                     <div style="text-align: center;">
                         ©
-                        2024
-                        , made with ❤️ by
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> <a href="/">Ajmer Property and Builders</a>, made with ❤️ by
                         <a href="https://edumanag.com/" target="_blank" class="fw-medium">Edumanag</a>
                     </div>
                 </div>

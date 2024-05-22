@@ -15,6 +15,14 @@
             max-width: 100%;
             height: auto;
         }
+         .hoverText:hover {
+            color: white !important;
+            
+        }
+        .hoverText {
+            color: white !important;
+            
+        }
     </style>
     <!--===== Faq =====-->
     <section id="faq2" class="padding bg_light">
@@ -37,7 +45,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading" role="tab" id="heading{{ $index }}">
                                             <h4 class="panel-title">
-                                                <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                                <a role="button"class="hoverText" data-toggle="collapse" data-parent="#accordion"
                                                     href="#collapse{{ $index }}" aria-expanded="false"
                                                     aria-controls="collapse{{ $index }}">
                                                     {{ $value->Pag_Name }}

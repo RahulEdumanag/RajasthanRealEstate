@@ -274,8 +274,8 @@
                                             @php
                                                 $randomImage = $value->getRandomImage();
                                             @endphp
-                                            <img src="{{ asset('uploads/' . $randomImage) }}" alt="listing"
-                                                class="img-responsive">
+                                           <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                        alt="listin" class="img-responsive" style="height: 247px;">
                                             <div class="property_meta">
                                                 <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} </span>
                                                 <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>

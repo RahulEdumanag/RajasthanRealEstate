@@ -129,8 +129,9 @@ $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=
                                                                 @php
                                                                     $randomImage = $value->getRandomImage();
                                                                 @endphp
-                                                                <img src="{{ asset('uploads/' . $randomImage) }}"
-                                                                    alt="Featured Property">
+                                                                <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                                                    alt="listin" class="img-responsive"
+                                                                    style="height: 100px;">
                                                                 <span
                                                                     class="nav_tag yellow text-uppercase">{{ $value->propertyType->PTyp_Name }}</span>
                                                             </div>

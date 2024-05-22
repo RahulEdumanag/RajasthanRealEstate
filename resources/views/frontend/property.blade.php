@@ -43,7 +43,6 @@
             </div>
             <form class="findus">
                 <div class="row">
-
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
                             <label>Keyword</label>
@@ -128,7 +127,6 @@
                             <input class="btn_fill" value="Search" type="submit">
                         </div>
                     </div>
-
                 </div>
             </form>
         </div>
@@ -166,7 +164,8 @@
                                     @php
                                         $randomImage = $value->getRandomImage();
                                     @endphp
-                                    <img src="{{ asset('uploads/' . $randomImage) }}" alt="listin" class="img-responsive">
+                                    <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                        alt="listin" class="img-responsive" style="height: 247px;">
                                     <div class="overlay">
                                         <div class="centered"><a class="link_arrow white_border"
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View

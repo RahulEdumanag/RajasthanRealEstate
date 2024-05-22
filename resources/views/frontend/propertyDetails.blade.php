@@ -34,8 +34,13 @@
                                 <div class="property_item heading_space">
                                     <div class="image">
                                         <a href="#.">
-                                            <img src="{{ asset('uploads/' . trim($image)) }}" alt="listing"
-                                                class="img-responsive">
+                                            @if ($image)
+                                                <img src="{{ asset('uploads/' . trim($image)) }}" alt="listing"
+                                                    class="img-responsive" style="max-height: 350px;">
+                                            @else
+                                                <img src="{{ asset('assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                                    alt="listing" class="img-responsive" style="max-height: 350px;">
+                                            @endif
                                         </a>
                                         <div class="price"><span
                                                 class="tag">{{ $propertyDetails->propertyType->PTyp_Name }}</span></div>
@@ -46,28 +51,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        <!-- <div class="item">
-                                                                                                <div class="property_item heading_space">
-                                                                                                  <div class="image">
-                                                                                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                                                                                    <div class="price"><span class="tag">For Sale</span></div>
-                                                                                                    <div class="property_meta">
-                                                                                                      <h4>$8,600</h4><p>For Small Family House</p>
-                                                                                                    </div>
-                                                                                                  </div>
-                                                                                                </div>
-                                                                                              </div>
-                                                                                              <div class="item">
-                                                                                                <div class="property_item heading_space">
-                                                                                                  <div class="image">
-                                                                                                    <a href="#."><img src="{{ asset('assets/frontend/images/property-d-1-2.jpg') }}" alt="listin" class="img-responsive"></a>
-                                                                                                    <div class="price"><span class="tag">For Sale</span></div>
-                                                                                                    <div class="property_meta">
-                                                                                                      <h4>$8,600</h4><p>For Small Family House</p>
-                                                                                                    </div>
-                                                                                                  </div>
-                                                                                                </div>
-                                                                                              </div> -->
                     </div>
                 </div>
             </div>
@@ -130,7 +113,6 @@
                                                     <td><b>Bath Rooms</b></td>
                                                     <td class="text-right">{{ $propertyDetails->PBathRoom }} </td>
                                                 </tr>
-                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -270,11 +252,9 @@
                                         <form method="post" action="{{ route('contact.Cstore') }}" class="findus">
                                             @csrf
                                             <input type="hidden" name="Con_PId" value="{{ $propertyDetails->PId }}">
-
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="single-query">
-
                                                         <input type="text" autocomplete="off" placeholder="Your Name"
                                                             id="Con_Name" name='Con_Name' class="keyword-input">
                                                     </div>
@@ -364,8 +344,8 @@
                                     @php
                                         $randomImage = $value->getRandomImage();
                                     @endphp
-                                    <img src="{{ asset('uploads/' . $randomImage) }}" alt="listin"
-                                        class="img-responsive">
+                                    <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                        alt="listin" class="img-responsive"  style="max-height: 350px;">
                                     <div class="overlay">
                                         <div class="centered"><a class="link_arrow white_border"
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
@@ -392,7 +372,6 @@
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                         </h3>
                                         <span class="bottom10">
-
                                             @foreach ($value->cities as $city)
                                                 <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
                                             @endforeach
@@ -404,9 +383,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                        <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                        <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                    </ul> -->
+                                                                                    <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                    <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                </ul> -->
                                     </div>
                                 </div>
                             </div>

@@ -40,14 +40,12 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="DragNdDrop">
+                    <tbody>
                         @foreach ($model as $value)
                             @if (Auth::user()->registration->Reg_Role === 'SUPERADMIN' ||
                                     (!$value->Sta_AdminExists && Auth::user()->role !== 'SUPERADMIN'))
-                                <tr data-id="{{ $value->Sta_Id }}">
-                                    <td class="serial-number">
-                                        <!-- <i class="fa fa-bars drag-handle" style="cursor: grab;"></i> -->
-                                        <i class="fas fa-grip-vertical drag-handle"style="cursor: grab;"></i>
+                                <tr>
+                                    <td class="serial-number"> 
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="serial-number" title="{{ $value->Sta_Name }}">

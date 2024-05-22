@@ -5,18 +5,7 @@
     @php
         use Illuminate\Support\Str;
     @endphp
-    <style>
-        .serial-number {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .serial-number:hover {
-            overflow: visible;
-            white-space: normal;
-        }
-    </style>
+   
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -63,14 +52,12 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="DragNdDrop">
+                    <tbody>
                         @foreach ($model as $value)
                             @if (Auth::user()->registration->Reg_Role === 'SUPERADMIN' ||
                                     (!$value->Pag_AdminExists && Auth::user()->role !== 'SUPERADMIN'))
-                                <tr data-id="{{ $value->Pag_Id }}">
+                                <tr>
                                     <td class="serial-number">
-                                        <!-- <i class="fa fa-bars drag-handle" style="cursor: grab;"></i> -->
-                                        <i class="fas fa-grip-vertical drag-handle"style="cursor: grab;"></i>
                                         {{ $loop->iteration }}
                                     </td>
                                     <td>{{ $value->Pag_Name }} </td>

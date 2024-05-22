@@ -59,12 +59,10 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="DragNdDrop">
+                    <tbody>
                         @foreach ($model as $value)
-                            <tr data-id="{{ $value->Pag_Id }}">
+                            <tr>
                                 <td class="serial-number">
-                                    <!-- <i class="fa fa-bars drag-handle" style="cursor: grab;"></i> -->
-                                    <i class="fas fa-grip-vertical drag-handle"style="cursor: grab;"></i>
                                     {{ $loop->iteration }}
                                 </td>
                                 <td>{{ $value->Pag_Name }} </td>

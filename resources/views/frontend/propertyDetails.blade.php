@@ -189,11 +189,27 @@
                                     @foreach ($planImages as $image)
                                         <div class="col-md-4 col-sm-4 col-xs-12 top10">
                                             <div class="image">
-                                                <img src="{{ asset('uploads/' . trim($image)) }}" alt="image" />
+                                                @if ($image)
+                                                    <img src="{{ asset('uploads/' . trim($image)) }}" alt="image" style="height: 261px;" />
+                                                @else
+                                                    <img src="{{ asset('assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                                        alt="listing" class="img-responsive" style="height: 261px;">
+                                                @endif
                                                 <div class="overlay border_radius">
-                                                    <a class="fancybox centered"
-                                                        href="{{ asset('uploads/' . trim($image)) }}"
-                                                        data-fancybox-group="gallery"><i class="icon-focus"></i></a>
+                                                    @if ($image)
+                                                        <a class="fancybox centered"
+                                                            href="{{ asset('uploads/' . trim($image)) }}"
+                                                            data-fancybox-group="gallery">
+                                                            <i class="icon-focus"></i>
+                                                        </a>
+                                                    @else
+                                                        <a class="fancybox centered"
+                                                            href="{{ asset('assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                                            data-fancybox-group="gallery">
+                                                            <i class="icon-focus"></i>
+                                                        </a>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
@@ -345,7 +361,7 @@
                                         $randomImage = $value->getRandomImage();
                                     @endphp
                                     <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
-                                        alt="listin" class="img-responsive"  style="max-height: 350px;">
+                                        alt="listin" class="img-responsive" style="max-height: 350px;">
                                     <div class="overlay">
                                         <div class="centered"><a class="link_arrow white_border"
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
@@ -383,9 +399,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                </ul> -->
+                                                                                            <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                            <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                        </ul> -->
                                     </div>
                                 </div>
                             </div>

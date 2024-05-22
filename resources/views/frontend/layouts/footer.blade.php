@@ -3,6 +3,9 @@ use App\Models\WebInfo;
 use App\Models\Page;
 use App\Models\SubMenu;
 use App\Models\Menu;
+use App\Models\City;
+use App\Models\PropertyType;
+
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
 $MenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $clientId)->where('Men_Status', '=', '0')->orderBy('Men_SerialOrder', 'asc')->get();
@@ -13,6 +16,7 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'Service')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->orderBy('Pag_SerialOrder', 'asc')->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')->where('tbl_page.Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
+ 
 ?>
 <section id="contact" class="bg-color-red">
     <div class="container">
@@ -61,7 +65,7 @@ $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
 </section>
 <div class="container pt-70 pb-40">
     <div class="row border-bottom">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-3">
             <div class="widget dark">
                 <img class="mt-5 mb-20" alt=""
                     src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
@@ -91,7 +95,7 @@ $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-3">
             <div class="widget dark">
                 <h4 class="widget-title">Quick Links</h4>
                 <div class="small-title">
@@ -110,24 +114,44 @@ $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
         </div>
         @if (!$usefulLinkModel->isEmpty())
 
-        <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-3">
+                <div class="widget dark">
+                    <h4 class="widget-title ">Use Full Links</h4>
+                    <div class="small-title">
+                        <div class="line1 background-color-white"></div>
+                        <div class="line2 background-color-white"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <ul class="list list-border">
+                        @foreach ($usefulLinkModel as $model)
+                            <li><a
+                                    href="{{ route('usefullLink.view', encodeId($model->Pag_Id)) }}">{{ $model->Pag_Name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
+        <div class="col-sm-6 col-md-3">
             <div class="widget dark">
-                <h4 class="widget-title ">Use Full Links</h4>
+                <h4 class="widget-title">All Cities</h4>
                 <div class="small-title">
                     <div class="line1 background-color-white"></div>
                     <div class="line2 background-color-white"></div>
                     <div class="clearfix"></div>
                 </div>
-                <ul class="list list-border">
-                    @foreach ($usefulLinkModel as $model)
-                        <li><a
-                                href="{{ route('usefullLink.view', encodeId($model->Pag_Id)) }}">{{ $model->Pag_Name }}</a>
-                        </li>
+                <div class="opening-hourse">
+                    @foreach ($CityModel as $value)
+                        <a href="{{ route('property', ['location' => $value->Cit_Id]) }}">
+                            {{ $loop->first ? '' : '|' }} {{ $value->Cit_Name }}
+                        </a>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
-        @endif
+ 
+
 
     </div>
     <div class="container">

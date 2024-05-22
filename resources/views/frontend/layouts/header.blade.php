@@ -14,6 +14,15 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('Pag_SerialOrder', 'asc')->get();
 $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
 ?>
+
+<style>
+    .dropdown-menu {
+
+        padding: 10px;
+        margin-top: 5px;
+    }
+</style>
+
 <div id="header-top">
     <div class="container">
         <div class="row">
@@ -112,11 +121,36 @@ $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=
                                             <h5 class="title">Showcase List</h5>
                                             <div class="content">
                                                 <ul class="menu-col">
-                                                    <li><a href="#">Properties List</a></li>
-                                                    <li><a href="#">Single Property</a></li>
-                                                    <li><a href="#">Search by City</a></li>
-                                                    <li><a href="#">Search by Category</a></li>
-                                                    <li><a href="#">Search by Type</a></li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle">Search by City</a>
+                                                        <div class="dropdown-menu">
+                                                            @foreach ($CityModel as $value)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['location' => $value->Cit_Id]) }}">{{ $value->Cit_Name }}</a>
+                                                            @endforeach
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle">Search by Type</a>
+                                                        <div class="dropdown-menu">
+                                                            @foreach ($PropertyTypeModel as $type)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['property_type' => $type->PTyp_Id]) }}">{{ $type->PTyp_Name }}</a>
+                                                            @endforeach
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle">Search by Rooms</a>
+                                                        <div class="dropdown-menu">
+                                                            @for ($i = 1; $i <= 7; $i++)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['bedroom' => $i]) }}">{{ $i }}
+                                                                    Room{{ $i > 1 ? 's' : '' }}</a>
+                                                            @endfor
+                                                        </div>
+                                                    </li>
+
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -169,8 +203,8 @@ $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=
                                             ]);
                                     @endphp
                                     <a class=" dropdown-toggle" href="{{ $menuUrl }}"
-                                        id="navbarDropdown{{ $value->Men_Id }}" role="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
+                                        id="navbarDropdown{{ $value->Men_Id }}" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ $value->Men_Name }}
                                     </a>
                                     <ul class="dropdown-menu">

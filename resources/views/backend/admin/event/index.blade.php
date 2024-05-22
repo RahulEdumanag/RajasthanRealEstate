@@ -50,16 +50,14 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="DragNdDrop">
+                    <tbody>
                         @foreach ($model as $value)
                             @php
                                 $eventDate = \Carbon\Carbon::parse($value->Pag_Date);
                                 $today = Carbon::now('Asia/Kolkata');
                             @endphp
-                            <tr data-id="{{ $value->Pag_Id }}">
-                            <td class="serial-number">
-                                    <!-- <i class="fa fa-bars drag-handle" style="cursor: grab;"></i> -->
-                                    <i class="fas fa-grip-vertical drag-handle"style="cursor: grab;"></i>
+                            <tr>
+                                <td class="serial-number">
                                     {{ $loop->iteration }}
                                 </td>
                                 <td>{{ $value->Pag_Name }} </td>

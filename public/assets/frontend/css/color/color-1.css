@@ -456,7 +456,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown > .dropdown-toggle:hover,
 nav.navbar.bootsnav ul.nav > li.dropdown.on > .dropdown-toggle,
 nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:hover,
 nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:focus {
-    color: #ed2a28 !important;
+    color: #ed2a28 ;
 }
 nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a:hover,
 nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a:focus,

@@ -7,7 +7,6 @@ use App\Models\Property;
 use App\Models\City;
 use App\Models\PropertyType;
 
-
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
 $MenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $clientId)->where('Men_Status', '=', '0')->orderBy('Men_SerialOrder', 'asc')->get();
@@ -27,6 +26,10 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
 
         padding: 10px;
         margin-top: 5px;
+    }
+
+    .hoverText:hover {
+        color: white !important;
     }
 </style>
 
@@ -129,7 +132,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle">Search by City</a>
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            City</a>
                                                         <div class="dropdown-menu">
                                                             @foreach ($CityModel as $value)
                                                                 <a class="dropdown-item"
@@ -138,7 +142,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                         </div>
                                                     </li>
                                                     <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle">Search by Type</a>
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            Type</a>
                                                         <div class="dropdown-menu">
                                                             @foreach ($PropertyTypeModel as $type)
                                                                 <a class="dropdown-item"
@@ -147,7 +152,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                         </div>
                                                     </li>
                                                     <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle">Search by Rooms</a>
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            Rooms</a>
                                                         <div class="dropdown-menu">
                                                             @for ($i = 1; $i <= 7; $i++)
                                                                 <a class="dropdown-item"

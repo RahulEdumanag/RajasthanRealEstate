@@ -108,6 +108,8 @@ $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
                 </ul>
             </div>
         </div>
+        @if (!$usefulLinkModel->isEmpty())
+
         <div class="col-sm-6 col-md-4">
             <div class="widget dark">
                 <h4 class="widget-title ">Use Full Links</h4>
@@ -125,6 +127,8 @@ $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
                 </ul>
             </div>
         </div>
+        @endif
+
     </div>
     <div class="container">
         <div class="row">

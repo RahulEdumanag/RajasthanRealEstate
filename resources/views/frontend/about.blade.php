@@ -15,11 +15,9 @@
                     </div>
                 </div>
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="about_text mt-30">
                             <p> {!! $AboutMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
-
                         </div>
                     </div>
                 </div>
@@ -75,36 +73,36 @@
                 </div>
             </div>
         </section>
-        <section id="our-services" class="we_are padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-uppercase">What We <span class="color_red">Do</span></h2>
-                        <div class="line_1"></div>
-                        <div class="line_2"></div>
-                        <div class="line_3"></div>
+        @if (!$ServicesModel->isEmpty())
+            <section id="our-services" class="we_are padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-uppercase">What We <span class="color_red">Do</span></h2>
+                            <div class="line_1"></div>
+                            <div class="line_2"></div>
+                            <div class="line_3"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    @foreach ($ServicesModel as $value)
-                        <div class="col-md-4 col-sm-4 top40">
-                            <div class="feature_box equal-height">
-                                <span class="icon"><i class="{{ $value->Pag_URL }}"></i></span>
-                                <div class="description">
-                                    <h4>{{ $value->Pag_Name }}</h4>
-                                    <p>{{ Str::limit($value->Pag_ShortDesc, 70) }}</p>
-                                    @if ($value->Pag_FullDesc)
-                                        <a href="{{ URL::to('/service-details/' . encodeId($value->Pag_Id)) }}"
-                                            class="link_arrow top20">Read More</a>
-                                    @endif
-                                    
+                    <div class="row">
+                        @foreach ($ServicesModel as $value)
+                            <div class="col-md-4 col-sm-4 top40">
+                                <div class="feature_box equal-height">
+                                    <span class="icon"><i class="{{ $value->Pag_URL }}"></i></span>
+                                    <div class="description">
+                                        <h4>{{ $value->Pag_Name }}</h4>
+                                        <p>{{ Str::limit($value->Pag_ShortDesc, 70) }}</p>
+                                        @if ($value->Pag_FullDesc)
+                                            <a href="{{ URL::to('/service-details/' . encodeId($value->Pag_Id)) }}"
+                                                class="link_arrow top20">Read More</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-
-                </div>
-        </section>
+                        @endforeach
+                    </div>
+            </section>
+        @endif
     </div>
     <script>
         $(document).ready(function() {

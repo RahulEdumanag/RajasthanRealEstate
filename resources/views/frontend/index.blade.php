@@ -1,18 +1,16 @@
 @extends('frontend.layouts.master')
 @section('title', 'Home')
 @section('content')
-<style>
+    <style>
         .no-results-container {
             text-align: center;
             margin-bottom: 30px;
         }
-
         .no-results-text {
             font-size: 20px;
             color: #555;
             margin-bottom: 10px;
         }
-
         .no-results-image img {
             max-width: 100%;
             height: auto;
@@ -21,27 +19,29 @@
     <?php
     use Carbon\Carbon;
     ?>
-    <section class="rev_slider_wrapper">
-        <div id="rev_full" class="rev_slider" data-version="5.0">
-            <ul>
-                @foreach ($SliderModel as $model)
-                    <li data-transition="fade">
-                        <img src="{{ env('Web_CommonURl') }}{{ $model->Pag_Image ?? 'N/A' }}" alt=""
-                            data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
-                        <div class="tp-caption tp-resizeme" data-x="['center','center','center','center']"
-                            data-hoffset="['15','15','0','0']" data-y="['240','200','140','140']"
-                            data-voffset="['0','0','0','0']" data-responsive_offset="on"
-                            data-visibility="['on','on','on','on']" data-transform_idle="o:1;"
-                            data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
-                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="800">
-                            <h2 class="border_heading p-white"> {{ $model->Pag_ShortDesc }} </h2>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </section>
+    @if (!$SliderModel->isEmpty())
+        <section class="rev_slider_wrapper">
+            <div id="rev_full" class="rev_slider" data-version="5.0">
+                <ul>
+                    @foreach ($SliderModel as $model)
+                        <li data-transition="fade">
+                            <img src="{{ env('Web_CommonURl') }}{{ $model->Pag_Image ?? 'N/A' }}" alt=""
+                                data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
+                            <div class="tp-caption tp-resizeme" data-x="['center','center','center','center']"
+                                data-hoffset="['15','15','0','0']" data-y="['240','200','140','140']"
+                                data-voffset="['0','0','0','0']" data-responsive_offset="on"
+                                data-visibility="['on','on','on','on']" data-transform_idle="o:1;"
+                                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+                                data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="800">
+                                <h2 class="border_heading p-white"> {{ $model->Pag_ShortDesc }} </h2>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </section>
+    @endif
     <div id="home_icon">
         <div class="container">
             <div class="row">
@@ -181,7 +181,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row search-2">
                                     <div class="col-md-12">
@@ -219,14 +218,14 @@
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
-                                                    <input class="keyword-input" name="square_fit_min" placeholder="Min Area (sq ft)"
-                                                        type="text">
+                                                    <input class="keyword-input" name="square_fit_min"
+                                                        placeholder="Min Area (sq ft)" type="text">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
-                                                    <input class="keyword-input" name="square_fit_max" placeholder="Max Area (sq ft)"
-                                                        type="text">
+                                                    <input class="keyword-input" name="square_fit_max"
+                                                        placeholder="Max Area (sq ft)" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -255,132 +254,132 @@
                 </div>
             </div>
             @if ($PropertyModel->isEmpty())
-                    <div class="col-md-12">
-                        <div class="no-results-container">
-                            <h4 class="no-results-text">No results found, please try again.</h4>
-                            <div class="no-results-image">
-                                <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
-                                    alt="No results found image"style="height: 25%; width: 25%;">
-                            </div>
+                <div class="col-md-12">
+                    <div class="no-results-container">
+                        <h4 class="no-results-text">No results found, please try again.</h4>
+                        <div class="no-results-image">
+                            <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
+                                alt="No results found image"style="height: 25%; width: 25%;">
                         </div>
                     </div>
-                @else
-            <div class="col-md-12">
-                <div class="row">
-                    <div id="property-2-slider" class="owl-carousel">
-                        @foreach ($PropertyModel as $value)
-                            <div class="item">
-                                <div class="property_item bottom40">
-                                    <div class="image">
-                                        @php
-                                            $randomImage = $value->getRandomImage();
-                                        @endphp
-                                        <img src="{{ asset('uploads/' . $randomImage) }}" alt="listing"
-                                            class="img-responsive">
-                                        <div class="property_meta">
-                                            <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} </span>
-                                            <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
-                                            <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
-                                        </div>
-                                        @if ($value->PFeatured == 1)
-                                            <div class="feature">
-                                                <span class="tag" style="z-index:2;">
-                                                    Featured
-                                                </span>
+                </div>
+            @else
+                <div class="col-md-12">
+                    <div class="row">
+                        <div id="property-2-slider" class="owl-carousel">
+                            @foreach ($PropertyModel as $value)
+                                <div class="item">
+                                    <div class="property_item bottom40">
+                                        <div class="image">
+                                            @php
+                                                $randomImage = $value->getRandomImage();
+                                            @endphp
+                                            <img src="{{ asset('uploads/' . $randomImage) }}" alt="listing"
+                                                class="img-responsive">
+                                            <div class="property_meta">
+                                                <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} </span>
+                                                <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
+                                                <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                             </div>
-                                        @endif
-                                        @if ($value->propertyType)
-                                            <div class="price"><span
-                                                    class="tag">{{ $value->propertyType->PTyp_Name }}</span></div>
-                                        @else
-                                            <div class="price"><span class="tag">No Type Available</span></div>
-                                        @endif
-                                        <div class="overlay">
-                                            <div class="centered"><a class="link_arrow white_border"
-                                                    href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
-                                                    Detail</a></div>
+                                            @if ($value->PFeatured == 1)
+                                                <div class="feature">
+                                                    <span class="tag" style="z-index:2;">
+                                                        Featured
+                                                    </span>
+                                                </div>
+                                            @endif
+                                            @if ($value->propertyType)
+                                                <div class="price"><span
+                                                        class="tag">{{ $value->propertyType->PTyp_Name }}</span></div>
+                                            @else
+                                                <div class="price"><span class="tag">No Type Available</span></div>
+                                            @endif
+                                            <div class="overlay">
+                                                <div class="centered"><a class="link_arrow white_border"
+                                                        href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
+                                                        Detail</a></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="proerty_content">
-                                        <div class="proerty_text">
-                                            <h3><a href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
-                                                </a></h3>
-                                            <span class="bottom10">
-                                                @foreach ($value->cities as $city)
-                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
-                                                @endforeach
-                                            </span>
-                                            <p><strong>₹{{ $value->PAmount }}/-</strong></p>
-                                        </div>
-                                        <div class="favroute clearfix">
-                                            <p class="pull-left">
-                                                <i class="icon-calendar2"></i>
-                                                {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
-                                            </p>
+                                        <div class="proerty_content">
+                                            <div class="proerty_text">
+                                                <h3><a href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
+                                                    </a></h3>
+                                                <span class="bottom10">
+                                                    @foreach ($value->cities as $city)
+                                                        <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                                    @endforeach
+                                                </span>
+                                                <p><strong>₹{{ $value->PAmount }}/-</strong></p>
+                                            </div>
+                                            <div class="favroute clearfix">
+                                                <p class="pull-left">
+                                                    <i class="icon-calendar2"></i>
+                                                    {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                        <!-- <div class="item">
-                                                                                    <div class="property_item bottom40">
-                                                                                        <div class="image">
-                                                                                            <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin"
-                                                                                                class="img-responsive">
-                                                                                            <div class="property_meta">
-                                                                                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                                                                                <span><i class="fa fa-bed"></i>2</span>
-                                                                                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                                                                            </div>
-                                                                                            <div class="price"><span class="tag">For Sale</span></div>
-                                                                                            <div class="overlay">
-                                                                                                <div class="centered"><a class="link_arrow white_border" href="#">View
-                                                                                                        Detail</a></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="proerty_content">
-                                                                                            <div class="proerty_text">
-                                                                                                <h3><a href="#">House in New York City</a></h3>
-                                                                                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                                                                                <p><strong>₹83,600,200</strong></p>
-                                                                                            </div>
-                                                                                            <div class="favroute clearfix">
-                                                                                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="item">
-                                                                                    <div class="property_item bottom40">
-                                                                                        <div class="image">
-                                                                                            <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}"
-                                                                                                alt="listin" class="img-responsive">
-                                                                                            <div class="property_meta">
-                                                                                                <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                                                                                <span><i class="fa fa-bed"></i>2</span>
-                                                                                                <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                                                                            </div>
-                                                                                            <div class="price"><span class="tag">For Rent</span></div>
-                                                                                            <div class="overlay">
-                                                                                                <div class="centered"><a class="link_arrow white_border" href="#">View
-                                                                                                        Detail</a></div>
+                            @endforeach
+                            <!-- <div class="item">
+                                                                                            <div class="property_item bottom40">
+                                                                                                <div class="image">
+                                                                                                    <img src="{{ asset('assets/frontend/images/property-listing-2.jpg') }}" alt="listin"
+                                                                                                        class="img-responsive">
+                                                                                                    <div class="property_meta">
+                                                                                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                                                                                        <span><i class="fa fa-bed"></i>2</span>
+                                                                                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                                                                                    </div>
+                                                                                                    <div class="price"><span class="tag">For Sale</span></div>
+                                                                                                    <div class="overlay">
+                                                                                                        <div class="centered"><a class="link_arrow white_border" href="#">View
+                                                                                                                Detail</a></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="proerty_content">
+                                                                                                    <div class="proerty_text">
+                                                                                                        <h3><a href="#">House in New York City</a></h3>
+                                                                                                        <span class="bottom10">Merrick Way, Miami, USA</span>
+                                                                                                        <p><strong>₹83,600,200</strong></p>
+                                                                                                    </div>
+                                                                                                    <div class="favroute clearfix">
+                                                                                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                                                                                    </div>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="proerty_content">
-                                                                                            <div class="proerty_text">
-                                                                                                <h3><a href="#">House in New York City</a></h3>
-                                                                                                <span class="bottom10">Merrick Way, Miami, USA</span>
-                                                                                                <p><strong>₹8,600 Per Month</strong></p>
+                                                                                        <div class="item">
+                                                                                            <div class="property_item bottom40">
+                                                                                                <div class="image">
+                                                                                                    <img src="{{ asset('assets/frontend/images/property-listing-3.jpg') }}"
+                                                                                                        alt="listin" class="img-responsive">
+                                                                                                    <div class="property_meta">
+                                                                                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                                                                                        <span><i class="fa fa-bed"></i>2</span>
+                                                                                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                                                                                    </div>
+                                                                                                    <div class="price"><span class="tag">For Rent</span></div>
+                                                                                                    <div class="overlay">
+                                                                                                        <div class="centered"><a class="link_arrow white_border" href="#">View
+                                                                                                                Detail</a></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="proerty_content">
+                                                                                                    <div class="proerty_text">
+                                                                                                        <h3><a href="#">House in New York City</a></h3>
+                                                                                                        <span class="bottom10">Merrick Way, Miami, USA</span>
+                                                                                                        <p><strong>₹8,600 Per Month</strong></p>
+                                                                                                    </div>
+                                                                                                    <div class="favroute clearfix">
+                                                                                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                                                                                    </div>
+                                                                                                </div>
                                                                                             </div>
-                                                                                            <div class="favroute clearfix">
-                                                                                                <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div> -->
+                                                                                        </div> -->
+                        </div>
                     </div>
                 </div>
-            </div>
             @endif
         </div>
     </section>
@@ -396,27 +395,29 @@
             </div>
         </div>
     </section>
-    <section id="our-partner" class="padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="text-uppercase">our <span class="color_red">partners</span></h2>
-                    <div class="line_1"></div>
-                    <div class="line_2"></div>
-                    <div class="line_3"></div>
-                </div>
+    @if (!$ClientModel->isEmpty())
+        <section id="our-partner" class="padding">
+            <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="partner_slider_2" class="owl-carousel">
-                            @foreach ($ClientModel as $value)
-                                <div class="item">
-                                    <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
-                                        alt="Our Partner">
-                                </div>
-                            @endforeach
+                        <h2 class="text-uppercase">our <span class="color_red">partners</span></h2>
+                        <div class="line_1"></div>
+                        <div class="line_2"></div>
+                        <div class="line_3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="partner_slider_2" class="owl-carousel">
+                                @foreach ($ClientModel as $value)
+                                    <div class="item">
+                                        <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
+                                            alt="Our Partner">
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    </section>
+        </section>
+    @endif
 @endsection

@@ -64,7 +64,7 @@ class HomeController extends Controller
         $ServicesModel = $this->getServicesModel();
         $TestimonialModel = $this->getTestimonialModelHome();
         $SliderModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Slider')->get();
-        // dd($SliderModel);
+        //   dd($SliderModel);
         $BlogModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Blog')->take(4)->get();
         $TeamModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Team')->get();
         // dd($TeamModel);

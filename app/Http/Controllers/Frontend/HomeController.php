@@ -294,7 +294,9 @@ class HomeController extends Controller
     }
     public function faqs()
     {
-        return view('frontend.faqs');
+        $FaqModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Faq')->orderBy('tbl_page.Pag_CreatedDate', 'desc')->get();
+
+        return view('frontend.faqs',compact('FaqModel'));
     }
     public function underConstruction()
     {

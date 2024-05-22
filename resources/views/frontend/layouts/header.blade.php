@@ -4,6 +4,10 @@ use App\Models\SubMenu;
 use App\Models\Menu;
 use App\Models\Page;
 use App\Models\Property;
+use App\Models\City;
+use App\Models\PropertyType;
+
+
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
 $MenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $clientId)->where('Men_Status', '=', '0')->orderBy('Men_SerialOrder', 'asc')->get();
@@ -13,6 +17,9 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
     ->get();
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('Pag_SerialOrder', 'asc')->get();
 $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
+$CityModel = City::where('Cit_Status', '=', 0)->get();
+$PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+
 ?>
 
 <style>

@@ -16,7 +16,8 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'Service')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->orderBy('Pag_SerialOrder', 'asc')->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')->where('tbl_page.Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
- 
+$CityModel = City::where('Cit_Status', '=', 0)->get();
+
 ?>
 <section id="contact" class="bg-color-red">
     <div class="container">

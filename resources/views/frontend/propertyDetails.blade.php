@@ -2,10 +2,7 @@
 @section('title', 'Home')
 @section('content')
 <style>
-     .property-tab .nav-tabs{
-            display: grid;
-            width: auto;
-        }
+  
 
 
         
@@ -14,7 +11,10 @@
            
             height: 210px !important
         }
-       
+        .property-tab .nav-tabs{
+            display: grid;
+            width: auto;
+        }
 
     }
 </style>
@@ -29,7 +29,7 @@
                 <div class="line_6"></div>
                 <a href="/">home</a>
                 <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
-                <a href="#">Property Details </a>
+                <a href="{{ URL::to('/property') }}">Property </a>
             </div>
         </div>
     </div>

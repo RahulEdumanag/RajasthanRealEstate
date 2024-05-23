@@ -200,22 +200,7 @@ class HomeController extends Controller
         // dd($ContactCategoryModel);
         return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel'));
     }
-    public function talk()
-    {
-        $ContactCategoryModel = ContactCategory::where('ConCat_Reg_Id', '=', $this->clientId)
-            ->where('ConCat_Status', '=', 0)
-            ->orderBy('ConCat_CreatedDate', 'desc')
-            ->get();
-        return view('frontend.talk', compact('ContactCategoryModel'));
-    }
-    public function booking()
-    {
-        $ContactCategoryModel = ContactCategory::where('ConCat_Reg_Id', '=', $this->clientId)
-            ->where('ConCat_Status', '=', 0)
-            ->orderBy('ConCat_CreatedDate', 'desc')
-            ->get();
-        return view('frontend.booking', compact('ContactCategoryModel'));
-    }
+     
     public function Cstore(Request $request)
     {
         try {

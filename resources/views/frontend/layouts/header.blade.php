@@ -6,7 +6,6 @@ use App\Models\Page;
 use App\Models\Property;
 use App\Models\City;
 use App\Models\PropertyType;
-
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
 $MenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $clientId)->where('Men_Status', '=', '0')->orderBy('Men_SerialOrder', 'asc')->get();
@@ -18,12 +17,9 @@ $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
 $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
 $CityModel = City::where('Cit_Status', '=', 0)->get();
 $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
-
 ?>
-
 <style>
     .dropdown-menu {
-
         padding: 10px;
         margin-top: 5px;
     }
@@ -31,8 +27,13 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
     .hoverText:hover {
         color: white !important;
     }
-</style>
 
+    .dropdown-menu-scrollable {
+        max-height: 250px;
+        /* Adjust this value as needed */
+        overflow-y: auto;
+    }
+</style>
 <div id="header-top">
     <div class="container">
         <div class="row">
@@ -134,7 +135,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle hoverText">Search by
                                                             City</a>
-                                                        <div class="dropdown-menu">
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @foreach ($CityModel as $value)
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('property', ['location' => $value->Cit_Id]) }}">{{ $value->Cit_Name }}</a>
@@ -144,7 +145,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle hoverText">Search by
                                                             Type</a>
-                                                        <div class="dropdown-menu">
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @foreach ($PropertyTypeModel as $type)
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('property', ['property_type' => $type->PTyp_Id]) }}">{{ $type->PTyp_Name }}</a>
@@ -154,7 +155,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle hoverText">Search by
                                                             Rooms</a>
-                                                        <div class="dropdown-menu">
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @for ($i = 1; $i <= 7; $i++)
                                                                 <a class="dropdown-item"
                                                                     href="{{ route('property', ['bedroom' => $i]) }}">{{ $i }}
@@ -162,8 +163,6 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                             @endfor
                                                         </div>
                                                     </li>
-
-
                                                 </ul>
                                             </div>
                                         </div>

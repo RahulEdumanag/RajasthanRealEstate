@@ -34,7 +34,98 @@ class HomeController extends Controller
     {
         return $this->baseQuery()->where('tbl_pagecategory.PagCat_Name', 'Service')->take(4)->get();
     }
-   
+    public function index(Request $request)
+    {
+        $ip = $request->ip();
+        $userAgent = $request->header('User-Agent');
+        $referer = $request->header('referer');
+        $existingEntry = VisitorCounter::where('Vis_Reg_Id', $this->clientId)
+            ->where('Vis_Ip', $ip)
+            ->where('Vis_CreatedDate', '>=', Carbon::now()->subDay())
+            ->first();
+        if (!$existingEntry) {
+            // Use an IP location package to get approximate location
+            $location = Location::get($ip);
+            $country = $location ? $location->countryName : null;
+            $region = $location ? $location->regionName : null;
+            $city = $location ? $location->cityName : null;
+            VisitorCounter::create([
+                'Vis_Reg_Id' => $this->clientId,
+                'Vis_Ip' => $ip,
+                'Vis_Country' => $country,
+                'Vis_Region' => $region,
+                'Vis_City' => $city,
+                'Vis_CreatedDate' => now(),
+            ]);
+        }
+        $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->take(4)->get();
+        $usefulLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'UsefulLink')->orderBy('Pag_SerialOrder', 'desc')->get();
+        $today = Carbon::now('Asia/Kolkata');
+        $ServicesModel = $this->getServicesModel();
+        $TestimonialModel = $this->getTestimonialModelHome();
+        $SliderModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Slider')->get();
+        //   dd($SliderModel);
+        $BlogModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Blog')->take(4)->get();
+        $TeamModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Team')->get();
+        // dd($TeamModel);
+        $FaqModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Faq')->orderBy('tbl_page.Pag_CreatedDate', 'desc')->take(3)->get();
+        $EventModel = $this->baseQuery(new Page())->whereDate('tbl_page.Pag_Date', '>=', $today)->where('tbl_pagecategory.PagCat_Name', 'Event')->get();
+        $GalleryModel = Gallery::join('tbl_gallerycategory', 'tbl_gallery.Gall_GallCat_Id', '=', 'tbl_gallerycategory.GallCat_Id')
+            ->where('tbl_gallery.Gall_Reg_Id', '=', $this->clientId)
+            ->where('Gall_Status', '=', '0')
+            ->get();
+        $HomeMenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $this->clientId)
+            ->where('Men_Status', '=', '0')
+            ->where('Men_URL', '=', '/')
+            ->orderBy('Men_SerialOrder', 'asc')
+            ->first();
+        // dd($HomeMenuModel->Men_ShortDesc);
+        $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+            ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+            ->where('WebInf_Status', '=', '0')
+            ->first();
+        $HoroscopeModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Horoscope')->get();
+        // dd($HoroscopeModel);
+        $ClientModel = Page::where('Pag_Status', '=', 0)
+            ->where('Pag_Reg_Id', '=', $this->clientId)
+            ->with('category')
+            ->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Clients'))
+            ->orderBy('Pag_SerialOrder', 'asc')
+            ->get();
+        $query = Property::where('PReg_Id', '=', $this->clientId)
+            ->where('PStatus', '=', '0')
+            ->where('PFeatured', '=', 1)
+            ->with('propertyType');
+        if ($request->filled('keyword')) {
+            $query->where('PTitle', 'like', '%' . $request->keyword . '%');
+        }
+        if ($request->filled('location')) {
+            $query->whereHas('cities', function ($q) use ($request) {
+                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            });
+        }
+        if ($request->filled('property_type')) {
+            $query->whereHas('propertyType', function ($q) use ($request) {
+                $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
+            });
+        }
+        if ($request->filled('bedroom')) {
+            $query->where('PBedRoom', $request->bedroom);
+        }
+        if ($request->filled('bathroom')) {
+            $query->where('PBathRoom', $request->bathroom);
+        }
+        if ($request->filled('square_fit_min')) {
+            $query->where('PSqureFeet', '>=', $request->square_fit_min);
+        }
+        if ($request->filled('square_fit_max')) {
+            $query->where('PSqureFeet', '<=', $request->square_fit_max);
+        }
+        $PropertyModel = $query->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        return View::make('frontend.index', compact('ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+    }
     public function about()
     {
         $TestimonialModel = $this->getTestimonialModel();

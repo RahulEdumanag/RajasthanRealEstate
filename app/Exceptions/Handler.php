@@ -22,17 +22,17 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
-    //   $clientId = env('WEB_ID');
-    //   if ($exception instanceof \ErrorException || $exception instanceof QueryException) {
-    //      $error = new Error();
-    //      $error->Error_Reg_Id = getSelectedValue() ?: $clientId;
-    //      $error->Error_Message = $exception->getMessage();
-    //      $error->Error_CreatedDate = Carbon::now('Asia/Kolkata');
-    //      $error->Error_CreatedBy = Auth::check() ? Auth::user()->Log_Id : null;
-    //      $error->save();
+       $clientId = env('WEB_ID');
+       if ($exception instanceof \ErrorException || $exception instanceof QueryException) {
+          $error = new Error();
+          $error->Error_Reg_Id = getSelectedValue() ?: $clientId;
+          $error->Error_Message = $exception->getMessage();
+          $error->Error_CreatedDate = Carbon::now('Asia/Kolkata');
+          $error->Error_CreatedBy = Auth::check() ? Auth::user()->Log_Id : null;
+          $error->save();
 
-    //      return redirect('/error');
-    //   }
+          return redirect('/error');
+       }
 
         return parent::render($request, $exception);
     }

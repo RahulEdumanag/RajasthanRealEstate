@@ -1,6 +1,23 @@
 @extends('frontend.layouts.master')
 @section('title', 'Home')
 @section('content')
+<style>
+     .property-tab .nav-tabs{
+            display: grid;
+            width: auto;
+        }
+
+
+        
+    @media (max-width: 767px) {
+        .img-responsive {
+           
+            height: 210px !important
+        }
+       
+
+    }
+</style>
     <!--===== PAGE TITLE =====-->
     <div class="page-title page-main-section parallaxie">
         <div class="container padding-bottom-top-120 text-uppercase text-center">

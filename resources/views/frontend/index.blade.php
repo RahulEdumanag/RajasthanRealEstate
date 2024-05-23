@@ -6,14 +6,41 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
         .no-results-text {
             font-size: 20px;
             color: #555;
             margin-bottom: 10px;
         }
+
         .no-results-image img {
             max-width: 100%;
             height: auto;
+        }
+
+        @media (max-width: 767px) {
+            .img-responsive {
+
+                height: 210px !important
+            }
+
+            .border_heading {
+                margin-top: -149px;
+
+            }
+
+            .defaultimg {
+                height: 30% !important;
+            }
+
+            .border_heading {
+                margin-top: -71% !important;
+            }
+
+            .homee {
+                margin-top: -111% !important;
+
+            }
         }
     </style>
     <?php
@@ -43,7 +70,7 @@
         </section>
     @endif
     <div id="home_icon">
-        <div class="container">
+        <div class="container homee">
             <div class="row">
                 <div class="col-md-2 col-sm-4 col-xs-12 text-center">
                     <a href="#" class="home_feature">
@@ -149,7 +176,7 @@
                         <h2 class="text-uppercase">Search your<span class="color_red"> Dream</span></h2>
                         <div class="line_1"></div>
                         <div class="line_2"></div>
-                        <div class="line_3"></div> 
+                        <div class="line_3"></div>
                         <div class="property-query-area top40">
                             <form class="findus">
                                 <div class="row">
@@ -273,8 +300,8 @@
                                             @php
                                                 $randomImage = $value->getRandomImage();
                                             @endphp
-                                           <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
-                                        alt="listin" class="img-responsive" style="height: 247px;">
+                                            <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                                alt="listin" class="img-responsive" style="height: 247px;">
                                             <div class="property_meta">
                                                 <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} </span>
                                                 <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
@@ -319,7 +346,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach 
+                            @endforeach
                         </div>
                     </div>
                 </div>

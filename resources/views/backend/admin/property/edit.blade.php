@@ -14,9 +14,21 @@
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="type"> City <span 3
-                                            style="color:red">*</span></label>
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label" for="state">State <span style="color:red">*</span></label>
+                                    <select class="form-control" id="state" name="state">
+                                        <option selected disabled>Select State</option>
+                                        @foreach ($states as $state)
+                                            <option value='{{ $state->Sta_Id }}'
+                                                @if ($model->city && $state->Sta_Id == $model->city->Cit_Sta_Id) selected @endif>{{ $state->Sta_Name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <span id="state-error" class="error" style="color: red;"></span>
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label" for="PCit_Id">City <span style="color:red">*</span></label>
                                     <select class="form-control" id="PCit_Id" name="PCit_Id">
                                         <option selected disabled>Select City</option>
                                         @foreach ($CityModel as $value)
@@ -27,6 +39,20 @@
                                     </select>
                                     <span id="PCit_Id-error" class="error" style="color: red;"></span>
                                 </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label class="form-label" for="PAre_Id">Area <span style="color:red">*</span></label>
+                                    <select class="form-control" id="PAre_Id" name="PAre_Id">
+                                        <option selected disabled>Select Area</option>
+                                        @foreach ($AreaModel as $value)
+                                            <option value='{{ $value->Are_Id }}'
+                                                @if ($value->Are_Id == $model->PAre_Id) selected @endif>{{ $value->Are_Name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <span id="PAre_Id-error" class="error" style="color: red;"></span>
+                                </div>
+
                                 <div class="col-sm-6">
                                     <label class="form-label" for="type"> Property Type <span 3
                                             style="color:red">*</span></label>
@@ -94,13 +120,15 @@
                                     <span id="PBedRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Title" class="form-label">Title<span style="color:red">*</span></label>
+                                    <label for="Title" class="form-label">Title<span
+                                            style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="PTitle" name="PTitle"
                                         value="{{ old('PTitle', $model->PTitle) }}" placeholder="">
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Amount" class="form-label">Amount<span style="color:red">*</span></label>
+                                    <label for="Amount" class="form-label">Amount<span
+                                            style="color:red">*</span></label>
                                     <input type="number" class="form-control" id="PAmount" name="PAmount"
                                         value="{{ old('PAmount', $model->PAmount) }}" placeholder="">
                                     <span id="PAmount-error" class="error" style="color: red;"></span>
@@ -243,6 +271,77 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stateSelect = document.getElementById('state');
+            const citySelect = document.getElementById('PCit_Id');
+            const areaSelect = document.getElementById('PAre_Id');
+            const initialStateId = '{{ $model->city ? $model->city->Cit_Sta_Id : '' }}';
+            const initialCityId = '{{ $model->PCit_Id }}';
+            const initialAreaId = '{{ $model->PAre_Id }}';
+
+            stateSelect.addEventListener('change', function() {
+                const stateId = this.value;
+                if (stateId) {
+                    fetch(`/getCitiesByState/${stateId}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            citySelect.innerHTML = '<option selected disabled>Select City</option>';
+                            data.forEach(city => {
+                                const option = document.createElement('option');
+                                option.value = city.Cit_Id;
+                                option.textContent = city.Cit_Name;
+                                if (city.Cit_Id == initialCityId) {
+                                    option.selected = true;
+                                }
+                                citySelect.appendChild(option);
+                            });
+                            citySelect.disabled = false;
+                            areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
+                            areaSelect.disabled = true;
+                        })
+                        .catch(error => console.error('Error fetching cities:', error));
+                }
+            });
+
+            citySelect.addEventListener('change', function() {
+                const cityId = this.value;
+                if (cityId) {
+                    fetch(`/getAreasByCity/${cityId}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
+                            data.forEach(area => {
+                                const option = document.createElement('option');
+                                option.value = area.Are_Id;
+                                option.textContent = area.Are_Name;
+                                if (area.Are_Id == initialAreaId) {
+                                    option.selected = true;
+                                }
+                                areaSelect.appendChild(option);
+                            });
+                            areaSelect.disabled = false;
+                        })
+                        .catch(error => console.error('Error fetching areas:', error));
+                }
+            });
+
+            // Trigger the change event on the state select to load the initial cities and areas
+            stateSelect.dispatchEvent(new Event('change'));
+        });
+    </script>
+
     <script>
         $(document).ready(function($) {
             $("#edit").validate({

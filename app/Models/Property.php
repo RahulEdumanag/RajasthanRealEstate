@@ -29,4 +29,14 @@ class Property extends Model
     {
         return $this->hasMany(City::class, 'Cit_Id', 'PCit_Id');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'PCit_Id', 'Cit_Id');
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'PAre_Id', 'Are_Id');
+    }
 }

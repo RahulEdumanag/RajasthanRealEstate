@@ -4,6 +4,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\Master;
 use App\Models\City;
+use App\Models\State;
+use App\Models\Area;
+
 use App\Models\PropertyType;
 use App\Models\PropertyFeatures;
 use App\Models\Registration;
@@ -25,13 +28,38 @@ class PropertyController extends Controller
     }
     public function create()
     {
+        $states = State::all();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
+        $AreaModel = Area::where('Are_Status', '=', 0)->get();
+
         $ImgMaxSizeModel = getImgMaxSizeModel();
         //    dd($PropertyFeaturesModel);
-        return view('backend.admin.property.create', compact('ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
+        return view('backend.admin.property.create', compact('AreaModel', 'states', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
+    public function getCitiesByState($stateId)
+    {
+        try {
+            $cities = City::where('Cit_Sta_Id', $stateId)->get();
+            return response()->json($cities);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching cities: ' . $e->getMessage());
+            return response()->json(['error' => 'Error fetching cities'], 500);
+        }
+    }
+
+    public function getAreasByCity($cityId)
+    {
+        try {
+            $areas = Area::where('Are_Cit_Id', $cityId)->get();
+            return response()->json($areas);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching areas: ' . $e->getMessage());
+            return response()->json(['error' => 'Error fetching areas'], 500);
+        }
+    }
+
     public function store(Request $request)
     {
         try {
@@ -52,6 +80,8 @@ class PropertyController extends Controller
             $model->PPTyp_Id = $request->PPTyp_Id;
             $model->PPFea_Id = json_encode($request->PPFea_Id);
             $model->PCit_Id = $request->PCit_Id;
+            $model->PAre_Id = $request->PAre_Id;
+
             $model->PPropertycode = $newPropertyCode;
             $model->PTitle = $request->PTitle;
             $model->PTag = $request->PTag;
@@ -117,13 +147,17 @@ class PropertyController extends Controller
     }
     public function edit($hashedId)
     {
+        $states = State::all();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
+
         $ImgMaxSizeModel = getImgMaxSizeModel();
         $PId = decodeId($hashedId);
         $model = Property::where('PId', $PId)->first();
-        return view('backend.admin.property.edit', compact('model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
+        $AreaModel = $model->city ? $model->city->areas : collect();
+
+        return view('backend.admin.property.edit', compact('AreaModel', 'states', 'model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
     public function update(Request $request, $PId)
     {
@@ -133,6 +167,8 @@ class PropertyController extends Controller
             $model->PPTyp_Id = $request->PPTyp_Id;
             $model->PPFea_Id = $request->PPFea_Id;
             $model->PCit_Id = $request->PCit_Id;
+            $model->PAre_Id = $request->PAre_Id;
+
             $model->PTitle = $request->PTitle;
             $model->PTag = $request->PTag;
             $model->PShortDesc = $request->PShortDesc;
@@ -209,8 +245,7 @@ class PropertyController extends Controller
             }
         }
     }
-    
-    
+
     public function destroy($id)
     {
         try {

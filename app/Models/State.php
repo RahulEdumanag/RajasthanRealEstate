@@ -16,10 +16,10 @@ class State extends Authenticatable
     protected $primaryKey = 'Sta_Id';
     protected $fillable = ['Sta_Status'];
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'Sta_Cou_Id', 'Cou_Id');
-    }
+    // public function country()
+    // {
+    //     return $this->belongsTo(Country::class, 'Sta_Cou_Id', 'Cou_Id');
+    // }
 
     public function cities()
     {
@@ -27,10 +27,10 @@ class State extends Authenticatable
     }
 
 
-    public function state()
-    {
-        return $this->belongsTo(State::class, 'Cit_Sta_Id', 'Sta_Id');
-    }
+    // public function state()
+    // {
+    //     return $this->belongsTo(State::class, 'Cit_Sta_Id', 'Sta_Id');
+    // }
 
     
 }

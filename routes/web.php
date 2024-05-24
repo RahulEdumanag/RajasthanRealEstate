@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Admin\ImageController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\GalleryController;
+use App\Http\Controllers\Backend\Admin\PropertyController;
 
 Route::group(
     [
@@ -22,6 +23,9 @@ Route::get('admin/images/browse', [ImageController::class, 'browse'])->name('adm
 Route::post('admin/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
 Route::post('admin/slider/updateOrder', [SliderController::class, 'updateOrder'])->name('admin.slider.updateOrder');
 Route::post('admin/gallery/deleteImages', [GalleryController::class, 'deleteImages'])->name('admin.gallery.deleteImages');
+Route::get('/getCitiesByState/{stateId}', [PropertyController::class, 'getCitiesByState'])->name('getCitiesByState');
+Route::get('/getAreasByCity/{cityId}', [PropertyController::class, 'getAreasByCity'])->name('getAreasByCity');
+
 // routes/web.php
 
 
@@ -112,3 +116,4 @@ Route::get('/underconstruction', [HomeController::class, 'underconstruction'])->
 Route::get('/franchise', [HomeController::class, 'franchise'])->name('franchise');
 Route::get('/calculator', [HomeController::class, 'calculator'])->name('calculator');
 Route::get('/property', [HomeController::class, 'property'])->name('property');
+// routes/web.php

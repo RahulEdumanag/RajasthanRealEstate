@@ -2592,7 +2592,7 @@ nav.navbar.bootsnav.sticked .social-icons {
     margin-bottom: 10px;
 }
 .single-query .keyword-input {
-    border: 1px solid rgba(229, 229, 229, 1);
+    border: 1px solid rgb(165 164 164);
     height: 40px;
     border-radius: 0;
     padding-left: 10px;
@@ -3076,14 +3076,15 @@ nav.navbar.bootsnav.sticked .social-icons {
     width: 100% !important;
 }
 .bootstrap-select .btn.dropdown-toggle.btn-default{
-    border: 1px solid rgba(229, 229, 229, 1);
+    border: 1px solid rgb(165 164 164);
+
     border-radius: 0;
     height: 40px;
     padding-left: 10px;
     transition: all 0.3s ease 0s;
     width: 100%;
     background-color: #fff;
-    color: #ccc;
+    color: #7e7c7c;
     box-shadow: none;
     margin-bottom: 0;
 }

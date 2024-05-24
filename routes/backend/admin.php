@@ -73,6 +73,7 @@ Route::resources([
     'property' => 'PropertyController',
     'propertyType' => 'PropertyTypeController',
     'propertyFeatures' => 'PropertyFeaturesController',
+    'area' => 'AreaController',
  
 
 ]);
@@ -135,6 +136,7 @@ $controllers = [
     'PropertyController' => 'property',
     'PropertyTypeController' => 'propertyType',
     'PropertyFeaturesController' => 'propertyFeatures',
+    'AreaController' => 'area',
 
 ];
 

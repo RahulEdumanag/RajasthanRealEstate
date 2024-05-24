@@ -39,8 +39,6 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
             margin-left: -56%;
             height: auto;
         }
-       
-
     }
 
     .owl-wrapper {
@@ -56,7 +54,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
             <div class="col-md-8 col-sm-8 col-xs-12 text-right">
                 <div class="header-top-links">
                     <ul>
-                        <li><a href="#">OPENING HOURS:{{ $WebInfoModel->WebInf_openingHours ?? 'N/A' }}</a></li>
+                        <li><a href="#">OPENING HOURS: {{ $WebInfoModel->WebInf_openingHours ?? 'N/A' }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -77,7 +75,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                             <h4>Phone Number</h4>
                         </li>
                         <li>
-                            <p> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
+                            <p style="color:#101010"> {{ $WebInfoModel->WebInf_ContactNo ?? 'N/A' }}</p>
                         </li>
                     </ul>
                 </div>
@@ -90,7 +88,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                             <h4>Address</h4>
                         </li>
                         <li>
-                            <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
+                            <p style="color:#101010"> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
                         </li>
                     </ul>
                 </div>
@@ -103,7 +101,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                             <h4>Email Address</h4>
                         </li>
                         <li>
-                            <p><a href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a></p>
+                            <p style="color:#101010"><a href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a></p>
                         </li>
                     </ul>
                 </div>
@@ -118,8 +116,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                 <div class="social-icons text-right">
                     <ul class="socials">
                         @foreach ($SocialLinkModel as $model)
-                            <li>
-                                <a href="{{ $model->Pag_URL }}" target="_blank">
+                            <li> 
+                                <a href="{{ $model->Pag_URL }}" target="_blank" style="color: #000000; border: 1px solid #000000;">
                                     <i class="{!! $model->Pag_Image !!}"></i>
                                 </a>
                             </li>
@@ -142,7 +140,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                 <li>
                                     <div class="row">
                                         <div class="col-menu col-md-2">
-                                            <h5 class="title">Showcase List</h5>
+                                            <h5 class="title"><b style="color:red;">Showcase List</b></h5>
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li class="dropdown">
@@ -188,7 +186,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                                 @php
                                                                     $randomImage = $value->getRandomImage();
                                                                 @endphp
-                                                                <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                                                <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
                                                                     alt="listin" class="img-responsive"
                                                                     style="height: 100px;">
                                                                 <span

@@ -12,5 +12,6 @@ $MetaTagsModel = MetaTags::where('Met_Status', '=', 0)->where('Met_Reg_Id', '=',
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/master.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/color/color-1.css') }}" id="color" />
 @if ($WebInfoModel && $WebInfoModel->WebInf_Favicon)
-    <link rel="shortcut icon" href="{{ asset('uploads/' . $WebInfoModel->WebInf_Favicon) }}">
+    <link rel="shortcut icon" href="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_Favicon }}">
+    
 @endif

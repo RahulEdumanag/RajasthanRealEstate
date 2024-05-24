@@ -25,7 +25,7 @@ class PropertyController extends Controller
     }
     public function create()
     {
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
         $ImgMaxSizeModel = getImgMaxSizeModel();
@@ -117,7 +117,7 @@ class PropertyController extends Controller
     }
     public function edit($hashedId)
     {
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
         $ImgMaxSizeModel = getImgMaxSizeModel();

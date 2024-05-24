@@ -558,7 +558,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a{
         padding: 10px 15px;
         border-bottom: solid 1px #eee;
-        color: #6f6f6f;
+        color: #000000;
     }
     
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li:last-child > a{
@@ -631,7 +631,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         width: 100%;
         margin-bottom: 0;
         border-bottom: none;
-        color: #6f6f6f;
+        color: #020101;
     }
     
     nav.navbar.bootsnav.on ul.dropdown-menu.megamenu-content .content{

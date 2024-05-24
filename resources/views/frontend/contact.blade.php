@@ -1,6 +1,12 @@
 @extends('frontend.layouts.master')
 @section('title', 'Contact')
 @section('content')
+    <style>
+        ::placeholder {
+            color: black;
+            opacity: 1;
+        }
+    </style>
     <!--===== PAGE TITLE =====-->
     <div class="page-title page-main-section parallaxie" style="background-image: url(images/titlebg-1.jpg);">
         <div class="container padding-bottom-top-120 text-uppercase text-center">
@@ -72,11 +78,11 @@
                                     </div>
                                     <div class="row">
                                         <!-- <div class="col-md-12">
-                                                    <div class="form-group single-query">
-                                                        <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
-                                                            class="img-responsive" alt="image">
-                                                    </div>
-                                                </div> -->
+                                                        <div class="form-group single-query">
+                                                            <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
+                                                                class="img-responsive" alt="image">
+                                                        </div>
+                                                    </div> -->
                                         <div class="col-md-12 top20">
                                             <div class="form-group single-query">
                                                 <button type="submit" class="btn_fill" id="btn_submit"
@@ -127,7 +133,7 @@
                                     <!-- <div class="line_3"></div> -->
                                 </div>
                                 <div class="contact">
-                                    <iframe src="{{ $WebInfoModel->WebInf_Map ?? N/A }}" width="100%" height="520px"
+                                    <iframe src="{{ $WebInfoModel->WebInf_Map ?? N / A }}" width="100%" height="520px"
                                         style="border:0;" allowfullscreen="" loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>

@@ -22,14 +22,14 @@ if ($ExpiryPeriod) {
         @include('frontend.layouts.head')
     </head>
     <body>
-        <!-- <div class="loader">
+          <div class="loader">
             <div class="cssload-thecube">
                 <div class="cssload-cube cssload-c1"></div>
                 <div class="cssload-cube cssload-c2"></div>
                 <div class="cssload-cube cssload-c4"></div>
                 <div class="cssload-cube cssload-c3"></div>
             </div>
-        </div> -->
+        </div>  
         <!--/LOADER -->
         <!--===== BACK TO TOP =====-->
         <div class="short-msg">
@@ -62,17 +62,9 @@ if ($ExpiryPeriod) {
                                 <li role="presentation" class="active"><a href="#home" aria-controls="home"
                                         role="tab" data-toggle="tab"><i class="fa fa-pencil-square-o"
                                             aria-hidden="true"></i> Suggestion</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
-                                        data-toggle="tab"><i class="fa fa-question-circle-o" aria-hidden="true"></i>
-                                        Question</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
-                                        data-toggle="tab"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                        Problems</a></li>
-                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
-                                        data-toggle="tab"><i class="fa fa-comments-o" aria-hidden="true"></i>
-                                        Feedback</a></li>
+                                
                             </ul>
-                            <!-- Tab panes -->
+                         
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <div class="row">
@@ -100,84 +92,7 @@ if ($ExpiryPeriod) {
                                         </form>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="profile">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Question</h3>
-                                        </div>
-                                        <form class="callus padding-bottom" id="contact-form">
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <input class="keyword-input" placeholder="Name" name="name"
-                                                        id="name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <input class="keyword-input" placeholder="E - mail"
-                                                        name="email" id="email" type="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <textarea name="message" placeholder="Message" id="message"></textarea>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Problems</h3>
-                                        </div>
-                                        <form class="callus padding-bottom" id="contact-form">
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <input class="keyword-input" placeholder="Name" name="name"
-                                                        id="name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <input class="keyword-input" placeholder="E - mail"
-                                                        name="email" id="email" type="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <textarea name="message" placeholder="Message" id="message"></textarea>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="settings">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Feedback</h3>
-                                        </div>
-                                        <form class="callus padding-bottom" id="contact-form">
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <input class="keyword-input" placeholder="Name" name="name"
-                                                        id="name" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <input class="keyword-input" placeholder="E - mail"
-                                                        name="email" id="email" type="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-query">
-                                                    <textarea name="message" placeholder="Message" id="message"></textarea>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                            
                             </div>
                         </div>
                     </div>

@@ -20,13 +20,11 @@
 
         @media (max-width: 767px) {
             .img-responsive {
-
                 height: 210px !important
             }
 
             .border_heading {
                 margin-top: -149px;
-
             }
 
             .defaultimg {
@@ -39,9 +37,15 @@
 
             .homee {
                 margin-top: -111% !important;
-
             }
         }
+
+        ::placeholder {
+            color: white;
+            opacity: 1; 
+        }
+
+    
     </style>
     <?php
     use Carbon\Carbon;
@@ -126,7 +130,7 @@
                     <div class="line_1-1"></div>
                     <div class="line_2-2"></div>
                 </div>
-                <div class="col-xs-12 col-sm-10 col-md-12 text-center">
+                <div class="col-xs-12 col-sm-10 col-md-12 text-center" style="margin-top: 2%;">
                     <p> {!! $HomeMenuModel->Men_FullDesc ?? 'N/A' !!}</p>
                     <div class="line_1-1"></div>
                     <div class="line_2-2"></div>
@@ -292,7 +296,7 @@
             @else
                 <div class="col-md-12">
                     <div class="row">
-                        <div id="property-2-slider" class="owl-carousel">
+                        <div id="property-2-slider" class="owl-carousel" style="z-index: 1;">
                             @foreach ($PropertyModel as $value)
                                 <div class="item">
                                     <div class="property_item bottom40">
@@ -300,7 +304,7 @@
                                             @php
                                                 $randomImage = $value->getRandomImage();
                                             @endphp
-                                            <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                            <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
                                                 alt="listin" class="img-responsive" style="height: 247px;">
                                             <div class="property_meta">
                                                 <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} </span>

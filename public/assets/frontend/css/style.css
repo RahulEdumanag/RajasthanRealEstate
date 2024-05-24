@@ -216,7 +216,7 @@ i {
     margin-top: 40px;
 }
 .padding {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 .bottom40 {
     margin-bottom: 40px;
@@ -654,7 +654,8 @@ i {
 .color-picker .skin a.actt {
     border: 2px #FFF solid;
 }
-
+/* color: #dbdbdb;
+border: 1px solid #dbdbdb; */
 /*Social Icons*/
 .socials li {
     display: inline-block;
@@ -1646,12 +1647,11 @@ nav.bootsnav.brand-center .navbar-collapse {
     padding-top: 20px;
 }
 nav.navbar.bootsnav ul.nav > li > a {
-    font-size: 14px;
     text-transform: uppercase;
-    font-weight: normal;
+    font-weight: bolder;
     padding: 20px 15px;
-    font-size: 15px;
-    color: #555555;
+    font-size: 17px;
+    color: #484848;
 }
 #header-top_2 nav.navbar.bootsnav ul.nav > li > a {
     color: #fff;

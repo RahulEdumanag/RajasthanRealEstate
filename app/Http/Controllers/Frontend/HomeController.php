@@ -123,7 +123,7 @@ class HomeController extends Controller
         }
         $PropertyModel = $query->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', '=', $this->clientId)->get();
         return View::make('frontend.index', compact('ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
@@ -323,7 +323,7 @@ class HomeController extends Controller
         }
         $PropertyModel = $query->paginate(15);
         $CityModel = City::where('Cit_Status', '=', 0)->get();
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', '=', $this->clientId)->get();
         return view('frontend.property', compact('PropertyTypeModel', 'CityModel', 'PropertyModel'));
     }
 }

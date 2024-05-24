@@ -20,9 +20,12 @@
 
         @media (max-width: 767px) {
             .img-responsive {
-
                 height: 210px !important
             }
+        }
+        label{
+            color:black;
+        }
     </style>
     <div class="page-title page-main-section">
         <div class="container padding-bottom-top-120 text-uppercase text-center">
@@ -37,7 +40,7 @@
             </div>
         </div>
     </div>
-    <section class="property-query-area property-page-bg padding">
+    <section class="property-query-area property-page-bg padding" style="background-color:#ff000008">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 bottom40">
@@ -137,6 +140,10 @@
             </form>
         </div>
     </section>
+    <div style="border-bottom:inset;"></div>
+    <div class="line_1"></div>
+    <div class="line_2"></div>
+    <div class="line_3"></div>
     <section id="listings" class="padding">
         <div class="container">
             <div class="row bottom40">
@@ -170,7 +177,7 @@
                                     @php
                                         $randomImage = $value->getRandomImage();
                                     @endphp
-                                    <img src="{{ asset($randomImage ? 'uploads/' . $randomImage : 'assets/frontend/images/dummy-img/no-imageeo.png') }}"
+                                    <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
                                         alt="listin" class="img-responsive" style="height: 247px;">
                                     <div class="overlay">
                                         <div class="centered"><a class="link_arrow white_border"
@@ -218,9 +225,10 @@
             </div>
             <div class="row top40">
                 <div class="col-md-12">
-                    {{ $PropertyModel->links() }}
+                    {!! $PropertyModel->links('vendor.pagination.bootstrap-4') !!}
                 </div>
             </div>
+
         </div>
     </section>
 @endsection

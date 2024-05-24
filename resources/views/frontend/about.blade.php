@@ -7,7 +7,7 @@
         <section id="about_page_three" class="padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 bottom40">
+                    <div class="col-xs-12">
                         <h2 class="text-uppercase"> {{ $AboutMenuModel->Men_ShortDesc ?? 'N/A' }}</span></h2>
                         <div class="line_1"></div>
                         <div class="line_2"></div>

@@ -6,11 +6,13 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
         .no-results-text {
             font-size: 20px;
             color: #555;
             margin-bottom: 10px;
         }
+
         .no-results-image img {
             max-width: 100%;
             height: auto;
@@ -54,8 +56,14 @@
                                             class="quote">
                                     </div>
                                     <div class="testinomial_pic">
-                                        <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
-                                            alt="testinomial" width="59">
+                                        @if ($value->Pag_Image)
+                                            <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
+                                                alt="testinomial" width="59">
+                                        @else
+                                            <img src=" {{ asset('assets/frontend/images/dummy-img/default.jpg') }}" alt="testinomial"
+                                                width="59">
+                                        @endif
+
                                         <h4 class="color">{{ $value->Pag_Name }}</h4>
                                     </div>
                                 </div>

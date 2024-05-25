@@ -1,6 +1,12 @@
 @extends('frontend.layouts.master')
 @section('title', 'Booking')
 @section('content')
+    <style>
+        ::placeholder {
+            color: gray;
+            opacity: 1;
+        }
+    </style>
     <!--===== Loan Calculator =====-->
     <section id="loan-calculator">
         <div class="container">
@@ -66,7 +72,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p id="output">Monthly Payment</p>
+                                <p id="output" style="color: gray;">Monthly Payment</p>
                             </div>
                         </div>
                         <div class="row">

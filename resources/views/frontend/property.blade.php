@@ -53,13 +53,13 @@
             </div>
             <form class="findus" id="searchForm">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Keyword</label>
                             <input class="keyword-input" placeholder="Any" type="text" name="keyword">
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Loction</label>
                             <select class="selectpicker" data-live-search="true" name="location">
@@ -70,7 +70,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Area</label>
                             <select class="selectpicker" data-live-search="true" name="area">
@@ -82,7 +82,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Property Type</label>
                             <select class="selectpicker" data-live-search="true" name="property_type">

@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{Area,PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{Area, PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
@@ -128,13 +128,17 @@ class HomeController extends Controller
             $query->where('PSqureFeet', '<=', $request->square_fit_max);
         }
         $PropertyModel = $query->get();
-        $CityModel = City::where('Cit_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
+            ->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
             ->where('PTyp_Reg_Id', '=', $this->clientId)
             ->get();
         $AreaModel = Area::where('Are_Status', '=', 0)->get();
 
-        return View::make('frontend.index', compact('AreaModel','ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+        return View::make('frontend.index', compact('AreaModel', 'ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
     {
@@ -342,11 +346,15 @@ class HomeController extends Controller
         $PropertyModel = $query->paginate(15);
         $AreaModel = Area::where('Are_Status', '=', 0)->get();
 
-        $CityModel = City::where('Cit_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
+            ->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
             ->where('PTyp_Reg_Id', '=', $this->clientId)
             ->get();
-        return view('frontend.property', compact('AreaModel','PropertyTypeModel', 'CityModel', 'PropertyModel'));
+        return view('frontend.property', compact('AreaModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel'));
     }
     public function getAreas(Request $request)
     {

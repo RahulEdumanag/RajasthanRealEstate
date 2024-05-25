@@ -52,9 +52,9 @@
                                     <span id="Are_Name-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                    <label for="Are_Code">Area Code</label>
+                                    <label for="Are_Code">Pin Code</label>
                                     <input type="text" class="form-control" id="Are_Code" name="Are_Code"
-                                        value="{{ $model->Are_Code }}" placeholder="Area Code">
+                                        value="{{ $model->Are_Code }}" placeholder="Pin Code">
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class=" d-flex col-xl-6">

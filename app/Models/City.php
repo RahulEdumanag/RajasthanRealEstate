@@ -25,4 +25,10 @@ class City extends Authenticatable
     {
         return $this->hasMany(Area::class, 'Are_Cit_Id', 'Cit_Id');
     }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'PCit_Id', 'Cit_Id');
+    }
+    
 }

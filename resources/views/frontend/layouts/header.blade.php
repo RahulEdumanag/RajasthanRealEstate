@@ -17,7 +17,11 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
     ->get();
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('Pag_SerialOrder', 'asc')->get();
 $PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
-$CityModel = City::where('Cit_Status', '=', 0)->get();
+$CityModel = City::where('Cit_Status', '=', 0)
+    ->whereHas('properties', function ($q) {
+        $q->where('PStatus', '=', '0'); // Ensure properties are active
+    })
+    ->get();
 $AreaModel = Area::where('Are_Status', '=', 0)->get();
 
 $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
@@ -135,7 +139,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                         <i class="fa fa-bars"></i></button>
                     <a class="navbar-brand sticky_logo" href="/">
                         <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
-                            class="logo" alt=""></a>
+                            class="logo" alt=""style="width: 195%;"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
@@ -169,7 +173,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                             @endforeach
                                                         </div>
                                                     </li>
-                                                    
+
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle hoverText">Search by
                                                             Type</a>

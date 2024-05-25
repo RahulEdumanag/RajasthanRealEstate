@@ -36,7 +36,7 @@
                         <tr>
                             <th>#</th>
                             <th>Area</th>
-                            <th> Area Code</th>
+                            <th>Pin Code</th>
                             <th>Action</th>
                         </tr>
                     </thead>

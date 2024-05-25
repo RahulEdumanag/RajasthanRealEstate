@@ -414,8 +414,10 @@
                                                 <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}</p>
                                             @else
                                                 @foreach ($value->cities as $city)
-                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
-                                                @endif
+                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                    </p>
+                                                @endforeach
+                                            @endif
                                         </span>
                                         <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                     </div>

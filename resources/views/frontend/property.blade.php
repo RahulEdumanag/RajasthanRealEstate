@@ -217,7 +217,8 @@
                                             @else
                                                 @foreach ($value->cities as $city)
                                                     <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
-                                                @endif
+                                                @endforeach
+                                            @endif
                                         </span>
                                         <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                     </div>
@@ -225,6 +226,9 @@
                                         <p class="pull-left"><i class="icon-calendar2"></i>
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
+                                        <ul class="pull-right">
+                                            <li><a href="#.">{{ $value->PPropertycode }}</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

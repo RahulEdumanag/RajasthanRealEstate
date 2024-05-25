@@ -17,7 +17,9 @@ class CityController extends Controller
     public function create(Request $request)
     {
         $StateModel = State::where('Sta_Status', '=', 0)->get();
-        return view('backend.admin.city.create', compact('StateModel'));
+        $lastSelectedDropdownId = getLastSelectedDropdownId($request);
+
+        return view('backend.admin.city.create', compact('lastSelectedDropdownId','StateModel'));
     }
     public function store(Request $request)
     {

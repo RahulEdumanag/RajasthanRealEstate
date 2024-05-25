@@ -5,6 +5,12 @@ use Hashids\Hashids;
 use App\Models\Page;
 use App\Models\Setting;
 
+if (!function_exists('getLastSelectedDropdownId')) {
+    function getLastSelectedDropdownId($request)
+    {
+        return $request->session()->get('lastSelectedDropdownId');
+    }
+}
 
 
 if (!function_exists('getImgMaxSizeModel')) {

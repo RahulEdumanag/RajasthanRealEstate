@@ -35,7 +35,8 @@
                                     <select class="form-control" id="Are_Cit_Id" name="Are_Cit_Id">
                                         <option selected disabled>Select State Name</option>
                                         @foreach ($CityModel as $value)
-                                            <option value='{{ $value->Cit_Id }}'>
+                                            <option value='{{ $value->Cit_Id }}'
+                                                {{ isset($lastSelectedDropdownId) && $lastSelectedDropdownId == $value->Cit_Id ? 'selected' : '' }}>
                                                 {{ $value->Cit_Name }}</option>
                                         @endforeach
                                     </select>

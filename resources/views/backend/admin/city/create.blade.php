@@ -35,7 +35,8 @@
                                     <select class="form-control" id="Cit_Sta_Id" name="Cit_Sta_Id">
                                         <option selected disabled>Select State Name</option>
                                         @foreach ($StateModel as $value)
-                                            <option value='{{ $value->Sta_Id }}'>
+                                            <option value='{{ $value->Sta_Id }}'
+                                                {{ isset($lastSelectedDropdownId) && $lastSelectedDropdownId == $value->Sta_Id ? 'selected' : '' }}>
                                                 {{ $value->Sta_Name }}</option>
                                         @endforeach
                                     </select>

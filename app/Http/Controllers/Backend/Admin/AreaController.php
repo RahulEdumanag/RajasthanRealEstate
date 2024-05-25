@@ -17,7 +17,9 @@ class AreaController extends Controller
     public function create(Request $request)
     {
         $CityModel = City::where('Cit_Status', '=', 0)->get();
-         return view('backend.admin.area.create', compact('CityModel' ));
+        $lastSelectedDropdownId = getLastSelectedDropdownId($request);
+
+         return view('backend.admin.area.create', compact('lastSelectedDropdownId','CityModel' ));
     }
     public function store(Request $request)
     {
@@ -30,6 +32,8 @@ class AreaController extends Controller
             $model->Are_CreatedDate = Carbon::now('Asia/Kolkata');
             $model->Are_CreatedBy = Auth::user()->Log_Id;
             $model->save();
+            $request->session()->flash('lastSelectedDropdownId', $request->Are_Cit_Id);
+
              return redirect()->route('admin.area.create')->with('success', 'Data added successfully.');
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());

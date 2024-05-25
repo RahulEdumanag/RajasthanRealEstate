@@ -107,9 +107,22 @@
                                         </form>
                                     @else
                                         <span class='me-2'>
-                                            <button type="button" class="btn btn-warning">
-                                                <i class="fa fa-shield" aria-hidden="true"></i>
-                                            </button>
+                                            @if ($value->Men_Status == 0)
+                                                <a class="btn btn-success"
+                                                    href="{{ URL::to('admin/menu/active', $value->Men_Id) }}"><i
+                                                        class="fa fa-check-circle active"></i>
+                                                </a>
+                                            @elseif ($value->Men_Status == 1)
+                                                <a class="btn btn-danger"
+                                                    href="{{ URL::to('admin/menu/inactive', $value->Men_Id) }}"><i
+                                                        class="fa fa-times-circle inactive"></i>
+                                                </a>
+                                            @else
+                                                <span class="badge badge-warning">Unknown</span>
+                                            @endif
+                                        </span>
+                                        <span class='me-2'>
+
                                             <button type="button" class="btn btn-warning">
                                                 <i class="fa fa-shield" aria-hidden="true"></i>
                                             </button>

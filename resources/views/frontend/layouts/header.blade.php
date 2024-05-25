@@ -47,6 +47,10 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
             margin-left: -56%;
             height: auto;
         }
+
+        .newLogo {
+            width: 90px !important;
+        }
     }
 
     .owl-wrapper {
@@ -139,7 +143,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                         <i class="fa fa-bars"></i></button>
                     <a class="navbar-brand sticky_logo" href="/">
                         <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
-                            class="logo" alt=""style="width: 195%;"></a>
+                            class="logo newLogo" alt=""style="width: 195%;"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">

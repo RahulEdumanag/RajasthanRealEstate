@@ -6,28 +6,23 @@
             text-align: center;
             margin-bottom: 30px;
         }
-
         .no-results-text {
             font-size: 20px;
             color: #555;
             margin-bottom: 10px;
         }
-
         .no-results-image img {
             max-width: 100%;
             height: auto;
         }
-
         @media (max-width: 767px) {
             .img-responsive {
                 height: 210px !important
             }
         }
-
         label {
             color: black;
         }
-
         ::placeholder {
             color: gray;
             opacity: 1;
@@ -56,7 +51,7 @@
                     <div class="line_3"></div>
                 </div>
             </div>
-            <form class="findus">
+            <form class="findus" id="searchForm">
                 <div class="row">
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
@@ -70,25 +65,23 @@
                             <select class="selectpicker" data-live-search="true" name="location">
                                 <option selected disabled>Select City</option>
                                 @foreach ($CityModel as $value)
-                                <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
+                                    <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
                             <label>Area</label>
                             <select class="selectpicker" data-live-search="true" name="area">
                                 <option selected disabled>Select Area</option>
                                 @foreach ($AreaModel as $value)
-                                <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }}, {{ $value->city->Cit_Name }}</option>
+                                    <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }},
+                                        {{ $value->city->Cit_Name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-
-
                     <div class="col-md-4 col-sm-4">
                         <div class="single-query form-group">
                             <label>Property Type</label>
@@ -153,14 +146,14 @@
                     </div>
                     <div class="col-md-2 col-sm-6 col-xs-12 text-right">
                         <div class="query-submit-button top10">
-                            <input class="btn_fill" value="Search" type="submit">
+                        <input class="btn_fill" value="Search" type="submit" id="searchButton">
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-    <div style="border-bottom:inset;"></div>
+    <div  style="border-bottom:inset;"></div>
     <div class="line_1"></div>
     <div class="line_2"></div>
     <div class="line_3"></div>
@@ -255,7 +248,19 @@
                     {!! $PropertyModel->links('vendor.pagination.bootstrap-4') !!}
                 </div>
             </div>
-
         </div>
     </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var queryString = window.location.search;
+      
+        if (queryString.startsWith('?') && queryString.length > 1) {
+            var section = document.getElementById('listings');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
 @endsection

@@ -285,8 +285,8 @@
             </div>
         </div>
     </section>
-    <section id="agent-p-2" class="property-details padding">
-        <div class="container">
+    <section id="agent-p-2" class="property-details padding" >
+        <div class="container ">
             <div class="row">
                 <div class="col-xs-12 bottom40">
                     <h2 class="text-uppercase">Our <span class="color_red">PROPERTY</span></h2>
@@ -295,8 +295,9 @@
                     <div class="line_3"></div>
                 </div>
             </div>
-            @if ($PropertyModel->isEmpty())
-                <div class="col-md-12">
+           <span>
+           @if ($PropertyModel->isEmpty())
+                <div class="col-md-12" >
                     <div class="no-results-container">
                         <h4 class="no-results-text">No results found, please try again.</h4>
                         <div class="no-results-image">
@@ -306,13 +307,13 @@
                     </div>
                 </div>
             @else
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <div class="row">
                         <div id="property-2-slider" class="owl-carousel" style="z-index: 1;">
                             @foreach ($PropertyModel as $value)
                                 <div class="item">
-                                    <div class="property_item bottom40">
-                                        <div class="image">
+                                    <div class="property_item bottom40"  >
+                                        <div class="image ">
                                             @php
                                                 $randomImage = $value->getRandomImage();
                                             @endphp
@@ -324,7 +325,7 @@
                                                 <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                             </div>
                                             @if ($value->PFeatured == 1)
-                                                <div class="feature">
+                                                <div class="feature ">
                                                     <span class="tag" style="z-index:2;">
                                                         Featured
                                                     </span>
@@ -346,7 +347,7 @@
                                             <div class="proerty_text">
                                                 <h3><a href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
                                                     </a></h3>
-                                                <span class="bottom10">
+                                                <span class="bottom10 ">
                                                     @if ($value->area && $value->area->city)
                                                         <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
                                                         </p>
@@ -375,6 +376,7 @@
                     </div>
                 </div>
             @endif
+           </span>
         </div>
     </section>
     <section id="image-text" class="padding-bottom-top-120 parallaxie">
@@ -414,4 +416,19 @@
                 </div>
         </section>
     @endif
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var queryString = window.location.search;
+        // Check if the URL contains a query string starting with '?'
+        if (queryString.startsWith('?') && queryString.length > 1) {
+            var section = document.getElementById('agent-p-2');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
+
+
+
 @endsection

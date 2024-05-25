@@ -151,7 +151,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                         <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @foreach ($CityModel as $value)
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('property', ['location' => $value->Cit_Id]) }}">{{ $value->Cit_Name }}</br></a>
+                                                                    href="{{ route('property', ['location' => $value->Cit_Name]) }}">{{ $value->Cit_Name }}</br></a>
                                                             @endforeach
                                                         </div>
                                                     </li>

@@ -100,8 +100,9 @@ class HomeController extends Controller
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
         if ($request->filled('location')) {
-            $query->whereHas('cities', function ($q) use ($request) {
-                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            $query->whereHas('cityy', function ($q) use ($request) {
+                // corrected 'cities' to 'city'
+                $q->where('Cit_Name', 'like', '%' . $request->location . '%');
             });
         }
         if ($request->filled('property_type')) {
@@ -123,7 +124,9 @@ class HomeController extends Controller
         }
         $PropertyModel = $query->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', '=', $this->clientId)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
+            ->where('PTyp_Reg_Id', '=', $this->clientId)
+            ->get();
         return View::make('frontend.index', compact('ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
@@ -200,7 +203,7 @@ class HomeController extends Controller
         // dd($ContactCategoryModel);
         return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel'));
     }
-     
+
     public function Cstore(Request $request)
     {
         try {
@@ -281,7 +284,7 @@ class HomeController extends Controller
     {
         $FaqModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Faq')->orderBy('tbl_page.Pag_CreatedDate', 'desc')->get();
 
-        return view('frontend.faqs',compact('FaqModel'));
+        return view('frontend.faqs', compact('FaqModel'));
     }
     public function underConstruction()
     {
@@ -297,13 +300,14 @@ class HomeController extends Controller
             ->where('PStatus', '=', '0')
             ->with('propertyType')
             ->orderBy('PCreatedDate', 'desc');
-            
+
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
         if ($request->filled('location')) {
-            $query->whereHas('cities', function ($q) use ($request) {
-                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            $query->whereHas('cityy', function ($q) use ($request) {
+                // corrected 'cities' to 'city'
+                $q->where('Cit_Name', 'like', '%' . $request->location . '%');
             });
         }
         if ($request->filled('property_type')) {
@@ -325,7 +329,9 @@ class HomeController extends Controller
         }
         $PropertyModel = $query->paginate(15);
         $CityModel = City::where('Cit_Status', '=', 0)->get();
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', '=', $this->clientId)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
+            ->where('PTyp_Reg_Id', '=', $this->clientId)
+            ->get();
         return view('frontend.property', compact('PropertyTypeModel', 'CityModel', 'PropertyModel'));
     }
 }

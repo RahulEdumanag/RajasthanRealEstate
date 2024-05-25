@@ -70,7 +70,7 @@
                             <select class="selectpicker" data-live-search="true" name="location">
                                 <option selected disabled>Select City</option>
                                 @foreach ($CityModel as $value)
-                                    <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
+                                <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -28,7 +28,7 @@ class PropertyController extends Controller
     }
     public function create()
     {
-        $states = State::all();
+        $states = State::where('Sta_Status', '=', 0)->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();
@@ -41,7 +41,7 @@ class PropertyController extends Controller
     public function getCitiesByState($stateId)
     {
         try {
-            $cities = City::where('Cit_Sta_Id', $stateId)->get();
+            $cities = City::where('Cit_Status', '=', 0)->where('Cit_Sta_Id', $stateId)->get();
             return response()->json($cities);
         } catch (\Exception $e) {
             \Log::error('Error fetching cities: ' . $e->getMessage());
@@ -52,7 +52,7 @@ class PropertyController extends Controller
     public function getAreasByCity($cityId)
     {
         try {
-            $areas = Area::where('Are_Cit_Id', $cityId)->get();
+            $areas = Area::where('Are_Status', '=', 0)->where('Are_Cit_Id', $cityId)->get();
             return response()->json($areas);
         } catch (\Exception $e) {
             \Log::error('Error fetching areas: ' . $e->getMessage());
@@ -147,7 +147,7 @@ class PropertyController extends Controller
     }
     public function edit($hashedId)
     {
-        $states = State::all();
+        $states = State::where('Sta_Status', '=', 0)->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
         $CityModel = City::where('Cit_Status', '=', 0)->get();

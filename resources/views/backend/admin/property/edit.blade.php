@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="PAre_Id">Area <span style="color:red">*</span></label>
+                                    <label class="form-label" for="PAre_Id">Area</label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id">
                                         <option selected disabled>Select Area</option>
                                         @foreach ($AreaModel as $value)
@@ -277,9 +277,6 @@
             const stateSelect = document.getElementById('state');
             const citySelect = document.getElementById('PCit_Id');
             const areaSelect = document.getElementById('PAre_Id');
-            const initialStateId = '{{ $model->city ? $model->city->Cit_Sta_Id : '' }}';
-            const initialCityId = '{{ $model->PCit_Id }}';
-            const initialAreaId = '{{ $model->PAre_Id }}';
 
             stateSelect.addEventListener('change', function() {
                 const stateId = this.value;
@@ -297,9 +294,6 @@
                                 const option = document.createElement('option');
                                 option.value = city.Cit_Id;
                                 option.textContent = city.Cit_Name;
-                                if (city.Cit_Id == initialCityId) {
-                                    option.selected = true;
-                                }
                                 citySelect.appendChild(option);
                             });
                             citySelect.disabled = false;
@@ -326,9 +320,6 @@
                                 const option = document.createElement('option');
                                 option.value = area.Are_Id;
                                 option.textContent = area.Are_Name;
-                                if (area.Are_Id == initialAreaId) {
-                                    option.selected = true;
-                                }
                                 areaSelect.appendChild(option);
                             });
                             areaSelect.disabled = false;
@@ -336,10 +327,36 @@
                         .catch(error => console.error('Error fetching areas:', error));
                 }
             });
-
-            // Trigger the change event on the state select to load the initial cities and areas
-            stateSelect.dispatchEvent(new Event('change'));
         });
+
+        // citySelect.addEventListener('change', function() {
+        //     const cityId = this.value;
+        //     if (cityId) {
+        //         fetch(`/getAreasByCity/${cityId}`)
+        //             .then(response => {
+        //                 if (!response.ok) {
+        //                     throw new Error('Network response was not ok');
+        //                 }
+        //                 return response.json();
+        //             })
+        //             .then(data => {
+        //                 areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
+        //                 data.forEach(area => {
+        //                     const option = document.createElement('option');
+        //                     option.value = area.Are_Id;
+        //                     option.textContent = area.Are_Name;
+        //                     if (area.Are_Id == initialAreaId) {
+        //                         option.selected = true;
+        //                     }
+        //                     areaSelect.appendChild(option);
+        //                 });
+        //                 areaSelect.disabled = false;
+        //             })
+        //             .catch(error => console.error('Error fetching areas:', error));
+        //     }
+        // });
+
+        // Trigger the change event on the state select to load the initial cities and areas
     </script>
 
     <script>

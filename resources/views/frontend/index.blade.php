@@ -198,6 +198,20 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <div class="single-query">
+                                            <select class="selectpicker" data-live-search="true" name="area">
+                                                <option selected disabled>Select Area</option>
+                                                @foreach ($AreaModel as $value)
+                                                <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }}, {{ $value->city->Cit_Name }}</option>
+
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+ 
+
                                     <div class="col-md-12">
                                         <div class="single-query">
                                             <select class="selectpicker" data-live-search="true" name="property_type">

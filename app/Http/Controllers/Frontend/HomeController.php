@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{Area,PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
@@ -105,6 +105,11 @@ class HomeController extends Controller
                 $q->where('Cit_Name', 'like', '%' . $request->location . '%');
             });
         }
+        if ($request->filled('area')) {
+            $query->whereHas('area', function ($q) use ($request) {
+                $q->where('Are_Name', 'like', '%' . $request->area . '%');
+            });
+        }
         if ($request->filled('property_type')) {
             $query->whereHas('propertyType', function ($q) use ($request) {
                 $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
@@ -127,7 +132,9 @@ class HomeController extends Controller
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
             ->where('PTyp_Reg_Id', '=', $this->clientId)
             ->get();
-        return View::make('frontend.index', compact('ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
+        $AreaModel = Area::where('Are_Status', '=', 0)->get();
+
+        return View::make('frontend.index', compact('AreaModel','ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
     {
@@ -310,6 +317,11 @@ class HomeController extends Controller
                 $q->where('Cit_Name', 'like', '%' . $request->location . '%');
             });
         }
+        if ($request->filled('area')) {
+            $query->whereHas('area', function ($q) use ($request) {
+                $q->where('Are_Name', 'like', '%' . $request->area . '%');
+            });
+        }
         if ($request->filled('property_type')) {
             $query->whereHas('propertyType', function ($q) use ($request) {
                 $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
@@ -328,10 +340,25 @@ class HomeController extends Controller
             $query->where('PSqureFeet', '<=', $request->square_fit_max);
         }
         $PropertyModel = $query->paginate(15);
+        $AreaModel = Area::where('Are_Status', '=', 0)->get();
+
         $CityModel = City::where('Cit_Status', '=', 0)->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
             ->where('PTyp_Reg_Id', '=', $this->clientId)
             ->get();
-        return view('frontend.property', compact('PropertyTypeModel', 'CityModel', 'PropertyModel'));
+        return view('frontend.property', compact('AreaModel','PropertyTypeModel', 'CityModel', 'PropertyModel'));
+    }
+    public function getAreas(Request $request)
+    {
+        if ($request->has('city')) {
+            $cityName = $request->input('cityy');
+            $city = City::where('Cit_Name', $cityName)->first();
+
+            if ($city) {
+                $areas = Area::where('Are_Cit_Id', $city->Cit_Id)->get();
+                return response()->json($areas);
+            }
+        }
+        return response()->json([]);
     }
 }

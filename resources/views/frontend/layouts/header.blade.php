@@ -101,7 +101,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                             <h4>Email Address</h4>
                         </li>
                         <li>
-                            <p style="color:#101010"><a href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a></p>
+                            <p style="color:#101010"><a href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a>
+                            </p>
                         </li>
                     </ul>
                 </div>
@@ -116,8 +117,9 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                 <div class="social-icons text-right">
                     <ul class="socials">
                         @foreach ($SocialLinkModel as $model)
-                            <li> 
-                                <a href="{{ $model->Pag_URL }}" target="_blank" style="color: #000000; border: 1px solid #000000;">
+                            <li>
+                                <a href="{{ $model->Pag_URL }}" target="_blank"
+                                    style="color: #000000; border: 1px solid #000000;">
                                     <i class="{!! $model->Pag_Image !!}"></i>
                                 </a>
                             </li>
@@ -195,10 +197,15 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                             <h4><a
                                                                     href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                                             </h4>
-                                                            @foreach ($value->cities as $city)
-                                                                <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                            @if ($value->area && $value->area->city)
+                                                                <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
                                                                 </p>
-                                                            @endforeach
+                                                            @else
+                                                                @foreach ($value->cities as $city)
+                                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                    </p>
+                                                                @endforeach
+                                                            @endif
                                                         </div>
                                                     @endforeach
                                                 </div>

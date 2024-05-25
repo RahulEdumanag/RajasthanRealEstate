@@ -22,7 +22,10 @@ class Area extends Authenticatable
     }
 
 
-
+    public function cityy()
+    {
+        return $this->belongsTo(City::class, 'Cit_Id', 'Cit_Id');
+    }
     // view
     // <td>{{ $value->city->Cit_Name }}</td>
     // <td>{{ $value->city->state->Sta_Name }}</td>

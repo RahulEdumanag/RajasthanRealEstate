@@ -12,6 +12,7 @@
                 width: auto;
             }
         }
+
         ::placeholder {
             color: black;
             opacity: 1;
@@ -147,9 +148,12 @@
                                                 <tr>
                                                     <td><b>City</b></td>
                                                     <td class="text-right">
-                                                        @foreach ($propertyDetails->cities as $city)
-                                                            <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
-                                                        @endforeach
+                                                        @if ($propertyDetails->area && $propertyDetails->area->city)
+                                                            <p>{{ $propertyDetails->area->Are_Name }},{{ $propertyDetails->area->city->Cit_Name }}
+                                                            </p>
+                                                        @else
+                                                            <p>No area data available</p>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -206,9 +210,8 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12 top10">
                                             <div class="image">
                                                 @if ($image)
-                                                 
-                                                        <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="listing" class="img-responsive" style="max-height: 350px;">
-
+                                                    <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="listing"
+                                                        class="img-responsive" style="max-height: 350px;">
                                                 @else
                                                     <img src="{{ asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
                                                         alt="listing" class="img-responsive" style="height: 261px;">
@@ -216,7 +219,8 @@
                                                 <div class="overlay border_radius">
                                                     @if ($image)
                                                         <a class="fancybox centered"
-                                                            href="{{ env('Web_CommonURl') . trim($image) }}"  data-fancybox-group="gallery">
+                                                            href="{{ env('Web_CommonURl') . trim($image) }}"
+                                                            data-fancybox-group="gallery">
                                                             <i class="icon-focus"></i>
                                                         </a>
                                                     @else
@@ -403,10 +407,15 @@
                                         <h3><a
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                         </h3>
+
+
                                         <span class="bottom10">
-                                            @foreach ($value->cities as $city)
-                                                <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
-                                            @endforeach
+                                            @if ($value->area && $value->area->city)
+                                                <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}</p>
+                                            @else
+                                                @foreach ($value->cities as $city)
+                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                                @endif
                                         </span>
                                         <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                     </div>
@@ -415,9 +424,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                                <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                            </ul> -->
+                                                                                                            <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                                            <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                                        </ul> -->
                                     </div>
                                 </div>
                             </div>

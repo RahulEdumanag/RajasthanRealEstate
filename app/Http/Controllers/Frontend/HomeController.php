@@ -295,7 +295,9 @@ class HomeController extends Controller
     {
         $query = Property::where('PReg_Id', '=', $this->clientId)
             ->where('PStatus', '=', '0')
-            ->with('propertyType');
+            ->with('propertyType')
+            ->orderBy('PCreatedDate', 'desc');
+            
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }

@@ -42,10 +42,8 @@
 
         ::placeholder {
             color: white;
-            opacity: 1; 
+            opacity: 1;
         }
-
-    
     </style>
     <?php
     use Carbon\Carbon;
@@ -335,9 +333,14 @@
                                                 <h3><a href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
                                                     </a></h3>
                                                 <span class="bottom10">
-                                                    @foreach ($value->cities as $city)
+                                                    @if ($value->area && $value->area->city)
+                                                        <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                        </p>
+                                                    @else
+                                                        @foreach ($value->cities as $city)
                                                         <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
                                                     @endforeach
+                                                    @endif
                                                 </span>
                                                 <p><strong>₹{{ $value->PAmount }}/-</strong></p>
                                             </div>

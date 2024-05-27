@@ -26,7 +26,11 @@ $AreaModel = Area::where('Are_Status', '=', 0)
         $q->where('PStatus', '=', '0'); // Ensure properties are active
     })
     ->get();
-$PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
+$PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
+->whereHas('properties', function ($q) {
+    $q->where('PStatus', '=', '0'); // Ensure properties are active
+})
+->get();
 ?>
 <style>
     .dropdown-menu {

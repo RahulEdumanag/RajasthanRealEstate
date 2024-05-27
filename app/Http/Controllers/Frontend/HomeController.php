@@ -134,7 +134,9 @@ class HomeController extends Controller
             })
             ->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
-            ->where('PTyp_Reg_Id', '=', $this->clientId)
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
             ->get();
         $AreaModel = Area::where('Are_Status', '=', 0)
             ->whereHas('properties', function ($q) {
@@ -355,7 +357,9 @@ class HomeController extends Controller
             })
             ->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
-            ->where('PTyp_Reg_Id', '=', $this->clientId)
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
             ->get();
         return view('frontend.property', compact('AreaModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel'));
     }

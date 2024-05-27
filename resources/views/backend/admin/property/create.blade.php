@@ -44,14 +44,14 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PCit_Id">City <span style="color:red">*</span></label>
-                                    <select class="form-control" id="PCit_Id" name="PCit_Id"  required >
+                                    <select class="form-control" id="PCit_Id" name="PCit_Id" required>
                                         <option selected disabled>Select City</option>
                                     </select>
                                     <span id="PCit_Id-error" class="error" style="color: red;"></span>
                                 </div>
 
                                 <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="PAre_Id">Area  </label>
+                                    <label class="form-label" for="PAre_Id">Area </label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id" disabled>
                                         <option selected disabled>Select Area</option>
                                     </select>
@@ -119,15 +119,15 @@
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
                                 <!-- <div class="col-sm-6 form-group ">
-                                                                                                    <label class="form-label" for="Property Code">Property Code <span
-                                                                                                            style="color:red">*</span></label>
-                                                                                                    <div class="input-group input-group-merge">
-                                                                                                        <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
-                                                                                                            autocomplete="off" placeholder="Enter Property Code"
-                                                                                                            aria-describedby="name2" />
-                                                                                                    </div>
-                                                                                                    <span id="PPropertycode-error" class="error" style="color: red;"></span>
-                                                                                                </div> -->
+                                                                                                            <label class="form-label" for="Property Code">Property Code <span
+                                                                                                                    style="color:red">*</span></label>
+                                                                                                            <div class="input-group input-group-merge">
+                                                                                                                <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                                                                                                    autocomplete="off" placeholder="Enter Property Code"
+                                                                                                                    aria-describedby="name2" />
+                                                                                                            </div>
+                                                                                                            <span id="PPropertycode-error" class="error" style="color: red;"></span>
+                                                                                                        </div> -->
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="Map">Amount <span
                                             style="color:red">*</span></label>
@@ -303,8 +303,19 @@
                             citySelect.disabled = false;
                             areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
                             areaSelect.disabled = true;
+                            console.log('Data received:successfully');
+
                         })
-                        .catch(error => console.error('Error fetching cities:', error));
+                        .catch(error => {
+                            // Handle errors including network issues or non-200 status codes
+                            console.error('Error fetching cities:', error);
+                            // You can also differentiate between different types of errors
+                            if (error instanceof TypeError) {
+                                console.error('Network error:', error.message);
+                            } else {
+                                console.error('Other error:', error.message);
+                            }
+                        });
                 }
             });
 

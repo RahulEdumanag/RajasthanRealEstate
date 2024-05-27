@@ -14,44 +14,48 @@
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="row g-3">
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="state">State <span style="color:red">*</span></label>
-                                    <select class="form-control" id="state" name="state">
+                                <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                    <label class="form-label" for="PSta_Id">State <span style="color:red">*</span></label>
+                                    <select class="form-control" id="PSta_Id" name="PSta_Id">
                                         <option selected disabled>Select State</option>
-                                        @foreach ($states as $state)
-                                            <option value='{{ $state->Sta_Id }}'
-                                                @if ($model->city && $state->Sta_Id == $model->city->Cit_Sta_Id) selected @endif>{{ $state->Sta_Name }}
+                                        @foreach ($StateModel as $state)
+                                            <option value="{{ $state->Sta_Id }}"
+                                                @if ($state->Sta_Id == $model->PSta_Id) selected @endif>
+                                                {{ $state->Sta_Name }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    <span id="state-error" class="error" style="color: red;"></span>
                                 </div>
-
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="PCit_Id">City <span style="color:red">*</span></label>
-                                    <select class="form-control" id="PCit_Id" name="PCit_Id">
-                                        <option selected disabled>Select City</option>
+                                <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                    <label class="form-label" for="PCit_Id">City Name <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="PCit_Id" name="PCit_Id" required>
+                                        <option selected disabled>Select City Name</option>
                                         @foreach ($CityModel as $value)
-                                            <option value='{{ $value->Cit_Id }}'
-                                                @if ($value->Cit_Id == $model->PCit_Id) selected @endif>{{ $value->Cit_Name }}
+                                            <option value="{{ $value->Cit_Id }}"
+                                                @if ($value->Cit_Id == $model->PCit_Id) selected @endif>
+                                                {{ $value->Cit_Name }}
                                             </option>
                                         @endforeach
                                     </select>
                                     <span id="PCit_Id-error" class="error" style="color: red;"></span>
-                                </div>
 
+                                </div>
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area</label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id">
                                         <option selected disabled>Select Area</option>
                                         @foreach ($AreaModel as $value)
                                             <option value='{{ $value->Are_Id }}'
-                                                @if ($value->Are_Id == $model->PAre_Id) selected @endif>{{ $value->Are_Name }}
+                                                @if ($value->Are_Id == $model->PAre_Id) selected @endif>
+                                                {{ $value->Are_Name }}
                                             </option>
                                         @endforeach
                                     </select>
                                     <span id="PAre_Id-error" class="error" style="color: red;"></span>
                                 </div>
+
+
 
                                 <div class="col-sm-6">
                                     <label class="form-label" for="type"> Property Type <span 3
@@ -120,8 +124,7 @@
                                     <span id="PBedRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Title" class="form-label">Title<span
-                                            style="color:red">*</span></label>
+                                    <label for="Title" class="form-label">Title<span style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="PTitle" name="PTitle"
                                         value="{{ old('PTitle', $model->PTitle) }}" placeholder="">
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
@@ -271,92 +274,67 @@
             </div>
         </div>
     </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const stateSelect = document.getElementById('state');
-            const citySelect = document.getElementById('PCit_Id');
-            const areaSelect = document.getElementById('PAre_Id');
+        $(document).ready(function($) {
+            function fetchCities(stateId, selectedCityId = null) {
+                $.ajax({
+                    url: "{{ route('admin.area.getCitiesByState') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        stateId: stateId
+                    },
+                    success: function(response) {
+                        $('#PCit_Id').html(response);
+                        if (selectedCityId) {
+                            $('#PCit_Id').val(selectedCityId).trigger('change');
+                        }
+                    }
+                });
+            }
 
-            stateSelect.addEventListener('change', function() {
-                const stateId = this.value;
-                if (stateId) {
-                    fetch(`/getCitiesByState/${stateId}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            citySelect.innerHTML = '<option selected disabled>Select City</option>';
-                            data.forEach(city => {
-                                const option = document.createElement('option');
-                                option.value = city.Cit_Id;
-                                option.textContent = city.Cit_Name;
-                                citySelect.appendChild(option);
-                            });
-                            citySelect.disabled = false;
-                            areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
-                            areaSelect.disabled = true;
-                        })
-                        .catch(error => console.error('Error fetching cities:', error));
-                }
+            function fetchAreas(cityId, selectedAreaId = null) {
+                $.ajax({
+                    url: "{{ route('admin.area.getAreasByCity') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        cityId: cityId
+                    },
+                    success: function(response) {
+                        $('#PAre_Id').html(response);
+                        if (selectedAreaId) {
+                            $('#PAre_Id').val(selectedAreaId);
+                        }
+                    }
+                });
+            }
+
+            // Fetch cities based on selected state
+            $('#PSta_Id').on('change', function() {
+                var stateId = $(this).val();
+                fetchCities(stateId, '{{ $selectedCityId }}'); // Pass the selected city ID
             });
 
-            citySelect.addEventListener('change', function() {
-                const cityId = this.value;
-                if (cityId) {
-                    fetch(`/getAreasByCity/${cityId}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
-                            data.forEach(area => {
-                                const option = document.createElement('option');
-                                option.value = area.Are_Id;
-                                option.textContent = area.Are_Name;
-                                areaSelect.appendChild(option);
-                            });
-                            areaSelect.disabled = false;
-                        })
-                        .catch(error => console.error('Error fetching areas:', error));
-                }
+            // Fetch areas based on selected city
+            $('#PCit_Id').on('change', function() {
+                var cityId = $(this).val();
+                fetchAreas(cityId, '{{ $model->PAre_Id }}'); // Pass the initial area ID
             });
+
+            // Trigger initial state change event to populate cities and areas
+            var initialStateId = '{{ $model->PSta_Id }}';
+            var initialCityId = '{{ $model->PCit_Id }}';
+            var initialAreaId = '{{ $model->PAre_Id }}';
+
+            if (initialStateId) {
+                fetchCities(initialStateId, initialCityId); // Fetch cities with selected city ID
+            }
+
+            if (initialCityId) {
+                fetchAreas(initialCityId, initialAreaId); // Fetch areas with initial area ID
+            }
         });
-
-        // citySelect.addEventListener('change', function() {
-        //     const cityId = this.value;
-        //     if (cityId) {
-        //         fetch(`/getAreasByCity/${cityId}`)
-        //             .then(response => {
-        //                 if (!response.ok) {
-        //                     throw new Error('Network response was not ok');
-        //                 }
-        //                 return response.json();
-        //             })
-        //             .then(data => {
-        //                 areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
-        //                 data.forEach(area => {
-        //                     const option = document.createElement('option');
-        //                     option.value = area.Are_Id;
-        //                     option.textContent = area.Are_Name;
-        //                     if (area.Are_Id == initialAreaId) {
-        //                         option.selected = true;
-        //                     }
-        //                     areaSelect.appendChild(option);
-        //                 });
-        //                 areaSelect.disabled = false;
-        //             })
-        //             .catch(error => console.error('Error fetching areas:', error));
-        //     }
-        // });
-
-        // Trigger the change event on the state select to load the initial cities and areas
     </script>
 
     <script>

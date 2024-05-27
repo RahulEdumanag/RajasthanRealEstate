@@ -61,7 +61,7 @@ class AreaController extends Controller
         $StateModel = State::where('Sta_Status', '=', 0)->get();
         $Are_Id = decodeId($hashedId);
         $model = Area::where('Are_Id', $Are_Id)->first();
-        $CityModel = City::where('Cit_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Sta_Id', $model->Are_Sta_Id)->where('Cit_Status', '=', 0)->get();
         return view('backend.admin.area.edit', compact('StateModel','model', 'CityModel'));
     }
     public function update(Request $request, $Are_Id)

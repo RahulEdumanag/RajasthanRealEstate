@@ -45,14 +45,12 @@
                                     </select>
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                    <label class="form-label" for="type"> City Name <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Are_Cit_Id">City Name <span style="color:red">*</span></label>
                                     <select class="form-control" id="Are_Cit_Id" name="Are_Cit_Id">
                                         <option selected disabled>Select City Name</option>
-                                        @foreach ($CityModel as $value)
-                                            <option value='{{ $value->Cit_Id }}'
-                                                @if ($value->Cit_Id == $model->Are_Cit_Id) selected @endif>
-                                                {{ $value->Cit_Name }}
+                                        @foreach ($CityModel as $city)
+                                            <option value="{{ $city->Cit_Id }}" @if ($city->Cit_Id == $model->Are_Cit_Id) selected @endif>
+                                                {{ $city->Cit_Name }}
                                             </option>
                                         @endforeach
                                     </select>

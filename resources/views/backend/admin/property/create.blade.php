@@ -31,23 +31,24 @@
                             @csrf
                             <div class="row g-3">
 
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="state">State <span style="color:red">*</span></label>
-                                    <select class="form-control" id="state" name="state" required>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                    <label for="PSta_Id">State Name<span style="color:red">*</span></label>
+                                    <select class="form-control" id="PSta_Id" name="PSta_Id">
                                         <option selected disabled>Select State</option>
-                                        @foreach ($states as $state)
+                                        @foreach ($StateModel as $state)
                                             <option value='{{ $state->Sta_Id }}'>{{ $state->Sta_Name }}</option>
                                         @endforeach
                                     </select>
-                                    <span id="state-error" class="error" style="color: red;"></span>
+                                    <span id="PSta_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
 
-                                <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="PCit_Id">City <span style="color:red">*</span></label>
-                                    <select class="form-control" id="PCit_Id" name="PCit_Id" required>
+
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                    <label for="PCit_Id">City Name<span style="color:red">*</span></label>
+                                    <select class="form-control" id="PCit_Id" name="PCit_Id">
                                         <option selected disabled>Select City</option>
                                     </select>
-                                    <span id="PCit_Id-error" class="error" style="color: red;"></span>
+                                    <span id="PCit_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
 
                                 <div class="col-sm-6 form-group">
@@ -94,8 +95,8 @@
                                     <span id="PBathRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type">Bed Room <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="type">Bed Room <span style="color:red">*
+                                            </propertyspan></label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
                                         <option selected disabled>Select Bed Room</option>
                                         <option value='1'>1</option>
@@ -119,15 +120,15 @@
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
                                 <!-- <div class="col-sm-6 form-group ">
-                                                                                                            <label class="form-label" for="Property Code">Property Code <span
-                                                                                                                    style="color:red">*</span></label>
-                                                                                                            <div class="input-group input-group-merge">
-                                                                                                                <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
-                                                                                                                    autocomplete="off" placeholder="Enter Property Code"
-                                                                                                                    aria-describedby="name2" />
-                                                                                                            </div>
-                                                                                                            <span id="PPropertycode-error" class="error" style="color: red;"></span>
-                                                                                                        </div> -->
+                                                                                                                    <label class="form-label" for="Property Code">Property Code <span
+                                                                                                                            style="color:red">*</span></label>
+                                                                                                                    <div class="input-group input-group-merge">
+                                                                                                                        <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                                                                                                            autocomplete="off" placeholder="Enter Property Code"
+                                                                                                                            aria-describedby="name2" />
+                                                                                                                    </div>
+                                                                                                                    <span id="PPropertycode-error" class="error" style="color: red;"></span>
+                                                                                                                </div> -->
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="Map">Amount <span
                                             style="color:red">*</span></label>
@@ -277,73 +278,42 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const stateSelect = document.getElementById('state');
-            const citySelect = document.getElementById('PCit_Id');
-            const areaSelect = document.getElementById('PAre_Id');
-
-            stateSelect.addEventListener('change', function() {
-                const stateId = this.value;
-                if (stateId) {
-                    fetch(`/getCitiesByState/${stateId}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            citySelect.innerHTML = '<option selected disabled>Select City</option>';
-                            data.forEach(city => {
-                                const option = document.createElement('option');
-                                option.value = city.Cit_Id;
-                                option.textContent = city.Cit_Name;
-                                citySelect.appendChild(option);
-                            });
-                            citySelect.disabled = false;
-                            areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
-                            areaSelect.disabled = true;
-                            console.log('Data received:successfully');
-
-                        })
-                        .catch(error => {
-                            // Handle errors including network issues or non-200 status codes
-                            console.error('Error fetching cities:', error);
-                            // You can also differentiate between different types of errors
-                            if (error instanceof TypeError) {
-                                console.error('Network error:', error.message);
-                            } else {
-                                console.error('Other error:', error.message);
-                            }
-                        });
-                }
+        $(document).ready(function($) {
+            // Fetch cities based on selected state
+            $('#PSta_Id').on('change', function() {
+                var stateId = $(this).val();
+                $.ajax({
+                    url: "{{ route('admin.area.getCitiesByState') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        stateId: stateId
+                    },
+                    success: function(response) {
+                        $('#PCit_Id').html(response);
+                    }
+                });
             });
 
-            citySelect.addEventListener('change', function() {
-                const cityId = this.value;
-                if (cityId) {
-                    fetch(`/getAreasByCity/${cityId}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            areaSelect.innerHTML = '<option selected disabled>Select Area</option>';
-                            data.forEach(area => {
-                                const option = document.createElement('option');
-                                option.value = area.Are_Id;
-                                option.textContent = area.Are_Name;
-                                areaSelect.appendChild(option);
-                            });
-                            areaSelect.disabled = false;
-                        })
-                        .catch(error => console.error('Error fetching areas:', error));
-                }
+            // Fetch areas based on selected city
+            $('#PCit_Id').on('change', function() {
+                var cityId = $(this).val();
+                $.ajax({
+                    url: "{{ route('admin.area.getAreasByCity') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        cityId: cityId
+                    },
+                    success: function(response) {
+                        $('#PAre_Id').html(response);
+                        $('#PAre_Id').prop('disabled', false); // Enable the area dropdown
+                    }
+                });
             });
         });
     </script>
+
     <script>
         $(document).ready(function($) {
             $("#register-form").validate({

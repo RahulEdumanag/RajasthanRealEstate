@@ -34,9 +34,21 @@ class Property extends Model
     {
         return $this->belongsTo(City::class, 'PCit_Id', 'Cit_Id');
     }
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'PCit_Id', 'Cit_Id');
+    }
 
     public function area()
     {
         return $this->belongsTo(Area::class, 'PAre_Id', 'Are_Id');
     }
+    
+// City.php
+public function state()
+{
+    return $this->belongsTo(State::class, 'Cit_Sta_Id', 'Sta_Id');
 }
+
+}
+ 

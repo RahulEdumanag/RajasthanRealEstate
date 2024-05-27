@@ -25,10 +25,14 @@ Route::get('admin/images/browse', [ImageController::class, 'browse'])->name('adm
 Route::post('admin/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');
 Route::post('admin/slider/updateOrder', [SliderController::class, 'updateOrder'])->name('admin.slider.updateOrder');
 Route::post('admin/gallery/deleteImages', [GalleryController::class, 'deleteImages'])->name('admin.gallery.deleteImages');
+
+// New routes for fetching cities and areas
 Route::get('/getCitiesByState/{stateId}', [PropertyController::class, 'getCitiesByState'])->name('getCitiesByState');
 Route::get('/getAreasByCity/{cityId}', [PropertyController::class, 'getAreasByCity'])->name('getAreasByCity');
-Route::post('admin/area/getCitiesByState', 'Backend\Admin\AreaController@getCitiesByState')->name('admin.area.getCitiesByState');
 
+// Alternatively, using POST routes for AJAX requests
+Route::post('admin/area/getCitiesByState', [AreaController::class, 'getCitiesByState'])->name('admin.area.getCitiesByState');
+Route::post('admin/area/getAreasByCity', [PropertyController::class, 'getAreasByCity'])->name('admin.area.getAreasByCity');
 // routes/web.php
 
 

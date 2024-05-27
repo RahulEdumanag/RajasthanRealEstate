@@ -30,15 +30,23 @@
                             method="post" accept-charset="utf-8">
                             @csrf
                             <div class="row g-3">
+
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                    <label for="Menu Name">State Name<span style="color:red">*</span></label>
-                                    <select class="form-control" id="Are_Cit_Id" name="Are_Cit_Id">
-                                        <option selected disabled>Select State Name</option>
-                                        @foreach ($CityModel as $value)
-                                            <option value='{{ $value->Cit_Id }}'
-                                                {{ isset($lastSelectedDropdownId) && $lastSelectedDropdownId == $value->Cit_Id ? 'selected' : '' }}>
-                                                {{ $value->Cit_Name }}</option>
+                                    <label for="Are_Sta_Id">State Name<span style="color:red">*</span></label>
+                                    <select class="form-control" id="Are_Sta_Id" name="Are_Sta_Id">
+                                        <option selected disabled>Select State</option>
+                                        @foreach ($StateModel as $state)
+                                            <option value='{{ $state->Sta_Id }}'>{{ $state->Sta_Name }}</option>
                                         @endforeach
+                                    </select>
+                                    <span id="Are_Sta_Id-error" class="error" style="color: red;">&nbsp;</span>
+                                </div>
+
+
+                                <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                    <label for="Are_Cit_Id">City Name<span style="color:red">*</span></label>
+                                    <select class="form-control" id="Are_Cit_Id" name="Are_Cit_Id">
+                                        <option selected disabled>Select City</option>
                                     </select>
                                     <span id="Are_Cit_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
@@ -47,6 +55,9 @@
                                     <input type="text" class="form-control" id="Are_Name" name="Are_Name"
                                         placeholder="Name">
                                     <span id="Are_Name-error" class="error" style="color: red;">&nbsp;</span>
+                                    @error('Are_Name')
+                                        <div class="has-error" style="color: red"> This record already exists.</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="Are_Code">Pin Code</label>
@@ -75,6 +86,25 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function($) {
+            // Fetch cities based on selected state
+            $('#Are_Sta_Id').on('change', function() {
+                var stateId = $(this).val();
+                $.ajax({
+                    url: "{{ route('admin.area.getCitiesByState') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        stateId: stateId
+                    },
+                    success: function(response) {
+                        $('#Are_Cit_Id').html(response);
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(document).ready(function($) {
             var isFileSizeValid = true;

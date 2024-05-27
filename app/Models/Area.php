@@ -26,6 +26,11 @@ class Area extends Authenticatable
     {
         return $this->belongsTo(City::class, 'Cit_Id', 'Cit_Id');
     }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'PAre_Id', 'Are_Id');
+    }
     // view
     // <td>{{ $value->city->Cit_Name }}</td>
     // <td>{{ $value->city->state->Sta_Name }}</td>

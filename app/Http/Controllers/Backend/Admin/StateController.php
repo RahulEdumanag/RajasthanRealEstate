@@ -20,6 +20,10 @@ class StateController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'Sta_Name' => 'required|unique:tbl_state,Sta_Name|max:255',
+        ]);
+
         try {
             $model = new State();
             $model->Sta_Name = $request->Sta_Name;

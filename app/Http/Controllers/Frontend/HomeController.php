@@ -136,8 +136,11 @@ class HomeController extends Controller
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
             ->where('PTyp_Reg_Id', '=', $this->clientId)
             ->get();
-        $AreaModel = Area::where('Are_Status', '=', 0)->get();
-
+        $AreaModel = Area::where('Are_Status', '=', 0)
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
+            ->get();
         return View::make('frontend.index', compact('AreaModel', 'ClientModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'BlogModel', 'FacilityModel', 'SliderModel', 'HomeMenuModel', 'TeamModel', 'TestimonialModel', 'GalleryModel', 'WebInfoModel', 'TeamModel', 'FaqModel', 'ServicesModel', 'EventModel', 'usefulLinkModel', 'HoroscopeModel'));
     }
     public function about()
@@ -214,7 +217,6 @@ class HomeController extends Controller
         // dd($ContactCategoryModel);
         return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel'));
     }
-
     public function Cstore(Request $request)
     {
         try {
@@ -294,7 +296,6 @@ class HomeController extends Controller
     public function faqs()
     {
         $FaqModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Faq')->orderBy('tbl_page.Pag_CreatedDate', 'desc')->get();
-
         return view('frontend.faqs', compact('FaqModel'));
     }
     public function underConstruction()
@@ -311,7 +312,6 @@ class HomeController extends Controller
             ->where('PStatus', '=', '0')
             ->with('propertyType')
             ->orderBy('PCreatedDate', 'desc');
-
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
@@ -344,8 +344,11 @@ class HomeController extends Controller
             $query->where('PSqureFeet', '<=', $request->square_fit_max);
         }
         $PropertyModel = $query->paginate(15);
-        $AreaModel = Area::where('Are_Status', '=', 0)->get();
-
+        $AreaModel = Area::where('Are_Status', '=', 0)
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
+            ->get();
         $CityModel = City::where('Cit_Status', '=', 0)
             ->whereHas('properties', function ($q) {
                 $q->where('PStatus', '=', '0'); // Ensure properties are active
@@ -361,7 +364,6 @@ class HomeController extends Controller
         if ($request->has('city')) {
             $cityName = $request->input('cityy');
             $city = City::where('Cit_Name', $cityName)->first();
-
             if ($city) {
                 $areas = Area::where('Are_Cit_Id', $city->Cit_Id)->get();
                 return response()->json($areas);

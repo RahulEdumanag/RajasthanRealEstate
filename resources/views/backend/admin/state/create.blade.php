@@ -35,6 +35,9 @@
                                     <input type="text" class="form-control" id="Sta_Name" name="Sta_Name"
                                         placeholder="Name">
                                     <span id="Sta_Name-error" class="error" style="color: red;">&nbsp;</span>
+                                    @error('Sta_Name')
+                                        <div class="has-error" style="color: red"> This record already exists.</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-sm-12 mb-4 form-group ">
                                     <label for="Sta_Code">State Code</label>

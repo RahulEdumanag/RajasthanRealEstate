@@ -31,11 +31,24 @@
                             @csrf
                             @method('PUT')
                             <div class="row g-3">
+                            <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
+                                    <label class="form-label" for="type"> State <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-control" id="Are_Sta_Id" name="Are_Sta_Id">
+                                        <option selected disabled>Select State</option>
+                                        @foreach ($StateModel as $state)
+                                            <option value='{{ $state->Sta_Id }}'
+                                                @if ($state->Sta_Id == $model->city->state->Sta_Id) selected @endif>
+                                                {{ $state->Sta_Name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                    <label class="form-label" for="type"> State Name <span
+                                    <label class="form-label" for="type"> City Name <span
                                             style="color:red">*</span></label>
                                     <select class="form-control" id="Are_Cit_Id" name="Are_Cit_Id">
-                                        <option selected disabled>Select State Name</option>
+                                        <option selected disabled>Select City Name</option>
                                         @foreach ($CityModel as $value)
                                             <option value='{{ $value->Cit_Id }}'
                                                 @if ($value->Cit_Id == $model->Are_Cit_Id) selected @endif>
@@ -77,6 +90,25 @@
                 </div>
             </div>
         </div>
+        <script>
+        $(document).ready(function($) {
+            // Fetch cities based on selected state
+            $('#Are_Sta_Id').on('change', function() {
+                var stateId = $(this).val();
+                $.ajax({
+                    url: "{{ route('admin.area.getCitiesByState') }}",
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        stateId: stateId
+                    },
+                    success: function(response) {
+                        $('#Are_Cit_Id').html(response);
+                    }
+                });
+            });
+        });
+    </script>
         <script>
             $(document).ready(function($) {
                 var isFileSizeValid = true;

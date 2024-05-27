@@ -35,6 +35,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>State</th>
                             <th>City</th>
                             <th> City Code</th>
                             <th>Action</th>
@@ -47,6 +48,9 @@
                                 <tr>
                                     <td class="serial-number">
                                         {{ $loop->iteration }}
+                                    </td>
+                                    <td class="serial-number" title="{{ $value->state->Sta_Name }}">
+                                        {{ Str::limit($value->state->Sta_Name, 30) }}
                                     </td>
                                     <td class="serial-number" title="{{ $value->Cit_Name }}">
                                         {{ Str::limit($value->Cit_Name, 30) }}

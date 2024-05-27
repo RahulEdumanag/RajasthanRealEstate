@@ -47,6 +47,9 @@
                                     <input type="text" class="form-control" id="Cit_Name" name="Cit_Name"
                                         placeholder="Name">
                                     <span id="Cit_Name-error" class="error" style="color: red;">&nbsp;</span>
+                                    @error('Cit_Name')
+                                        <div class="has-error" style="color: red"> This record already exists.</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="Cit_Code">City Code</label>

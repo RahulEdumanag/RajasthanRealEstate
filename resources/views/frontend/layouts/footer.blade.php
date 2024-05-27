@@ -168,7 +168,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
                         ©
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> <a href="/">Ajmer Property and Builders</a>, made with ❤️ by
+                        </script> <a href="/">{{$WebInfoModel->WebInf_Name}}</a>, made with ❤️ by
                         <a href="https://edumanag.com/" target="_blank" class="fw-medium">Edumanag</a>
                     </div>
                 </div>

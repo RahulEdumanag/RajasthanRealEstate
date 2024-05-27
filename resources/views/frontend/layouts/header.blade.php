@@ -6,7 +6,6 @@ use App\Models\Page;
 use App\Models\Property;
 use App\Models\City;
 use App\Models\Area;
-
 use App\Models\PropertyType;
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
@@ -22,8 +21,11 @@ $CityModel = City::where('Cit_Status', '=', 0)
         $q->where('PStatus', '=', '0'); // Ensure properties are active
     })
     ->get();
-$AreaModel = Area::where('Are_Status', '=', 0)->get();
-
+$AreaModel = Area::where('Are_Status', '=', 0)
+    ->whereHas('properties', function ($q) {
+        $q->where('PStatus', '=', '0'); // Ensure properties are active
+    })
+    ->get();
 $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
 ?>
 <style>
@@ -38,7 +40,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
 
     .dropdown-menu-scrollable {
         max-height: 250px;
-        /* Adjust this value as needed */
+        width: max-content;
         overflow-y: auto;
     }
 
@@ -177,7 +179,6 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->get();
                                                             @endforeach
                                                         </div>
                                                     </li>
-
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle hoverText">Search by
                                                             Type</a>

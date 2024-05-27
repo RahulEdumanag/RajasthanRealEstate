@@ -35,8 +35,10 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>State</th>
+                            <th>City</th>
                             <th>Area</th>
-                            <th>Pin Code</th>
+                            <!-- <th>Pin Code</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,10 +50,17 @@
                                     <td class="serial-number">
                                         {{ $loop->iteration }}
                                     </td>
+                                    <td class="serial-number" title="{{ $value->city->state->Sta_Name }}">
+                                    ({{ Str::limit($value->city->state->Sta_Name, 30) }})
+                                    </td>
+                                    <td class="serial-number" title="{{ $value->city->Cit_Name }}">
+                                        {{ Str::limit($value->city->Cit_Name, 30) }}
+                                    </td>
+
                                     <td class="serial-number" title="{{ $value->Are_Name }}">
                                         {{ Str::limit($value->Are_Name, 30) }}
                                     </td>
-                                    <td> {{ $value->Are_Code }} </td>
+                                    <!-- <td> {{ $value->Are_Code }} </td> -->
                                     <td class="d-flex"> <a href="{{ route('admin.area.edit', encodeId($value->Are_Id)) }}"
                                             class="btn btn-primary me-2">
                                             <i class="fa fa-pencil"></i>

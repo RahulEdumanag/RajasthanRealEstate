@@ -23,6 +23,11 @@ class CityController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'Cit_Name' => 'required|unique:tbl_city,Cit_Name|max:255',
+        ]);
+
+
         try {
             $model = new City();
             $model->Cit_Sta_Id = $request->Cit_Sta_Id;

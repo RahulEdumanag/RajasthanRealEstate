@@ -7,6 +7,8 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\GalleryController;
 use App\Http\Controllers\Backend\Admin\PropertyController;
+use App\Http\Controllers\Backend\Admin\AreaController;
+
 
 Route::group(
     [
@@ -25,6 +27,7 @@ Route::post('admin/slider/updateOrder', [SliderController::class, 'updateOrder']
 Route::post('admin/gallery/deleteImages', [GalleryController::class, 'deleteImages'])->name('admin.gallery.deleteImages');
 Route::get('/getCitiesByState/{stateId}', [PropertyController::class, 'getCitiesByState'])->name('getCitiesByState');
 Route::get('/getAreasByCity/{cityId}', [PropertyController::class, 'getAreasByCity'])->name('getAreasByCity');
+Route::post('admin/area/getCitiesByState', 'Backend\Admin\AreaController@getCitiesByState')->name('admin.area.getCitiesByState');
 
 // routes/web.php
 

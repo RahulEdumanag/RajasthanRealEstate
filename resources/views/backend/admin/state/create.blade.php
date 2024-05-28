@@ -33,7 +33,7 @@
                                 <div class="col-xl-6 col-md-6 col-sm-12 mb-4 form-group ">
                                     <label for="Sta_Name">State Name<span style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="Sta_Name" name="Sta_Name"
-                                        placeholder="Name">
+                                        placeholder="Name" autocomplete="off">
                                     <span id="Sta_Name-error" class="error" style="color: red;">&nbsp;</span>
                                     @error('Sta_Name')
                                         <div class="has-error" style="color: red"> This record already exists.</div>
@@ -42,7 +42,7 @@
                                 <div class="col-xl-6 col-md-6 col-sm-12 mb-4 form-group ">
                                     <label for="Sta_Code">State Code</label>
                                     <input type="text" class="form-control" id="Sta_Code" name="Sta_Code"
-                                        placeholder="State Code">
+                                        placeholder="State Code" autocomplete="off">
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class=" d-flex col-xl-6">

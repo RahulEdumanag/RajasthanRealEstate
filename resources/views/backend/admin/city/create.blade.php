@@ -45,7 +45,7 @@
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="Cit_Name">City Name<span style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="Cit_Name" name="Cit_Name"
-                                        placeholder="Name">
+                                        placeholder="Name" autocomplete="off" >
                                     <span id="Cit_Name-error" class="error" style="color: red;">&nbsp;</span>
                                     @error('Cit_Name')
                                         <div class="has-error" style="color: red"> This record already exists.</div>
@@ -54,7 +54,7 @@
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="Cit_Code">City Code</label>
                                     <input type="text" class="form-control" id="Cit_Code" name="Cit_Code"
-                                        placeholder="City Code">
+                                        placeholder="City Code" autocomplete="off" >
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class=" d-flex col-xl-6">

@@ -185,7 +185,7 @@
                                     <div class="col-md-12">
                                         <div class="single-query">
                                             <input class="keyword-input" placeholder="Keyword (e.g. 'office')"
-                                                type="text" name="keyword">
+                                                type="text" name="keyword" autocomplete="off" >
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -261,13 +261,13 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
                                                     <input class="keyword-input" name="square_fit_min"
-                                                        placeholder="Min Area (sq ft)" type="text">
+                                                        placeholder="Min Area (sq ft)" type="text" autocomplete="off" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="single-query">
                                                     <input class="keyword-input" name="square_fit_max"
-                                                        placeholder="Max Area (sq ft)" type="text">
+                                                        placeholder="Max Area (sq ft)" type="text" autocomplete="off" >
                                                 </div>
                                             </div>
                                         </div>

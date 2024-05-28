@@ -53,7 +53,7 @@
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="Are_Name">Area Name<span style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="Are_Name" name="Are_Name"
-                                        placeholder="Name">
+                                        placeholder="Name" autocomplete="off" >
                                     <span id="Are_Name-error" class="error" style="color: red;">&nbsp;</span>
                                     @error('Are_Name')
                                         <div class="has-error" style="color: red"> This record already exists.</div>
@@ -62,7 +62,7 @@
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="Are_Code">Pin Code</label>
                                     <input type="text" class="form-control" id="Are_Code" name="Are_Code"
-                                        placeholder="Pin Code">
+                                        placeholder="Pin Code" autocomplete="off" >
                                 </div>
                                 <div class="form-group mt-3">
                                     <div class=" d-flex col-xl-6">

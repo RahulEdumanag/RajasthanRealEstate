@@ -33,7 +33,7 @@
                                 <div class="col-xl-12 col-md-12 col-sm-12 mb-4 form-group ">
                                     <label for="PFea_Name">Property Features Name<span style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="PFea_Name" name="PFea_Name"
-                                        placeholder="Name">
+                                        placeholder="Name" autocomplete="off" >
                                     <span id="PFea_Name-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
                                  

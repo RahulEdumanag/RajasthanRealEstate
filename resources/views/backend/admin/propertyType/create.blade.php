@@ -33,7 +33,7 @@
                                 <div class="col-xl-12 col-md-12 col-sm-12 mb-4 form-group ">
                                     <label for="PTyp_Name">Property Type Name<span style="color:red">*</span></label>
                                     <input type="text" class="form-control" id="PTyp_Name" name="PTyp_Name"
-                                        placeholder="Name">
+                                        placeholder="Name" autocomplete="off" >
                                     <span id="PTyp_Name-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
                                  

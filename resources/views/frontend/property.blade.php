@@ -61,7 +61,7 @@
                     <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Keyword</label>
-                            <input class="keyword-input" placeholder="Any" type="text" name="keyword">
+                            <input class="keyword-input" placeholder="Any" type="text" name="keyword" autocomplete="off" >
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3">
@@ -138,13 +138,13 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="single-query form-group">
                                     <label>Squre Fit Min</label>
-                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_min">
+                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_min" autocomplete="off" >
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="single-query form-group">
                                     <label>Squre Fit Max</label>
-                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_max">
+                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_max" autocomplete="off" >
                                 </div>
                             </div>
                         </div>

@@ -107,8 +107,10 @@
                     });
                 }
 
-                var initialStateId = '{{ $model->Are_Sta_Id }}';
+                var initialStateId = '{{ $model->City->State->Sta_Id }}';
                 var initialCityId = '{{ $model->Are_Cit_Id }}';
+
+				//alert('State: ' + initialStateId + ' | City: ' + initialCityId);
 
                 // Fetch cities for the initially selected state on page load
                 if (initialStateId) {

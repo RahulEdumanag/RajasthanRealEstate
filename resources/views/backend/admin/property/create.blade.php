@@ -32,7 +32,7 @@
                             <div class="row g-3">
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="PSta_Id">State Name<span style="color:red">*</span></label>
-                                    <select class="form-control" id="PSta_Id" name="PSta_Id">
+                                    <select class="form-control" id="PSta_Id" name="PSta_Id" reui>
                                         <option selected disabled>Select State</option>
                                         @foreach ($StateModel as $state)
                                             <option value='{{ $state->Sta_Id }}'
@@ -60,7 +60,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area </label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id" disabled>
-                                        <option selected disabled>Select Area</option>
+                                        <option selected disabled>Not Exists</option>
                                         @if (isset($AreaModel) && $lastSelectedPCit_Id)
                                             @foreach ($AreaModel as $area)
                                                 <option value='{{ $area->Are_Id }}'
@@ -87,7 +87,8 @@
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type"> Featured </label>
+                                    <label class="form-label" for="type"> Featured <span
+                                            style="color:red">*</span> </label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
                                         <option selected disabled>Select Featured</option>
 
@@ -106,7 +107,7 @@
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type">Bath Room</label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
-                                        <option selected disabled>Select Bath Room</option>
+                                        <option selected disabled>Not Exists</option>
                                         <option value='1'
                                             {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '1' ? 'selected' : '' }}>
                                             1</option>
@@ -128,7 +129,7 @@
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type">Bed Room </label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
-                                        <option selected disabled>Select Bed Room</option>
+                                        <option selected disabled>Not Exists</option>
                                         <option value='1'
                                             {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '1' ? 'selected' : '' }}>
                                             1</option>
@@ -206,8 +207,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="Address">Address <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Address">Address </label>
                                     <div class="input-group input-group-merge">
                                         <textarea id="PAddress" name="PAddress" class="form-control" autocomplete="off" placeholder="Enter your Address"
                                             aria-describedby="name2"></textarea>
@@ -215,8 +215,7 @@
                                     <span id="PAddress-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <label class="form-label" for="Short Desc">Short Desc <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Short Desc">Short Desc </label>
                                     <textarea id="PShortDesc" name="PShortDesc" class="form-control" autocomplete="off" placeholder="Enter Short Info"
                                         aria-describedby="name2"></textarea>
                                     <span id="PShortDesc-error" class="error" style="color: red;"></span>
@@ -355,13 +354,14 @@
                 rules: {
                     PCit_Id: "required",
                     PPTyp_Id: "required",
-                    // PFeatured: "required",
+                    PFeatured: "required",
                     // PBedRoom: "required",
                     // PBathRoom: "required",
                     PTitle: "required",
-                    PAmount: "required",
-                    PAddress: "required",
-                    PShortDesc: "required"
+                    PAmount: "required"
+                    // ,
+                    // PAddress: "required",
+                    // PShortDesc: "required"
                     // ,
                     // 'PPFea_Id[]': {
                     //     required: true,
@@ -371,13 +371,14 @@
                 messages: {
                     PCit_Id: "This field is required",
                     PPTyp_Id: "This field is required",
-                    // PFeatured: "This field is required",
+                    PFeatured: "This field is required",
                     // PBedRoom: "This field is required",
                     // PBathRoom: "This field is required",
                     PTitle: "This field is required",
-                    PAmount: "This field is required",
-                    PAddress: "This field is required",
-                    PShortDesc: "This field is required"
+                    PAmount: "This field is required"
+                    // ,
+                    // PAddress: "This field is required",
+                    // PShortDesc: "This field is required"
                     // ,
                     // 'PPFea_Id[]': "This field is required"
                 },
@@ -409,13 +410,14 @@
             var fieldErrorMap = {
                 PCit_Id: "#PCit_Id-error",
                 PPTyp_Id: "#PPTyp_Id-error",
-                // PFeatured: "#PFeatured-error",
+                PFeatured: "#PFeatured-error",
                 // PBedRoom: "#PBedRoom-error",
                 // PBathRoom: "#PBathRoom-error",
                 PTitle: "#PTitle-error",
-                PAmount: "#PAmount-error",
-                PAddress: "#PAddress-error",
-                PShortDesc: "#PShortDesc-error"
+                PAmount: "#PAmount-error"
+                // ,
+                // PAddress: "#PAddress-error",
+                // PShortDesc: "#PShortDesc-error"
                 // ,
                 // 'PPFea_Id[]': "#PPFea_Id-error",
             };

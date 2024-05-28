@@ -44,7 +44,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area</label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id">
-                                        <option selected disabled>Select Area</option>
+                                        <option selected disabled>Not Exists</option>
                                         @foreach ($AreaModel as $value)
                                             <option value='{{ $value->Are_Id }}'
                                                 @if ($value->Are_Id == $model->PAre_Id) selected @endif>
@@ -73,7 +73,7 @@
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label class="form-label">Featured</label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
-                                        <option selected disabled>Select</option>
+                                        <option selected disabled>Not Exists</option>
                                         <option value='1' {{ $model->PFeatured == 1 ? 'selected' : '' }}>Yes
                                         </option>
                                         <option value='0' {{ $model->PFeatured == 0 ? 'selected' : '' }}>No
@@ -84,7 +84,7 @@
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label class="form-label" for="Bath Room">Bath Room </label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
-                                        <option selected disabled>Select</option>
+                                        <option selected disabled>Not Exists</option>
                                         <option value='1' {{ $model->PBathRoom == 1 ? 'selected' : '' }}>1
                                         </option>
                                         <option value='2' {{ $model->PBathRoom == 2 ? 'selected' : '' }}>2
@@ -101,7 +101,7 @@
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label class="form-label" for="Bed Room">Bed Room </label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
-                                        <option selected disabled>Select</option>
+                                        <option selected disabled>Not Exists</option>
                                         <option value='1' {{ $model->PBedRoom == 1 ? 'selected' : '' }}>1
                                         </option>
                                         <option value='2' {{ $model->PBedRoom == 2 ? 'selected' : '' }}>2
@@ -150,14 +150,12 @@
                                         value="{{ old('PMapLink', $model->PMapLink) }}" placeholder="">
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Address" class="form-label">Address<span
-                                            style="color:red">*</span></label>
+                                    <label for="Address" class="form-label">Address</label>
                                     <textarea class="form-control" id="PAddress" name="PAddress" placeholder="">{{ old('PAddress', $model->PAddress) }}</textarea>
-                                    <span id="PAddress-error" class="error" style="color: red;"></span>
+                                    <!-- <span id="PAddress-error" class="error" style="color: red;"></span> -->
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Short Desc" class="form-label">Short Desc<span
-                                            style="color:red">*</span></label>
+                                    <label for="Short Desc" class="form-label">Short Desc</label>
                                     <textarea class="form-control" id="PShortDesc" name="PShortDesc" placeholder="">{{ old('PShortDesc', $model->PShortDesc) }}</textarea>
                                     <span id="PShortDesc-error" class="error" style="color: red;"></span>
                                 </div>
@@ -342,9 +340,10 @@
                     // PBedRoom: "required",
                     // PBathRoom: "required",
                     PTitle: "required",
-                    PAmount: "required",
-                    PAddress: "required",
-                    PShortDesc: "required"
+                    PAmount: "required"
+                    // ,
+                    // PAddress: "required",
+                    // PShortDesc: "required"
                     // ,
                     // 'PPFea_Id[]': {
                     //     required: true,
@@ -358,9 +357,10 @@
                     // PBedRoom: "This field is required",
                     // PBathRoom: "This field is required",
                     PTitle: "This field is required",
-                    PAmount: "This field is required",
-                    PAddress: "This field is required",
-                    PShortDesc: "This field is required"
+                    PAmount: "This field is required"
+                    // ,
+                    // PAddress: "This field is required",
+                    // PShortDesc: "This field is required"
                     // ,
                     // 'PPFea_Id[]': "This field is required"
                 },
@@ -396,9 +396,10 @@
                 // PBedRoom: "#PBedRoom-error",
                 // PBathRoom: "#PBathRoom-error",
                 PTitle: "#PTitle-error",
-                PAmount: "#PAmount-error",
-                PAddress: "#PAddress-error",
-                PShortDesc: "#PShortDesc-error"
+                PAmount: "#PAmount-error"
+                // ,
+                // PAddress: "#PAddress-error",
+                // PShortDesc: "#PShortDesc-error"
                 // ,
                 // 'PPFea_Id[]': "#PPFea_Id-error",
             };

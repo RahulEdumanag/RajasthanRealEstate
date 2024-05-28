@@ -30,43 +30,57 @@
                             method="post" accept-charset="utf-8">
                             @csrf
                             <div class="row g-3">
-
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="PSta_Id">State Name<span style="color:red">*</span></label>
                                     <select class="form-control" id="PSta_Id" name="PSta_Id">
                                         <option selected disabled>Select State</option>
                                         @foreach ($StateModel as $state)
-                                            <option value='{{ $state->Sta_Id }}'>{{ $state->Sta_Name }}</option>
+                                            <option value='{{ $state->Sta_Id }}'>
+                                                {{ $state->Sta_Name }}</option>
                                         @endforeach
                                     </select>
                                     <span id="PSta_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
-
-
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                     <label for="PCit_Id">City Name<span style="color:red">*</span></label>
                                     <select class="form-control" id="PCit_Id" name="PCit_Id">
                                         <option selected disabled>Select City</option>
+                                        <!-- @if (isset($CityModel) && $lastSelectedPSta_Id)
+                                            @foreach ($CityModel as $city)
+                                                <option value='{{ $city->Cit_Id }}'
+                                                    {{ isset($lastSelectedPCit_Id) && $lastSelectedPCit_Id == $city->Cit_Id ? 'selected' : '' }}>
+                                                    {{ $city->Cit_Name }}
+                                                </option>
+                                            @endforeach
+                                        @endif -->
                                     </select>
                                     <span id="PCit_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
-
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area </label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id" disabled>
                                         <option selected disabled>Select Area</option>
+                                        <!-- @if (isset($AreaModel) && $lastSelectedPCit_Id)
+                                            @foreach ($AreaModel as $area)
+                                                <option value='{{ $area->Are_Id }}'
+                                                    {{ isset($lastSelectedPAre_Id) && $lastSelectedPAre_Id == $area->Are_Id ? 'selected' : '' }}>
+                                                    {{ $area->Are_Name }}
+                                                </option>
+                                            @endforeach
+                                        @endif -->
                                     </select>
                                     <span id="PAre_Id-error" class="error" style="color: red;"></span>
                                 </div>
-
-
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type"> Property Type <span
                                             style="color:red">*</span></label>
                                     <select class="form-control" id="PPTyp_Id" name="PPTyp_Id">
                                         <option selected disabled>Select Property Type</option>
-                                        @foreach ($PropertyTypeModel as $value)
-                                            <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}</option>
+                                        @foreach ($PropertyTypeModel as $propertyType)
+                                            <option value='{{ $propertyType->PTyp_Id }}'
+                                                {{ isset($lastSelectedPPTyp_Id) && $lastSelectedPPTyp_Id == $propertyType->PTyp_Id ? 'selected' : '' }}>
+                                                {{ $propertyType->PTyp_Name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
@@ -76,8 +90,16 @@
                                             style="color:red">*</span></label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
                                         <option selected disabled>Select Featured</option>
-                                        <option value='1'>Yes</option>
-                                        <option value='0'>No</option>
+
+
+                                        <option value='1'
+                                            {{ isset($lastSelectedPFeatured) && $lastSelectedPFeatured == '1' ? 'selected' : '' }}>
+                                            Yes</option>
+                                        <option value='0'
+                                            {{ isset($lastSelectedPFeatured) && $lastSelectedPFeatured == '2' ? 'selected' : '' }}>
+                                            No</option>
+
+
                                     </select>
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
                                 </div>
@@ -86,11 +108,21 @@
                                             style="color:red">*</span></label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
                                         <option selected disabled>Select Bath Room</option>
-                                        <option value='1'>1</option>
-                                        <option value='2'>2</option>
-                                        <option value='3'>3</option>
-                                        <option value='4'>4</option>
-                                        <option value='5'>5</option>
+                                        <option value='1'
+                                            {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '1' ? 'selected' : '' }}>
+                                            1</option>
+                                        <option value='2'
+                                            {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '2' ? 'selected' : '' }}>
+                                            2</option>
+                                        <option value='3'
+                                            {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '3' ? 'selected' : '' }}>
+                                            3</option>
+                                        <option value='4'
+                                            {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '4' ? 'selected' : '' }}>
+                                            4</option>
+                                        <option value='5'
+                                            {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '5' ? 'selected' : '' }}>
+                                            5</option>
                                     </select>
                                     <span id="PBathRoom-error" class="error" style="color: red;"></span>
                                 </div>
@@ -99,14 +131,30 @@
                                             </propertyspan></label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
                                         <option selected disabled>Select Bed Room</option>
-                                        <option value='1'>1</option>
-                                        <option value='2'>2</option>
-                                        <option value='3'>3</option>
-                                        <option value='4'>4</option>
-                                        <option value='5'>5</option>
-                                        <option value='6'>6</option>
-                                        <option value='7'>7</option>
-                                        <option value='8'>8</option>
+                                        <option value='1'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '1' ? 'selected' : '' }}>
+                                            1</option>
+                                        <option value='2'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '2' ? 'selected' : '' }}>
+                                            2</option>
+                                        <option value='3'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '3' ? 'selected' : '' }}>
+                                            3</option>
+                                        <option value='4'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '4' ? 'selected' : '' }}>
+                                            4</option>
+                                        <option value='5'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '5' ? 'selected' : '' }}>
+                                            5</option>
+                                        <option value='6'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '6' ? 'selected' : '' }}>
+                                            6</option>
+                                        <option value='7'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '7' ? 'selected' : '' }}>
+                                            7</option>
+                                        <option value='8'
+                                            {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '8' ? 'selected' : '' }}>
+                                            8</option>
                                     </select>
                                     <span id="PBedRoom-error" class="error" style="color: red;"></span>
                                 </div>
@@ -120,15 +168,15 @@
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
                                 <!-- <div class="col-sm-6 form-group ">
-                                                                                                                    <label class="form-label" for="Property Code">Property Code <span
-                                                                                                                            style="color:red">*</span></label>
-                                                                                                                    <div class="input-group input-group-merge">
-                                                                                                                        <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
-                                                                                                                            autocomplete="off" placeholder="Enter Property Code"
-                                                                                                                            aria-describedby="name2" />
-                                                                                                                    </div>
-                                                                                                                    <span id="PPropertycode-error" class="error" style="color: red;"></span>
-                                                                                                                </div> -->
+                                                                                                                            <label class="form-label" for="Property Code">Property Code <span
+                                                                                                                                    style="color:red">*</span></label>
+                                                                                                                            <div class="input-group input-group-merge">
+                                                                                                                                <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                                                                                                                    autocomplete="off" placeholder="Enter Property Code"
+                                                                                                                                    aria-describedby="name2" />
+                                                                                                                            </div>
+                                                                                                                            <span id="PPropertycode-error" class="error" style="color: red;"></span>
+                                                                                                                        </div> -->
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="Map">Amount <span
                                             style="color:red">*</span></label>
@@ -201,11 +249,8 @@
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="  color: #6a6a6af5;">Images</legend>
                                     <div class="d-flex">
-
-
                                         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="Image">Property Images <span
-                                                    style="color:red">*</span></label>
+                                            <label class="form-label" for="Image">Property Images</label>
                                             </br>
                                             (upload a maximum of 10 images)
                                             <div class="input-group">
@@ -222,10 +267,8 @@
                                             <div id="selectedImagesPreview" style="display:none; margin-top: 10px;"></div>
                                             <span id="PImages-error" class="image-error" style="color: red;"></span>
                                         </div>
-
                                         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="Image">Plans Images <span
-                                                    style="color:red">*</span></label>
+                                            <label class="form-label" for="Image">Plans Images</label>
                                             </br>
                                             (upload a maximum of 10 images)
                                             <div class="input-group">
@@ -244,10 +287,7 @@
                                             </div>
                                             <span id="PPlansImage-error" class="image-error" style="color: red;"></span>
                                         </div>
-
                                     </div>
-
-
                                 </fieldset>
                                 <div class="col-sm-12 form-group ">
                                     <label class="form-label" for="Full Desc">Full Desc</label>
@@ -294,7 +334,6 @@
                     }
                 });
             });
-
             // Fetch areas based on selected city
             $('#PCit_Id').on('change', function() {
                 var cityId = $(this).val();
@@ -313,7 +352,6 @@
             });
         });
     </script>
-
     <script>
         $(document).ready(function($) {
             $("#register-form").validate({
@@ -361,7 +399,6 @@
                 ];
                 handleFileSizeValidation($("#photo"), maxSize, errorSelector, additionalSelectors);
             });
-
             $('#photo2').change(function() {
                 var maxSize = {{ $ImgMaxSizeModel->imgsize->Img_Title ?? '' }};
                 var errorSelector = "#PImages-error";
@@ -370,8 +407,6 @@
                 ];
                 handleFileSizeValidation($("#photo2"), maxSize, errorSelector, additionalSelectors);
             });
-
-
             var fieldErrorMap = {
                 PCit_Id: "#PCit_Id-error",
                 PPTyp_Id: "#PPTyp_Id-error",

@@ -94,7 +94,10 @@
                                         class="color_red">Description</span></h3>
                                 {!! $propertyDetails->PFullDesc !!}
                                 <div class="property_meta bottom40"style="margin-top: 40px;">
-                                    <span><i class="fa fa-object-group"></i>{{ $propertyDetails->PSqureFeet }} sq ft </span>
+                                    @if (!empty($value->PSqureFeet))
+                                                        <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
+                                                        </span>
+                                                    @endif
                                     <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
                                     <span><i class="fa fa-bath"></i>{{ $propertyDetails->PBathRoom }} Bath Room</span>
                                     <!-- <span><i class="fa fa-car"></i>1 Garage</span> -->
@@ -397,7 +400,10 @@
                                     <div class="price"><span class="tag">{{ $value->propertyType->PTyp_Name }}</span>
                                     </div>
                                     <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} sq ft </span>
+                                        @if (!empty($value->PSqureFeet))
+                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
+                                            </span>
+                                        @endif
                                         <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
                                         <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                     </div>
@@ -426,9 +432,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                                        </ul> -->
+                                                                                                                <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                                                <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                                            </ul> -->
                                     </div>
                                 </div>
                             </div>

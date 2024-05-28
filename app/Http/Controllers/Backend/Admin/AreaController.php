@@ -15,7 +15,7 @@ class AreaController extends Controller
     public function getCitiesByState(Request $request)
     {
         $stateId = $request->input('stateId');
-        $cities = City::where('Cit_Sta_Id', $stateId)->get();
+        $cities = City::where('Cit_Sta_Id', $stateId)->where('Cit_Status', '=', 0)->get();
         $options = '<option selected disabled>Select City</option>';
         foreach ($cities as $city) {
             $options .= '<option value="' . $city->Cit_Id . '">' . $city->Cit_Name . '</option>';
@@ -60,7 +60,7 @@ class AreaController extends Controller
     {
         $StateModel = State::where('Sta_Status', '=', 0)->get();
         $Are_Id = decodeId($hashedId);
-        $model = Area::where('Are_Id', $Are_Id)->first();
+        $model = Area::with('city.state')->where('Are_Id', $Are_Id)->first();
         $CityModel = City::where('Cit_Sta_Id', $model->Are_Sta_Id)->where('Cit_Status', '=', 0)->get();
         return view('backend.admin.area.edit', compact('StateModel','model', 'CityModel'));
     }

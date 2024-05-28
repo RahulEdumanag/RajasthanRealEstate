@@ -89,24 +89,39 @@
             </div>
         </div>
         <script>
-        $(document).ready(function($) {
-            // Fetch cities based on selected state
-            $('#Are_Sta_Id').on('change', function() {
-                var stateId = $(this).val();
-                $.ajax({
-                    url: "{{ route('admin.area.getCitiesByState') }}",
-                    type: 'POST',
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        stateId: stateId
-                    },
-                    success: function(response) {
-                        $('#Are_Cit_Id').html(response);
-                    }
+            $(document).ready(function($) {
+                function fetchCities(stateId, selectedCityId = null) {
+                    $.ajax({
+                        url: "{{ route('admin.area.getCitiesByState') }}",
+                        type: 'POST',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            stateId: stateId
+                        },
+                        success: function(response) {
+                            $('#Are_Cit_Id').html(response);
+                            if (selectedCityId) {
+                                $('#Are_Cit_Id').val(selectedCityId);
+                            }
+                        }
+                    });
+                }
+
+                var initialStateId = '{{ $model->Are_Sta_Id }}';
+                var initialCityId = '{{ $model->Are_Cit_Id }}';
+
+                // Fetch cities for the initially selected state on page load
+                if (initialStateId) {
+                    fetchCities(initialStateId, initialCityId);
+                }
+
+                // Fetch cities based on the selected state
+                $('#Are_Sta_Id').on('change', function() {
+                    var stateId = $(this).val();
+                    fetchCities(stateId);
                 });
             });
-        });
-    </script>
+        </script>
         <script>
             $(document).ready(function($) {
                 var isFileSizeValid = true;

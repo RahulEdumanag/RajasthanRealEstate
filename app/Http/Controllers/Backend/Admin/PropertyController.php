@@ -26,7 +26,7 @@ class PropertyController extends Controller
         $model = Property::where('PStatus', '!=', 2)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
         return view('backend.admin.property.index', compact('model'));
     }
-    public function create()
+    public function create(Request $request)
     {
         $StateModel = State::where('Sta_Status', '=', 0)->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
@@ -34,44 +34,50 @@ class PropertyController extends Controller
         $CityModel = City::where('Cit_Status', '=', 0)->get();
         $AreaModel = Area::where('Are_Status', '=', 0)->get();
 
+        $lastSelectedPSta_Id = $request->session()->get('lastSelectedPSta_Id');
+        $lastSelectedPCit_Id = $request->session()->get('lastSelectedPCit_Id');
+        $lastSelectedPAre_Id = $request->session()->get('lastSelectedPAre_Id');
+        $lastSelectedPPTyp_Id = $request->session()->get('lastSelectedPPTyp_Id');
+        $lastSelectedPFeatured = $request->session()->get('lastSelectedPFeatured');
+        $lastSelectedPBedRoom = $request->session()->get('lastSelectedPBedRoom');
+        $lastSelectedPBathRoom = $request->session()->get('lastSelectedPBathRoom');
+
         $ImgMaxSizeModel = getImgMaxSizeModel();
         //    dd($PropertyFeaturesModel);
-        return view('backend.admin.property.create', compact('AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
+        return view('backend.admin.property.create', compact('lastSelectedPBedRoom','lastSelectedPBathRoom','lastSelectedPFeatured', 'lastSelectedPPTyp_Id', 'lastSelectedPAre_Id', 'lastSelectedPCit_Id', 'lastSelectedPSta_Id', 'AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
     public function getCitiesByState(Request $request)
-{
-    try {
-        $cities = City::where('Cit_Status', '=', 0)->where('Cit_Sta_Id', $request->stateId)->get();
-        $options = '<option selected disabled>Select City Name</option>';
-        foreach ($cities as $city) {
-            $options .= "<option value='{$city->Cit_Id}'>{$city->Cit_Name}</option>";
+    {
+        try {
+            $cities = City::where('Cit_Status', '=', 0)
+                ->where('Cit_Sta_Id', $request->stateId)
+                ->get();
+            $options = '<option selected disabled>Select City Name</option>';
+            foreach ($cities as $city) {
+                $options .= "<option value='{$city->Cit_Id}'>{$city->Cit_Name}</option>";
+            }
+            return response($options);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching cities: ' . $e->getMessage());
+            return response()->json(['error' => 'Error fetching cities'], 500);
         }
-        return response($options);
-    } catch (\Exception $e) {
-        \Log::error('Error fetching cities: ' . $e->getMessage());
-        return response()->json(['error' => 'Error fetching cities'], 500);
     }
-}
 
-
-   
-public function getAreasByCity(Request $request)
-{
-    try {
-        $cityId = $request->cityId;
-        $areas = Area::where('Are_Status', '=', 0)->where('Are_Cit_Id', $cityId)->get();
-        $options = '<option selected disabled>Select Area</option>';
-        foreach ($areas as $area) {
-            $options .= "<option value='{$area->Are_Id}'>{$area->Are_Name}</option>";
+    public function getAreasByCity(Request $request)
+    {
+        try {
+            $cityId = $request->cityId;
+            $areas = Area::where('Are_Status', '=', 0)->where('Are_Cit_Id', $cityId)->get();
+            $options = '<option selected disabled>Select Area</option>';
+            foreach ($areas as $area) {
+                $options .= "<option value='{$area->Are_Id}'>{$area->Are_Name}</option>";
+            }
+            return response($options);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching areas: ' . $e->getMessage());
+            return response()->json(['error' => 'Error fetching areas'], 500);
         }
-        return response($options);
-    } catch (\Exception $e) {
-        \Log::error('Error fetching areas: ' . $e->getMessage());
-        return response()->json(['error' => 'Error fetching areas'], 500);
     }
-}
-
-    
 
     public function store(Request $request)
     {
@@ -151,6 +157,15 @@ public function getAreasByCity(Request $request)
             $model->PCreatedDate = Carbon::now('Asia/Kolkata');
             $model->PCreatedBy = Auth::user()->Log_Id;
             $model->save();
+
+            $request->session()->flash('lastSelectedPSta_Id', $request->PSta_Id);
+            $request->session()->flash('lastSelectedPCit_Id', $request->PCit_Id);
+            $request->session()->flash('lastSelectedPAre_Id', $request->PAre_Id);
+            $request->session()->flash('lastSelectedPPTyp_Id', $request->PPTyp_Id);
+            $request->session()->flash('lastSelectedPFeatured', $request->PFeatured);
+            $request->session()->flash('lastSelectedPBedRoom', $request->PBedRoom);
+            $request->session()->flash('lastSelectedPBathRoom', $request->PBathRoom);
+
             return redirect()->route('admin.property.create')->with('success', 'Record added successfully.');
         } catch (Exception $e) {
             session()->flash('sticky_error', $e->getMessage());
@@ -160,20 +175,20 @@ public function getAreasByCity(Request $request)
         }
     }
     public function edit($hashedId)
-{
-    $StateModel = State::where('Sta_Status', '=', 0)->get();
-    $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
-    $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
-    $CityModel = City::where('Cit_Status', '=', 0)->get();
+    {
+        $StateModel = State::where('Sta_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
+        $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->get();
 
-    $ImgMaxSizeModel = getImgMaxSizeModel();
-    $PId = decodeId($hashedId);
-    $model = Property::with('city.state')->where('PId', $PId)->first();
-    $AreaModel = $model->city ? $model->city->areas : collect();
-    $selectedCityId = $model->PCit_Id; // Get the selected city ID
+        $ImgMaxSizeModel = getImgMaxSizeModel();
+        $PId = decodeId($hashedId);
+        $model = Property::with('city.state')->where('PId', $PId)->first();
+        $AreaModel = $model->city ? $model->city->areas : collect();
+        $selectedCityId = $model->PCit_Id; // Get the selected city ID
 
-    return view('backend.admin.property.edit', compact('AreaModel', 'StateModel', 'model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel', 'selectedCityId'));
-}
+        return view('backend.admin.property.edit', compact('AreaModel', 'StateModel', 'model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel', 'selectedCityId'));
+    }
     public function update(Request $request, $PId)
     {
         try {

@@ -6,23 +6,28 @@
             text-align: center;
             margin-bottom: 30px;
         }
+
         .no-results-text {
             font-size: 20px;
             color: #555;
             margin-bottom: 10px;
         }
+
         .no-results-image img {
             max-width: 100%;
             height: auto;
         }
+
         @media (max-width: 767px) {
             .img-responsive {
                 height: 210px !important
             }
         }
+
         label {
             color: black;
         }
+
         ::placeholder {
             color: gray;
             opacity: 1;
@@ -146,14 +151,14 @@
                     </div>
                     <div class="col-md-2 col-sm-6 col-xs-12 text-right">
                         <div class="query-submit-button top10">
-                        <input class="btn_fill" value="Search" type="submit" id="searchButton">
+                            <input class="btn_fill" value="Search" type="submit" id="searchButton">
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-    <div  style="border-bottom:inset;"></div>
+    <div style="border-bottom:inset;"></div>
     <div class="line_1"></div>
     <div class="line_2"></div>
     <div class="line_3"></div>
@@ -208,7 +213,10 @@
                                     <div class="price"><span class="tag">{{ $value->propertyType->PTyp_Name }}</span>
                                     </div>
                                     <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} sq ft </span>
+                                        @if (!empty($value->PSqureFeet))
+                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
+                                            </span>
+                                        @endif
                                         <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
                                         <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                     </div>
@@ -251,16 +259,18 @@
         </div>
     </section>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var urlParams = new URLSearchParams(window.location.search);
-        var queryString = window.location.search;
-      
-        if (queryString.startsWith('?') && queryString.length > 1) {
-            var section = document.getElementById('listings');
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var queryString = window.location.search;
+
+            if (queryString.startsWith('?') && queryString.length > 1) {
+                var section = document.getElementById('listings');
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 @endsection

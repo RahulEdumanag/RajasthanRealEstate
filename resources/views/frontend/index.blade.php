@@ -193,7 +193,7 @@
                                             <select class="selectpicker" data-live-search="true" name="location">
                                                 <option selected disabled>Select City</option>
                                                 @foreach ($CityModel as $value)
-                                                <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
+                                                    <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -204,13 +204,13 @@
                                             <select class="selectpicker" data-live-search="true" name="area">
                                                 <option selected disabled>Select Area</option>
                                                 @foreach ($AreaModel as $value)
-                                                <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }}, {{ $value->city->Cit_Name }}</option>
-
+                                                    <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }},
+                                                        {{ $value->city->Cit_Name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
- 
+
 
                                     <div class="col-md-12">
                                         <div class="single-query">
@@ -285,7 +285,7 @@
             </div>
         </div>
     </section>
-    <section id="agent-p-2" class="property-details padding" >
+    <section id="agent-p-2" class="property-details padding">
         <div class="container ">
             <div class="row">
                 <div class="col-xs-12 bottom40">
@@ -295,88 +295,96 @@
                     <div class="line_3"></div>
                 </div>
             </div>
-           <span>
-           @if ($PropertyModel->isEmpty())
-                <div class="col-md-12" >
-                    <div class="no-results-container">
-                        <h4 class="no-results-text">No results found, please try again.</h4>
-                        <div class="no-results-image">
-                            <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
-                                alt="No results found image"style="height: 25%; width: 25%;">
+            <span>
+                @if ($PropertyModel->isEmpty())
+                    <div class="col-md-12">
+                        <div class="no-results-container">
+                            <h4 class="no-results-text">No results found, please try again.</h4>
+                            <div class="no-results-image">
+                                <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
+                                    alt="No results found image"style="height: 25%; width: 25%;">
+                            </div>
                         </div>
                     </div>
-                </div>
-            @else
-                <div class="col-md-12 ">
-                    <div class="row">
-                        <div id="property-2-slider" class="owl-carousel" style="z-index: 1;">
-                            @foreach ($PropertyModel as $value)
-                                <div class="item">
-                                    <div class="property_item bottom40"  >
-                                        <div class="image ">
-                                            @php
-                                                $randomImage = $value->getRandomImage();
-                                            @endphp
-                                            <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
-                                                alt="listin" class="img-responsive" style="height: 247px;">
-                                            <div class="property_meta">
-                                                <span><i class="fa fa-object-group"></i>{{ $value->PSqureFeet }} </span>
-                                                <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
-                                                <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
-                                            </div>
-                                            @if ($value->PFeatured == 1)
-                                                <div class="feature ">
-                                                    <span class="tag" style="z-index:2;">
-                                                        Featured
-                                                    </span>
-                                                </div>
-                                            @endif
-                                            @if ($value->propertyType)
-                                                <div class="price"><span
-                                                        class="tag">{{ $value->propertyType->PTyp_Name }}</span></div>
-                                            @else
-                                                <div class="price"><span class="tag">No Type Available</span></div>
-                                            @endif
-                                            <div class="overlay">
-                                                <div class="centered"><a class="link_arrow white_border"
-                                                        href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
-                                                        Detail</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="proerty_content">
-                                            <div class="proerty_text">
-                                                <h3><a href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
-                                                    </a></h3>
-                                                <span class="bottom10 ">
-                                                    @if ($value->area && $value->area->city)
-                                                        <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
-                                                        </p>
-                                                    @else
-                                                        @foreach ($value->cities as $city)
-                                                            <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
-                                                        @endforeach
+                @else
+                    <div class="col-md-12 ">
+                        <div class="row">
+                            <div id="property-2-slider" class="owl-carousel" style="z-index: 1;">
+                                @foreach ($PropertyModel as $value)
+                                    <div class="item">
+                                        <div class="property_item bottom40">
+                                            <div class="image ">
+                                                @php
+                                                    $randomImage = $value->getRandomImage();
+                                                @endphp
+                                                <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
+                                                    alt="listin" class="img-responsive" style="height: 247px;">
+                                                <div class="property_meta">
+                                                    @if (!empty($value->PSqureFeet))
+                                                        <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
+                                                        </span>
                                                     @endif
-                                                </span>
-                                                <p><strong>₹{{ $value->PAmount }}/-</strong></p>
+
+                                                    <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
+                                                    <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }}
+                                                        Bathroom</span>
+                                                </div>
+                                                @if ($value->PFeatured == 1)
+                                                    <div class="feature ">
+                                                        <span class="tag" style="z-index:2;">
+                                                            Featured
+                                                        </span>
+                                                    </div>
+                                                @endif
+                                                @if ($value->propertyType)
+                                                    <div class="price"><span
+                                                            class="tag">{{ $value->propertyType->PTyp_Name }}</span>
+                                                    </div>
+                                                @else
+                                                    <div class="price"><span class="tag">No Type Available</span>
+                                                    </div>
+                                                @endif
+                                                <div class="overlay">
+                                                    <div class="centered"><a class="link_arrow white_border"
+                                                            href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
+                                                            Detail</a></div>
+                                                </div>
                                             </div>
-                                            <div class="favroute clearfix">
-                                                <p class="pull-left">
-                                                    <i class="icon-calendar2"></i>
-                                                    {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
-                                                </p>
-                                                <ul class="pull-right">
-                                                    <li><a href="#.">{{ $value->PPropertycode }}</a></li>
-                                                </ul>
+                                            <div class="proerty_content">
+                                                <div class="proerty_text">
+                                                    <h3><a
+                                                            href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}
+                                                        </a></h3>
+                                                    <span class="bottom10 ">
+                                                        @if ($value->area && $value->area->city)
+                                                            <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                            </p>
+                                                        @else
+                                                            @foreach ($value->cities as $city)
+                                                                <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})</p>
+                                                            @endforeach
+                                                        @endif
+                                                    </span>
+                                                    <p><strong>₹{{ $value->PAmount }}/-</strong></p>
+                                                </div>
+                                                <div class="favroute clearfix">
+                                                    <p class="pull-left">
+                                                        <i class="icon-calendar2"></i>
+                                                        {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
+                                                    </p>
+                                                    <ul class="pull-right">
+                                                        <li><a href="#.">{{ $value->PPropertycode }}</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endif
-           </span>
+                @endif
+            </span>
         </div>
     </section>
     <section id="image-text" class="padding-bottom-top-120 parallaxie">
@@ -417,17 +425,19 @@
         </section>
     @endif
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var queryString = window.location.search;
-        // Check if the URL contains a query string starting with '?'
-        if (queryString.startsWith('?') && queryString.length > 1) {
-            var section = document.getElementById('agent-p-2');
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+        document.addEventListener('DOMContentLoaded', function() {
+            var queryString = window.location.search;
+            // Check if the URL contains a query string starting with '?'
+            if (queryString.startsWith('?') && queryString.length > 1) {
+                var section = document.getElementById('agent-p-2');
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
 
 

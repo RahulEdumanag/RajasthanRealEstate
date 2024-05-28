@@ -193,8 +193,7 @@
                                     <legend style="color: #6a6a6af5;">Images</legend>
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="Image">Property Images <span
-                                                    style="color:red">*</span></label>
+                                            <label class="form-label" for="Image">Property Images</label>
                                             <br>
                                             (upload a maximum of 10 images)
                                             <div class="input-group">
@@ -225,8 +224,7 @@
                                             <span id="PImages-error" class="image-error" style="color: red;"></span>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
-                                            <label class="form-label" for="Image">Plans Images <span
-                                                    style="color:red">*</span></label>
+                                            <label class="form-label" for="Image">Plans Images</label>
                                             <br>
                                             (upload a maximum of 10 images)
                                             <div class="input-group">

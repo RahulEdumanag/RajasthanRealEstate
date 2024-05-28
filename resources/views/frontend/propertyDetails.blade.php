@@ -36,11 +36,12 @@
     <!--===== #/PAGE TITLE =====-->
     <!--===== PROPERTY - DETAILS - 2 =====-->
     <section class="property-details padding">
+
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="text-uppercase">{{ $propertyDetails->PTitle }}</h2>
-                    <p class="">{{ $propertyDetails->PTitle }}</p>
+                    <p class="">{{ $propertyDetails->PShortDesc }}</p>
                 </div>
             </div>
             <div class="row">
@@ -95,9 +96,9 @@
                                 {!! $propertyDetails->PFullDesc !!}
                                 <div class="property_meta bottom40"style="margin-top: 40px;">
                                     @if (!empty($value->PSqureFeet))
-                                                        <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
-                                                        </span>
-                                                    @endif
+                                        <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
+                                        </span>
+                                    @endif
                                     <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
                                     <span><i class="fa fa-bath"></i>{{ $propertyDetails->PBathRoom }} Bath Room</span>
                                     <!-- <span><i class="fa fa-car"></i>1 Garage</span> -->
@@ -343,27 +344,30 @@
                 </div>
             </div>
         </div>
-        </div>
-        </div>
+
+
     </section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 padding_top bottom40">
-                <h2 class="text-uppercase">Property <span class="color_red">Map</span></h2>
-                <div class="line_1"></div>
-                <div class="line_2"></div>
-                <div class="line_3"></div>
+    @if (!empty($propertyDetails->PMapLink))
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 padding_top bottom40">
+                    <h2 class="text-uppercase">Property <span class="color_red">Map</span></h2>
+                    <div class="line_1"></div>
+                    <div class="line_2"></div>
+                    <div class="line_3"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <iframe src="{{ $propertyDetails->PMapLink }}" width="100%" height="520px" style="border:0;"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <iframe src="{{ $propertyDetails->PMapLink }}" width="100%" height="520px" style="border:0;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
+
     <section id="agent-p-2" class="property-details padding">
         <div class="container">
             <div class="row">
@@ -432,9 +436,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                                                <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                                <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                                            </ul> -->
+                                                                                                                        <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                                                        <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                                                    </ul> -->
                                     </div>
                                 </div>
                             </div>

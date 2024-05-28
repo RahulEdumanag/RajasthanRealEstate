@@ -379,7 +379,7 @@
                                                         {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                                     </p>
                                                     <ul class="pull-right">
-                                                        <li><a href="#.">{{ $value->PPropertycode }}</a></li>
+                                                        <li><a style="cursor:pointer;background-color:red; color:white;">{{ $value->PPropertycode }}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

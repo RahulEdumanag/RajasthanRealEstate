@@ -253,7 +253,7 @@
                                 </fieldset>
                                 <div class="col-sm-12">
                                     <label for="Full Desc" class="form-label">Full Desc</label>
-                                    <textarea class="ckeditor form-control" id="PFullDesc" name="PFullDesc" placeholder="">{!! old('PFullDesc', $model->PFullDesc) !!}</textarea>
+                                    <textarea class="applyCK form-control" id="PFullDesc" name="PFullDesc" placeholder="">{!! old('PFullDesc', $model->PFullDesc) !!}</textarea>
                                 </div>
                             </div>
                             <div class="form-group col-md-12 mt-3">

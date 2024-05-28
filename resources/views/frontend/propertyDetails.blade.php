@@ -61,12 +61,12 @@
                                             @endif
                                         </a>
                                         @if ($propertyDetails->PTag)
-                                        <div class="feature">
-                                            <span class="tag">
-                                              {{ $propertyDetails->PTag }}
-                                            </span>
-                                        </div>
-                                    @endif
+                                            <div class="feature">
+                                                <span class="tag">
+                                                    {{ $propertyDetails->PTag }}
+                                                </span>
+                                            </div>
+                                        @endif
                                         <div class="price"><span
                                                 class="tag">{{ $propertyDetails->propertyType->PTyp_Name }}</span></div>
                                         <div class="property_meta">
@@ -107,22 +107,24 @@
                                 <h3 class="text-uppercase  bottom20 top10">Property <span
                                         class="color_red">Description</span></h3>
                                 {!! $propertyDetails->PFullDesc !!}
-                                <div class="property_meta bottom40"style="margin-top: 40px;">
-                                    @if (!empty($value->PSqureFeet))
-                                        <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
-                                        </span>
-                                    @endif
-                                    @if (isset($propertyDetails->PBedRoom) && $propertyDetails->PBedRoom != '')
-                                        <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
-                                    @endif
 
-                                    @if (isset($propertyDetails->PBathRoom) && $propertyDetails->PBathRoom != '')
-                                        <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBathRoom }} Bath Rooms</span>
-                                    @endif
+                                @if (isset($propertyDetails->PBedRoom) && $propertyDetails->PSqureFeet != '')
+                                    <div class="property_meta bottom40"style="margin-top: 40px;">
+                                        @if (!empty($propertyDetails->PSqureFeet))
+                                            <span><i class="fa fa-object-group"></i> {{ $propertyDetails->PSqureFeet }}
+                                            </span>
+                                        @endif
+                                        @if (isset($propertyDetails->PBedRoom) && $propertyDetails->PBedRoom != '')
+                                            <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
+                                        @endif
 
+                                        @if (isset($propertyDetails->PBathRoom) && $propertyDetails->PBathRoom != '')
+                                            <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBathRoom }} Bath
+                                                Rooms</span>
+                                        @endif
 
-                                    <!-- <span><i class="fa fa-car"></i>1 Garage</span> -->
-                                </div>
+                                    </div>
+                                @endif
                                 <!-- <a class="link_arrow" href="#.">Read More</a> -->
                             </div>
                             <div role="tabpanel" class="tab-pane" id="summary">
@@ -176,42 +178,34 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>State/City</b></td>
+                                                    <td><b>State</b></td>
                                                     <td class="text-right">
-                                                        @if ($propertyDetails->area && $propertyDetails->area->city)
-                                                            <p> {{ $propertyDetails->area->city->Cit_Name }}
+
+                                                        @foreach ($propertyDetails->cities as $city)
+                                                            <p> {{ $city->state->Sta_Name }}
                                                             </p>
-                                                        @else
-                                                            @foreach ($propertyDetails->cities as $city)
-                                                                <p> ({{ $city->state->Sta_Name }})
-                                                                </p>
-                                                            @endforeach
-                                                        @endif
+                                                        @endforeach
+
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Area</b></td>
                                                     <td class="text-right">
                                                         @if ($propertyDetails->area && $propertyDetails->area->city)
-                                                            <p>{{ $propertyDetails->area->Are_Name }}
+                                                            <p>{{ $propertyDetails->area->Are_Name }},{{ $propertyDetails->area->city->Cit_Name }}
                                                             </p>
-                                                        @else
-                                                            @foreach ($propertyDetails->cities as $city)
-                                                                <p>{{ $city->Cit_Name }}
-                                                                </p>
-                                                            @endforeach
                                                         @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Property For</b></td>
                                                     <td class="text-right">
-                                                         
+
                                                         @if ($propertyDetails->PTag)
                                                             <div class="feature">
-                                                                    {{ $propertyDetails->PTag  }}
+                                                                {{ $propertyDetails->PTag }}
                                                             </div>
-                                                            @else
+                                                        @else
                                                         @endif
 
 
@@ -250,6 +244,8 @@
                                                 </div>
                                             @endif
                                         @endforeach
+                                    @else
+                                        <p style="text-align:center"> No feature available</p>
                                     @endif
 
                                 </div>
@@ -447,12 +443,12 @@
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
                                                 Detail</a></div>
                                     </div>
-                                     
+
 
                                     @if ($value->PTag)
                                         <div class="feature">
                                             <span class="tag">
-                                              {{ $value->PTag }}
+                                                {{ $value->PTag }}
                                             </span>
                                         </div>
                                     @endif
@@ -497,9 +493,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                                                                                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                                                                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                                                                                                        </ul> -->
+                                                                                                                                                                                        <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                                                                                                                        <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                                                                                                                    </ul> -->
                                     </div>
                                 </div>
                             </div>

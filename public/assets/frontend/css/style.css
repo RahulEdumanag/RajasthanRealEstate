@@ -3735,13 +3735,13 @@ nav.navbar.bootsnav.sticked .social-icons {
 .property_item:hover .image img,
 #agents .agent_item:hover .image img,
 .feature_item:hover .image img,
-.image:hover img {
+/* .image:hover img {
     -moz-transform: scale(1.15);
     -ms-transform: scale(1.15);
     -o-transform: scale(1.15);
     -webkit-transform: scale(1.15);
     transform: scale(1.15);
-}
+} */
 .image > img {
     width: 100%;
 }

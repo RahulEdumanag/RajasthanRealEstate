@@ -94,7 +94,6 @@ class HomeController extends Controller
             ->get();
         $query = Property::where('PReg_Id', '=', $this->clientId)
             ->where('PStatus', '=', '0')
-            ->where('PFeatured', '=', 1)
             ->with('propertyType');
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');

@@ -61,7 +61,7 @@
                     <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Keyword</label>
-                            <input class="keyword-input" placeholder="Any" type="text" name="keyword" autocomplete="off" >
+                            <input class="keyword-input" placeholder="Any" type="text" name="keyword" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3">
@@ -138,13 +138,15 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="single-query form-group">
                                     <label>Squre Fit Min</label>
-                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_min" autocomplete="off" >
+                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_min"
+                                        autocomplete="off">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="single-query form-group">
                                     <label>Squre Fit Max</label>
-                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_max" autocomplete="off" >
+                                    <input class="keyword-input" placeholder="Any" type="text" name="square_fit_max"
+                                        autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -203,10 +205,10 @@
                                                 Detail</a>
                                         </div>
                                     </div>
-                                    @if ($value->PFeatured == 1)
+                                    @if ($value->PTag)
                                         <div class="feature">
                                             <span class="tag">
-                                                Featured
+                                              {{ $value->PTag }}
                                             </span>
                                         </div>
                                     @endif
@@ -235,7 +237,11 @@
                                                 @endforeach
                                             @endif
                                         </span>
-                                        <p><strong>₹{{ $value->PAmount }}/-</strong></p>
+                                        @if ($value->PAmount == 0)
+                                           Call for price
+                                        @else
+                                            ₹ {{ $value->PAmount }}/-
+                                        @endif
                                     </div>
                                     <div class="favroute clearfix">
                                         <p class="pull-left"><i class="icon-calendar2"></i>

@@ -44,7 +44,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area</label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id">
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected value="0">Not Exists</option>
                                         @foreach ($AreaModel as $value)
                                             <option value='{{ $value->Are_Id }}'
                                                 @if ($value->Are_Id == $model->PAre_Id) selected @endif>
@@ -70,21 +70,21 @@
                                     </select>
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
-                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                <!-- <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label class="form-label">Featured</label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected disabled>Select Featured</option>
                                         <option value='1' {{ $model->PFeatured == 1 ? 'selected' : '' }}>Yes
                                         </option>
                                         <option value='0' {{ $model->PFeatured == 0 ? 'selected' : '' }}>No
                                         </option>
                                     </select>
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
-                                </div>
+                                </div> -->
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label class="form-label" for="Bath Room">Bath Room </label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected value="0">Not Exists</option>
                                         <option value='1' {{ $model->PBathRoom == 1 ? 'selected' : '' }}>1
                                         </option>
                                         <option value='2' {{ $model->PBathRoom == 2 ? 'selected' : '' }}>2
@@ -101,7 +101,7 @@
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
                                     <label class="form-label" for="Bed Room">Bed Room </label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected value="0">Not Exists</option>
                                         <option value='1' {{ $model->PBedRoom == 1 ? 'selected' : '' }}>1
                                         </option>
                                         <option value='2' {{ $model->PBedRoom == 2 ? 'selected' : '' }}>2

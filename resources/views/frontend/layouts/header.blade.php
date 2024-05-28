@@ -216,13 +216,12 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                 @php
                                                                     $randomImage = $value->getRandomImage();
                                                                 @endphp
-                                                                <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
+                                                                <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
                                                                     alt="listin" class="img-responsive"
                                                                     style="height: 100px;">
-                                                                <span
-                                                                    class="nav_tag yellow text-uppercase">{{ $value->propertyType->PTyp_Name }}</span>
+                                                               
                                                             </div>
-                                                            <h4><a
+                                                            <h4 style="font-size: small;"><a
                                                                     href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                                             </h4>
                                                             @if ($value->area && $value->area->city)

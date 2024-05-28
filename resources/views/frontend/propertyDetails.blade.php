@@ -56,14 +56,27 @@
                                                 <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="listing"
                                                     class="img-responsive" style="max-height: 350px;">
                                             @else
-                                                <img src="{{ asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
+                                                <img src="{{ asset('assets/frontend/images/dummy-img/NoImageBanner.jpg') }}"
                                                     alt="listing" class="img-responsive" style="max-height: 350px;">
                                             @endif
                                         </a>
+                                        @if ($propertyDetails->PTag)
+                                        <div class="feature">
+                                            <span class="tag">
+                                              {{ $propertyDetails->PTag }}
+                                            </span>
+                                        </div>
+                                    @endif
                                         <div class="price"><span
                                                 class="tag">{{ $propertyDetails->propertyType->PTyp_Name }}</span></div>
                                         <div class="property_meta">
-                                            <h4>₹{{ $propertyDetails->PAmount }}/-</h4>
+                                            <h4>
+                                                @if ($propertyDetails->PAmount == 0)
+                                                    Call for price
+                                                @else
+                                                    ₹ {{ $propertyDetails->PAmount }}/-
+                                                @endif
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -99,8 +112,15 @@
                                         <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
                                         </span>
                                     @endif
-                                    <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
-                                    <span><i class="fa fa-bath"></i>{{ $propertyDetails->PBathRoom }} Bath Room</span>
+                                    @if (isset($propertyDetails->PBedRoom) && $propertyDetails->PBedRoom != '')
+                                        <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
+                                    @endif
+
+                                    @if (isset($propertyDetails->PBathRoom) && $propertyDetails->PBathRoom != '')
+                                        <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBathRoom }} Bath Rooms</span>
+                                    @endif
+
+
                                     <!-- <span><i class="fa fa-car"></i>1 Garage</span> -->
                                 </div>
                                 <!-- <a class="link_arrow" href="#.">Read More</a> -->
@@ -120,19 +140,29 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Price</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PAmount }}</td>
+                                                    <td class="text-right">
+
+                                                        @if ($propertyDetails->PAmount == 0)
+                                                            Call for price
+                                                        @else
+                                                            ₹ {{ $propertyDetails->PAmount }}/-
+                                                        @endif
+                                                    </td>
+
+
                                                 </tr>
                                                 <tr>
                                                     <td><b>Property Size</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PSqureFeet }}</td>
+                                                    <td class="text-right">{{ $propertyDetails->PSqureFeet ?? '-' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Bed Rooms</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PBedRoom }} </td>
+                                                    <td class="text-right">{{ $propertyDetails->PBedRoom ?? '-' }}</td>
+
                                                 </tr>
                                                 <tr>
                                                     <td><b>Bath Rooms</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PBathRoom }} </td>
+                                                    <td class="text-right">{{ $propertyDetails->PBathRoom ?? '-' }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -146,28 +176,45 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Amount</b></td>
-                                                    <td class="text-right">₹{{ $propertyDetails->PAmount }}/-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>City</b></td>
+                                                    <td><b>State/City</b></td>
                                                     <td class="text-right">
                                                         @if ($propertyDetails->area && $propertyDetails->area->city)
-                                                            <p>{{ $propertyDetails->area->Are_Name }},{{ $propertyDetails->area->city->Cit_Name }}
+                                                            <p> {{ $propertyDetails->area->city->Cit_Name }}
                                                             </p>
                                                         @else
-                                                            <p>No area data available</p>
+                                                            @foreach ($propertyDetails->cities as $city)
+                                                                <p> ({{ $city->state->Sta_Name }})
+                                                                </p>
+                                                            @endforeach
                                                         @endif
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Featured</b></td>
+                                                    <td><b>Area</b></td>
                                                     <td class="text-right">
-                                                        @if ($propertyDetails->PFeatured == 1)
-                                                            Yes
+                                                        @if ($propertyDetails->area && $propertyDetails->area->city)
+                                                            <p>{{ $propertyDetails->area->Are_Name }}
+                                                            </p>
                                                         @else
-                                                            No
+                                                            @foreach ($propertyDetails->cities as $city)
+                                                                <p>{{ $city->Cit_Name }}
+                                                                </p>
+                                                            @endforeach
                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Property For</b></td>
+                                                    <td class="text-right">
+                                                         
+                                                        @if ($propertyDetails->PTag)
+                                                            <div class="feature">
+                                                                    {{ $propertyDetails->PTag  }}
+                                                            </div>
+                                                            @else
+                                                        @endif
+
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -187,18 +234,24 @@
                                         <h3 class="text-uppercase  bottom30 top10">Property <span
                                                 class="color_red">Features</span></h3>
                                     </div>
-                                    @foreach (json_decode($propertyDetails->PPFea_Id) as $featureId)
-                                        @php
-                                            $feature = \App\Models\PropertyFeatures::find($featureId);
-                                        @endphp
-                                        @if ($feature)
-                                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                                <ul class="pro-list">
-                                                    <li>{{ $feature->PFea_Name }}</li>
-                                                </ul>
-                                            </div>
-                                        @endif
-                                    @endforeach
+                                    @php
+                                        $featureIds = json_decode($propertyDetails->PPFea_Id, true);
+                                    @endphp
+                                    @if (is_array($featureIds) && !empty($featureIds))
+                                        @foreach ($featureIds as $featureId)
+                                            @php
+                                                $feature = \App\Models\PropertyFeatures::find($featureId);
+                                            @endphp
+                                            @if ($feature)
+                                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                                    <ul class="pro-list">
+                                                        <li>{{ $feature->PFea_Name }}</li>
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane bg_light" id="plan">
@@ -394,10 +447,12 @@
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View
                                                 Detail</a></div>
                                     </div>
-                                    @if ($value->PFeatured == 1)
+                                     
+
+                                    @if ($value->PTag)
                                         <div class="feature">
                                             <span class="tag">
-                                                Featured
+                                              {{ $value->PTag }}
                                             </span>
                                         </div>
                                     @endif
@@ -429,16 +484,22 @@
                                                 @endforeach
                                             @endif
                                         </span>
-                                        <p><strong>₹{{ $value->PAmount }}/-</strong></p>
+                                        <p><strong>
+                                                @if ($value->PAmount == 0)
+                                                    Call for price
+                                                @else
+                                                    ₹ {{ $value->PAmount }}/-
+                                                @endif
+                                            </strong></p>
                                     </div>
                                     <div class="favroute clearfix">
                                         <p class="pull-left"><i class="icon-calendar2"></i>
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                                                        <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                                        <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                                                    </ul> -->
+                                                                                                                                                                            <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                                                                                                            <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                                                                                                        </ul> -->
                                     </div>
                                 </div>
                             </div>

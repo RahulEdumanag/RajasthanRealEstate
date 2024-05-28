@@ -100,7 +100,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <!-- <div class="col-sm-6 col-md-3">
             <div class="widget dark">
                 <h4 class="widget-title">Quick Links</h4>
                 <div class="small-title">
@@ -116,7 +116,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
                     @endforeach
                 </ul>
             </div>
-        </div>
+        </div> -->
         @if (!$usefulLinkModel->isEmpty())
 
             <div class="col-sm-6 col-md-3">
@@ -138,7 +138,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
             </div>
         @endif
 
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-6">
             <div class="widget dark">
                 <h4 class="widget-title">All Cities</h4>
                 <div class="small-title">
@@ -149,7 +149,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
                 <div class="opening-hourse">
                     @foreach ($CityModel as $value)
                         <a href="{{ route('property', ['location' => $value->Cit_Name]) }}">
-                            {{ $loop->first ? '' : '|' }} {{ $value->Cit_Name }}
+                            {{ $loop->first ? '' : '|' }} Properties in {{ $value->Cit_Name }}
                         </a>
                     @endforeach
                 </div>

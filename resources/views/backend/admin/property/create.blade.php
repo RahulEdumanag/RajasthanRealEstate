@@ -60,7 +60,7 @@
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area </label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id" disabled>
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected value='0'>Not Exists</option>
                                         @if (isset($AreaModel) && $lastSelectedPCit_Id)
                                             @foreach ($AreaModel as $area)
                                                 <option value='{{ $area->Are_Id }}'
@@ -86,7 +86,7 @@
                                     </select>
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
-                                <div class="col-sm-6 form-group ">
+                                <!-- <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type"> Featured <span
                                             style="color:red">*</span> </label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
@@ -103,11 +103,11 @@
 
                                     </select>
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
-                                </div>
+                                </div> -->
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type">Bath Room</label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected value='0'>Not Exists</option>
                                         <option value='1'
                                             {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '1' ? 'selected' : '' }}>
                                             1</option>
@@ -129,7 +129,7 @@
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="type">Bed Room </label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
-                                        <option selected disabled>Not Exists</option>
+                                        <option selected value='0'>Not Exists</option>
                                         <option value='1'
                                             {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '1' ? 'selected' : '' }}>
                                             1</option>

@@ -71,7 +71,7 @@
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label class="form-label">Featured<span style="color:red">*</span></label>
+                                    <label class="form-label">Featured</label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PFeatured == 1 ? 'selected' : '' }}>Yes
@@ -82,8 +82,7 @@
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label class="form-label" for="Bath Room">Bath Room<span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Bath Room">Bath Room </label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PBathRoom == 1 ? 'selected' : '' }}>1
@@ -100,8 +99,7 @@
                                     <span id="PBathRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                                    <label class="form-label" for="Bed Room">Bed Room<span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="Bed Room">Bed Room </label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
                                         <option selected disabled>Select</option>
                                         <option value='1' {{ $model->PBedRoom == 1 ? 'selected' : '' }}>1
@@ -165,8 +163,7 @@
                                 </div>
                                 <fieldset style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                     <legend style="color: #6a6a6af5;">Property Features</legend>
-                                    <label class="form-label" for="type">Features<span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="type">Features</label>
                                     <div class="row">
                                         @foreach ($PropertyFeaturesModel as $value)
                                             <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
@@ -341,29 +338,31 @@
                 rules: {
                     PCit_Id: "required",
                     PPTyp_Id: "required",
-                    PFeatured: "required",
-                    PBedRoom: "required",
-                    PBathRoom: "required",
+                    // PFeatured: "required",
+                    // PBedRoom: "required",
+                    // PBathRoom: "required",
                     PTitle: "required",
                     PAmount: "required",
                     PAddress: "required",
-                    PShortDesc: "required",
-                    'PPFea_Id[]': {
-                        required: true,
-                        minlength: 1
-                    }
+                    PShortDesc: "required"
+                    // ,
+                    // 'PPFea_Id[]': {
+                    //     required: true,
+                    //     minlength: 1
+                    // },
                 },
                 messages: {
                     PCit_Id: "This field is required",
                     PPTyp_Id: "This field is required",
-                    PFeatured: "This field is required",
-                    PBedRoom: "This field is required",
-                    PBathRoom: "This field is required",
+                    // PFeatured: "This field is required",
+                    // PBedRoom: "This field is required",
+                    // PBathRoom: "This field is required",
                     PTitle: "This field is required",
                     PAmount: "This field is required",
                     PAddress: "This field is required",
-                    PShortDesc: "This field is required",
-                    'PPFea_Id[]': "This field is required"
+                    PShortDesc: "This field is required"
+                    // ,
+                    // 'PPFea_Id[]': "This field is required"
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -393,14 +392,15 @@
             var fieldErrorMap = {
                 PCit_Id: "#PCit_Id-error",
                 PPTyp_Id: "#PPTyp_Id-error",
-                PFeatured: "#PFeatured-error",
-                PBedRoom: "#PBedRoom-error",
-                PBathRoom: "#PBathRoom-error",
+                // PFeatured: "#PFeatured-error",
+                // PBedRoom: "#PBedRoom-error",
+                // PBathRoom: "#PBathRoom-error",
                 PTitle: "#PTitle-error",
                 PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
-                PShortDesc: "#PShortDesc-error",
-                'PPFea_Id[]': "#PPFea_Id-error"
+                PShortDesc: "#PShortDesc-error"
+                // ,
+                // 'PPFea_Id[]': "#PPFea_Id-error",
             };
         });
 

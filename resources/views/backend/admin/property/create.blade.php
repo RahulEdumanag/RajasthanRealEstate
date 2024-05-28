@@ -35,7 +35,8 @@
                                     <select class="form-control" id="PSta_Id" name="PSta_Id">
                                         <option selected disabled>Select State</option>
                                         @foreach ($StateModel as $state)
-                                            <option value='{{ $state->Sta_Id }}'>
+                                            <option value='{{ $state->Sta_Id }}'
+                                                @if ($state->Sta_Id == $lastSelectedPSta_Id) selected @endif>
                                                 {{ $state->Sta_Name }}</option>
                                         @endforeach
                                     </select>
@@ -45,14 +46,14 @@
                                     <label for="PCit_Id">City Name<span style="color:red">*</span></label>
                                     <select class="form-control" id="PCit_Id" name="PCit_Id">
                                         <option selected disabled>Select City</option>
-                                        <!-- @if (isset($CityModel) && $lastSelectedPSta_Id)
+                                        @if (isset($CityModel) && $lastSelectedPSta_Id)
                                             @foreach ($CityModel as $city)
                                                 <option value='{{ $city->Cit_Id }}'
                                                     {{ isset($lastSelectedPCit_Id) && $lastSelectedPCit_Id == $city->Cit_Id ? 'selected' : '' }}>
                                                     {{ $city->Cit_Name }}
                                                 </option>
                                             @endforeach
-                                        @endif -->
+                                        @endif
                                     </select>
                                     <span id="PCit_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
@@ -60,14 +61,14 @@
                                     <label class="form-label" for="PAre_Id">Area </label>
                                     <select class="form-control" id="PAre_Id" name="PAre_Id" disabled>
                                         <option selected disabled>Select Area</option>
-                                        <!-- @if (isset($AreaModel) && $lastSelectedPCit_Id)
+                                        @if (isset($AreaModel) && $lastSelectedPCit_Id)
                                             @foreach ($AreaModel as $area)
                                                 <option value='{{ $area->Are_Id }}'
                                                     {{ isset($lastSelectedPAre_Id) && $lastSelectedPAre_Id == $area->Are_Id ? 'selected' : '' }}>
                                                     {{ $area->Are_Name }}
                                                 </option>
                                             @endforeach
-                                        @endif -->
+                                        @endif
                                     </select>
                                     <span id="PAre_Id-error" class="error" style="color: red;"></span>
                                 </div>
@@ -86,8 +87,7 @@
                                     <span id="PPTyp_Id-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type"> Featured <span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="type"> Featured </label>
                                     <select class="form-control" id="PFeatured" name="PFeatured">
                                         <option selected disabled>Select Featured</option>
 
@@ -104,8 +104,7 @@
                                     <span id="PFeatured-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type">Bath Room<span
-                                            style="color:red">*</span></label>
+                                    <label class="form-label" for="type">Bath Room</label>
                                     <select class="form-control" id="PBathRoom" name="PBathRoom">
                                         <option selected disabled>Select Bath Room</option>
                                         <option value='1'
@@ -127,8 +126,7 @@
                                     <span id="PBathRoom-error" class="error" style="color: red;"></span>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="type">Bed Room <span style="color:red">*
-                                            </propertyspan></label>
+                                    <label class="form-label" for="type">Bed Room </label>
                                     <select class="form-control" id="PBedRoom" name="PBedRoom">
                                         <option selected disabled>Select Bed Room</option>
                                         <option value='1'
@@ -168,15 +166,15 @@
                                     <span id="PTitle-error" class="error" style="color: red;"></span>
                                 </div>
                                 <!-- <div class="col-sm-6 form-group ">
-                                                                                                                            <label class="form-label" for="Property Code">Property Code <span
-                                                                                                                                    style="color:red">*</span></label>
-                                                                                                                            <div class="input-group input-group-merge">
-                                                                                                                                <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
-                                                                                                                                    autocomplete="off" placeholder="Enter Property Code"
-                                                                                                                                    aria-describedby="name2" />
-                                                                                                                            </div>
-                                                                                                                            <span id="PPropertycode-error" class="error" style="color: red;"></span>
-                                                                                                                        </div> -->
+                                                                                                                                <label class="form-label" for="Property Code">Property Code <span
+                                                                                                                                        style="color:red">*</span></label>
+                                                                                                                                <div class="input-group input-group-merge">
+                                                                                                                                    <input type="number" id="PPropertycode" name="PPropertycode" class="form-control"
+                                                                                                                                        autocomplete="off" placeholder="Enter Property Code"
+                                                                                                                                        aria-describedby="name2" />
+                                                                                                                                </div>
+                                                                                                                                <span id="PPropertycode-error" class="error" style="color: red;"></span>
+                                                                                                                            </div> -->
                                 <div class="col-sm-6 form-group ">
                                     <label class="form-label" for="Map">Amount <span
                                             style="color:red">*</span></label>
@@ -227,8 +225,7 @@
                                     <legend style="  color: #6a6a6af5;">Property Features</legend>
                                     <div class="row g-3">
                                         <div class="col-sm-12 form-group ">
-                                            <label class="form-label" for="type">Features<span
-                                                    style="color:red">*</span></label>
+                                            <label class="form-label" for="type">Features </label>
                                             <div class="row">
                                                 @foreach ($PropertyFeaturesModel as $value)
                                                     <div class="col-lg-3 col-sm-12 col-md-4 mb-2">
@@ -358,29 +355,31 @@
                 rules: {
                     PCit_Id: "required",
                     PPTyp_Id: "required",
-                    PFeatured: "required",
-                    PBedRoom: "required",
-                    PBathRoom: "required",
+                    // PFeatured: "required",
+                    // PBedRoom: "required",
+                    // PBathRoom: "required",
                     PTitle: "required",
                     PAmount: "required",
                     PAddress: "required",
-                    PShortDesc: "required",
-                    'PPFea_Id[]': {
-                        required: true,
-                        minlength: 1
-                    },
+                    PShortDesc: "required"
+                    // ,
+                    // 'PPFea_Id[]': {
+                    //     required: true,
+                    //     minlength: 1
+                    // },
                 },
                 messages: {
                     PCit_Id: "This field is required",
                     PPTyp_Id: "This field is required",
-                    PFeatured: "This field is required",
-                    PBedRoom: "This field is required",
-                    PBathRoom: "This field is required",
+                    // PFeatured: "This field is required",
+                    // PBedRoom: "This field is required",
+                    // PBathRoom: "This field is required",
                     PTitle: "This field is required",
                     PAmount: "This field is required",
                     PAddress: "This field is required",
-                    PShortDesc: "This field is required",
-                    'PPFea_Id[]': "This field is required"
+                    PShortDesc: "This field is required"
+                    // ,
+                    // 'PPFea_Id[]': "This field is required"
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -410,14 +409,15 @@
             var fieldErrorMap = {
                 PCit_Id: "#PCit_Id-error",
                 PPTyp_Id: "#PPTyp_Id-error",
-                PFeatured: "#PFeatured-error",
-                PBedRoom: "#PBedRoom-error",
-                PBathRoom: "#PBathRoom-error",
+                // PFeatured: "#PFeatured-error",
+                // PBedRoom: "#PBedRoom-error",
+                // PBathRoom: "#PBathRoom-error",
                 PTitle: "#PTitle-error",
                 PAmount: "#PAmount-error",
                 PAddress: "#PAddress-error",
-                PShortDesc: "#PShortDesc-error",
-                'PPFea_Id[]': "#PPFea_Id-error",
+                PShortDesc: "#PShortDesc-error"
+                // ,
+                // 'PPFea_Id[]': "#PPFea_Id-error",
             };
         });
 

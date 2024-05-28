@@ -39,7 +39,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="margin-bottom: 2%;">
                     <h2 class="text-uppercase">{{ $propertyDetails->PTitle }}</h2>
                     <p class="">{{ $propertyDetails->PShortDesc }}</p>
                 </div>

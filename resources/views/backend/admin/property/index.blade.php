@@ -36,6 +36,7 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Amount</th> 
+                            <th>Proper Code</th> 
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,6 +46,8 @@
                                 <td class="serial-number"> {{ $loop->iteration }}</td>
                                 <td>{{ $value->PTitle }} </td>
                                 <td>{{ $value->PAmount }} </td> 
+                                <td>KPB{{ $value->PPropertycode }}</td> 
+
                                 <td class="d-flex">
                                     <a href="{{ route('admin.property.edit', encodeId($value->PId)) }}"
                                         class="btn btn-primary me-2">

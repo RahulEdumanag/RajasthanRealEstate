@@ -37,7 +37,7 @@
         <div class="container padding-bottom-top-120 text-uppercase text-center">
             <div class="main-title">
                 <h1>Listing</h1>
-                <h5>10 Years Of Experience!</h5>
+                <h5>40 Years Of Experience!</h5>
                 <div class="line_4"></div>
                 <div class="line_5"></div>
                 <div class="line_6"></div>
@@ -216,11 +216,14 @@
                                     </div>
                                     <div class="property_meta">
                                         @if (!empty($value->PSqureFeet))
-                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
+                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }} Built Up Area(sq ft)
                                             </span>
                                         @endif
+                                        @if (!empty($value->PBedRoom))
+
                                         <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
                                         <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="proerty_content">
@@ -248,7 +251,7 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <ul class="pull-right">
-                                        <li><a style="cursor:pointer;background-color:red; color:white;">{{ $value->PPropertycode }}</a></li>
+                                        <li><a style="cursor:pointer;background-color:red; color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a></li>
                                         </ul>
                                     </div>
                                 </div>

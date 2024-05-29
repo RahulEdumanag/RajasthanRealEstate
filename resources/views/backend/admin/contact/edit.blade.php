@@ -23,8 +23,8 @@
                             <div class="row g-3">
                                 @if ($model->Con_PId)
                                     <div class="form-group col-lg-6 ">
-                                        <label class="form-label">Property Title:</label>
-                                        <p>{{ optional($model->property)->PTitle }}</p>
+                                        <label class="form-label">Property Type:</label>
+                                       <p>{{ $model->property->propertyType->PTyp_Name }}</p>
                                     </div>
                                 @endif
                                 @if ($model->Con_ConCat_Id)
@@ -45,6 +45,19 @@
                                     <label class="form-label">Number:</label>
                                     <p>{{ old('Con_Number', $model->Con_Number) }}</p>
                                 </div>
+                                @if ($model->Con_Number2)
+                                    <div class="form-group col-lg-6 ">
+                                        <label class="form-label">Whatsapp Number:</label>
+                                       <p>{{ $model->Con_Number2 }}</p>
+                                    </div>
+                                @endif
+                                @if ($model->Con_Date)
+                                    <div class="form-group col-lg-6 ">
+                                        <label class="form-label">Purchase Date:</label>
+                                       <p>{{ $model->Con_Date }}</p>
+                                    </div>
+                                @endif
+
                                 <div class="form-group col-lg-6">
                                     <label class="form-label">Message:</label>
                                     <p>{{ old('Con_Desc', $model->Con_Desc) }}</p>

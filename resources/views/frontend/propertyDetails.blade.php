@@ -23,7 +23,7 @@
         <div class="container padding-bottom-top-120 text-uppercase text-center">
             <div class="main-title">
                 <h1>Property</h1>
-                <h5>10 Years Of Experience!</h5>
+                <h5>40 Years Of Experience!</h5>
                 <div class="line_4"></div>
                 <div class="line_5"></div>
                 <div class="line_6"></div>
@@ -112,6 +112,7 @@
                                     <div class="property_meta bottom40"style="margin-top: 40px;">
                                         @if (!empty($propertyDetails->PSqureFeet))
                                             <span><i class="fa fa-object-group"></i> {{ $propertyDetails->PSqureFeet }}
+                                                Built Up Area(sq ft)
                                             </span>
                                         @endif
                                         @if (isset($propertyDetails->PBedRoom) && $propertyDetails->PBedRoom != '')
@@ -138,7 +139,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td><b>Property Id</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PPropertycode }}</td>
+                                                    <td class="text-right">KPB{{ $propertyDetails->PPropertycode }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Price</b></td>
@@ -155,16 +156,23 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Property Size</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PSqureFeet ?? '-' }}</td>
+                                                    <td class="text-right">{{ $propertyDetails->PSqureFeet ?? '-' }} Built
+                                                        Up Area(sq ft)</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Bed Rooms</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PBedRoom ?? '-' }}</td>
+                                                    <!-- <td class="text-right">{{ $propertyDetails->PBedRoom ?? '-' }}</td> -->
+                                                    <td class="text-right">
+                                                        {{ ($propertyDetails->PBedRoom ?? 0) == 0 ? '-' : $propertyDetails->PBedRoom }}
+                                                    </td>
 
                                                 </tr>
                                                 <tr>
                                                     <td><b>Bath Rooms</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PBathRoom ?? '-' }}</td>
+                                                    <!-- <td class="text-right">{{ $propertyDetails->PBathRoom ?? '-' }}</td> -->
+                                                    <td class="text-right">
+                                                        {{ ($propertyDetails->PBathRoom ?? 0) == 0 ? '-' : $propertyDetails->PBathRoom }}
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -206,6 +214,9 @@
                                                                 {{ $propertyDetails->PTag }}
                                                             </div>
                                                         @else
+                                                            <div class="feature">
+                                                                -
+                                                            </div>
                                                         @endif
 
 
@@ -340,7 +351,8 @@
                                         @endif
                                         <form method="post" action="{{ route('contact.Cstore') }}" class="findus">
                                             @csrf
-                                            <input type="hidden" name="Con_PId" value="{{ $propertyDetails->PId }}">
+                                            <input type="hidden" name="Con_PId"
+                                                value="{{ $propertyDetails->propertyType->PTyp_Id }}">
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="single-query">
@@ -353,12 +365,24 @@
                                                             class="keyword-input">
                                                     </div>
                                                     <div class="single-query">
+                                                        <input type="number" autocomplete="off"
+                                                            placeholder="Whatsapp Number" name='Con_Number2'
+                                                            id="Con_Number2" class="keyword-input">
+                                                    </div>
+
+                                                    <div class="single-query">
                                                         <input type="email" autocomplete="off"
                                                             placeholder="Email Adress" id="Con_Email" name='Con_Email'
                                                             class="keyword-input">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
+                                                    <div class="single-query">
+                                                        <lable>Purchase Date</lable>
+                                                        <input type="date" autocomplete="off"
+                                                            placeholder="Purchase Date" name='Con_Date' id="Con_Date"
+                                                            class="keyword-input">
+                                                    </div>
                                                     <div class="single-query">
                                                         <textarea name='Con_Desc' id="Con_Desc" autocomplete="off" placeholder="Massege"></textarea>
                                                     </div>
@@ -455,13 +479,24 @@
                                     <div class="price"><span class="tag">{{ $value->propertyType->PTyp_Name }}</span>
                                     </div>
                                     <div class="property_meta">
-                                        @if (!empty($value->PSqureFeet))
-                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
-                                            </span>
+                                        @if (!empty($value->PSqureFeet) || !empty($value->PBedRoom))
+                                            @if (!empty($value->PSqureFeet))
+                                                <span><i class="fa fa-object-group"></i>
+                                                    {{ $value->PSqureFeet }} Built Up Area(sq ft)
+                                                </span>
+                                            @endif
+
+                                            @if (!empty($value->PBedRoom))
+                                                <span><i class="fa fa-bed"></i> {{ $value->PBedRoom }}</span>
+                                                <span><i class="fa fa-bath"></i> {{ $value->PBathRoom }}
+                                                    Bathroom
+                                                </span>
+                                            @endif
+                                        @else
+                                            <span>-</span>
                                         @endif
-                                        <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
-                                        <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                     </div>
+
                                 </div>
                                 <div class="proerty_content">
                                     <div class="proerty_text">
@@ -493,9 +528,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <!-- <ul class="pull-right">
-                                                                                                                                                                                        <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                                                                                                        <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                                                                                                                    </ul> -->
+                                                                                                                                                                                                    <li><a href="#."><i class="icon-video"></i></a></li>
+                                                                                                                                                                                                    <li><a href="#."><i class="icon-like"></i></a></li>
+                                                                                                                                                                                                </ul> -->
                                     </div>
                                 </div>
                             </div>

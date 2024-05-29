@@ -140,9 +140,9 @@
                                         value="{{ old('PTag', $model->PTag) }}" placeholder="">
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="Squre Feet" class="form-label">Squre Feet </label>
+                                    <label for="Squre Feet" class="form-label">Built Up Area (Squre Feet)</label>
                                     <input type="text" class="form-control" id="PSqureFeet" name="PSqureFeet"
-                                        value="{{ old('PSqureFeet', $model->PSqureFeet) }}" placeholder="">
+                                        value="{{ old('PSqureFeet', $model->PSqureFeet) }}" placeholder="Built Up Area (Squre Feet)">
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="Map Link" class="form-label">Map Link</label>

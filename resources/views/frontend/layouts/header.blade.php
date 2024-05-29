@@ -67,7 +67,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <p class="p-font-15 p-white">{{ $WebInfoModel->WebInf_About ?? 'N/A' }}</p>
+                <p class="p-font-15 p-white">We are Best in Town With 40 years of Experience.</p>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12 text-right">
                 <div class="header-top-links">

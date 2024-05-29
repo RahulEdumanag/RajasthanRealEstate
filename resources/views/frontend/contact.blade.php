@@ -12,7 +12,7 @@
         <div class="container padding-bottom-top-120 text-uppercase text-center">
             <div class="main-title">
                 <h1>Contact us</h1>
-                <h5>10 Years Of Experience!</h5>
+                <h5>40 Years Of Experience!</h5>
                 <div class="line_4"></div>
                 <div class="line_5"></div>
                 <div class="line_6"></div>
@@ -70,6 +70,36 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-6 col-sm-4 col-xs-12">
+                                            <div class="form-group single-query">
+                                                <input type="number" name='Con_Number2' id="Con_Number2"
+                                                    class="keyword-input" placeholder="Whatsapp Number" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-4 col-xs-12">
+                                            <div class="form-group single-query">
+                                                <!-- <lable>Purchase Date</lable> -->
+                                                <input type="date" name='Con_Date' id="Con_Date" class="keyword-input"
+                                                    placeholder="Purchase Date" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-4 col-xs-12">
+                                            <div class="form-group single-query">
+                                                <select class="selectpicker" data-live-search="true" id="Con_PId"
+                                                    name="Con_PId">
+                                                    <option selected disabled>Select Property Type</option>
+                                                    @foreach ($PropertyTypeModel as $value)
+                                                        <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group single-query">
                                                 <textarea name='Con_Desc' placeholder="Message" id="Con_Desc"></textarea>
@@ -78,11 +108,11 @@
                                     </div>
                                     <div class="row">
                                         <!-- <div class="col-md-12">
-                                                        <div class="form-group single-query">
-                                                            <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
-                                                                class="img-responsive" alt="image">
-                                                        </div>
-                                                    </div> -->
+                                                                        <div class="form-group single-query">
+                                                                            <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
+                                                                                class="img-responsive" alt="image">
+                                                                        </div>
+                                                                    </div> -->
                                         <div class="col-md-12 top20">
                                             <div class="form-group single-query">
                                                 <button type="submit" class="btn_fill" id="btn_submit"
@@ -109,7 +139,8 @@
                                                 <p><i class=" icon-icons142"></i>
                                                     {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</p>
                                             </a>
-                                            <p><i class="icon-icons74"></i> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p>
+                                            <p><i class="icon-icons74"></i> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}
+                                            </p>
                                         </div>
                                         <ul class="socials">
                                             @foreach ($SocialLinkModel as $model)

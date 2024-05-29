@@ -216,7 +216,14 @@ class HomeController extends Controller
             ->get();
         $SocialLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Social')->get();
         // dd($ContactCategoryModel);
-        return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel'));
+
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
+        ->whereHas('properties', function ($q) {
+            $q->where('PStatus', '=', '0'); // Ensure properties are active
+        })
+        ->get();
+
+        return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel','PropertyTypeModel'));
     }
     public function Cstore(Request $request)
     {
@@ -227,6 +234,8 @@ class HomeController extends Controller
             $model->Con_Name = $request->Con_Name;
             $model->Con_Email = $request->Con_Email;
             $model->Con_Number = $request->Con_Number;
+            $model->Con_Number2 = $request->Con_Number2;
+            $model->Con_Date = $request->Con_Date;
             $model->Con_Desc = $request->Con_Desc;
             $model->save();
             return back()->with('success', 'Message sent successfully.');

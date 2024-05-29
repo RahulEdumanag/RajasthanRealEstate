@@ -59,7 +59,8 @@
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <label class="form-label" for="PAre_Id">Area </label>
-                                    <select class="form-control" id="PAre_Id" name="PAre_Id" disabled>
+                                <!-- <select class="form-control" id="PAre_Id" name="PAre_Id" disabled> OLD CODE -->
+                                    <select class="form-control" id="PAre_Id" name="PAre_Id">
                                         <option selected value='0'>Not Exists</option>
                                         @if (isset($AreaModel) && $lastSelectedPCit_Id)
                                             @foreach ($AreaModel as $area)
@@ -193,10 +194,10 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group ">
-                                    <label class="form-label" for="SqureFeet">Squre Feet</label>
+                                    <label class="form-label" for="SqureFeet">Built Up Area (Squre Feet)</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" id="P " name="PSqureFeet" class="form-control"
-                                            autocomplete="off" placeholder="Enter Squre Feet" aria-describedby="name2" />
+                                        <input type="text" id="PSqureFeet" name="PSqureFeet" class="form-control"
+                                            autocomplete="off" placeholder="Enter Built Up Area" aria-describedby="name2" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6 form-group ">

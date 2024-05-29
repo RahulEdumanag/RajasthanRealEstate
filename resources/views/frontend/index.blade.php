@@ -320,14 +320,22 @@
                                                 <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
                                                     alt="listin" class="img-responsive" style="height: 247px;">
                                                 <div class="property_meta">
-                                                    @if (!empty($value->PSqureFeet))
-                                                        <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
-                                                        </span>
-                                                    @endif
+                                                    @if (!empty($value->PSqureFeet) || !empty($value->PBedRoom))
+                                                        @if (!empty($value->PSqureFeet))
+                                                            <span><i class="fa fa-object-group"></i>
+                                                                {{ $value->PSqureFeet }} Built Up Area(sq ft)
+                                                            </span>
+                                                        @endif
 
-                                                    <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
-                                                    <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }}
-                                                        Bathroom</span>
+                                                        @if (!empty($value->PBedRoom))
+                                                            <span><i class="fa fa-bed"></i> {{ $value->PBedRoom }}</span>
+                                                            <span><i class="fa fa-bath"></i> {{ $value->PBathRoom }}
+                                                                Bathroom
+                                                            </span>
+                                                        @endif
+                                                    @else
+                                                        <span>-</span>
+                                                    @endif
                                                 </div>
                                                 @if ($value->PFeatured == 1)
                                                     <div class="feature ">
@@ -367,7 +375,7 @@
                                                     </span>
                                                     <p><strong>
                                                             @if ($value->PAmount == 0)
-                                                            Call for price
+                                                                Call for price
                                                             @else
                                                                 ₹ {{ $value->PAmount }}/-
                                                             @endif
@@ -379,8 +387,11 @@
                                                         {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                                     </p>
                                                     <ul class="pull-right">
-                                                        <li><a style="cursor:pointer;background-color:red; color:white;">{{ $value->PPropertycode }}</a></li>
+                                                        <li><a
+                                                        style="cursor:pointer;background-color:red;color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
+                                                        </li>
                                                     </ul>
+
                                                 </div>
                                             </div>
                                         </div>

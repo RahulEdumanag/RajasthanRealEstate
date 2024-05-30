@@ -124,3 +124,4 @@ Route::get('/franchise', [HomeController::class, 'franchise'])->name('franchise'
 Route::get('/calculator', [HomeController::class, 'calculator'])->name('calculator');
 Route::get('/property', [HomeController::class, 'property'])->name('property');
 // routes/web.php
+Route::get('/get-areas-by-city', [HomeController::class, 'getAreasByCity'])->name('getAreasByCity');

@@ -58,7 +58,6 @@ class HomeController extends Controller
                 'Vis_CreatedDate' => now(),
             ]);
         }
-        
         $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->take(4)->get();
         $usefulLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'UsefulLink')->orderBy('Pag_SerialOrder', 'desc')->get();
         $today = Carbon::now('Asia/Kolkata');
@@ -102,12 +101,12 @@ class HomeController extends Controller
         if ($request->filled('location')) {
             $query->whereHas('cityy', function ($q) use ($request) {
                 // corrected 'cities' to 'city'
-                $q->where('Cit_Name', 'like', '%' . $request->location . '%');
+                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
             });
         }
         if ($request->filled('area')) {
             $query->whereHas('area', function ($q) use ($request) {
-                $q->where('Are_Name', 'like', '%' . $request->area . '%');
+                $q->where('Are_Id', 'like', '%' . $request->area . '%');
             });
         }
         if ($request->filled('property_type')) {
@@ -217,13 +216,11 @@ class HomeController extends Controller
             ->get();
         $SocialLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Social')->get();
         // dd($ContactCategoryModel);
-
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         ->whereHas('properties', function ($q) {
             $q->where('PStatus', '=', '0'); // Ensure properties are active
         })
         ->get();
-
         return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel','PropertyTypeModel'));
     }
     public function Cstore(Request $request)
@@ -329,12 +326,12 @@ class HomeController extends Controller
         if ($request->filled('location')) {
             $query->whereHas('cityy', function ($q) use ($request) {
                 // corrected 'cities' to 'city'
-                $q->where('Cit_Name', 'like', '%' . $request->location . '%');
+                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
             });
         }
         if ($request->filled('area')) {
             $query->whereHas('area', function ($q) use ($request) {
-                $q->where('Are_Name', 'like', '%' . $request->area . '%');
+                $q->where('Are_Id', 'like', '%' . $request->area . '%');
             });
         }
         if ($request->filled('property_type')) {
@@ -384,4 +381,13 @@ class HomeController extends Controller
         }
         return response()->json([]);
     }
+    public function getAreasByCity(Request $request)
+{
+    if($request->ajax()) {
+        $areas = Area::where('Are_Cit_Id', $request->CityId)
+            ->where('Are_Status', 0)
+            ->get();
+        return response()->json($areas);
+    }
+}
 }

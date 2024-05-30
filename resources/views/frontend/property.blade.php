@@ -66,11 +66,11 @@
                     </div>
                     <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
-                            <label>Loction</label>
-                            <select class="selectpicker" data-live-search="true" name="location">
+                            <label>Location</label>
+                            <select class="selectpicker" data-live-search="true" name="location" id="citySelect">
                                 <option selected disabled>Select City</option>
                                 @foreach ($CityModel as $value)
-                                    <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
+                                    <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -78,12 +78,9 @@
                     <div class="col-md-3 col-sm-3">
                         <div class="single-query form-group">
                             <label>Area</label>
-                            <select class="selectpicker" data-live-search="true" name="area">
+                            <select class="selectpicker" data-live-search="true" name="area" id="areaSelect">
                                 <option selected disabled>Select Area</option>
-                                @foreach ($AreaModel as $value)
-                                    <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }},
-                                        {{ $value->city->Cit_Name }}</option>
-                                @endforeach
+                                <!-- Areas will be dynamically loaded here -->
                             </select>
                         </div>
                     </div>
@@ -208,7 +205,7 @@
                                     @if ($value->PTag)
                                         <div class="feature">
                                             <span class="tag">
-                                              {{ $value->PTag }}
+                                                {{ $value->PTag }}
                                             </span>
                                         </div>
                                     @endif
@@ -216,13 +213,13 @@
                                     </div>
                                     <div class="property_meta">
                                         @if (!empty($value->PSqureFeet))
-                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }} Built Up Area(sq ft)
+                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }} Built Up
+                                                Area(sq ft)
                                             </span>
                                         @endif
                                         @if (!empty($value->PBedRoom))
-
-                                        <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
-                                        <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
+                                            <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
+                                            <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }} Bathroom</span>
                                         @endif
                                     </div>
                                 </div>
@@ -241,7 +238,7 @@
                                             @endif
                                         </span>
                                         @if ($value->PAmount == 0)
-                                           Call for price
+                                            Call for price
                                         @else
                                             ₹ {{ $value->PAmount }}/-
                                         @endif
@@ -251,7 +248,9 @@
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
                                         <ul class="pull-right">
-                                        <li><a style="cursor:pointer;background-color:red; color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a></li>
+                                            <li><a
+                                                    style="cursor:pointer;background-color:red; color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -269,6 +268,8 @@
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var urlParams = new URLSearchParams(window.location.search);
@@ -284,4 +285,38 @@
             }
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#citySelect').change(function() {
+                var cityId = $(this).val();
+                if (cityId) {
+                    $.ajax({
+                        url: "{{ route('getAreasByCity') }}",
+                        type: "GET",
+                        data: {
+                            CityId: cityId
+                        }, // Use 'Cit_Id' instead of 'Cit_id'
+                        success: function(data) {
+                            $('#areaSelect').empty();
+                            $('#areaSelect').append(
+                                '<option selected disabled>Select Area</option>');
+                            $.each(data, function(key, value) {
+                                $('#areaSelect').append('<option value="' + value
+                                    .Are_Id + '">' + value.Are_Name + '</option>');
+                            });
+                            $('#areaSelect').selectpicker('refresh');
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error); // Log any errors to the console for debugging
+                        }
+                    });
+                } else {
+                    $('#areaSelect').empty();
+                    $('#areaSelect').append('<option selected disabled>Select Area</option>');
+                    $('#areaSelect').selectpicker('refresh');
+                }
+            });
+        });
+    </script>
+
 @endsection

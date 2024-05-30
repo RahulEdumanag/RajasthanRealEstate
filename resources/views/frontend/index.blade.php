@@ -190,10 +190,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="single-query">
-                                            <select class="selectpicker" data-live-search="true" name="location">
+                                            <select class="selectpicker" data-live-search="true" name="location"
+                                                id="citySelect">
                                                 <option selected disabled>Select City</option>
                                                 @foreach ($CityModel as $value)
-                                                    <option value='{{ $value->Cit_Name }}'>{{ $value->Cit_Name }}</option>
+                                                    <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -201,12 +202,10 @@
 
                                     <div class="col-md-12">
                                         <div class="single-query">
-                                            <select class="selectpicker" data-live-search="true" name="area">
+                                            <select class="selectpicker" data-live-search="true" name="area"
+                                                id="areaSelect">
                                                 <option selected disabled>Select Area</option>
-                                                @foreach ($AreaModel as $value)
-                                                    <option value='{{ $value->Are_Name }}'>{{ $value->Are_Name }},
-                                                        {{ $value->city->Cit_Name }}</option>
-                                                @endforeach
+
                                             </select>
                                         </div>
                                     </div>
@@ -387,7 +386,7 @@
                                                     </p>
                                                     <ul class="pull-right">
                                                         <li><a
-                                                        style="cursor:pointer;background-color:red;color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
+                                                                style="cursor:pointer;background-color:red;color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
                                                         </li>
                                                     </ul>
 
@@ -454,7 +453,41 @@
             }
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $('#citySelect').change(function() {
+                var cityId = $(this).val();
+                if (cityId) {
+                    $.ajax({
+                        url: "{{ route('getAreasByCity') }}",
+                        type: "GET",
+                        data: {
+                            CityId: cityId
+                        }, // Use 'Cit_Id' instead of 'Cit_id'
+                        success: function(data) {
+                            $('#areaSelect').empty();
+                            $('#areaSelect').append(
+                                '<option selected disabled>Select Area</option>');
+                            $.each(data, function(key, value) {
+                                $('#areaSelect').append('<option value="' + value
+                                    .Are_Id + '">' + value.Are_Name + '</option>');
+                            });
+                            $('#areaSelect').selectpicker('refresh');
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error); // Log any errors to the console for debugging
+                        }
+                    });
+                } else {
+                    $('#areaSelect').empty();
+                    $('#areaSelect').append('<option selected disabled>Select Area</option>');
+                    $('#areaSelect').selectpicker('refresh');
+                }
+            });
+        });
+    </script>
 
 
 @endsection

@@ -148,7 +148,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
                 </div>
                 <div class="opening-hourse">
                     @foreach ($CityModel as $value)
-                        <a href="{{ route('property', ['location' => $value->Cit_Name]) }}">
+                        <a href="{{ route('property', ['location' => $value->Cit_Id]) }}">
                             {{ $loop->first ? '' : '|' }} Properties in {{ $value->Cit_Name }}
                         </a>
                     @endforeach

@@ -130,7 +130,7 @@
                                 <div class="col-sm-6">
                                     <label for="Amount" class="form-label">Amount<span
                                             style="color:red">*</span></label>
-                                    <input type="number" class="form-control" id="PAmount" name="PAmount"
+                                    <input type="text" class="form-control" id="PAmount" name="PAmount"
                                         value="{{ old('PAmount', $model->PAmount) }}" placeholder="">
                                     <span id="PAmount-error" class="error" style="color: red;"></span>
                                 </div>

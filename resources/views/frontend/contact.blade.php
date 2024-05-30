@@ -8,7 +8,7 @@
         }
     </style>
     <!--===== PAGE TITLE =====-->
-    <div class="page-title page-main-section parallaxie" style="background-image: url(images/titlebg-1.jpg);">
+    <div class="page-title page-main-section parallaxie">
         <div class="container padding-bottom-top-120 text-uppercase text-center">
             <div class="main-title">
                 <h1>Contact us</h1>
@@ -62,18 +62,23 @@
                                                     placeholder="Your E-mail" required autocomplete="off">
                                             </div>
                                         </div>
+
+
                                         <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <div class="form-group single-query">
-                                                <input type="number" name='Con_Number' id="Con_Number"
-                                                    class="keyword-input" placeholder="Number" required autocomplete="off">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
                                                 <input type="number" name='Con_Number2' id="Con_Number2"
                                                     class="keyword-input" placeholder="Whatsapp Number" autocomplete="off">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-4 col-xs-12">
+
+                                            <div class="form-group single-query">
+                                                <input type="number" name='Con_Number' id="Con_Number"
+                                                    class="keyword-input" placeholder="Number" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-4 col-xs-12">
@@ -108,11 +113,11 @@
                                     </div>
                                     <div class="row">
                                         <!-- <div class="col-md-12">
-                                                                        <div class="form-group single-query">
-                                                                            <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
-                                                                                class="img-responsive" alt="image">
-                                                                        </div>
-                                                                    </div> -->
+                                                                            <div class="form-group single-query">
+                                                                                <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
+                                                                                    class="img-responsive" alt="image">
+                                                                            </div>
+                                                                        </div> -->
                                         <div class="col-md-12 top20">
                                             <div class="form-group single-query">
                                                 <button type="submit" class="btn_fill" id="btn_submit"

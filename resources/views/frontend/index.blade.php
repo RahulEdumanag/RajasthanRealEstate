@@ -330,7 +330,6 @@
                                                         @if (!empty($value->PBedRoom))
                                                             <span><i class="fa fa-bed"></i> {{ $value->PBedRoom }}</span>
                                                             <span><i class="fa fa-bath"></i> {{ $value->PBathRoom }}
-                                                                Bathroom
                                                             </span>
                                                         @endif
                                                     @else

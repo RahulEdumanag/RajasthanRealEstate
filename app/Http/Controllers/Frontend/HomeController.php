@@ -32,7 +32,7 @@ class HomeController extends Controller
     }
     protected function getServicesModel()
     {
-        return $this->baseQuery()->where('tbl_pagecategory.PagCat_Name', 'Service')->take(4)->get();
+        return $this->baseQuery()->where('tbl_pagecategory.PagCat_Name', 'Service')->get();
     }
     public function index(Request $request)
     {
@@ -58,6 +58,7 @@ class HomeController extends Controller
                 'Vis_CreatedDate' => now(),
             ]);
         }
+        
         $FacilityModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', '=', 'Facility')->take(4)->get();
         $usefulLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'UsefulLink')->orderBy('Pag_SerialOrder', 'desc')->get();
         $today = Carbon::now('Asia/Kolkata');

@@ -121,7 +121,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
 
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
-                    <h4 class="widget-title ">Use Full Links</h4>
+                    <h4 class="widget-title ">Use FulLinks</h4>
                     <div class="small-title">
                         <div class="line1 background-color-white"></div>
                         <div class="line2 background-color-white"></div>

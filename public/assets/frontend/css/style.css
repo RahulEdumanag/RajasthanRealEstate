@@ -69,6 +69,12 @@ h4 {
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
 }
+.get-tuch ul li h4,
+.get-tuch ul li p {
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Roboto'; */
+}
 /*ol,
 ul {
     list-style: none;

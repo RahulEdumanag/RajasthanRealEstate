@@ -105,7 +105,7 @@
                                     <span class="icon"><i class="{{ $value->Pag_URL }}"></i></span>
                                     <div class="description">
                                         <h4>{{ $value->Pag_Name }}</h4>
-                                        <p>{{ Str::limit($value->Pag_ShortDesc, 70) }}</p>
+                                        <p>{{ Str::limit($value->Pag_ShortDesc, 60) }}</p>
                                         @if ($value->Pag_FullDesc)
                                             <a href="{{ URL::to('/service-details/' . encodeId($value->Pag_Id)) }}"
                                                 class="link_arrow top20">Read More</a>

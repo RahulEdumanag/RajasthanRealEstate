@@ -262,7 +262,9 @@
             </div>
             <div class="row top40">
                 <div class="col-md-12">
-                    {!! $PropertyModel->links('vendor.pagination.bootstrap-4') !!}
+                    <!-- {!! $PropertyModel->links('vendor.pagination.bootstrap-4') !!} -->
+                    {!! $PropertyModel->appends(request()->query())->links('vendor.pagination.bootstrap-4') !!}
+
                 </div>
             </div>
         </div>

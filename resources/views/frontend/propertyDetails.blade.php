@@ -35,7 +35,7 @@
     </div>
     <!--===== #/PAGE TITLE =====-->
     <!--===== PROPERTY - DETAILS - 2 =====-->
-    <section class="property-details padding">
+    <section class="property-details padding" id="scrollerFilter">
 
         <div class="container">
             <div class="row">
@@ -197,12 +197,21 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Area</b></td>
+                                                    <td><b>City</b></td>
                                                     <td class="text-right">
-                                                        @if ($propertyDetails->area && $propertyDetails->area->city)
-                                                            <p>{{ $propertyDetails->area->Are_Name }},{{ $propertyDetails->area->city->Cit_Name }}
+                                                        @if (isset($propertyDetails->city) && isset($propertyDetails->area))
+                                                            <p>
+                                                                {{ $propertyDetails->city->Cit_Name }},
+                                                                {{ $propertyDetails->area->Are_Name }}
+                                                            </p>
+                                                        @else
+                                                            <p>
+                                                                {{ $propertyDetails->city->Cit_Name }}
                                                             </p>
                                                         @endif
+
+
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -361,13 +370,14 @@
                                                     </div>
                                                     <div class="single-query">
                                                         <input type="number" autocomplete="off"
-                                                            placeholder="Phone Number" name='Con_Number' id="Con_Number"
-                                                            class="keyword-input">
-                                                    </div>
-                                                    <div class="single-query">
-                                                        <input type="number" autocomplete="off"
                                                             placeholder="Whatsapp Number" name='Con_Number2'
                                                             id="Con_Number2" class="keyword-input">
+                                                    </div>
+
+                                                    <div class="single-query">
+                                                        <input type="number" autocomplete="off"
+                                                            placeholder="Phone Number" name='Con_Number' id="Con_Number"
+                                                            class="keyword-input">
                                                     </div>
 
                                                     <div class="single-query">
@@ -527,10 +537,11 @@
                                         <p class="pull-left"><i class="icon-calendar2"></i>
                                             {{ \Carbon\Carbon::parse($value->PCreatedDate)->diffForHumans() }}
                                         </p>
-                                        <!-- <ul class="pull-right">
-                                                                                                                                                                                                    <li><a href="#."><i class="icon-video"></i></a></li>
-                                                                                                                                                                                                    <li><a href="#."><i class="icon-like"></i></a></li>
-                                                                                                                                                                                                </ul> -->
+                                        <ul class="pull-right">
+                                            <li><a
+                                                    style="cursor:pointer;background-color:red; color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -541,4 +552,16 @@
         </div>
     </section>
     <!--PROPERTY DETAILS-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var section = document.getElementById('scrollerFilter');
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
+
 @endsection

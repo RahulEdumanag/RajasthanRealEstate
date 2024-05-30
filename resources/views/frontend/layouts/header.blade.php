@@ -55,7 +55,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         }
 
         .newLogo {
-            width: 90px !important;
+            /* width: 90px !important; */
         }
     }
 

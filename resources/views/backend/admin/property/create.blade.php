@@ -181,7 +181,7 @@
                                     <label class="form-label" for="Map">Amount <span
                                             style="color:red">*</span></label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" id="PAmount" name="PAmount" class="form-control"
+                                        <input type="text" id="PAmount" name="PAmount" class="form-control"
                                             autocomplete="off" placeholder="Enter Amount" aria-describedby="name2" />
                                     </div>
                                     <span id="PAmount-error" class="error" style="color: red;"></span>

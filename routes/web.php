@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Backend\Admin\ImageController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\MailController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\GalleryController;
 use App\Http\Controllers\Backend\Admin\PropertyController;
@@ -125,3 +126,5 @@ Route::get('/calculator', [HomeController::class, 'calculator'])->name('calculat
 Route::get('/property', [HomeController::class, 'property'])->name('property');
 // routes/web.php
 Route::get('/get-areas-by-city', [HomeController::class, 'getAreasByCity'])->name('getAreasByCity');
+Route::post('/send-contact-form', [MailController::class, 'sendContactForm'])->name('sendContactForm');
+ 

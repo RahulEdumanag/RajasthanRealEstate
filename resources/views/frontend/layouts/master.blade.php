@@ -36,6 +36,7 @@ if ($ExpiryPeriod) {
                 <div class="cssload-cube cssload-c3"></div>
             </div>
         </div>
+
         <!--/LOADER -->
         <!--===== BACK TO TOP =====-->
         <div class="short-msg">
@@ -59,6 +60,20 @@ if ($ExpiryPeriod) {
         <header id="main_header">
             @include('frontend.layouts.header')
         </header>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         @yield('content')
         <footer id="footer" class="footer divider layer-overlay overlay-dark-8">
             @include('frontend.layouts.footer')
@@ -87,38 +102,46 @@ if ($ExpiryPeriod) {
                                         <div class="col-md-12">
                                             <h3>Suggestion</h3>
                                         </div>
-                                        <form class="callus padding-bottom" id="contact-form">
+                                        <form class="callus padding-bottom" id="contact-form"
+                                            action="{{ route('sendContactForm') }}" method="POST">
+                                            @csrf
+
                                             <div class="col-md-12">
                                                 <div class="single-query">
-                                                    <lable>Name</lable>
-                                                    <input class="keyword-input" name="name" id="name"
-                                                        type="text">
+                                                    <label>Name</label>
+                                                    <input class="keyword-input" name="Mail_Name" id="Mail_Name"
+                                                        type="text" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="single-query">
-                                                    <lable>E - mail</lable>
-                                                    <input class="keyword-input" name="email" id="email"
-                                                        type="email">
+                                                    <label>E-mail</label>
+                                                    <input class="keyword-input" name="Mail_Email" id="Mail_Email"
+                                                        type="email" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="single-query">
-                                                    <lable>Message</lable>
-                                                    <textarea name="message" id="message"></textarea>
+                                                    <label>Message</label>
+                                                    <textarea name="Mail_Message" id="Mail_Message" required></textarea>
                                                 </div>
+                                            </div>
+                                            <div class="modal-footer">
+
+                                                <button type="button" class="dark_border" data-dismiss="modal">Cancel
+                                                    Message</button>
+                                                <button type="submit" class="btn_fill">Send Message</button>
+                                                <!-- Change type to submit -->
                                             </div>
                                         </form>
+
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="dark_border" data-dismiss="modal">Cancel Message</button>
-                        <button type="button" class="btn_fill">Send Message</button>
-                    </div>
+
                 </div>
             </div>
         </div>

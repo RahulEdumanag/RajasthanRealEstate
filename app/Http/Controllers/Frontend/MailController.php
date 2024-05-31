@@ -50,6 +50,3 @@ class MailController extends Controller
     
 
 }
-if ($WebInfoModel && filter_var($WebInfoModel->WebInf_EmailId, FILTER_VALIDATE_EMAIL)) {
-    Mail::to($WebInfoModel->WebInf_EmailId)->send(new ContactFormMail($validatedData));
-}

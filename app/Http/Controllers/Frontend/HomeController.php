@@ -98,20 +98,24 @@ class HomeController extends Controller
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
+     
         if ($request->filled('location')) {
-            $query->whereHas('cityy', function ($q) use ($request) {
-                // corrected 'cities' to 'city'
-                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            $cityId = decodeId($request->location);
+            $query->whereHas('city', function ($q) use ($cityId) {
+                $q->where('Cit_Id', $cityId);
             });
         }
+
         if ($request->filled('area')) {
-            $query->whereHas('area', function ($q) use ($request) {
-                $q->where('Are_Id', 'like', '%' . $request->area . '%');
+            $areaId = decodeId($request->area);
+            $query->whereHas('area', function ($q) use ($areaId) {
+                $q->where('Are_Id', $areaId);
             });
         }
         if ($request->filled('property_type')) {
-            $query->whereHas('propertyType', function ($q) use ($request) {
-                $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
+            $propertyTypeId = decodeId($request->property_type);
+            $query->whereHas('propertyType', function ($q) use ($propertyTypeId) {
+                $q->where('PTyp_Id', $propertyTypeId);
             });
         }
         if ($request->filled('bedroom')) {
@@ -217,11 +221,11 @@ class HomeController extends Controller
         $SocialLinkModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Social')->get();
         // dd($ContactCategoryModel);
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
-        ->whereHas('properties', function ($q) {
-            $q->where('PStatus', '=', '0'); // Ensure properties are active
-        })
-        ->get();
-        return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel','PropertyTypeModel'));
+            ->whereHas('properties', function ($q) {
+                $q->where('PStatus', '=', '0'); // Ensure properties are active
+            })
+            ->get();
+        return view('frontend.contact', compact('WebInfoModel', 'ContactCategoryModel', 'SocialLinkModel', 'PropertyTypeModel'));
     }
     public function Cstore(Request $request)
     {
@@ -323,20 +327,24 @@ class HomeController extends Controller
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
+
         if ($request->filled('location')) {
-            $query->whereHas('cityy', function ($q) use ($request) {
-                // corrected 'cities' to 'city'
-                $q->where('Cit_Id', 'like', '%' . $request->location . '%');
+            $cityId = decodeId($request->location);
+            $query->whereHas('city', function ($q) use ($cityId) {
+                $q->where('Cit_Id', $cityId);
             });
         }
+
         if ($request->filled('area')) {
-            $query->whereHas('area', function ($q) use ($request) {
-                $q->where('Are_Id', 'like', '%' . $request->area . '%');
+            $areaId = decodeId($request->area);
+            $query->whereHas('area', function ($q) use ($areaId) {
+                $q->where('Are_Id', $areaId);
             });
         }
         if ($request->filled('property_type')) {
-            $query->whereHas('propertyType', function ($q) use ($request) {
-                $q->where('PTyp_Id', 'like', '%' . $request->property_type . '%');
+            $propertyTypeId = decodeId($request->property_type);
+            $query->whereHas('propertyType', function ($q) use ($propertyTypeId) {
+                $q->where('PTyp_Id', $propertyTypeId);
             });
         }
         if ($request->filled('bedroom')) {
@@ -382,12 +390,13 @@ class HomeController extends Controller
         return response()->json([]);
     }
     public function getAreasByCity(Request $request)
-{
-    if($request->ajax()) {
-        $areas = Area::where('Are_Cit_Id', $request->CityId)
-            ->where('Are_Status', 0)
-            ->get();
-        return response()->json($areas);
+    {
+        if ($request->ajax()) {
+            $areas = Area::where('Are_Cit_Id', decodeId($request->CityId))
+                ->where('Are_Status', 0)
+                ->get();
+            return response()->json($areas);
+        }
     }
-}
+    
 }

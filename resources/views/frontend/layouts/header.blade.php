@@ -55,7 +55,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         }
 
         .newLogo {
-            /* width: 90px !important; */
+         width: 90px !important;  
         }
     }
 
@@ -169,7 +169,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                         <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @foreach ($CityModel as $value)
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('property', ['location' => $value->Cit_Id]) }}">{{ $value->Cit_Name }}</br></a>
+                                                                    href="{{ route('property', ['location' => encodeId($value->Cit_Id)]) }}">{{ $value->Cit_Name }}</br></a>
                                                             @endforeach
                                                         </div>
                                                     </li>
@@ -179,7 +179,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                         <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @foreach ($AreaModel as $value)
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('property', ['area' => $value->Are_Id]) }}">{{ $value->Are_Name }}</br></a>
+                                                                    href="{{ route('property', ['area' => encodeId($value->Are_Id)]) }}">{{ $value->Are_Name }}</br></a>
                                                             @endforeach
                                                         </div>
                                                     </li>
@@ -189,7 +189,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                         <div class="dropdown-menu dropdown-menu-scrollable">
                                                             @foreach ($PropertyTypeModel as $type)
                                                                 <a class="dropdown-item"
-                                                                    href="{{ route('property', ['property_type' => $type->PTyp_Id]) }}">{{ $type->PTyp_Name }}</br></a>
+                                                                    href="{{ route('property', ['property_type' => encodeId($type->PTyp_Id)]) }}">{{ $type->PTyp_Name }}</br></a>
                                                             @endforeach
                                                         </div>
                                                     </li>

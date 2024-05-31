@@ -194,7 +194,7 @@
                                                 id="citySelect">
                                                 <option selected disabled>Select City</option>
                                                 @foreach ($CityModel as $value)
-                                                    <option value='{{ $value->Cit_Id }}'>{{ $value->Cit_Name }}</option>
+                                                    <option value='{{ encodeId($value->Cit_Id) }}'>{{ $value->Cit_Name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -216,7 +216,7 @@
                                             <select class="selectpicker" data-live-search="true" name="property_type">
                                                 <option selected disabled>Select Property Type</option>
                                                 @foreach ($PropertyTypeModel as $value)
-                                                    <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}
+                                                    <option value='{{ encodeId($value->PTyp_Id) }}'>{{ $value->PTyp_Name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -454,9 +454,12 @@
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hashids@2.3.0/dist/hashids.min.js"></script>
 
     <script>
         $(document).ready(function() {
+            var hashids = new Hashids('your_salt_here', 30); // Set your own salt and length
+
             $('#citySelect').change(function() {
                 var cityId = $(this).val();
                 if (cityId) {
@@ -467,15 +470,14 @@
                             CityId: cityId
                         }, // Use 'Cit_Id' instead of 'Cit_id'
                         success: function(data) {
-                            $('#areaSelect').empty();
-                            $('#areaSelect').append(
-                                '<option selected disabled>Select Area</option>');
-                            $.each(data, function(key, value) {
-                                $('#areaSelect').append('<option value="' + value
-                                    .Are_Id + '">' + value.Are_Name + '</option>');
-                            });
-                            $('#areaSelect').selectpicker('refresh');
-                        },
+                        $('#areaSelect').empty();
+                        $('#areaSelect').append('<option selected disabled>Select Area</option>');
+                        $.each(data, function(key, value) {
+                            var encodedId = hashids.encode(value.Are_Id);
+                            $('#areaSelect').append('<option value="' + encodedId + '">' + value.Are_Name + '</option>');
+                        });
+                        $('#areaSelect').selectpicker('refresh');
+                    },
                         error: function(xhr, status, error) {
                             console.error(error); // Log any errors to the console for debugging
                         }
@@ -488,6 +490,5 @@
             });
         });
     </script>
-
 
 @endsection

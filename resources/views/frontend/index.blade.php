@@ -22,21 +22,17 @@
             .img-responsive {
                 height: 210px !important
             }
-
-            .border_heading {
-                margin-top: -149px;
-            }
-
+  
             .defaultimg {
                 height: 30% !important;
             }
 
             .border_heading {
-                margin-top: -71% !important;
+                margin-top: -100% !important;
             }
 
             .homee {
-                margin-top: -111% !important;
+                margin-top: -130% !important;
             }
         }
 

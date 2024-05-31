@@ -115,11 +115,11 @@
                                                 Built Up Area(sq ft)
                                             </span>
                                         @endif
-                                        @if (isset($propertyDetails->PBedRoom) && $propertyDetails->PBedRoom != '')
+                                        @if (!empty($value->PBedRoom))
                                             <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBedRoom }} Bed Rooms</span>
                                         @endif
 
-                                        @if (isset($propertyDetails->PBathRoom) && $propertyDetails->PBathRoom != '')
+                                        @if (!empty($value->PBathRoom))
                                             <span><i class="fa fa-bed"></i>{{ $propertyDetails->PBathRoom }} Bath
                                                 Rooms</span>
                                         @endif

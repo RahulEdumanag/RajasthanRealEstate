@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html>
 
@@ -26,6 +27,11 @@
             font-size: 24px;
             margin-bottom: 20px;
             text-align: center;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         table {
@@ -72,30 +78,46 @@
 
 <body>
     <div class="container">
-        <h1>New Contact Form Submission</h1>
+        <h1>New Contact Form Submission In {{ config('app.name') }}</h1>
         <div class="logo">
             @if ($webInfo && $webInfo->WebInf_HeaderLogo)
-                <img src="{{ env('Web_CommonURl') }}{{ $webInfo->WebInf_HeaderLogo }}" alt="logo" />
+                <img src="{{ env('Web_CommonURl') }}{{ $webInfo->WebInf_HeaderLogo }}" alt="logo"
+                    style="max-width: 200px;" />
             @else
                 <p>No logo available</p>
             @endif
         </div>
         <table>
+
             <tr>
                 <th>Name</th>
+            </tr>
+
+            <tr>
                 <td>{{ $data['Mail_Name'] }}</td>
             </tr>
             <tr>
                 <th>Email</th>
+            </tr>
+            <tr>
                 <td>{{ $data['Mail_Email'] }}</td>
             </tr>
             <tr>
                 <th>Message</th>
+            </tr>
+            <tr>
                 <td>{{ $data['Mail_Message'] }}</td>
             </tr>
+
+
         </table>
         <div class="footer">
             <p>This is an automated message. Please do not reply.</p>
+            <p>©
+                <script>
+                    document.write(new Date().getFullYear());
+                </script> {{ config('app.name') }}. All rights reserved.
+            </p>
         </div>
     </div>
 </body>

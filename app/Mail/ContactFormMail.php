@@ -25,7 +25,7 @@ class ContactFormMail extends Mailable
     {
         $this->data = $data;
         $this->webInfo = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
-        ->where('tbl_website_information.WebInf_Reg_Id', '=', env('WE   B_ID'))
+        ->where('tbl_website_information.WebInf_Reg_Id', '=', env('WEB_ID'))
         ->where('WebInf_Status', '=', '0')
         ->first();
     }

@@ -130,7 +130,7 @@ class HomeController extends Controller
         if ($request->filled('square_fit_max')) {
             $query->where('PSqureFeet', '<=', $request->square_fit_max);
         }
-        $PropertyModel = $query->get();
+        $PropertyModel = $query->inRandomOrder()->limit(10)->get();
         $CityModel = City::where('Cit_Status', '=', 0)
             ->whereHas('properties', function ($q) {
                 $q->where('PStatus', '=', '0'); // Ensure properties are active
@@ -232,13 +232,13 @@ class HomeController extends Controller
         try {
             $model = new Contact();
             $model->Con_Reg_Id = $request->input('Con_Reg_Id', $this->clientId);
-            $model->Con_PId = $request->Con_PId;
-            $model->Con_Name = $request->Con_Name;
-            $model->Con_Email = $request->Con_Email;
-            $model->Con_Number = $request->Con_Number;
-            $model->Con_Number2 = $request->Con_Number2;
-            $model->Con_Date = $request->Con_Date;
-            $model->Con_Desc = $request->Con_Desc;
+            $model->Con_PId = $request->s_PropertyType;
+            $model->Con_Name = $request->i_Name;
+            $model->Con_Email = $request->i_Email;
+            $model->Con_Number = $request->i_Number;
+            $model->Con_Number2 = $request->i_Number2;
+            $model->Con_Date = $request->i_Date;
+            $model->Con_Desc = $request->ta_Desc;
             $model->save();
             return back()->with('success', 'Message sent successfully.');
         } catch (Exception $e) {

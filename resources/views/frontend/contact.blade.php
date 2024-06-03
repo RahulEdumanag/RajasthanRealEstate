@@ -52,13 +52,13 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <input type="text"id="Con_Name" name='Con_Name' class="keyword-input"
+                                                <input type="text"id="i_Name" name='i_Name' class="keyword-input"
                                                     placeholder="Your Name" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <input type="email" id="Con_Email" name='Con_Email' class="keyword-input"
+                                                <input type="email" id="i_Email" name='i_Email' class="keyword-input"
                                                     placeholder="Your E-mail" required autocomplete="off">
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
 
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <input type="number" name='Con_Number2' id="Con_Number2"
+                                                <input type="number" name='i_Number2' id="i_Number2"
                                                     class="keyword-input" placeholder="Whatsapp Number" autocomplete="off">
                                             </div>
                                         </div>
@@ -77,14 +77,14 @@
                                         <div class="col-md-6 col-sm-4 col-xs-12">
 
                                             <div class="form-group single-query">
-                                                <input type="number" name='Con_Number' id="Con_Number"
+                                                <input type="number" name='i_Number' id="i_Number"
                                                     class="keyword-input" placeholder="Number" required autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
                                                 <!-- <lable>Purchase Date</lable> -->
-                                                <input type="date" name='Con_Date' id="Con_Date" class="keyword-input"
+                                                <input type="date" name='i_Date' id="i_Date" class="keyword-input"
                                                     placeholder="Purchase Date" autocomplete="off">
                                             </div>
                                         </div>
@@ -92,8 +92,8 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
-                                                <select class="selectpicker" data-live-search="true" id="Con_PId"
-                                                    name="Con_PId">
+                                                <select class="selectpicker" data-live-search="true" id="s_PropertyType"
+                                                    name="s_PropertyType">
                                                     <option selected disabled>Select Property Type</option>
                                                     @foreach ($PropertyTypeModel as $value)
                                                         <option value='{{ $value->PTyp_Id }}'>{{ $value->PTyp_Name }}
@@ -107,7 +107,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group single-query">
-                                                <textarea name='Con_Desc' placeholder="Message" id="Con_Desc"></textarea>
+                                                <textarea name='ta_Desc' placeholder="Message" id="ta_Desc"></textarea>
                                             </div>
                                         </div>
                                     </div>

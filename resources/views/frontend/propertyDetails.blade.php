@@ -360,29 +360,29 @@
                                         @endif
                                         <form method="post" action="{{ route('contact.Cstore') }}" class="findus">
                                             @csrf
-                                            <input type="hidden" name="Con_PId"
+                                            <input type="hidden" name="s_PropertyType"
                                                 value="{{ $propertyDetails->propertyType->PTyp_Id }}">
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="single-query">
                                                         <input type="text" autocomplete="off" placeholder="Your Name"
-                                                            id="Con_Name" name='Con_Name' class="keyword-input">
+                                                            id="i_Name" name='i_Name' class="keyword-input">
                                                     </div>
                                                     <div class="single-query">
                                                         <input type="number" autocomplete="off"
-                                                            placeholder="Whatsapp Number" name='Con_Number2'
-                                                            id="Con_Number2" class="keyword-input">
+                                                            placeholder="Whatsapp Number" name='i_Number2'
+                                                            id="i_Number2" class="keyword-input">
                                                     </div>
 
                                                     <div class="single-query">
                                                         <input type="number" autocomplete="off"
-                                                            placeholder="Phone Number" name='Con_Number' id="Con_Number"
+                                                            placeholder="Phone Number" name='i_Number' id="i_Number"
                                                             class="keyword-input">
                                                     </div>
 
                                                     <div class="single-query">
                                                         <input type="email" autocomplete="off"
-                                                            placeholder="Email Adress" id="Con_Email" name='Con_Email'
+                                                            placeholder="Email Adress" id="i_Email" name='i_Email'
                                                             class="keyword-input">
                                                     </div>
                                                 </div>
@@ -390,11 +390,11 @@
                                                     <div class="single-query">
                                                         <lable>Purchase Date</lable>
                                                         <input type="date" autocomplete="off"
-                                                            placeholder="Purchase Date" name='Con_Date' id="Con_Date"
+                                                            placeholder="Purchase Date" name='i_Date' id="i_Date"
                                                             class="keyword-input">
                                                     </div>
                                                     <div class="single-query">
-                                                        <textarea name='Con_Desc' id="Con_Desc" autocomplete="off" placeholder="Massege"></textarea>
+                                                        <textarea name='ta_Desc' id="ta_Desc" autocomplete="off" placeholder="Massege"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">

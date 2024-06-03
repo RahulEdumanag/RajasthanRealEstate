@@ -27,10 +27,10 @@ $AreaModel = Area::where('Are_Status', '=', 0)
     })
     ->get();
 $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
-->whereHas('properties', function ($q) {
-    $q->where('PStatus', '=', '0'); // Ensure properties are active
-})
-->get();
+    ->whereHas('properties', function ($q) {
+        $q->where('PStatus', '=', '0'); // Ensure properties are active
+    })
+    ->get();
 ?>
 <style>
     .dropdown-menu {
@@ -55,19 +55,39 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         }
 
         .newLogo {
-         width: 90px !important;  
+            width: 90px !important;
         }
     }
 
     .owl-wrapper {
         z-index: -1;
     }
+
+    .blink {
+        animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .p-font-15 {
+        font-size: 15px;
+    }
+
+    .p-white {
+        color: white;
+    }
 </style>
 <div id="header-top">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <p class="p-font-15 p-white">We are Best in Town With 40 years of Experience.</p>
+                <p class="p-font-15 p-white">
+                <span class="blink">{{ $WebInfoModel->WebInf_About ?? 'N/A' }}</span>
+                </p>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12 text-right">
                 <div class="header-top-links">
@@ -219,7 +239,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                 <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
                                                                     alt="listin" class="img-responsive"
                                                                     style="height: 100px;">
-                                                               
+
                                                             </div>
                                                             <h4 style="font-size: small;"><a
                                                                     href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>

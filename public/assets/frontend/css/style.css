@@ -45,6 +45,7 @@ body {
 	font-size: 15px;
 	color: #fff !important;
 }
+
 #footer ol, #footer ul, #header-bottom ul, #header-bottom ol{
 list-style: none;
     margin: 0;
@@ -68,12 +69,6 @@ h4 {
 .page-title a {
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
-}
-.get-tuch ul li h4,
-.get-tuch ul li p {
-    margin: 0;
-    padding: 0;
-    /* font-family: 'Roboto'; */
 }
 /*ol,
 ul {
@@ -819,7 +814,7 @@ a.back-to {
     text-align: center;
     width: 40px;
     z-index: 999;
-    background: #ed2a28;
+    background: #25a83b;
 }
 /* Skils Progress Bars*/
 
@@ -1448,7 +1443,7 @@ figure.effect-layla .main-title {
 .get-tuch ul li p {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto';
+    /* font-family: 'Roboto'; */
 }
 /* ------- HEADER 2 CSS  ------ */
 

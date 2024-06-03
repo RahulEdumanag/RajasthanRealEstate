@@ -40,6 +40,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
 
     .hoverText:hover {
         color: white !important;
+      
     }
 
     .dropdown-menu-scrollable {
@@ -64,7 +65,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
     }
 
     .blink {
-        animation: blinker 1s linear infinite;
+        animation: blinker 2s linear infinite;
+        cursor: pointer;
     }
 
     @keyframes blinker {
@@ -73,12 +75,20 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         }
     }
 
+
+    .blink:hover {
+        animation: none;
+    }
+
+
+
     .p-font-15 {
         font-size: 15px;
     }
 
     .p-white {
         color: white;
+        margin-top: 5px;
     }
 </style>
 <div id="header-top">
@@ -86,7 +96,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <p class="p-font-15 p-white">
-                <span class="blink">{{ $WebInfoModel->WebInf_About ?? 'N/A' }}</span>
+                    <b class="blink">{{ $WebInfoModel->WebInf_About ?? 'N/A' }}</b>
                 </p>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12 text-right">

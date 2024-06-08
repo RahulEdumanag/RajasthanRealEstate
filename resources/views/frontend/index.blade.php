@@ -24,15 +24,15 @@
             }
   
             .defaultimg {
-                height: 30% !important;
+                /* height: 30% !important; */
             }
 
             .border_heading {
-                margin-top: -100% !important;
+                /* margin-top: -100% !important; */
             }
 
             .homee {
-                margin-top: -130% !important;
+                /* margin-top: -130% !important; */
             }
         }
 

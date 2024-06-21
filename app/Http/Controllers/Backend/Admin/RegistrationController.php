@@ -22,7 +22,7 @@ class RegistrationController extends Controller
 {
     public function index()
     {
-        $adminuser = Registration::where('Reg_Id', '!=', 1)->whereNull('Reg_DeletedDate')->get();
+        $adminuser = Registration::get();
         return view('backend.admin.registration.index', compact('adminuser'));
     }
     public function create()

@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
     {
         
        
-        $model = Page::where('Pag_Status', '!=', 2)->where('Pag_Reg_Id', getSelectedValue())->with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Announcement'))->orderBy('Pag_CreatedDate', 'asc')->get();
+        $model = Page::with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Announcement'))->get();
  
 
         return view('backend.admin.announcement.index', compact('model'));

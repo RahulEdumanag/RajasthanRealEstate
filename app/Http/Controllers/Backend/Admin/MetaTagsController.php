@@ -11,9 +11,7 @@ class MetaTagsController extends Controller
 {
     public function index(Request $request)
     {
-        $model = MetaTags::where('Met_Status', '!=', 2)
-            ->where(['Met_Reg_Id' => getSelectedValue()])
-            ->get();
+        $model = MetaTags:: get();
         return view('backend.admin.metaTags.index', compact('model'));
     }
 

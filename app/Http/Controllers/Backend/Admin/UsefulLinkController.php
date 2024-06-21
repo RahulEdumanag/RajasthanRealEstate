@@ -14,14 +14,10 @@ class UsefulLinkController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Page::where('Pag_Status', '!=', 2)
-            ->where(['Pag_Reg_Id' => getSelectedValue()])
-            ->with('category')
+        $model = Page:: with('category')
             ->whereHas('category', function ($query) {
                 $query->where('PagCat_Name', 'UsefulLink');
-            })
-            ->orderBy('tbl_page.Pag_SerialOrder', 'asc')
-            ->get();
+            })->get();
 
         return view('backend.admin.usefulLink.index', compact('model'));
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Menu extends Model
 {
@@ -24,4 +25,18 @@ class Menu extends Model
     {
         return $this->hasMany(Submenu::class, 'SubMen_Men_Id', 'Men_Id');
     }
+    
+    // Boot method to apply global scopes
+    protected static function boot()
+    {
+        parent::boot();
+    
+        $clientId = env('WEB_ID');
+    
+        static::addGlobalScope('statusAndOrder', function (Builder $builder) use ($clientId) {
+            $builder->where('Men_Status', '!=', 2)
+                    ->where('Men_Reg_Id', '=', $clientId);
+        });
+    }
+    
 }

@@ -12,7 +12,7 @@ class ContactCategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $model = ContactCategory::where(['ConCat_Reg_Id' => getSelectedValue()])->where('ConCat_Status', '!=', 2)->orderBy('ConCat_CreatedDate', 'desc')->get();
+        $model = ContactCategory::get();
 
         return view('backend.admin.contactCategory.index', compact('model'));
     }

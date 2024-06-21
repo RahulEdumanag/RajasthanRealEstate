@@ -18,9 +18,7 @@ class GalleryController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Gallery::where('Gall_Status', '!=', 2)
-            ->where(['Gall_Reg_Id' => getSelectedValue()])
-            ->get();
+        $model = Gallery::get();
         return view('backend.admin.gallery.index', compact('model'));
     }
 

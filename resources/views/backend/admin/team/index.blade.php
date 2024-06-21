@@ -45,8 +45,8 @@
                         <tbody>
 
                             @foreach ($model as $value)
-                                @if (Auth::user()->registration->Reg_Role === 'SUPERADMIN' ||
-                                        (!$value->Pag_AdminExists && Auth::user()->role !== 'SUPERADMIN'))
+                                @if (Auth::user()->EmpRegistration->Emp_Role === '1' ||
+                                        (!$value->Pag_AdminExists && Auth::user()->EmpRegistration->Emp_Role !== '1'))
                                     <tr>
                                         <td > 
                                             {{ $loop->iteration }}

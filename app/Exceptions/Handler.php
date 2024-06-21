@@ -20,19 +20,19 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
     }
-    public function render($request, Throwable $exception)
-    {
-        $clientId = env('WEB_ID');
-        if ($exception instanceof \ErrorException || $exception instanceof QueryException) {
-            $error = new Error();
-            $error->Error_Reg_Id = getSelectedValue() ?: $clientId;
-            $error->Error_Message = $exception->getMessage();
-            $error->Error_CreatedDate = Carbon::now('Asia/Kolkata');
-            $error->Error_CreatedBy = Auth::check() ? Auth::user()->Log_Id : null;
-            $error->save();
+    // public function render($request, Throwable $exception)
+    // {
+    //     $clientId = env('WEB_ID');
+    //     if ($exception instanceof \ErrorException || $exception instanceof QueryException) {
+    //         $error = new Error();
+    //         $error->Error_Reg_Id = getSelectedValue() ?: $clientId;
+    //         $error->Error_Message = $exception->getMessage();
+    //         $error->Error_CreatedDate = Carbon::now('Asia/Kolkata');
+    //         $error->Error_CreatedBy = Auth::check() ? Auth::user()->Log_Id : null;
+    //         $error->save();
 
-            return redirect('/error');
-        }
-        return parent::render($request, $exception);
-    }
+    //         return redirect('/error');
+    //     }
+    //     return parent::render($request, $exception);
+    // }
 }

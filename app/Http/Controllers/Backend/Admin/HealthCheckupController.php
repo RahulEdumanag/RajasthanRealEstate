@@ -8,12 +8,15 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class HealthCheckupController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Page::where('Pag_Status', '!=', 2)->where('Pag_Reg_Id', getSelectedValue())->with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'HealthCheckup'))->orderBy('Pag_CreatedDate', 'asc')->get();
-
+        $model = Page::with('category')->whereHas('category', function($query) {
+            $query->where('PagCat_Name', 'HealthCheckup');
+        })->get();
+    
         return view('backend.admin.healthCheckup.index', compact('model'));
     }
 

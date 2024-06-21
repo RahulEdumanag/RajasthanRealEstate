@@ -14,7 +14,7 @@ class PageController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Page::where('Pag_Reg_Id', getSelectedValue())->with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Pages'))->orderBy('Pag_SerialOrder', 'asc')->get();
+        $model = Page::with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Pages'))->get();
 
         return view('backend.admin.page.index', compact('model'));
     }

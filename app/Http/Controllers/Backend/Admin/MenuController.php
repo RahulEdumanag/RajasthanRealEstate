@@ -11,10 +11,7 @@ class MenuController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Menu::where('Men_Status', '!=', 2)
-            ->where(['Men_Reg_Id' => getSelectedValue()])
-            ->orderBy('Men_SerialOrder', 'asc')
-            ->get();
+        $model = Menu::get();
 
         return view('backend.admin.menu.index', compact('model'));
     }

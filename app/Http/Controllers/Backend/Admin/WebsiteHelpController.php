@@ -12,7 +12,7 @@ class WebsiteHelpController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Page::where('Pag_Status', '!=', 2)->where('Pag_Reg_Id', getSelectedValue())->with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'WebsiteHelp'))->orderBy('Pag_CreatedDate', 'asc')->get();
+        $model = Page::with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'WebsiteHelp'))->get();
 
         return view('backend.admin.websiteHelp.index', compact('model'));
     }

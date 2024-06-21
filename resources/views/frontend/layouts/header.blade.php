@@ -9,7 +9,7 @@ use App\Models\Area;
 use App\Models\PropertyType;
 $clientId = env('WEB_ID');
 $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')->where('tbl_website_information.WebInf_Reg_Id', '=', $clientId)->where('WebInf_Status', '=', '0')->first();
-$MenuModel = Menu::where('tbl_menu.Men_Reg_Id', '=', $clientId)->where('Men_Status', '=', '0')->orderBy('Men_SerialOrder', 'asc')->get();
+$MenuModel = Menu:: get();
 $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
     ->where('SubMen_Status', '=', '0')
     ->orderBy('SubMen_SerialOrder', 'asc')

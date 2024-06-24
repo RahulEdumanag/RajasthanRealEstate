@@ -25,7 +25,7 @@ class SubMenu extends Model
     {
         parent::boot();
 
-        $clientId = env('WEB_ID');
+        $clientId =  getSelectedValue();
 
         static::addGlobalScope('statusAndOrder', function (Builder $builder) use ($clientId) {
             $builder->where('SubMen_Status', '!=', 2)->where('SubMen_Reg_Id', '=', $clientId)->orderBy('SubMen_SerialOrder', 'asc');

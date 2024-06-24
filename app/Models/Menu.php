@@ -31,7 +31,7 @@ class Menu extends Model
     {
         parent::boot();
     
-        $clientId = env('WEB_ID');
+        $clientId = getSelectedValue();
     
         static::addGlobalScope('statusAndOrder', function (Builder $builder) use ($clientId) {
             $builder->where('Men_Status', '!=', 2)

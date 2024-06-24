@@ -57,8 +57,7 @@
                         </thead>
                         <tbody>
                             @foreach ($model as $value)
-                                @if (Auth::user()->registration->Reg_Role === 'SUPERADMIN' ||
-                                        (!$value->PTyp_AdminExists && Auth::user()->role !== 'SUPERADMIN'))
+                                
                                     <tr>
                                         <td class="serial-number"> {{ $loop->iteration }}</td>
                                         <td class="serial-number" title="{{ $value->PTyp_Name }}">
@@ -96,8 +95,7 @@
                                                 </button>
                                             </form>
                                         </td>
-                                    </tr>
-                                @endif
+                                    </tr> 
                             @endforeach
                         </tbody>
                     </table>

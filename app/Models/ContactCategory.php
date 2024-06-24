@@ -20,7 +20,7 @@ class ContactCategory extends Model
         protected static function boot()
         {
             parent::boot();
-            $clientId = env('WEB_ID');
+            $clientId =  getSelectedValue();
 
             static::addGlobalScope('statusAndOrder', function (Builder $builder) use ($clientId) {
                 $builder->where('ConCat_Status', '!=', 2)->where('ConCat_Reg_Id', '=', $clientId)->orderBy('ConCat_CreatedDate', 'desc');

@@ -19,7 +19,7 @@ class MetaTags extends Model
     protected static function boot()
     {
         parent::boot();
-        $clientId = env('WEB_ID');
+        $clientId =  getSelectedValue();
 
         static::addGlobalScope('statusAndOrder', function (Builder $builder) use ($clientId) {
             $builder->where('Met_Status', '!=', 2)->where('Met_Reg_Id', '=', $clientId);

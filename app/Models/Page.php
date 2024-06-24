@@ -24,7 +24,7 @@ class Page extends Model
   protected static function boot()
   {
       parent::boot();
-      $clientId = env('WEB_ID');
+      $clientId =  getSelectedValue();
 
       static::addGlobalScope('statusAndOrder', function (Builder $builder)use ($clientId)  {
           $builder->where('Pag_Status', '!=', 2)->orderBy('Pag_CreatedDate', 'asc')->where('Pag_Reg_Id', '=',  $clientId);

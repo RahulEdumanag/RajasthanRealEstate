@@ -20,7 +20,7 @@ class Gallery extends Model
     protected static function boot()
     {
         parent::boot();
-        $clientId = env('WEB_ID');
+        $clientId =  getSelectedValue();
 
         static::addGlobalScope('statusAndOrder', function (Builder $builder)  use ($clientId) {
             $builder->where('Gall_Status', '!=', 2)->where('Gall_Reg_Id', '=', $clientId);

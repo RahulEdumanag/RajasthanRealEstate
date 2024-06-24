@@ -43,8 +43,7 @@
                         </thead>
                         <tbody>
                             @foreach ($model as $value)
-                                @if (Auth::user()->registration->Reg_Role === 'SUPERADMIN' ||
-                                        (!$value->Pag_AdminExists && Auth::user()->role !== 'SUPERADMIN'))
+                              
                                     <tr>
                                         <td class="serial-number"> {{ $loop->iteration }}</td>
                                         <td class="serial-number"> {{ $value->Pag_Name }}</td>
@@ -97,7 +96,7 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endif
+                                
                             @endforeach
                         </tbody>
                     </table>

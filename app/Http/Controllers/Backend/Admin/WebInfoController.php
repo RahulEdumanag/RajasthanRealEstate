@@ -20,9 +20,9 @@ class WebInfoController extends Controller
     public function index(Request $request)
     {
         if (getSelectedValue() == 1) {
-            $model = WebInfo::get();
+            $model = WebInfo::where('WebInf_Status', '!=', 2)->where('WebInf_Id', '!=', 1)->orderBy('WebInf_CreatedDate', 'desc')->get();
         } else {
-            $model = WebInfo::where('WebInf_Reg_Id', getSelectedValue())->get();
+            $model = WebInfo::where('WebInf_Status', '!=', 2)->where('WebInf_Id', '!=', 1)->where('WebInf_Reg_Id', getSelectedValue())->orderBy('WebInf_CreatedDate', 'desc')->get();
         }
 
         return view('backend.admin.webInfo.index', compact('model'));
@@ -33,7 +33,7 @@ class WebInfoController extends Controller
         $ImgMaxSizeModel = getImgMaxSizeModel();
         $adminuser = Registration::where('Reg_Id', '!=', 1)->whereNull('Reg_DeletedDate')->get();
 
-        return view('backend.admin.webInfo.create', compact('adminuser', 'ImgMaxSizeModel'));
+        return view('backend.admin.webInfo.create', compact('adminuser','ImgMaxSizeModel'));
     }
 
     public function store(Request $request)
@@ -100,7 +100,7 @@ class WebInfoController extends Controller
         $ImgMaxSizeModel = getImgMaxSizeModel();
         $WebInf_Id = decodeId($hashedId);
         $model = WebInfo::where('WebInf_Id', $WebInf_Id)->first();
-        return view('backend.admin.webInfo.edit', compact('model', 'ImgMaxSizeModel'));
+        return view('backend.admin.webInfo.edit', compact('model','ImgMaxSizeModel'));
     }
 
     public function update(Request $request, $WebInf_Id)
@@ -156,7 +156,7 @@ class WebInfoController extends Controller
 
             $model->save();
             // Delete old image files after saving the updated model
-
+             
             deleteOldImages($oldWebInf_FooterLogo, $model->WebInf_FooterLogo); // Calling the helper function directly
             deleteOldImages($oldWebInf_HeaderLogo, $model->WebInf_HeaderLogo); // Calling the helper function directly
             deleteOldImages($oldWebInf_Favicon, $model->WebInf_Favicon); // Calling the helper function directly
@@ -167,6 +167,7 @@ class WebInfoController extends Controller
             return back();
         }
     }
+ 
 
     public function destroy($id)
     {

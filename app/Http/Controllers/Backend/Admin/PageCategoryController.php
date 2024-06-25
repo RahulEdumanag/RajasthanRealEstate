@@ -12,9 +12,10 @@ class PageCategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $model = PageCategory::
+        $model = PageCategory::where('PagCat_Status', '!=', 2)
             // ->where(['PagCat_Reg_Id' => getSelectedValue()])
-           get();
+            ->orderBy('PagCat_CreatedDate', 'desc')
+            ->get();
 
         return view('backend.admin.pageCategory.index', compact('model'));
     }

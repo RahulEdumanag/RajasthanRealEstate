@@ -12,8 +12,8 @@ class ImgSizeController extends Controller
 {
     public function index(Request $request)
     {
-        $model = ImgSize::orderBy('Img_CreatedDate', 'desc')->get();
- 
+        $model = ImgSize::where('Img_Status', '!=', 2)->orderBy('Img_CreatedDate', 'desc')->get();
+
         return view('backend.admin.imgsize.index', compact('model'));
     }
 

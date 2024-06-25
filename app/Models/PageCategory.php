@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class PageCategory extends Model
 {
@@ -35,14 +34,4 @@ class PageCategory extends Model
     {
         return self::where('PagCat_Reg_Id', $pagCatCliId)->max('PagCat_SerialOrder') + 1;
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('statusAndOrder', function (Builder $builder) {
-            $builder->where('PagCat_Status', '!=', 2)->orderBy('PagCat_CreatedDate', 'desc');
-        });
-    } 
-
 }

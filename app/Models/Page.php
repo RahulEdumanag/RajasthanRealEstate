@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class Page extends Model
 {
@@ -20,15 +19,6 @@ class Page extends Model
     {
         return $this->belongsTo(PageCategory::class, 'Pag_PagCat_Id');
     }
-  // Boot method to apply global scopes
-  protected static function boot()
-  {
-      parent::boot();
-      $clientId =  getSelectedValue();
 
-      static::addGlobalScope('statusAndOrder', function (Builder $builder)use ($clientId)  {
-          $builder->where('Pag_Status', '!=', 2)->orderBy('Pag_CreatedDate', 'asc')->where('Pag_Reg_Id', '=',  $clientId);
-      });
-  }
      
 }

@@ -13,7 +13,9 @@ class GalleryCategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $model = GalleryCategory::get();
+        $model = GalleryCategory::where('GallCat_Status', '!=', 2)
+            ->where(['GallCat_Reg_Id' => getSelectedValue()])
+            ->get();
         return view('backend.admin.galleryCategory.index', compact('model'));
     }
     public function create()

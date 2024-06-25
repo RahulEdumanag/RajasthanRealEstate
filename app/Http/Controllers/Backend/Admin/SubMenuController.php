@@ -12,7 +12,10 @@ class SubMenuController extends Controller
 {
     public function index(Request $request)
     {
-        $model = SubMenu:: get();
+        $model = SubMenu::where('SubMen_Status', '!=', 2)
+            ->where(['SubMen_Reg_Id' => getSelectedValue()])
+            ->orderBy('SubMen_SerialOrder', 'asc')
+            ->get();
         return view('backend.admin.submenu.index', compact('model'));
     }
     public function create()
@@ -41,7 +44,6 @@ class SubMenuController extends Controller
             $model->SubMen_CreatedDate = Carbon::now('Asia/Kolkata');
 
             $model->SubMen_CreatedBy = Auth::user()->Log_Id;
-           
             $model->save();
             return redirect()->route('admin.submenu.create')->with('success', 'Data added successfully.');
         } catch (Exception $e) {

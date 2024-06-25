@@ -15,7 +15,7 @@ class TeamController extends Controller
 
         $maxSerialOrderLength = \App\Models\Page::max(DB::raw('LENGTH(Pag_SerialOrder)'));
 
-        $model = Page::with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Team'))
+        $model = Page::where('Pag_Status', '!=', 2)->where('Pag_Reg_Id', getSelectedValue())->with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Team'))
         ->orderByRaw("LPAD(Pag_SerialOrder, $maxSerialOrderLength, 0) ASC")->get(); 
  
         return view('backend.admin.team.index', compact('model'));

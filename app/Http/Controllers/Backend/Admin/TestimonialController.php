@@ -13,7 +13,7 @@ class TestimonialController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Page::with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Testimonial'))->get();
+        $model = Page::where('Pag_Status', '!=', 2)->where('Pag_Reg_Id', getSelectedValue())->with('category')->whereHas('category', fn($query) => $query->where('PagCat_Name', 'Testimonial'))->orderBy('Pag_SerialOrder', 'asc')->get();
 
         return view('backend.admin.testimonial.index', compact('model'));
     }

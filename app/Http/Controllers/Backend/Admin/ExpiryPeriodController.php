@@ -12,7 +12,7 @@ class ExpiryPeriodController extends Controller
 {
     public function index(Request $request)
     {
-        $model = ExpiryPeriod::where('ExpPer_Status', '!=', 2)->orderBy('ExpPer_CreatedDate', 'desc')->get();
+        $model = ExpiryPeriod::where('ExpPer_Status', '!=', 2)->where('ExpPer_Reg_Id', getSelectedValue())->orderBy('ExpPer_CreatedDate', 'desc')->get();
         return view('backend.admin.expiryPeriod.index', compact('model'));
     }
     public function create()

@@ -26,6 +26,27 @@ class SliderController extends Controller
 
         return view('backend.admin.slider.create', compact('nextSerialOrder', 'model','ImgMaxSizeModel'));
     }
+
+
+    // public function index(Request $request)
+    // {
+    //     $categoryId = PageCategory::where('PagCat_Name', 'Slider')->where('PagCat_Status', '0')->value('PagCat_Id');
+
+    //     $model = Page::where('Pag_Status', '!=', 2)->where('Pag_Reg_Id', getSelectedValue())->where('Pag_PagCat_Id', $categoryId)->with('category')->orderBy('Pag_SerialOrder', 'asc')->get();
+
+    //     return view('backend.admin.slider.index', compact('model'));
+    // }
+
+    // public function create()
+    // {
+    //     $ImgMaxSizeModel = getImgMaxSizeModel();
+    //     $nextSerialOrder = getNextSerialOrder(getSelectedValue(), 'Slider');
+    //     $model = PageCategory::where('PagCat_Name', 'Slider')->where('PagCat_Status', '0')->get();
+
+    //     return view('backend.admin.slider.create', compact('nextSerialOrder', 'model', 'ImgMaxSizeModel'));
+    // }
+
+
     public function store(Request $request)
     {
         try {

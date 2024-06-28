@@ -17,12 +17,23 @@ $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', 
 $ServiceModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'Service')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $usefulLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->orderBy('Pag_SerialOrder', 'asc')->where('tbl_pagecategory.PagCat_Name', '=', 'UsefulLink')->where('tbl_page.Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->orderBy('tbl_page.Pag_SerialOrder', 'asc')->get();
 $CityModel = City::where('Cit_Status', '=', 0)
-->whereHas('properties', function ($q) {
-    $q->where('PStatus', '=', '0');  // Ensure properties are active
-})
-->get();
+    ->whereHas('properties', function ($q) {
+        $q->where('PStatus', '=', '0'); // Ensure properties are active
+    })
+    ->get();
 
 ?>
+<style>
+    .footerLogo {
+        width: 80%;
+    }
+
+    @media (max-width: 767px) {
+        .footerLogo {
+            width: 175px !important;
+        }
+    }
+</style>
 <section id="contact" class="bg-color-red">
     <div class="container">
         <div class="row">
@@ -72,7 +83,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
     <div class="row border-bottom">
         <div class="col-sm-6 col-md-3">
             <div class="widget dark">
-                <img class="mt-5 mb-20" alt=""
+                <img class="mt-5 mb-20 footerLogo" alt=""
                     src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
                 <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p><br />
                 <ul class="list-inline mt-5">
@@ -110,10 +121,10 @@ $CityModel = City::where('Cit_Status', '=', 0)
                 </div>
                 <ul class="list angle-double-right list-border">
                     @foreach ($MenuModel as $value)
-                        @if ($value->Men_URL !== null && $value->Men_URL !== '#')
-                            <li> <a href="{{ $value->Men_URL }}"> {{ $value->Men_Name }} </a></li>
-                        @endif
-                    @endforeach
+@if ($value->Men_URL !== null && $value->Men_URL !== '#')
+<li> <a href="{{ $value->Men_URL }}"> {{ $value->Men_Name }} </a></li>
+@endif
+@endforeach
                 </ul>
             </div>
         </div> -->
@@ -168,7 +179,8 @@ $CityModel = City::where('Cit_Status', '=', 0)
                         ©
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> <a href="/">{{$WebInfoModel->WebInf_Name}}</a>, made with ❤️ by
+                        </script> <a href="/">{{ $WebInfoModel->WebInf_Name }}</a>, made with ❤️
+                        by
                         <a href="https://edumanag.com/" target="_blank" class="fw-medium">Edumanag</a>
                     </div>
                 </div>

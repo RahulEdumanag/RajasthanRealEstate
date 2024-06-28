@@ -22,7 +22,7 @@
             .img-responsive {
                 height: 210px !important
             }
-  
+
             .defaultimg {
                 /* height: 30% !important; */
             }
@@ -70,13 +70,13 @@
     <div id="home_icon">
         <div class="container homee">
             <div class="row">
-                <div class="col-md-2 col-sm-4 col-xs-12 text-center">
+                    <div class="col-md-2 col-sm-4 col-xs-12 text-center">
                     <a href="#" class="home_feature">
-                        <i class="icon-icons215"></i>
+                            <i class="icon-icons215"></i>
                         <h4>For Sale</h4>
-                        <p>Latest for sale</p>
-                    </a>
-                </div>
+                            <p>Latest for sale</p>
+                        </a>
+                    </div>
                 <div class="col-md-2 col-sm-4 col-xs-12 text-center">
                     <a href="#" class="home_feature">
                         <i class="icon-key3"></i>
@@ -190,7 +190,8 @@
                                                 id="citySelect">
                                                 <option selected disabled>Select City</option>
                                                 @foreach ($CityModel as $value)
-                                                    <option value='{{ encodeId($value->Cit_Id) }}'>{{ $value->Cit_Name }}</option>
+                                                    <option value='{{ encodeId($value->Cit_Id) }}'>{{ $value->Cit_Name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -212,7 +213,8 @@
                                             <select class="selectpicker" data-live-search="true" name="property_type">
                                                 <option selected disabled>Select Property Type</option>
                                                 @foreach ($PropertyTypeModel as $value)
-                                                    <option value='{{ encodeId($value->PTyp_Id) }}'>{{ $value->PTyp_Name }}
+                                                    <option value='{{ encodeId($value->PTyp_Id) }}'>
+                                                        {{ $value->PTyp_Name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -318,7 +320,7 @@
                                                     @if (!empty($value->PSqureFeet) || !empty($value->PBedRoom))
                                                         @if (!empty($value->PSqureFeet))
                                                             <span><i class="fa fa-object-group"></i>
-                                                                {{ $value->PSqureFeet }} Built Up Area(sq ft)
+                                                                {{ $value->PSqureFeet }}
                                                             </span>
                                                         @endif
 
@@ -328,7 +330,7 @@
                                                             </span>
                                                         @endif
                                                     @else
-                                                        <span>-</span>
+                                                        <span><i class=""></i>&nbsp;</span>
                                                     @endif
                                                 </div>
                                                 @if ($value->PFeatured == 1)
@@ -466,14 +468,16 @@
                             CityId: cityId
                         }, // Use 'Cit_Id' instead of 'Cit_id'
                         success: function(data) {
-                        $('#areaSelect').empty();
-                        $('#areaSelect').append('<option selected disabled>Select Area</option>');
-                        $.each(data, function(key, value) {
-                            var encodedId = hashids.encode(value.Are_Id);
-                            $('#areaSelect').append('<option value="' + encodedId + '">' + value.Are_Name + '</option>');
-                        });
-                        $('#areaSelect').selectpicker('refresh');
-                    },
+                            $('#areaSelect').empty();
+                            $('#areaSelect').append(
+                                '<option selected disabled>Select Area</option>');
+                            $.each(data, function(key, value) {
+                                var encodedId = hashids.encode(value.Are_Id);
+                                $('#areaSelect').append('<option value="' + encodedId +
+                                    '">' + value.Are_Name + '</option>');
+                            });
+                            $('#areaSelect').selectpicker('refresh');
+                        },
                         error: function(xhr, status, error) {
                             console.error(error); // Log any errors to the console for debugging
                         }

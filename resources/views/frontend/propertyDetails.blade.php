@@ -112,7 +112,6 @@
                                     <div class="property_meta bottom40"style="margin-top: 40px;">
                                         @if (!empty($propertyDetails->PSqureFeet))
                                             <span><i class="fa fa-object-group"></i> {{ $propertyDetails->PSqureFeet }}
-                                                Built Up Area(sq ft)
                                             </span>
                                         @endif
                                         @if (!empty($value->PBedRoom))
@@ -156,8 +155,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Property Size</b></td>
-                                                    <td class="text-right">{{ $propertyDetails->PSqureFeet ?? '-' }} Built
-                                                        Up Area(sq ft)</td>
+                                                    <td class="text-right">{{ $propertyDetails->PSqureFeet ?? '-' }} </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Bed Rooms</b></td>
@@ -492,7 +490,7 @@
                                         @if (!empty($value->PSqureFeet) || !empty($value->PBedRoom))
                                             @if (!empty($value->PSqureFeet))
                                                 <span><i class="fa fa-object-group"></i>
-                                                    {{ $value->PSqureFeet }} Built Up Area(sq ft)
+                                                    {{ $value->PSqureFeet }} 
                                                 </span>
                                             @endif
 

@@ -41,7 +41,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
 
     .hoverText:hover {
         color: white !important;
-      
+
     }
 
     .dropdown-menu-scrollable {
@@ -59,6 +59,10 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         .newLogo {
             width: 90px !important;
         }
+    }
+
+    .newLogo {
+        width: 95%;
     }
 
     .owl-wrapper {
@@ -113,9 +117,12 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
 <div id="header-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 hidden-xs hidden-sm"><a href="/"><img
-                        src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
-                        alt="logo" /></a></div>
+            <div class="col-md-2 hidden-xs hidden-sm">
+                <a href="/">
+                    <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}" alt="logo"
+                        class="newLogo" />
+                </a>
+            </div>
             <div class="col-md-10 col-sm-12 col-xs-12">
                 <div class="get-tuch text-left top20">
                     <i class="icon-telephone114"></i>
@@ -180,7 +187,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                         <i class="fa fa-bars"></i></button>
                     <a class="navbar-brand sticky_logo" href="/">
                         <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
-                            class="logo newLogo" alt=""style="width: 195%;"></a>
+                            class="logo newLogo" alt=""></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
@@ -273,6 +280,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                 </li>
                             </ul>
                         </li>
+
+
                         @foreach ($MenuModel as $key => $value)
                             @if ($value->Men_Name != 'Home')
                                 <li class="" @if ($key !== 0) style="" @endif>

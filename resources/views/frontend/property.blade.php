@@ -210,17 +210,19 @@
                                         </div>
                                     @endif
                                     <div class="price"><span class="tag">{{ $value->propertyType->PTyp_Name }}</span>
+                                    
                                     </div>
                                     <div class="property_meta">
                                         @if (!empty($value->PSqureFeet))
-                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }} Built Up
-                                                Area(sq ft)
+                                            <span><i class="fa fa-object-group"></i> {{ $value->PSqureFeet }}
                                             </span>
                                         @endif
+                                        
                                         @if (!empty($value->PBedRoom))
                                             <span><i class="fa fa-bed"></i>{{ $value->PBedRoom }}</span>
                                             <span><i class="fa fa-bath"></i>{{ $value->PBathRoom }}</span>
                                         @endif
+                                        <span><i class=""></i>&nbsp;</span>
                                     </div>
                                 </div>
                                 <div class="proerty_content">

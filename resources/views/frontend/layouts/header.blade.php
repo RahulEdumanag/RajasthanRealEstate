@@ -16,7 +16,9 @@ $SubMenuModel = SubMenu::where(['SubMen_Reg_Id' => $clientId])
     ->orderBy('SubMen_SerialOrder', 'asc')
     ->get();
 $SocialLinkModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id', '=', 'tbl_pagecategory.PagCat_Id')->where('Pag_Reg_Id', '=', $clientId)->where('Pag_Status', '=', '0')->where('tbl_pagecategory.PagCat_Name', 'SocialLink')->orderBy('Pag_SerialOrder', 'asc')->get();
-$PropertyModel = Property::where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
+$PropertyModelRent = Property::where('PType', '=', '1')->where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
+$PropertyModelSale = Property::where('PType', '=', '2')->where('PReg_Id', '=', $clientId)->where('PStatus', '=', 0)->inRandomOrder()->take(10)->get();
+
 $CityModel = City::where('Cit_Status', '=', 0)
     ->whereHas('properties', function ($q) {
         $q->where('PStatus', '=', '0'); // Ensure properties are active
@@ -193,7 +195,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><a href="/">Home</a></li>
                         <li class="dropdown megamenu-fw">
-                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">Showcase</a>
+                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">Rent</a>
                             <ul class="dropdown-menu megamenu-content" role="menu">
                                 <li>
                                     <div class="row">
@@ -248,7 +250,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                         <div class="col-menu col-md-8">
                                             <div class="row">
                                                 <div id="nav_slider" class="owl-carousel">
-                                                    @foreach ($PropertyModel as $value)
+                                                    @foreach ($PropertyModelRent as $value)
                                                         <div class="item">
                                                             <div class="image bottom15">
                                                                 @php
@@ -276,11 +278,102 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </li>
+                                
                             </ul>
                         </li>
+                        <li class="dropdown megamenu-fw">
+                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">Sale</a>
+                            <ul class="dropdown-menu megamenu-content" role="menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-menu col-md-2">
+                                            <h5 class="title"><b style="color:red;">Showcase List</b></h5>
+                                            <div class="content">
+                                                <ul class="menu-col">
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            City</a>
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
+                                                            @foreach ($CityModel as $value)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['location' => encodeId($value->Cit_Id)]) }}">{{ $value->Cit_Name }}</br></a>
+                                                            @endforeach
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            Area</a>
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
+                                                            @foreach ($AreaModel as $value)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['area' => encodeId($value->Are_Id)]) }}">{{ $value->Are_Name }}</br></a>
+                                                            @endforeach
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            Type</a>
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
+                                                            @foreach ($PropertyTypeModel as $type)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['property_type' => encodeId($type->PTyp_Id)]) }}">{{ $type->PTyp_Name }}</br></a>
+                                                            @endforeach
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown">
+                                                        <a href="#" class="dropdown-toggle hoverText">Search by
+                                                            Rooms</a>
+                                                        <div class="dropdown-menu dropdown-menu-scrollable">
+                                                            @for ($i = 1; $i <= 7; $i++)
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('property', ['bedroom' => $i]) }}">{{ $i }}
+                                                                    Room{{ $i > 1 ? 's' : '' }}</br></a>
+                                                            @endfor
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-menu col-md-8">
+                                            <div class="row">
+                                                <div id="nav_slider" class="owl-carousel">
+                                                    @foreach ($PropertyModelSale as $value)
+                                                        <div class="item">
+                                                            <div class="image bottom15">
+                                                                @php
+                                                                    $randomImage = $value->getRandomImage();
+                                                                @endphp
+                                                                <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
+                                                                    alt="listin" class="img-responsive"
+                                                                    style="height: 100px;">
 
+                                                            </div>
+                                                            <h4 style="font-size: small;"><a
+                                                                    href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
+                                                            </h4>
+                                                            @if ($value->area && $value->area->city)
+                                                                <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                                </p>
+                                                            @else
+                                                                @foreach ($value->cities as $city)
+                                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                    </p>
+                                                                @endforeach
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </li>
+                                
+                            </ul>
+                        </li>
 
                         @foreach ($MenuModel as $key => $value)
                             @if ($value->Men_Name != 'Home')

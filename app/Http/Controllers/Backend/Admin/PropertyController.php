@@ -41,10 +41,11 @@ class PropertyController extends Controller
         $lastSelectedPFeatured = $request->session()->get('lastSelectedPFeatured');
         $lastSelectedPBedRoom = $request->session()->get('lastSelectedPBedRoom');
         $lastSelectedPBathRoom = $request->session()->get('lastSelectedPBathRoom');
+        $lastSelectedPType = $request->session()->get('lastSelectedPType');
 
         $ImgMaxSizeModel = getImgMaxSizeModel();
         //    dd($PropertyFeaturesModel);
-        return view('backend.admin.property.create', compact('lastSelectedPBedRoom','lastSelectedPBathRoom','lastSelectedPFeatured', 'lastSelectedPPTyp_Id', 'lastSelectedPAre_Id', 'lastSelectedPCit_Id', 'lastSelectedPSta_Id', 'AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
+        return view('backend.admin.property.create', compact('lastSelectedPType','lastSelectedPBedRoom','lastSelectedPBathRoom','lastSelectedPFeatured', 'lastSelectedPPTyp_Id', 'lastSelectedPAre_Id', 'lastSelectedPCit_Id', 'lastSelectedPSta_Id', 'AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
     public function getCitiesByState(Request $request)
     {
@@ -114,6 +115,7 @@ class PropertyController extends Controller
             $model->PSqureFeet = $request->PSqureFeet;
             $model->PMapLink = $request->PMapLink;
             $model->PAmount = $request->PAmount;
+            $model->PType = $request->PType;
             $images = [];
             $planImages = [];
             if ($request->hasFile('PImages')) {
@@ -165,6 +167,7 @@ class PropertyController extends Controller
             $request->session()->flash('lastSelectedPFeatured', $request->PFeatured);
             $request->session()->flash('lastSelectedPBedRoom', $request->PBedRoom);
             $request->session()->flash('lastSelectedPBathRoom', $request->PBathRoom);
+            $request->session()->flash('lastSelectedPType', $request->PType);
 
             return redirect()->route('admin.property.create')->with('success', 'Record added successfully.');
         } catch (Exception $e) {
@@ -211,6 +214,8 @@ class PropertyController extends Controller
             $model->PSqureFeet = $request->PSqureFeet;
             $model->PMapLink = $request->PMapLink;
             $model->PAmount = $request->PAmount;
+            $model->PType = $request->PType;
+
             // Update images if new files are uploaded
             if ($request->hasFile('PImages')) {
                 // Delete old images

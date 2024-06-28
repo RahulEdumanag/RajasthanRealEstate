@@ -70,18 +70,18 @@
     <div id="home_icon">
         <div class="container homee">
             <div class="row">
-                    <div class="col-md-2 col-sm-4 col-xs-12 text-center">
-                    <a href="#" class="home_feature">
-                            <i class="icon-icons215"></i>
-                        <h4>For Sale</h4>
-                            <p>Latest for sale</p>
-                        </a>
-                    </div>
                 <div class="col-md-2 col-sm-4 col-xs-12 text-center">
-                    <a href="#" class="home_feature">
+                    <a href="{{ route('property', ['type' => 'sale']) }}" class="home_feature">
+                        <i class="icon-icons215"></i>
+                        <h4>For Sale</h4>
+                        <p>Latest for sale</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-12 text-center">
+                    <a href="{{ route('property', ['type' => 'rent']) }}" class="home_feature">
                         <i class="icon-key3"></i>
                         <h4>For Rent</h4>
-                        <p>Latest for sale</p>
+                        <p>Latest for rent</p>
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-12 text-center">
@@ -196,18 +196,14 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="single-query">
                                             <select class="selectpicker" data-live-search="true" name="area"
                                                 id="areaSelect">
                                                 <option selected disabled>Select Area</option>
-
                                             </select>
                                         </div>
                                     </div>
-
-
                                     <div class="col-md-12">
                                         <div class="single-query">
                                             <select class="selectpicker" data-live-search="true" name="property_type">
@@ -323,7 +319,6 @@
                                                                 {{ $value->PSqureFeet }}
                                                             </span>
                                                         @endif
-
                                                         @if (!empty($value->PBedRoom))
                                                             <span><i class="fa fa-bed"></i> {{ $value->PBedRoom }}</span>
                                                             <span><i class="fa fa-bath"></i> {{ $value->PBathRoom }}
@@ -387,7 +382,6 @@
                                                                 style="cursor:pointer;background-color:red;color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
                                                         </li>
                                                     </ul>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -453,11 +447,9 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hashids@2.3.0/dist/hashids.min.js"></script>
-
     <script>
         $(document).ready(function() {
             var hashids = new Hashids('your_salt_here', 30); // Set your own salt and length
-
             $('#citySelect').change(function() {
                 var cityId = $(this).val();
                 if (cityId) {
@@ -490,5 +482,4 @@
             });
         });
     </script>
-
 @endsection

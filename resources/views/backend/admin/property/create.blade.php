@@ -30,8 +30,23 @@
                             method="post" accept-charset="utf-8">
                             @csrf
                             <div class="row g-3">
+
+                            <div class="col-sm-6 form-group ">
+                                    <label class="form-label" for="type">Type<span style="color:red">*</span></label>
+                                    <select class="form-control" id="PType" name="PType">
+                                    <option selected disabled>Select Type</option>
+                                    <option value='1'
+                                            {{ isset($lastSelectedPType) && $lastSelectedPType == '1' ? 'selected' : '' }}>
+                                            Rent</option>
+                                        <option value='2'
+                                            {{ isset($lastSelectedPType) && $lastSelectedPType == '2' ? 'selected' : '' }}>
+                                           Sale</option> 
+                                    </select>
+                                    <span id="PType-error" class="error" style="color: red;"></span>
+                                </div>
+
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                    <label for="PSta_Id">State Name<span style="color:red">*</span></label>
+                                    <label class="form-label" for="PSta_Id">State Name<span style="color:red">*</span></label>
                                     <select class="form-control" id="PSta_Id" name="PSta_Id" reui>
                                         <option selected disabled>Select State</option>
                                         @foreach ($StateModel as $state)
@@ -43,7 +58,7 @@
                                     <span id="PSta_Id-error" class="error" style="color: red;">&nbsp;</span>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                    <label for="PCit_Id">City Name<span style="color:red">*</span></label>
+                                    <label  class="form-label" for="PCit_Id">City Name<span style="color:red">*</span></label>
                                     <select class="form-control" id="PCit_Id" name="PCit_Id">
                                         <option selected disabled>Select City</option>
                                         @if (isset($CityModel) && $lastSelectedPSta_Id)
@@ -359,7 +374,8 @@
                     // PBedRoom: "required",
                     // PBathRoom: "required",
                     PTitle: "required",
-                    PAmount: "required"
+                    PAmount: "required",
+                    PType: "required"
                     // ,
                     // PAddress: "required",
                     // PShortDesc: "required"
@@ -373,6 +389,7 @@
                     PCit_Id: "This field is required",
                     PPTyp_Id: "This field is required",
                     PFeatured: "This field is required",
+                    PType: "This field is required",
                     // PBedRoom: "This field is required",
                     // PBathRoom: "This field is required",
                     PTitle: "This field is required",
@@ -412,6 +429,7 @@
                 PCit_Id: "#PCit_Id-error",
                 PPTyp_Id: "#PPTyp_Id-error",
                 PFeatured: "#PFeatured-error",
+                PType: "#PType-error",
                 // PBedRoom: "#PBedRoom-error",
                 // PBathRoom: "#PBathRoom-error",
                 PTitle: "#PTitle-error",

@@ -99,6 +99,9 @@ class HomeController extends Controller
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
      
+    if ($request->filled('type') && in_array($request->PType, ['sale', 'rent'])) {
+        $query->where('PType', '=', $request->PType);
+    }
         if ($request->filled('location')) {
             $cityId = decodeId($request->location);
             $query->whereHas('city', function ($q) use ($cityId) {

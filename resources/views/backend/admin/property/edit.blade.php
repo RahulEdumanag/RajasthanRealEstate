@@ -14,6 +14,22 @@
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="row g-3">
+
+
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label class="form-label" for="Type">Type <span style="color:red">*</span></label>
+                                    <select class="form-control" id="PType" name="PType">
+                                        <option selected  disabled>Select</option>
+                                        <option value='1' {{ $model->PType == 1 ? 'selected' : '' }}>Rent
+                                        </option>
+                                        <option value='2' {{ $model->PType == 2 ? 'selected' : '' }}>Sale
+                                        </option>
+                                        
+                                    </select>
+                                    <span id="PType-error" class="error" style="color: red;"></span>
+                                </div>
+
+
                                 <div class="col-xl-6 col-md-6 col-sm-12 mb-4">
                                     <label class="form-label" for="PSta_Id">State <span style="color:red">*</span></label>
                                     <select class="form-control" id="PSta_Id" name="PSta_Id">

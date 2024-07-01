@@ -70,18 +70,19 @@
     <div id="home_icon">
         <div class="container homee">
             <div class="row">
+
                 <div class="col-md-2 col-sm-4 col-xs-12 text-center">
-                    <a href="{{ route('property', ['type' => 'sale']) }}" class="home_feature">
-                        <i class="icon-icons215"></i>
-                        <h4>For Sale</h4>
-                        <p>Latest for sale</p>
-                    </a>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-12 text-center">
-                    <a href="{{ route('property', ['type' => 'rent']) }}" class="home_feature">
+                    <a href="{{ route('property', ['statusType' => encodeId('1')]) }}" class="home_feature">
                         <i class="icon-key3"></i>
                         <h4>For Rent</h4>
                         <p>Latest for rent</p>
+                    </a>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-12 text-center">
+                    <a href="{{ route('property', ['statusType' => encodeId('2')]) }}" class="home_feature">
+                        <i class="icon-icons215"></i>
+                        <h4>For Sale</h4>
+                        <p>Latest for sale</p>
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-12 text-center">

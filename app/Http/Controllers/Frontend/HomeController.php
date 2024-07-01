@@ -98,10 +98,11 @@ class HomeController extends Controller
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
-     
-    if ($request->filled('type') && in_array($request->PType, ['sale', 'rent'])) {
-        $query->where('PType', '=', $request->PType);
-    }
+
+        if ($request->filled('statusType')) {
+            $query->where('PType', '=', $request->statusType);
+        }
+
         if ($request->filled('location')) {
             $cityId = decodeId($request->location);
             $query->whereHas('city', function ($q) use ($cityId) {
@@ -331,6 +332,11 @@ class HomeController extends Controller
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
 
+        if ($request->filled('statusType')) {
+            $statusTypeId = decodeId($request->statusType);
+            $query->where('PType', '=', $statusTypeId);
+        }
+
         if ($request->filled('location')) {
             $cityId = decodeId($request->location);
             $query->whereHas('city', function ($q) use ($cityId) {
@@ -401,5 +407,4 @@ class HomeController extends Controller
             return response()->json($areas);
         }
     }
-    
 }

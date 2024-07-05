@@ -12,7 +12,7 @@ class ContactController extends Controller
 
     public function index(Request $request)
     {
-        $model = Contact::where(['Con_Reg_Id' => getSelectedValue()])->get();
+        $model = Contact::where(['Con_Reg_Id' => getSelectedValue()])->orderBy('Con_CreatedDate', 'desc')->get();
         return view('backend.admin.contact.index', compact('model'));
     }
     public function create()

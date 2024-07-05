@@ -392,7 +392,7 @@
                                                             class="keyword-input">
                                                     </div>
                                                     <div class="single-query">
-                                                        <textarea name='ta_Desc' id="ta_Desc" autocomplete="off" placeholder="Massege"></textarea>
+                                                        <textarea name='ta_Desc' id="ta_Desc" autocomplete="off" placeholder="Message"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">

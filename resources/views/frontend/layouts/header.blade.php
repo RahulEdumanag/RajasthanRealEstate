@@ -293,7 +293,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
 
                         @endif
                         <li class="dropdown megamenu-fw">
-                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">Sale</a>
+                            <a href="#." class="dropdown-toggle" data-toggle="dropdown">Purchase/Sale</a>
                             <ul class="dropdown-menu megamenu-content" role="menu">
                                 <li>
                                     <div class="row">

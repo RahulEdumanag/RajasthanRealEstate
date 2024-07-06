@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 @section('title', 'Contact')
 @section('content')
-
     <style>
         .serial-number {
             white-space: nowrap;
@@ -14,8 +13,6 @@
             white-space: normal;
         }
     </style>
-
-
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -45,7 +42,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <!-- <th>Category</th> -->
+                            @if (getSelectedValue() == '38')
+                                <th>Property Type</th>
+                            @endif
                             <th>Name</th>
                             <th>Email</th>
                             <th>Number</th>
@@ -57,9 +56,13 @@
                             <tr>
                                 <td class="serial-number"> {{ $loop->iteration }}</td>
                                 <!-- <td class="serial-number" title="{{ $value->Con_ConCat_Id ?? 'N/A' }}">
-                                    {{ Str::limit($value->Con_ConCat_Id ?? 'N/A', 10) }}
-                                </td> -->
-
+                                        {{ Str::limit($value->Con_ConCat_Id ?? 'N/A', 10) }}
+                                    </td> -->
+                                @if (getSelectedValue() == '38')
+                                    <td class="serial-number">
+                                        {{ $value->propertyType->PTyp_Name ?? 'N/A' }}
+                                    </td>
+                                @endif
                                 <td class="serial-number" title="{{ $value->Con_Name }}">
                                     {{ Str::limit($value->Con_Name, 15) }}
                                 </td>
@@ -67,19 +70,15 @@
                                     <a href="mailto:{{ $value->Con_Email }}">
                                         {{ Str::limit($value->Con_Email, 10) }}</a>
                                 </td>
-
                                 <td class="serial-number" title="{{ $value->Con_Number }}">
                                     <a href="callto:{{ $value->Con_Number }}">
                                         {{ Str::limit($value->Con_Number, 10) }}</a>
                                 </td>
-
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.contact.edit',  encodeId($value->Con_Id)) }}"
+                                    <a href="{{ route('admin.contact.edit', encodeId($value->Con_Id)) }}"
                                         class="btn btn-primary me-2">
                                         <i class="fa fa-eye"></i>
-
                                     </a>
-
                                     <span class='me-2'>
                                         @if ($value->Con_Status == 0)
                                             <a class="btn btn-success"
@@ -99,7 +98,6 @@
                                         @csrf
                                         <button type="button" class="btn btn-danger" onclick="confirmDelete(this)">
                                             <i class="fa fa-trash-alt"></i>
-
                                         </button>
                                     </form>
                                 </td>

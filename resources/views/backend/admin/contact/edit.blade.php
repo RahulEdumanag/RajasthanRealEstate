@@ -24,7 +24,7 @@
                                 @if ($model->Con_PId)
                                     <div class="form-group col-lg-6 ">
                                         <label class="form-label">Property Type:</label>
-                                       <p>{{ $model->property->propertyType->PTyp_Name }}</p>
+                                       <p>  {{ $model->propertyType->PTyp_Name }}</p>
                                     </div>
                                 @endif
                                 @if ($model->Con_ConCat_Id)

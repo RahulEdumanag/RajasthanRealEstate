@@ -21,5 +21,11 @@ class Contact extends Model
     {
         return $this->belongsTo(Property::class, 'Con_PId', 'PId');
     }
+
+
+    public function propertyType()
+    {
+        return $this->belongsTo(PropertyType::class, 'Con_PId', 'PTyp_Id');
+    }
    
 }

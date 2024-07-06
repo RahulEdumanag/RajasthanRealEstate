@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-4 col-xs-12">
                                         <div class="form-group single-query">
-                                        <lable style="color:black">Your Name</lable>  
+                                        <lable style="color:black">&nbsp;</lable>  
 
                                             <input type="text" id="i_Name" name='i_Name' class="keyword-input"
                                                 placeholder="Your Name" required autocomplete="off">

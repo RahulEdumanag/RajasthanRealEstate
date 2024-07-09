@@ -13,7 +13,7 @@ class Contact extends Model
     public $timestamps = false;
     protected $primaryKey = 'Con_Id';
 
-    protected $fillable = ['Con_Reg_Id', 'Con_Name', 'Con_Email', 'Con_Number', 'Con_Desc', 'Con_ConCat_Id', 'Con_Attachment', 'Con_PId'];
+    protected $fillable = ['Con_Reg_Id', 'Con_Name', 'Con_Email', 'Con_Number', 'Con_Desc', 'Con_ConCat_Id', 'Con_Attachment', 'Con_PId','Con_Status'];
 
     // Contact.php
 

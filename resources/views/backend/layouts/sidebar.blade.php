@@ -15,9 +15,9 @@ $AdminMenuAllotmentModel = AdminMenuAllotment::with('adminMenu')
     ->where('Add_MenAllo_Status', '=', 0)
     ->orderBy('Add_MenAllo_CreatedDate', 'asc')
     ->get();
-$ErrorCount = Error::where('Error_Status', '=', '0')->count();
-$ContactCount = Contact::where('Con_Reg_Id', getSelectedValue())->count();
-$EnquirieCount = Enquirie::where('Enq_Reg_Id', getSelectedValue())->count();
+$ErrorCount = Error::where('Error_Status', '=', '0')->where('Error_Status', '!=', '2')->count();
+$ContactCount = Contact::where('Con_Reg_Id', getSelectedValue())->where('Con_Status', '!=', '2')->count();
+$EnquirieCount = Enquirie::where('Enq_Reg_Id', getSelectedValue())->where('Enq_Status', '!=', '2')->count();
 
 ?>
 

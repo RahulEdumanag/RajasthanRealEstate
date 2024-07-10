@@ -251,7 +251,7 @@
                                         </p>
                                         <ul class="pull-right">
                                             <li><a
-                                                    style="cursor:pointer;background-color:red; color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
+                                                    style="cursor:pointer;background-color:#93bd1a; color:#1f1f1f;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
                                             </li>
                                         </ul>
                                     </div>

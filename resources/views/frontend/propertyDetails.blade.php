@@ -368,8 +368,8 @@
                                                     </div>
                                                     <div class="single-query">
                                                         <input type="number" autocomplete="off"
-                                                            placeholder="Whatsapp Number" name='i_Number2'
-                                                            id="i_Number2" class="keyword-input">
+                                                            placeholder="Whatsapp Number" name='i_Number2' id="i_Number2"
+                                                            class="keyword-input">
                                                     </div>
 
                                                     <div class="single-query">
@@ -384,14 +384,19 @@
                                                             class="keyword-input">
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <div class="single-query">
-                                                        <lable>Purchase Date</lable>
-                                                        <input type="date" autocomplete="off"
-                                                            placeholder="Purchase Date" name='i_Date' id="i_Date"
-                                                            class="keyword-input">
-                                                    </div>
-                                                    <div class="single-query">
+                                                <div class="col-sm-6 single-query">
+                                                    <label for="i_Date" style="color: black;">
+                                                        Select Number of Months:</label>
+                                                    <select id="i_Date" name="i_Date" class="form-control">
+                                                        <option>Select</option>
+                                                        <option value="1">1 Month</option>
+                                                        <option value="2">2 Month</option>
+                                                        <option value="3">3 Month</option>
+                                                        <option value="4">4 Month</option>
+                                                        <option value="5">5 Month</option>
+                                                        <option value="6">6 Month</option>
+                                                    </select>
+                                                    <div class="form-group  single-query">
                                                         <textarea name='ta_Desc' id="ta_Desc" autocomplete="off" placeholder="Message"></textarea>
                                                     </div>
                                                 </div>
@@ -490,7 +495,7 @@
                                         @if (!empty($value->PSqureFeet) || !empty($value->PBedRoom))
                                             @if (!empty($value->PSqureFeet))
                                                 <span><i class="fa fa-object-group"></i>
-                                                    {{ $value->PSqureFeet }} 
+                                                    {{ $value->PSqureFeet }}
                                                 </span>
                                             @endif
 
@@ -537,7 +542,7 @@
                                         </p>
                                         <ul class="pull-right">
                                             <li><a
-                                                    style="cursor:pointer;background-color:red; color:white;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
+                                                    style="cursor:pointer;background-color:#93bd1a; color:#1f1f1f;font-size: smaller; width: 63px;">KPB{{ $value->PPropertycode }}</a>
                                             </li>
                                         </ul>
                                     </div>

@@ -40,7 +40,7 @@
                                             Rent</option>
                                         <option value='2'
                                             {{ isset($lastSelectedPType) && $lastSelectedPType == '2' ? 'selected' : '' }}>
-                                           Sale</option> 
+                                           Sale/Purchase</option> 
                                     </select>
                                     <span id="PType-error" class="error" style="color: red;"></span>
                                 </div>

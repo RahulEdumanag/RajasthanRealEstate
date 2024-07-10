@@ -1,453 +1,456 @@
-/* ================================= */
-/* ----------- COLORS CSS ---------- */
-/* ================================= */
+:root {
+    --main-color: #93bd1a;
+}
 
 a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .bg-color-blue {
-    background: #ed2a28;
+    background: var(--main-color);;
+}
+.color-red {
+    color: var(--main-color);;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:focus,
 .dropdown-menu > .active > a:hover {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
     color: #fff !important;
 }
 .line_6 {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 a:hover,
 a:focus {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .testinomial_wrap .testinomial_text::after {
-    border-top: 20px solid #ed2a28;
+    border-top: 20px solid var(--main-color);;
 }
 .blue_dark {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .pushmenu .push_nav .dropdown-menu li > a:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .header-login {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #our-agent-slider .item:hover .team_text {
-    background: #ed2a28;
+    background: var(--main-color);;
     transition: all 0.6s ease-in-out 0s;
 }
 .team_popup .progress-bar {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .pop_text > h3 {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .text-tag {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .query-title {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .single-query option {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .property-page-bg .query-submit-button.pull-right > input[type="submit"] {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .intro .dropdown li.current {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .feature-box .icon {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .feature-box .icon:after {
-    border-color: transparent #ed2a28 transparent transparent;
+    border-color: transparent var(--main-color); transparent transparent;
 }
 .link-arrow:hover::after {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .proerty_content .favroute ul li a:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .feature .tag-2 {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #property-listing-slider .owl-next:hover,
 #property-listing-slider .owl-prev:hover {
-    background: #ed2a28 !important;
+    background: var(--main-color); !important;
 }
 #image-text .image-text-heading span {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .image-text-heading > a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .list.angle-double-right.list-border a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .team-block .team-thumb .styled-icons a:hover,
 .work-gallery .gallery-thumb .styled-icons a:hover,
 .work-gallery:hover .gallery-bottom-part,
 .line-bottom-theme-colored-2::after,
 .panel-group .panel-title a.active::after {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .line1,
 .line2 {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .line1,
 .line2 {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .btn-theme-colored {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .bg-theme-color-2 {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .styled-icons.icon-bordered a:hover {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .button {} .page-title a:hover {
-    border-bottom: 1px solid #ed2a28;
+    border-bottom: 1px solid var(--main-color);;
 }
 .line1,
 .line2 {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .social-icons a {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #agent-p-2 .nstSlider .bar {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .feature-p-text > a:hover h4 {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .f-p-links > li a.active {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .f-p-links > li a:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .my-pro .my-pro-list .button-my-pro-list > a {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #login .profile-login ul li a {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #login .profile-login ul .active > a {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #login .profile-login .nav > li > a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #login .profile-login .btn-slide:hover {
-    color: #ed2a28 !important;
+    color: var(--main-color); !important;
 }
 #login .profile-login .lost-pass:hover {
-    border-bottom: 1px solid #ed2a28;
-    color: #ed2a28;
+    border-bottom: 1px solid var(--main-color);;
+    color: var(--main-color);;
 }
 .wpf-demo-gallery .view-caption a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .previous_image_btn {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .next_image_btn {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .isotope-filters button {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .infowindow-markup {
-    background: #ed2a28;
+    background: var(--main-color);;
     padding: 10px 20px;
 }
 .featured-properties-detail h4 {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .top .tag {
-    background: #ed2a28 !important;
+    background: var(--main-color); !important;
 }
 .property-list-list {
-    border-top: 3px solid #ed2a28;
+    border-top: 3px solid var(--main-color);;
 }
 .property-list-list-info a > h3:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .property-list-list .property-list-list-label::before {
-    border-right: 17px solid #ed2a28;
+    border-right: 17px solid var(--main-color);;
 }
 .multiple-recent-properties label {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .property-list-list ul li.right span {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .property-list-list .property-list-list-label::before {
-    border-right: 17px solid #ed2a28;
+    border-right: 17px solid var(--main-color);;
 }
 .property-list-list label {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .property-details .text-it-p {
-    border-left: 6px solid #ed2a28;
+    border-left: 6px solid var(--main-color);;
 }
 .property-details .pro-list > li:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .property-tab .nav-tabs > li.active > a,
 .property-tab .nav-tabs > li.active > a:focus,
 .property-tab .nav-tabs > li.active > a:hover {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 #agent-3-slider.owl-next:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #agent-3-slider.owl-prev:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #news-section-1 .add-on:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .testinomial_wrap .testinomial_text::after {
-    border-top: 20px solid #ed2a28;
+    border-top: 20px solid var(--main-color);;
 }
 .blue_dark {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #main-slider .prev,
 #main-slider .next {
-    border: 1px solid #ed2a28;
+    border: 1px solid var(--main-color);;
 }
 #main-slider .prev:hover,
 #main-slider .next:hover {
-    background-color: #ed2a28;
-    border: 1px solid #ed2a28;
+    background-color: var(--main-color);;
+    border: 1px solid var(--main-color);;
 }
 .loader {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .white_border:hover,
 .white_border:focus {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .dark_border:hover,
 .dark_border:focus {
-    border: 1px solid #ED2A28;
-    background: #ED2A28;
+    border: 1px solid var(--main-color);;
+    background: var(--main-color);;
 }
 .skills .progress .progress-bar {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .header-login {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #header_top_3 .get-tuch i {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .pushmenu .push_nav .dropdown-menu li > a:hover {
-    background: #ED2A28;
+    background: var(--main-color);;
 }
 #nav_slider .item .nav_tag.yellow {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #nav_slider .owl-next:hover,
 #nav_slider .owl-prev:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #nav_slider .item {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .owl-controls .owl-page.active span,
 .owl-controls.clickable .owl-page:hover span {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #home_icon {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #home_icon .home_feature:hover h4,
 #home_icon .home_feature:hover p,
 #home_icon .home_feature:hover i {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .query-title {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .single-query option {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .property-page-bg .query-submit-button.pull-right > input[type="submit"] {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .intro .dropdown li.current {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .feature_box .icon {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .feature_box .icon:after {
-    border-color: transparent #ed2a28 transparent transparent;
+    border-color: transparent var(--main-color); transparent transparent;
 }
 .team-member .s-link a:hover,
 .t-s-link a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .feature .tag-2 {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #image-text .image-text-heading span {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .list.angle-double-right.list-border a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .team-block .team-thumb .socials a:hover,
 .work-gallery .gallery-thumb .socials a:hover,
 .work-gallery:hover .gallery-bottom-part,
 .line-bottom-theme-colored-2::after,
 .panel-group .panel-title a.active::after {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .line1,
 .line2 {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .btn-theme-colored {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .bg-theme-color-2 {
-    background: #ed2a28 !important;
+    background: var(--main-color); !important;
 }
 .page-title a:hover {
-    border-bottom: 1px solid #ed2a28;
+    border-bottom: 1px solid var(--main-color);;
 }
 .line1,
 .line2 {
-    background-color: #ed2a28 !important;
+    background-color: var(--main-color); !important;
 }
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #agent-p-2 .nstSlider .bar {
-    background: #ed2a28 !important;
+    background: var(--main-color); !important;
 }
 .feature-p-text > h4 a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .feature-p-text > a {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .f-p-links > li a.active {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .f-p-links > li a:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .my-pro .my-pro-list .button-my-pro-list > a {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #login .profile-login ul li a {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #login .profile-login ul .active > a {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #login .profile-login .nav > li > a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #login .profile-login .lost-pass {
-    border-bottom: 1px solid #ed2a28;
-    color: #ed2a28;
+    border-bottom: 1px solid var(--main-color);;
+    color: var(--main-color);;
 }
 .wpf-demo-gallery .view-caption a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .previous_image_btn {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .next_image_btn {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .infowindow-markup {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .top .tag {
-    background: #ed2a28 !important;
+    background: var(--main-color); !important;
 }
 #news-section-1 .add-on:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .btn_fill {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 a.back-to {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .pager li > a:hover,
 .pager li > a:focus,
 .pager li.active > a {
-    background: #ed2a28;
-    border-color: #ed2a28;
+    background: var(--main-color);;
+    border-color: var(--main-color);;
 }
 /*** Same hover Color ***/
 
 .group-button-search {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .search_2_set {
-    border-top: 5px solid #ed2a28;
+    border-top: 5px solid var(--main-color);;
 }
 .property_item .price .tag,
 .property_item .price h4 {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .inner-page-gallery-two-columns-dimension-btn a.active,
 .inner-page-gallery-two-columns-dimension-btn a:hover,
 .inner-page-gallery-three-columns-dimension-btn a.active,
 .inner-page-gallery-three-columns-dimension-btn a:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .featured-properties-detail h4 {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 nav.navbar.bootsnav .navbar-toggle {
-    background: #ed2a28 !important;
+    background: var(--main-color); !important;
 }
 .color_red {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .loader {
-    background: #ed2a28;
+    background: #ffffff;;
 }
 .socials li a:hover,
 .socials li a:focus {
-    background: #ed2a28;
-    border-color: #ed2a28;
+    background: var(--main-color);;
+    border-color: var(--main-color);;
 }
 .bg_red {
-    background: #ed2a28;
+    background: #ffffff;;
 }
 .line_4,
 .line_5,
 .line_6 {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .link_arrow:hover::after,
 .link_arrow:focus::after {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #header-top .header-top-links ul li a:hover {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 nav.navbar.bootsnav ul.nav > li > a:hover,
 nav.navbar.bootsnav ul.nav > li > a:focus,
@@ -456,7 +459,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown > .dropdown-toggle:hover,
 nav.navbar.bootsnav ul.nav > li.dropdown.on > .dropdown-toggle,
 nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:hover,
 nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:focus {
-    color: #ed2a28 ;
+    color: var(--main-color); ;
 }
 nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a:hover,
 nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a:focus,
@@ -464,19 +467,19 @@ nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a:hover,
 nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a:focus,
 nav.navbar.bootsnav ul.nav > li.dropdown .dropdown-menu .dropdown-toggle:hover,
 nav.navbar.bootsnav ul.nav .dropdown-menu li.dropdown.on .dropdown-toggle {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .pushmenu {
-    border-top: 5px solid #ED2A28;
+    border-top: 5px solid var(--main-color);;
 }
 .pushmenu .push_nav > li > a:hover,
 .pushmenu .push_nav > li > a:focus,
 .pushmenu .push_nav > li.active > a {
-    color: #ED2A28;
+    color: var(--main-color);;
 }
 #partner_slider .item:hover img,
 #partner_slider_2 .item:hover img {
-    border: 1px solid ##ED2A28;
+    border: 1px solid #var(--main-color);;
     cursor: pointer;
 }
 #nav_slider .owl-prev:hover,
@@ -497,7 +500,7 @@ nav.navbar.bootsnav ul.nav .dropdown-menu li.dropdown.on .dropdown-toggle {
 #agent-3-slider .owl-next:focus,
 #agent-3-slider .owl-prev:hover,
 #agent-3-slider .owl-prev:focus {
-    background: #ED2A28;
+    background: var(--main-color);;
 }
 #listing_slider .owl-next:hover,
 #listing_slider .owl-prev:hover,
@@ -511,80 +514,80 @@ nav.navbar.bootsnav ul.nav .dropdown-menu li.dropdown.on .dropdown-toggle {
 #property-1-slider .owl-next:hover,
 #agent-2-slider .owl-prev:hover,
 #agent-2-slider .owl-next:hover {
-    border-color: #ed2a28;
+    border-color: var(--main-color);;
 }
 #project .cbp-filter-item.cbp-filter-item-active,
 #project .cbp-filter-item:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .property_meta {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .mb20 form a.button {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .map-detail h4 {
-    color: #ED2A28;
+    color: var(--main-color);;
 }
 .image-label label {
-    background-color: #ED2A28;
+    background-color: var(--main-color);;
 }
 .bg-color-red {
-    background: #ED2A28;
+    background: var(--main-color);;
 }
 .short-msg a.short-topup {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .nav-tabs > li > a > .fa{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .short-msg-tab .tab-pane h3 {
-    border-bottom: 1px solid #ed2a28;
+    border-bottom: 1px solid var(--main-color);;
 }
 #team-sev .team-box ul li a{
-    color:#ed2a28;
+    color:var(--main-color);;
 }
 #team-sev .team-box .team-box-overlay{
-    background:#ed2a28;
+    background:var(--main-color);;
 }
 #team-sev .team-box .team-box-overlay {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #main_header.header_sev #header-top .header-top-links .header-login:hover{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .rev_slider_wrapper #rev_slider_3 .slide-content{
-    border-left: 3px solid #ed2a28;
+    border-left: 3px solid var(--main-color);;
 }
 .rev_slider_wrapper #rev_slider_3 .slide-content .title{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .banner-search button {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 #banner-nin .banner_detail h2 span{
-    color:#ed2a28;
+    color:var(--main-color);;
 }
 #typewriter-text {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #property-search-sev .nstSlider {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .media.service-box .pull-left{
-  color: #ed2a28;
+  color: var(--main-color);;
 }
 .media.service-box .pull-left::after {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .media.service-box:hover .pull-left{
-  background-color:#ed2a28;
+  background-color:var(--main-color);;
 }
 .number-counters .counters-item i {
-  color:#ed2a28;
+  color:var(--main-color);;
 }
 .number-counters .counters-item p {
-  color:#ed2a28;
+  color:var(--main-color);;
 }
 #services-nin .nav-tabs > li.active > a, 
 #services-nin .nav-tabs > li > a:focus, 
@@ -592,163 +595,163 @@ nav.navbar.bootsnav ul.nav .dropdown-menu li.dropdown.on .dropdown-toggle {
 #services-nin .nav-tabs .dropdown-menu > li.active > a,
 #services-nin .nav-tabs .dropdown-menu > li > a:focus,
 #services-nin .nav-tabs .dropdown-menu > li > a:hover {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .services-list li::before {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #services-nin .member-thumb .overlay2 .overlay_inner h3 {
-    border-bottom: 2px solid #ed2a28;
+    border-bottom: 2px solid var(--main-color);;
 }
 #services-nin .member-thumb .overlay2 .overlay_inner h3 span{
-  color: #ed2a28;
+  color: var(--main-color);;
 }
 #services-nin .member-thumb .overlay2 .overlay_inner a.btn-icon {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 #services-nin .member-thumb .overlay2 .overlay_inner a.btn-icon:hover {
-    background:#ed2a28;
+    background:var(--main-color);;
 }
 .call-to-action2 h2 span{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .about-sev-tag h4{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .about-sev-tag ul li i {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .about-sev-tag .founder-text h3 {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .about-detail h4 {
-    border-left: 5px solid #ed2a28;
+    border-left: 5px solid var(--main-color);;
 }
 .custom-content h5{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .page-section-ptb .pro-video a{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .our-mission-box-detail h3 {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .our-mission-box-detail ul li::before {
-    color:#ed2a28;
+    color:var(--main-color);;
 }
 #services-page.our-value .services-page-box h2::after {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .services-page-box h2{
-    color:#ed2a28;
+    color:var(--main-color);;
 }
 .single-effect3 .info {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #faq2 .panel-default > .panel-heading {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .news_padding > p > a:hover{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .news_image .price .tag_red {
-  background: #ed2a28;
+  background: var(--main-color);;
 }
 #about_slider .owl-page.active span, 
 #about_slider .owl-page:hover span {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 
 .profile-list li a:hover, .profile-list li.active a {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .dropzone.profile-picture .dz-default.dz-message {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .dropzone {
-    border: 3px solid #ed2a28;
+    border: 3px solid var(--main-color);;
 }
 .profile-login-bg h2 span {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .profile-login-bg h2 span {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .agency-listing .agency-listing-box .image-round span {
-  background: #ed2a28;
+  background: var(--main-color);;
 }
 .agency-box h3 .fa{
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .address-box .fa {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .calc .btn {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .calc .fa {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .calc .reset {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .file_uploader {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .button-normal.yellow {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 .block-menu li a.active,
 .block-menu li a:hover {
-  background-color: #ed2a28;
-  border: 1px solid #ed2a28;
-  border-right-color: #ed2a28;
+  background-color: var(--main-color);;
+  border: 1px solid var(--main-color);;
+  border-right-color: var(--main-color);;
 }
 #address-text {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 #address-text .fa {
-    color: #ed2a28;
+    color: var(--main-color);;
 }
 .pricing-box {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .pricing-box .btn.btn-default.select-button:focus,
 .pricing-box .btn.btn-default.select-button:hover {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 #new-property .card-list li.active:after {
-  background-color: #ed2a28;
+  background-color: var(--main-color);;
 }
 #new-property #position {
-  background-color: #ed2a28;
+  background-color: var(--main-color);;
 }
 #new-property #position:after {
-  border-bottom: 10px solid #ed2a28;
+  border-bottom: 10px solid var(--main-color);;
 }
 .planContainer .price p.bestPlanPrice {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .planContainer .button a.bestPlanButton {
-    background: #ed2a28;
-    border: 2px solid #ed2a28;
+    background: var(--main-color);;
+    border: 2px solid var(--main-color);;
 }
 .planContainer .button a.bestPlanButton:hover {
-    background: #ed2a28;
-    border: 1px solid #ed2a28;
+    background: var(--main-color);;
+    border: 1px solid var(--main-color);;
 }
 .planContainer .button a {
-    color: #ed2a28;
-    border: 1px solid #ed2a28;
+    color: var(--main-color);;
+    border: 1px solid var(--main-color);;
 }
 .planContainer .button a:hover {
-    background: #ed2a28;
+    background: var(--main-color);;
 }
 .slider-text {
-    border-left: 5px solid #ed2a28;
+    border-left: 5px solid var(--main-color);;
 }
 .gallery .item-detail {
-    background-color: #ed2a28;
+    background-color: var(--main-color);;
 }
 
 

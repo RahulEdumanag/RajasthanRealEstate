@@ -17,6 +17,7 @@ if ($ExpiryPeriod) {
     }
 }
 ?>
+
 @if ($underConstructionSetting && $underConstructionSetting->Set_Website == 1)
     @include('frontend.underConstruction')
 @else
@@ -25,15 +26,50 @@ if ($ExpiryPeriod) {
 
     <head>
         @include('frontend.layouts.head')
+
+        <style>
+            .loderr {
+                width: max-content;
+                text-align: center;
+                margin-left: -55%;
+                font-family: emoji;
+                margin-top: 25%;
+            }
+
+            @media (max-width: 767px) {
+                .cssload-thecube {
+                    top: 10%;
+                    width: 20%;
+                    height: 73px;
+                    margin: 0 auto;
+                    margin-top: 49px;
+                    position: relative;
+                    margin-left: 18%;
+                }
+
+                .loderr {
+                    width: max-content;
+                    text-align: center;
+                    margin-left: -55%;
+                    font-family: emoji;
+                    margin-top: 25%;
+                    font-size: 19px;
+                }
+            }
+        </style>
     </head>
 
     <body>
         <div class="loader">
             <div class="cssload-thecube">
-                <div class="cssload-cube cssload-c1"></div>
+                <!-- <div class="cssload-cube cssload-c1"></div>
                 <div class="cssload-cube cssload-c2"></div>
                 <div class="cssload-cube cssload-c4"></div>
-                <div class="cssload-cube cssload-c3"></div>
+                <div class="cssload-cube cssload-c3"></div> -->
+                <img src="{{ asset('assets/frontend/images/india.gif') }}" alt="line" />
+
+
+                <h1 class="loderr" style="color: #946501;"> KUBER PROPERTIES AND BUILDERS</h1>
             </div>
         </div>
 

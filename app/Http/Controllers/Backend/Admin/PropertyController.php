@@ -31,8 +31,8 @@ class PropertyController extends Controller
         $StateModel = State::where('Sta_Status', '=', 0)->get();
         $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
         $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
-        $CityModel = City::where('Cit_Status', '=', 0)->get();
-        $AreaModel = Area::where('Are_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->orderBy('Cit_CreatedDate', 'desc')->get();
+        $AreaModel = Area::where('Are_Status', '=', 0)->orderBy('Are_CreatedDate', 'desc')->get();
 
         $lastSelectedPSta_Id = $request->session()->get('lastSelectedPSta_Id');
         $lastSelectedPCit_Id = $request->session()->get('lastSelectedPCit_Id');

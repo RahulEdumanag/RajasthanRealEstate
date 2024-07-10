@@ -22,7 +22,7 @@
                                         <option selected  disabled>Select</option>
                                         <option value='1' {{ $model->PType == 1 ? 'selected' : '' }}>Rent
                                         </option>
-                                        <option value='2' {{ $model->PType == 2 ? 'selected' : '' }}>Sale
+                                        <option value='2' {{ $model->PType == 2 ? 'selected' : '' }}>Sale/Purchase
                                         </option>
                                         
                                     </select>

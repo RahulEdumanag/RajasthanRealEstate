@@ -29,7 +29,11 @@
 }
 .icon-icons215:before {
     content: "\e901";
-}
+   
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
+ }
 .icon-icons100:before {
     content: "\e902";
 }
@@ -47,15 +51,26 @@
 }
 .icon-telephone114:before {
     content: "\e907";
+    font-weight: bold;
+    color: #1f1f1f;
 }
 .icon-icons74:before {
     content: "\e908";
-}
+    font-weight: bold;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
+ }
 .icon-icons142:before {
+    font-weight: bolder !important;
     content: "\e909";
+    color: #1f1f1f !important;
+    text-transform: uppercase;
+    /* font-family: arial !important; */
 }
 .icon-icons88:before {
     content: "\e90a";
+    
 }
 .icon-facebook-1:before {
     content: "\e90b";
@@ -77,6 +92,10 @@
 }
 .icon-icons185:before {
     content: "\e911";
+    font-weight: bold;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
 }
 .icon-icons206:before {
     content: "\e912";
@@ -140,6 +159,11 @@
 }
 .icon-key3:before {
     content: "\e926";
+    font-weight: bold;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
+    
 }
 .icon-search2:before {
     content: "\e927";
@@ -446,6 +470,7 @@
 }
 .icon-clipboard-edit:before {
     content: "\e98c";
+    
 }
 .icon-clipboard-edit2:before {
     content: "\e98d";
@@ -4553,7 +4578,11 @@
 }
 .icon-stats-dots:before {
     content: "\ee81";
-}
+     font-weight: bold;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
+ }
 .icon-stats-bars:before {
     content: "\ee82";
 }
@@ -4640,6 +4669,10 @@
 }
 .icon-clipboard:before {
     content: "\ee9e";
+    font-weight: bold;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
 }
 .icon-list-numbered:before {
     content: "\ee9f";

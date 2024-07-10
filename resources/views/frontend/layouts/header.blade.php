@@ -34,6 +34,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         $q->where('PStatus', '=', '0'); // Ensure properties are active
     })
     ->get();
+  //  dd($PropertyTypeModel);
 ?>
 <style>
     .dropdown-menu {
@@ -97,6 +98,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         color: white;
         margin-top: 5px;
     }
+   
 </style>
 <div id="header-top">
     <div class="container">
@@ -202,7 +204,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                     <li>
                                         <div class="row">
                                             <div class="col-menu col-md-2">
-                                                <h5 class="title"><b style="color:red;">Showcase List</b></h5>
+                                                <h5 class="title"><b class="color-red">Showcase List</b></h5>
                                                 <div class="content">
                                                     <ul class="menu-col">
                                                         <li class="dropdown">
@@ -267,15 +269,15 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                         style="height: 100px;">
 
                                                                 </div>
-                                                                <h4 style="font-size: small;"><a
+                                                                <h4 style="font-size: small; color:#1f1f1f;"><a
                                                                         href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                                                 </h4>
                                                                 @if ($value->area && $value->area->city)
-                                                                    <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                                    <p style="color:#1f1f1f;">{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
                                                                     </p>
                                                                 @else
                                                                     @foreach ($value->cities as $city)
-                                                                        <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                        <p style="color:#1f1f1f;">{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
                                                                         </p>
                                                                     @endforeach
                                                                 @endif
@@ -298,7 +300,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                 <li>
                                     <div class="row">
                                         <div class="col-menu col-md-2">
-                                            <h5 class="title"><b style="color:red;">Showcase List</b></h5>
+                                            <h5 class="title"><b class="color-red">Showcase List</b></h5>
                                             <div class="content">
                                                 <ul class="menu-col">
                                                     <li class="dropdown">
@@ -359,15 +361,15 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                     style="height: 100px;">
 
                                                             </div>
-                                                            <h4 style="font-size: small;"><a
+                                                            <h4 style="font-size: small;color:#1f1f1f;"><a
                                                                     href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                                             </h4>
                                                             @if ($value->area && $value->area->city)
-                                                                <p>{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                                <p style="color:#1f1f1f;">{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
                                                                 </p>
                                                             @else
                                                                 @foreach ($value->cities as $city)
-                                                                    <p>{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                    <p style="color:#1f1f1f;">{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
                                                                     </p>
                                                                 @endforeach
                                                             @endif

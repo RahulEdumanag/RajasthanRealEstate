@@ -373,17 +373,17 @@ i {
     background-color: #fff;
 }
 .cssload-thecube {
-    top: 30%;
-    width: 73px;
+    top: 10%;
+    width: 20%;
     height: 73px;
     margin: 0 auto;
     margin-top: 49px;
     position: relative;
-    transform: rotateZ(45deg);
+    /* transform: rotateZ(45deg);
     -o-transform: rotateZ(45deg);
     -ms-transform: rotateZ(45deg);
     -webkit-transform: rotateZ(45deg);
-    -moz-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg); */
 }
 .cssload-thecube .cssload-cube {
     position: relative;
@@ -778,7 +778,7 @@ button {
 a.back-to {
     border-radius: 5px;
     bottom: 60px;
-    color: #fff;
+    color: #1f1f1f;;
     display: none;
     font-size: 18px;
     height: 40px;
@@ -792,7 +792,7 @@ a.back-to {
 .short-msg a.short-topup {
     border-radius: 5px;
     bottom: 15px;
-    color: #fff;
+    color: #1f1f1f;
     font-size: 22px;
     height: 40px;
     line-height: 38px;
@@ -2569,6 +2569,10 @@ nav.navbar.bootsnav.sticked .social-icons {
 #home_icon .home_feature p,
 #home_icon .home_feature i {
     color: #fff;
+    font-weight: bold;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-weight: bolder !important;
 }
 #home_icon .home_feature p {
     font-size: 12px;
@@ -3721,13 +3725,17 @@ nav.navbar.bootsnav.sticked .social-icons {
     position: relative;
 }
 .property_meta span {
-    color: #fff;
+    color: #000000;
     display: inline-block;
     font-size: 12px;
     padding: 3px 10px;
 }
 .property_meta span > i {
     font-size: 20px;
+    color: #1f1f1f;
+
+    text-transform: uppercase;
+    font-weight: bolder !important;
     margin: 0 5px 0 0;
 }
 .property_item {
@@ -3780,10 +3788,17 @@ nav.navbar.bootsnav.sticked .social-icons {
 }
 .property_item .price .tag,
 .property_item .price h4 {
+    font-weight: bold;
+    color: #1f1f1f;
     display: inline-block;
-    color: #fff;
+    color: #1f1f1f;
     padding: 5px 15px;
     font-size: 12px;
+    font-weight: bolder !important;
+    text-transform: uppercase;
+
+    font-family: arial !important;
+
 }
 .proerty_content {
     position: relative;
@@ -4092,12 +4107,16 @@ nav.navbar.bootsnav.sticked .social-icons {
     color: #fff;
 }
 #contact .get-tuch ul li h4 {
-    font-weight: bold;
-    color: #fff;
+    font-weight: bolder !important;
+    color: #1f1f1f;
+    text-transform: uppercase;
+    font-family: arial !important;
 }
 #contact .get-tuch ul li p {
-    color: #fff;
-    font-size: 15px;
+    /* font-weight: bolder !important; */
+    color: #1f1f1f !important;
+    text-transform: uppercase;
+    font-family: arial !important;
 }
 #contact .get-tuch ul li a {
     color: #fff;
@@ -5479,7 +5498,7 @@ a.close-overlay.hidden {
 }
 #agent-2-slider .property_meta,
 #agent-2-slider .property_meta h4 {
-    color: #fff;
+    color: #1f1f1f;
     display: inline-block;
     font-family: 'Roboto';
 }

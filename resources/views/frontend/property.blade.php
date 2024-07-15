@@ -182,7 +182,7 @@
                             <h4 class="no-results-text">No results found, please try again.</h4>
                             <div class="no-results-image">
                                 <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
-                                    alt="No results found image"style="height: 25%; width: 25%;">
+                                    alt="{{$WebInfoModel->WebInf_Name}}"style="height: 25%; width: 25%;">
                             </div>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                                         $randomImage = $value->getRandomImage();
                                     @endphp
                                     <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
-                                        alt="listin" class="img-responsive" style="height: 247px;">
+                                        alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive" style="height: 247px;">
                                     <div class="overlay">
                                         <div class="centered"><a class="link_arrow white_border"
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View

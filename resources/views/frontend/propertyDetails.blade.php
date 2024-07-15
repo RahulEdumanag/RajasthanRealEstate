@@ -53,11 +53,11 @@
                                     <div class="image">
                                         <a href="#.">
                                             @if ($image)
-                                                <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="listing"
+                                                <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="{{$WebInfoModel->WebInf_Name}}"
                                                     class="img-responsive" style="max-height: 350px;">
                                             @else
                                                 <img src="{{ asset('assets/frontend/images/dummy-img/NoImageBanner.jpg') }}"
-                                                    alt="listing" class="img-responsive" style="max-height: 350px;">
+                                                    alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive" style="max-height: 350px;">
                                             @endif
                                         </a>
                                         @if ($propertyDetails->PTag)
@@ -281,11 +281,11 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12 top10">
                                             <div class="image">
                                                 @if ($image)
-                                                    <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="listing"
+                                                    <img src="{{ env('Web_CommonURl') . trim($image) }}" alt="{{$WebInfoModel->WebInf_Name}}"
                                                         class="img-responsive" style="max-height: 350px;">
                                                 @else
                                                     <img src="{{ asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
-                                                        alt="listing" class="img-responsive" style="height: 261px;">
+                                                        alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive" style="height: 261px;">
                                                 @endif
                                                 <div class="overlay border_radius">
                                                     @if ($image)
@@ -316,7 +316,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="agent-p-img"> <img
                                                 src="{{ asset('assets/frontend/images/agent-p-1.jpg') }}"
-                                                class="img-responsive" alt="image" /> </div>
+                                                class="img-responsive" alt="{{$WebInfoModel->WebInf_Name}}" /> </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="agent-p-contact">
@@ -387,7 +387,7 @@
                                                 <div class="col-sm-6 single-query">
                                                     <label for="i_Date" style="color: black;">
                                                         Select Number of Months:</label>
-                                                    <select id="i_Date" name="i_Date" class="form-control">
+                                                    <select id="i_Date" name="i_Date" class="form-control"style="border: 1\px solid black;">
                                                         <option>Select</option>
                                                         <option value="1">1 Month</option>
                                                         <option value="2">2 Month</option>
@@ -396,7 +396,7 @@
                                                         <option value="5">5 Month</option>
                                                         <option value="6">6 Month</option>
                                                     </select>
-                                                    <div class="form-group  single-query">
+                                                    <div class="form-group  single-query" style="border: 1\px solid black;">
                                                         <textarea name='ta_Desc' id="ta_Desc" autocomplete="off" placeholder="Message"></textarea>
                                                     </div>
                                                 </div>
@@ -474,7 +474,7 @@
                                         $randomImage = $value->getRandomImage();
                                     @endphp
                                     <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
-                                        alt="listin" class="img-responsive" style="height: 350px;">
+                                        alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive" style="height: 350px;">
                                     <div class="overlay">
                                         <div class="centered"><a class="link_arrow white_border"
                                                 href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">View

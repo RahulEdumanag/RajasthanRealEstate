@@ -51,18 +51,18 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-sm-4 col-xs-12">
-                                    
-                                                <lable style="color:black">Purchase in Months</lable>
-                                                <select id="i_Date" name="i_Date" class="form-control">
-                                                    <option>Select</option>
-                                                    <option value="1">1 Month</option>
-                                                    <option value="2">2 Month</option>
-                                                    <option value="3">3 Month</option>
-                                                    <option value="4">4 Month</option>
-                                                    <option value="5">5 Month</option>
-                                                    <option value="6">6 Month</option>
-                                                </select>
-                                             
+
+                                            <lable style="color:black">Purchase in Months</lable>
+                                            <select id="i_Date" name="i_Date" class="form-control">
+                                                <option>Select</option>
+                                                <option value="1">1 Month</option>
+                                                <option value="2">2 Month</option>
+                                                <option value="3">3 Month</option>
+                                                <option value="4">4 Month</option>
+                                                <option value="5">5 Month</option>
+                                                <option value="6">6 Month</option>
+                                            </select>
+
                                         </div>
                                         <div class="col-md-6 col-sm-4 col-xs-12">
                                             <div class="form-group single-query">
@@ -110,18 +110,18 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group single-query">
+                                            <div class="form-group single-query" style="border: 1px solid;">
                                                 <textarea name='ta_Desc' placeholder="Message" id="ta_Desc"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <!-- <div class="col-md-12">
-                                                                                <div class="form-group single-query">
-                                                                                    <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
-                                                                                        class="img-responsive" alt="image">
-                                                                                </div>
-                                                                            </div> -->
+                                                                                    <div class="form-group single-query">
+                                                                                        <img src="{{ asset('assets/frontend/images/contact.jpg') }}"
+                                                                                            class="img-responsive" alt="image">
+                                                                                    </div>
+                                                                                </div> -->
                                         <div class="col-md-12 top20">
                                             <div class="form-group single-query">
                                                 <button type="submit" class="btn_fill" id="btn_submit"

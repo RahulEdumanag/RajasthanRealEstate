@@ -52,15 +52,15 @@
                                 <div class="testinomial_wrap">
                                     <div class="testinomial_text blue_dark  text-center">
                                         <p>{{ $value->Pag_ShortDesc }}</p>
-                                        <img src="{{ asset('assets/frontend/images/quote.png') }}" alt="quote"
+                                        <img src="{{ asset('assets/frontend/images/quote.png') }}" alt="{{$WebInfoModel->WebInf_Name}}"
                                             class="quote">
                                     </div>
                                     <div class="testinomial_pic">
                                         @if ($value->Pag_Image)
                                             <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
-                                                alt="testinomial" width="59">
+                                                alt="{{$WebInfoModel->WebInf_Name}}" width="59">
                                         @else
-                                            <img src=" {{ asset('assets/frontend/images/dummy-img/default.jpg') }}" alt="testinomial"
+                                            <img src=" {{ asset('assets/frontend/images/dummy-img/default.jpg') }}" alt="{{$WebInfoModel->WebInf_Name}}"
                                                 width="59">
                                         @endif
 
@@ -77,7 +77,7 @@
                         <h4 class="no-results-text">No results found, please try again.</h4>
                         <div class="no-results-image">
                             <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
-                                alt="No results found image"style="height: 25%; width: 25%;">
+                                alt="{{$WebInfoModel->WebInf_Name}}"style="height: 25%; width: 25%;">
                         </div>
                     </div>
                 </div>

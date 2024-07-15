@@ -50,7 +50,7 @@
                 <ul>
                     @foreach ($SliderModel as $model)
                         <li data-transition="fade">
-                            <img src="{{ env('Web_CommonURl') }}{{ $model->Pag_Image ?? 'N/A' }}" alt=""
+                            <img src="{{ env('Web_CommonURl') }}{{ $model->Pag_Image ?? 'N/A' }}" alt="{{$WebInfoModel->WebInf_Name}}"
                                 data-bgposition="center center" data-bgfit="cover" class="rev-slidebg">
                             <div class="tp-caption tp-resizeme" data-x="['center','center','center','center']"
                                 data-hoffset="['15','15','0','0']" data-y="['240','200','140','140']"
@@ -61,7 +61,7 @@
                                 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="800">
                                 <h2 class="border_heading p-white"> {{ $model->Pag_ShortDesc }} </h2>
                             </div>
-                        </li>
+                        </li>   
                     @endforeach
                 </ul>
             </div>
@@ -135,25 +135,25 @@
             <div class="row" style="margin-top: 3%;">
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="welcome top40">
-                        <img src="{{ asset('assets/frontend/images/wellcome_1.png') }}" alt="image">
+                        <img src="{{ asset('assets/frontend/images/wellcome_1.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                         <h4> 24/7 Emergency Available</h4>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="welcome top40">
-                        <img src="{{ asset('assets/frontend/images/wellcome_2.png') }}" alt="image">
+                        <img src="{{ asset('assets/frontend/images/wellcome_2.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                         <h4>Expert and Professional</h4>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="welcome top40">
-                        <img src="{{ asset('assets/frontend/images/wellcome_3.png') }}" alt="image">
+                        <img src="{{ asset('assets/frontend/images/wellcome_3.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                         <h4>Satisfaction Guarantee</h4>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="welcome top40">
-                        <img src="{{ asset('assets/frontend/images/wellcome_4.png') }}" alt="image">
+                        <img src="{{ asset('assets/frontend/images/wellcome_4.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                         <h4>Free Inspection</h4>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="estimate_image">
-                        <img src="{{ asset('assets/frontend/images/estimate.png') }}" alt="image" class="img-responsive">
+                        <img src="{{ asset('assets/frontend/images/estimate.png') }}" alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -296,7 +296,7 @@
                             <h4 class="no-results-text">No results found, please try again.</h4>
                             <div class="no-results-image">
                                 <img src="https://i.pinimg.com/originals/49/e5/8d/49e58d5922019b8ec4642a2e2b9291c2.png"
-                                    alt="No results found image"style="height: 25%; width: 25%;">
+                                    alt="{{$WebInfoModel->WebInf_Name}}"style="height: 25%; width: 25%;">
                             </div>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                                                     $randomImage = $value->getRandomImage();
                                                 @endphp
                                                 <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/NoImage2.jpg') }}"
-                                                    alt="listin" class="img-responsive" style="height: 247px;">
+                                                    alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive" style="height: 247px;">
                                                 <div class="property_meta">
                                                     @if (!empty($value->PSqureFeet) || !empty($value->PBedRoom))
                                                         @if (!empty($value->PSqureFeet))
@@ -423,7 +423,7 @@
                                 @foreach ($ClientModel as $value)
                                     <div class="item">
                                         <img src="{{ env('Web_CommonURl') }}{{ $value->Pag_Image ?? 'N/A' }}"
-                                            alt="Our Partner">
+                                            alt="{{$WebInfoModel->WebInf_Name}}">
                                     </div>
                                 @endforeach
                             </div>

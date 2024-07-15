@@ -8,11 +8,19 @@ $MetaTagsModel = MetaTags::where('Met_Status', '=', 0)->where('Met_Reg_Id', '=',
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>{{$WebInfoModel->WebInf_Name}}</title>
+<title>{{ $WebInfoModel->WebInf_Name }}</title>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/master.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/color/color-1.css') }}" id="color" />
 @if ($WebInfoModel && $WebInfoModel->WebInf_Favicon)
     <link rel="shortcut icon" href="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_Favicon }}">
-    
 @endif
 
+
+
+<!-- Meta Tags -->
+@if ($MetaTagsModel)
+    <meta name="keywords" content="{{ $MetaTagsModel->Met_Keywords ?? 'N/A' }}">
+    <meta name="description" content="{{ $MetaTagsModel->Met_Description ?? 'N/A' }}">
+    <meta property="og:title" content="{{ $MetaTagsModel->Met_OgTitle ?? 'N/A' }}">
+    <meta property="og:description" content="{{ $MetaTagsModel->Met_OgDescription ?? 'N/A' }}">
+@endif

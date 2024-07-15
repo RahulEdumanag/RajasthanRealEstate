@@ -123,7 +123,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         <div class="row">
             <div class="col-md-2 hidden-xs hidden-sm">
                 <a href="/">
-                    <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}" alt="logo"
+                    <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}" alt="{{$WebInfoModel->WebInf_Name}}"
                         class="newLogo" />
                 </a>
             </div>
@@ -140,7 +140,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                     </ul>
                 </div>
                 <div class="get-tech-line top20"><img src="{{ asset('assets/frontend/images/get-tuch-line.png') }}"
-                        alt="line" /></div>
+                        alt="{{$WebInfoModel->WebInf_Name}}" /></div>
                 <div class="get-tuch text-left top20">
                     <i class="icon-icons74"></i>
                     <ul>
@@ -153,7 +153,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                     </ul>
                 </div>
                 <div class="get-tech-line top20"><img src="{{ asset('assets/frontend/images/get-tuch-line.png') }}"
-                        alt="line" /></div>
+                        alt="{{$WebInfoModel->WebInf_Name}}" /></div>
                 <div class="get-tuch text-left top20">
                     <i class=" icon-icons142"></i>
                     <ul>
@@ -191,7 +191,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                         <i class="fa fa-bars"></i></button>
                     <a class="navbar-brand sticky_logo" href="/">
                         <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
-                            class="logo newLogo" alt=""></a>
+                            class="logo newLogo" alt="{{$WebInfoModel->WebInf_Name}}"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
@@ -265,7 +265,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                         $randomImage = $value->getRandomImage();
                                                                     @endphp
                                                                     <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
-                                                                        alt="listin" class="img-responsive"
+                                                                        alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive"
                                                                         style="height: 100px;">
 
                                                                 </div>
@@ -357,7 +357,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                     $randomImage = $value->getRandomImage();
                                                                 @endphp
                                                                 <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
-                                                                    alt="listin" class="img-responsive"
+                                                                    alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive"
                                                                     style="height: 100px;">
 
                                                             </div>

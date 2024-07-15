@@ -306,13 +306,21 @@ class HomeController extends Controller
     }
     public function testimonial()
     {
+        $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+        ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+        ->where('WebInf_Status', '=', '0')
+        ->first();
         $TestimonialModel = $this->getTestimonialModel();
-        return view('frontend.testimonial', compact('TestimonialModel'));
+        return view('frontend.testimonial', compact('TestimonialModel','WebInfoModel'));
     }
     public function faqs()
     {
+        $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+            ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+            ->where('WebInf_Status', '=', '0')
+            ->first();
         $FaqModel = $this->baseQuery(new Page())->where('tbl_pagecategory.PagCat_Name', 'Faq')->orderBy('tbl_page.Pag_CreatedDate', 'desc')->get();
-        return view('frontend.faqs', compact('FaqModel'));
+        return view('frontend.faqs', compact('FaqModel', 'WebInfoModel'));
     }
     public function underConstruction()
     {
@@ -384,7 +392,12 @@ class HomeController extends Controller
                 $q->where('PStatus', '=', '0'); // Ensure properties are active
             })
             ->get();
-        return view('frontend.property', compact('AreaModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel'));
+
+        $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+            ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+            ->where('WebInf_Status', '=', '0')
+            ->first();
+        return view('frontend.property', compact('AreaModel', 'PropertyTypeModel', 'CityModel', 'PropertyModel', 'WebInfoModel'));
     }
     public function getAreas(Request $request)
     {

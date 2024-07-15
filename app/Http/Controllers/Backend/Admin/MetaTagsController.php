@@ -33,7 +33,7 @@ class MetaTagsController extends Controller
             $model->Met_Keywords = $request->Met_Keywords;
             $model->Met_Description = $request->Met_Description;
             $model->Met_OgTitle = $request->Met_OgTitle;
-            $model->Met_OgDescription = $request->Met_OgDescription; 
+            $model->Met_OgDescription = $request->Met_OgDescription;
             $model->Met_CreatedDate = Carbon::now('Asia/Kolkata');
             $model->Met_CreatedBy = Auth::user()->Log_Id;
             $model->save();
@@ -60,7 +60,7 @@ class MetaTagsController extends Controller
             $model->Met_Keywords = $request->Met_Keywords;
             $model->Met_Description = $request->Met_Description;
             $model->Met_OgTitle = $request->Met_OgTitle;
-            $model->Met_OgDescription = $request->Met_OgDescription; 
+            $model->Met_OgDescription = $request->Met_OgDescription;
             $model->Met_UpdatedDate = Carbon::now('Asia/Kolkata');
             $model->Met_UpdatedBy = Auth::user()->Log_Id;
 

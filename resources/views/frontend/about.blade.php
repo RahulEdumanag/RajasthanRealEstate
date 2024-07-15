@@ -38,25 +38,25 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                         <div class="welcome top40">
-                            <img src="{{ asset('assets/frontend/images/wellcome_1.png') }}" alt="image">
+                            <img src="{{ asset('assets/frontend/images/wellcome_1.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                             <h4> 24/7 Emergency Available</h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                         <div class="welcome top40">
-                            <img src="{{ asset('assets/frontend/images/wellcome_2.png') }}" alt="image">
+                            <img src="{{ asset('assets/frontend/images/wellcome_2.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                             <h4>Expert and Professional</h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                         <div class="welcome top40">
-                            <img src="{{ asset('assets/frontend/images/wellcome_3.png') }}" alt="image">
+                            <img src="{{ asset('assets/frontend/images/wellcome_3.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                             <h4>Satisfaction Guarantee</h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                         <div class="welcome top40">
-                            <img src="{{ asset('assets/frontend/images/wellcome_4.png') }}" alt="image">
+                            <img src="{{ asset('assets/frontend/images/wellcome_4.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                             <h4>Free Inspection</h4>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8 col-sm-12">
                     <div class="call-to-action-img">
-                        <img src="{{ asset('assets/frontend/images/about-page-3.png') }}" alt="image">
+                        <img src="{{ asset('assets/frontend/images/about-page-3.png') }}" alt="{{$WebInfoModel->WebInf_Name}}">
                     </div>
                 </div>
             </div>

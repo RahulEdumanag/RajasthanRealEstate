@@ -674,8 +674,8 @@ border: 1px solid #dbdbdb; */
     display: inline-block;
 }
 .socials li a {
-    color: #dbdbdb;
-    border: 1px solid #dbdbdb;
+    color: #000000;
+    border: 1px solid #000000;
     display: block;
     font-size: 14px;
     height: 32px;
@@ -2653,7 +2653,7 @@ nav.navbar.bootsnav.sticked .social-icons {
     border-left: 1px solid rgba(229, 229, 229, 1);
     border-radius: 5px;
     border-top: 1px solid rgba(229, 229, 229, 1);
-    color: #999999;
+    color: #000000;
     height: 40px;
     padding: 10px;
     margin-bottom: 15px;
@@ -3115,7 +3115,7 @@ nav.navbar.bootsnav.sticked .social-icons {
     transition: all 0.3s ease 0s;
     width: 100%;
     background-color: #fff;
-    color: #7e7c7c;
+    color: #080808;
     box-shadow: none;
     margin-bottom: 0;
 }

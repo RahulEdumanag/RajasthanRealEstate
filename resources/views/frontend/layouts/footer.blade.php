@@ -83,7 +83,7 @@ $CityModel = City::where('Cit_Status', '=', 0)
     <div class="row border-bottom">
         <div class="col-sm-6 col-md-3">
             <div class="widget dark">
-                <img class="mt-5 mb-20 footerLogo" alt=""
+                <img class="mt-5 mb-20 footerLogo" alt="{{$WebInfoModel->WebInf_Name}}"
                     src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_FooterLogo ?? 'N/A' }}">
                 <p> {{ $WebInfoModel->WebInf_Address ?? 'N/A' }}</p><br />
                 <ul class="list-inline mt-5">

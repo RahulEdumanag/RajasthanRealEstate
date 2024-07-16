@@ -51,10 +51,10 @@
                                        <p>{{ $model->Con_Number2 }}</p>
                                     </div>
                                 @endif
-                                @if ($model->Con_Date)
+                                @if ($model->Con_Month)
                                     <div class="form-group col-lg-6 ">
                                         <label class="form-label">Purchase in Months:</label>
-                                       <p>{{ $model->Con_Date }} Months</p>
+                                       <p>{{ $model->Con_Month }} Months</p>
                                     </div>
                                 @endif
 

@@ -53,8 +53,8 @@
                                         <div class="col-md-6 col-sm-4 col-xs-12">
 
                                             <lable style="color:black">Purchase in Months</lable>
-                                            <select id="i_Date" name="i_Date" class="form-control">
-                                                <option>Select</option>
+                                            <select id="i_Month" name="i_Month" class="form-control">
+                                                <option value="0">Select</option>
                                                 <option value="1">1 Month</option>
                                                 <option value="2">2 Month</option>
                                                 <option value="3">3 Month</option>

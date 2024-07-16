@@ -241,7 +241,7 @@ class HomeController extends Controller
             $model->Con_Email = $request->i_Email;
             $model->Con_Number = $request->i_Number;
             $model->Con_Number2 = $request->i_Number2;
-            $model->Con_Date = $request->i_Date;
+            $model->Con_Month = $request->i_Month;
             $model->Con_Desc = $request->ta_Desc;
             $model->save();
             return back()->with('success', 'Message sent successfully.');

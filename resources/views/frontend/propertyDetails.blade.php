@@ -385,10 +385,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 single-query">
-                                                    <label for="i_Date" style="color: black;">
+                                                    <label for="i_Month" style="color: black;">
                                                         Select Number of Months:</label>
-                                                    <select id="i_Date" name="i_Date" class="form-control"style="border: 1\px solid black;">
-                                                        <option>Select</option>
+                                                    <select id="i_Month" name="i_Month" class="form-control"style="border: 1\px solid black;">
+                                                        <option value="0">Select</option>
                                                         <option value="1">1 Month</option>
                                                         <option value="2">2 Month</option>
                                                         <option value="3">3 Month</option>

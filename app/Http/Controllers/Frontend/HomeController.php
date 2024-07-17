@@ -6,7 +6,10 @@ use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
 use View;
+use App\Mail\ThankYouMessage;
+
 use Stevebauman\Location\Facades\Location;
+ 
 class HomeController extends Controller
 {
     protected $clientId;
@@ -244,6 +247,27 @@ class HomeController extends Controller
             $model->Con_Month = $request->i_Month;
             $model->Con_Desc = $request->ta_Desc;
             $model->save();
+            $contactData = [
+                'Mail_Name' => $model->Con_Name,
+                'Mail_Email' => $model->Con_Email,
+                'Mail_Message' => $model->Con_Desc,
+            ];
+
+            // Send email to the user who filled the form
+            Mail::to($model->Con_Email)->send(new ThankYouMessage($contactData));
+
+            // Check if WebInf_EmailId exists and send email if it does
+            $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+                ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+                ->where('WebInf_Status', '=', '0')
+                ->first();
+
+            if ($WebInfoModel && filter_var($WebInfoModel->WebInf_EmailId, FILTER_VALIDATE_EMAIL)) {
+                Mail::to($WebInfoModel->WebInf_EmailId)->send(new ContactFormMail($contactData));
+            } else {
+                return back()->withErrors(['email' => 'Invalid email address.']);
+            }
+
             return back()->with('success', 'Message sent successfully.');
         } catch (Exception $e) {
             session()->flash('sticky_error', $e->getMessage());
@@ -307,11 +331,11 @@ class HomeController extends Controller
     public function testimonial()
     {
         $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
-        ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
-        ->where('WebInf_Status', '=', '0')
-        ->first();
+            ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+            ->where('WebInf_Status', '=', '0')
+            ->first();
         $TestimonialModel = $this->getTestimonialModel();
-        return view('frontend.testimonial', compact('TestimonialModel','WebInfoModel'));
+        return view('frontend.testimonial', compact('TestimonialModel', 'WebInfoModel'));
     }
     public function faqs()
     {

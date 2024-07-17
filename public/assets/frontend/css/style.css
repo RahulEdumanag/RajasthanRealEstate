@@ -674,8 +674,8 @@ border: 1px solid #dbdbdb; */
     display: inline-block;
 }
 .socials li a {
-    color: #000000;
-    border: 1px solid #000000;
+    color: #dbdbdb;
+    border: 1px solid #dbdbdb;
     display: block;
     font-size: 14px;
     height: 32px;
@@ -1810,7 +1810,7 @@ nav.navbar.bootsnav ul.nav .dropdown-menu li.dropdown.on .dropdown-toggle {
     left: 0;
 }
 .pushmenu {
-    background: #fff;
+    background: #93bd1a;
     padding: 20px 15px;
     width: 270px;
     height: 100%;
@@ -2653,7 +2653,7 @@ nav.navbar.bootsnav.sticked .social-icons {
     border-left: 1px solid rgba(229, 229, 229, 1);
     border-radius: 5px;
     border-top: 1px solid rgba(229, 229, 229, 1);
-    color: #000000;
+    color: #999999;
     height: 40px;
     padding: 10px;
     margin-bottom: 15px;
@@ -3115,7 +3115,7 @@ nav.navbar.bootsnav.sticked .social-icons {
     transition: all 0.3s ease 0s;
     width: 100%;
     background-color: #fff;
-    color: #080808;
+    color: #7e7c7c;
     box-shadow: none;
     margin-bottom: 0;
 }
@@ -8118,7 +8118,7 @@ a.close-overlay.hidden {
         display: inline-block;
     }
     nav.navbar.bootsnav .navbar-toggle {
-        color: #fff;
+        color: #93bd1a;
         float: right;
         margin-right: 0;
         margin-top: 20px;

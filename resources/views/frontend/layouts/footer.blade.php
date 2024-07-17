@@ -242,3 +242,15 @@ $CityModel = City::where('Cit_Status', '=', 0)
 <script src="{{ asset('assets/frontend/js/gmaps.js') }}"></script>
 <script src="{{ asset('assets/frontend/js/contact.js') }}"></script>
 <!--===== #/REQUIRED JS =====-->
+
+<div id="sfc7yc8z8xuk4acrez2y7yajfmwxptkratb" class="edu-counter"></div>
+<script type="text/javascript" src="https://counter8.optistats.ovh/private/counter.js?c=7yc8z8xuk4acrez2y7yajfmwxptkratb&down=async" async></script>
+<br><noscript><img src="https://counter8.optistats.ovh/private/freecounterstat.php?c=7yc8z8xuk4acrez2y7yajfmwxptkratb" border="0" title="web counter" alt="web counter"></noscript>
+
+
+<style type="text/css">
+    .edu-counter a {
+        pointer-events: none;
+        cursor: default;
+    }
+</style>

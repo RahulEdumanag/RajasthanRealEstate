@@ -34,7 +34,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         $q->where('PStatus', '=', '0'); // Ensure properties are active
     })
     ->get();
-  //  dd($PropertyTypeModel);
+//  dd($PropertyTypeModel);
 ?>
 <style>
     .dropdown-menu {
@@ -62,6 +62,15 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         .newLogo {
             width: 90px !important;
         }
+
+        .mobileView {
+            display: block !important;
+        }
+
+    }
+
+    .mobileView {
+        display: none ;
     }
 
     .newLogo {
@@ -98,7 +107,6 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         color: white;
         margin-top: 5px;
     }
-   
 </style>
 <div id="header-top">
     <div class="container">
@@ -123,8 +131,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
         <div class="row">
             <div class="col-md-2 hidden-xs hidden-sm">
                 <a href="/">
-                    <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}" alt="{{$WebInfoModel->WebInf_Name}}"
-                        class="newLogo" />
+                    <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
+                        alt="{{ $WebInfoModel->WebInf_Name }}" class="newLogo" />
                 </a>
             </div>
             <div class="col-md-10 col-sm-12 col-xs-12">
@@ -140,7 +148,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                     </ul>
                 </div>
                 <div class="get-tech-line top20"><img src="{{ asset('assets/frontend/images/get-tuch-line.png') }}"
-                        alt="{{$WebInfoModel->WebInf_Name}}" /></div>
+                        alt="{{ $WebInfoModel->WebInf_Name }}" /></div>
                 <div class="get-tuch text-left top20">
                     <i class="icon-icons74"></i>
                     <ul>
@@ -153,7 +161,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                     </ul>
                 </div>
                 <div class="get-tech-line top20"><img src="{{ asset('assets/frontend/images/get-tuch-line.png') }}"
-                        alt="{{$WebInfoModel->WebInf_Name}}" /></div>
+                        alt="{{ $WebInfoModel->WebInf_Name }}" /></div>
                 <div class="get-tuch text-left top20">
                     <i class=" icon-icons142"></i>
                     <ul>
@@ -161,7 +169,8 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                             <h4>Email Address</h4>
                         </li>
                         <li>
-                            <p style="color:#101010"><a href="#"> {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a>
+                            <p style="color:#101010"><a href="#">
+                                    {{ $WebInfoModel->WebInf_EmailId ?? 'N/A' }}</a>
                             </p>
                         </li>
                     </ul>
@@ -176,14 +185,19 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
             <div class="col-md-12">
                 <div class="social-icons text-right">
                     <ul class="socials">
-                        @foreach ($SocialLinkModel as $model)
-                            <li>
+                        <li>
+                            <a href="https://adminpanel.edumanag.com"
+                                style="color: #000000; border: 1px solid #000000; width:100%; padding: 0px 5px; font-weight:bold;"
+                                target="_blank">LOGIN</a>
+                        </li>
+                        <!-- @foreach ($SocialLinkModel as $model)
+<li>
                                 <a href="{{ $model->Pag_URL }}" target="_blank"
                                     style="color: #000000; border: 1px solid #000000;">
                                     <i class="{!! $model->Pag_Image !!}"></i>
                                 </a>
                             </li>
-                        @endforeach
+@endforeach -->
                     </ul>
                 </div>
                 <div class="navbar-header">
@@ -191,7 +205,7 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                         <i class="fa fa-bars"></i></button>
                     <a class="navbar-brand sticky_logo" href="/">
                         <img src="{{ env('Web_CommonURl') }}{{ $WebInfoModel->WebInf_HeaderLogo ?? 'N/A' }}"
-                            class="logo newLogo" alt="{{$WebInfoModel->WebInf_Name}}"></a>
+                            class="logo newLogo" alt="{{ $WebInfoModel->WebInf_Name }}"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
@@ -265,19 +279,21 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                         $randomImage = $value->getRandomImage();
                                                                     @endphp
                                                                     <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
-                                                                        alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive"
-                                                                        style="height: 100px;">
+                                                                        alt="{{ $WebInfoModel->WebInf_Name }}"
+                                                                        class="img-responsive" style="height: 100px;">
 
                                                                 </div>
                                                                 <h4 style="font-size: small; color:#1f1f1f;"><a
                                                                         href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                                                 </h4>
                                                                 @if ($value->area && $value->area->city)
-                                                                    <p style="color:#1f1f1f;">{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                                    <p style="color:#1f1f1f;">
+                                                                        {{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
                                                                     </p>
                                                                 @else
                                                                     @foreach ($value->cities as $city)
-                                                                        <p style="color:#1f1f1f;">{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                        <p style="color:#1f1f1f;">
+                                                                            {{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
                                                                         </p>
                                                                     @endforeach
                                                                 @endif
@@ -357,19 +373,21 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                                                                     $randomImage = $value->getRandomImage();
                                                                 @endphp
                                                                 <img src="{{ $randomImage ? env('Web_CommonURl') . $randomImage : asset('assets/frontend/images/dummy-img/401.png') }}"
-                                                                    alt="{{$WebInfoModel->WebInf_Name}}" class="img-responsive"
-                                                                    style="height: 100px;">
+                                                                    alt="{{ $WebInfoModel->WebInf_Name }}"
+                                                                    class="img-responsive" style="height: 100px;">
 
                                                             </div>
                                                             <h4 style="font-size: small;color:#1f1f1f;"><a
                                                                     href="{{ URL::to('/property-Details/' . encodeId($value->PId)) }}">{{ $value->PTitle }}</a>
                                                             </h4>
                                                             @if ($value->area && $value->area->city)
-                                                                <p style="color:#1f1f1f;">{{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
+                                                                <p style="color:#1f1f1f;">
+                                                                    {{ $value->area->Are_Name }},{{ $value->area->city->Cit_Name }}
                                                                 </p>
                                                             @else
                                                                 @foreach ($value->cities as $city)
-                                                                    <p style="color:#1f1f1f;">{{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
+                                                                    <p style="color:#1f1f1f;">
+                                                                        {{ $city->Cit_Name }}({{ $city->state->Sta_Name }})
                                                                     </p>
                                                                 @endforeach
                                                             @endif
@@ -436,6 +454,11 @@ $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
                         </li>
                         @endif
                         @endforeach
+                        <li class="mobileView"style="display: none;" >
+                            <a href="https://adminpanel.edumanag.com"
+                                style="color: #000000; border: 1px solid #000000;     text-align: center; width:100%; font-weight:bold;"
+                                target="_blank">LOGIN</a>
+                        </li>
                     </ul>
                 </div>
             </div>

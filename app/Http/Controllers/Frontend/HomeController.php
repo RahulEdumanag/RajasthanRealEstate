@@ -1,15 +1,13 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-use App\Models\{Area, PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
+use App\Models\{PropertyFeatures, State, Area, PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
 use Illuminate\Http\Request;
 use View;
 use App\Mail\ThankYouMessage;
-
 use Stevebauman\Location\Facades\Location;
- 
 class HomeController extends Controller
 {
     protected $clientId;
@@ -101,18 +99,15 @@ class HomeController extends Controller
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
-
         if ($request->filled('statusType')) {
             $query->where('PType', '=', $request->statusType);
         }
-
         if ($request->filled('location')) {
             $cityId = decodeId($request->location);
             $query->whereHas('city', function ($q) use ($cityId) {
                 $q->where('Cit_Id', $cityId);
             });
         }
-
         if ($request->filled('area')) {
             $areaId = decodeId($request->area);
             $query->whereHas('area', function ($q) use ($areaId) {
@@ -252,22 +247,18 @@ class HomeController extends Controller
                 'Mail_Email' => $model->Con_Email,
                 'Mail_Message' => $model->Con_Desc,
             ];
-
             // Send email to the user who filled the form
             Mail::to($model->Con_Email)->send(new ThankYouMessage($contactData));
-
             // Check if WebInf_EmailId exists and send email if it does
             $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
                 ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
                 ->where('WebInf_Status', '=', '0')
                 ->first();
-
             if ($WebInfoModel && filter_var($WebInfoModel->WebInf_EmailId, FILTER_VALIDATE_EMAIL)) {
                 Mail::to($WebInfoModel->WebInf_EmailId)->send(new ContactFormMail($contactData));
             } else {
                 return back()->withErrors(['email' => 'Invalid email address.']);
             }
-
             return back()->with('success', 'Message sent successfully.');
         } catch (Exception $e) {
             session()->flash('sticky_error', $e->getMessage());
@@ -363,19 +354,16 @@ class HomeController extends Controller
         if ($request->filled('keyword')) {
             $query->where('PTitle', 'like', '%' . $request->keyword . '%');
         }
-
         if ($request->filled('statusType')) {
             $statusTypeId = decodeId($request->statusType);
             $query->where('PType', '=', $statusTypeId);
         }
-
         if ($request->filled('location')) {
             $cityId = decodeId($request->location);
             $query->whereHas('city', function ($q) use ($cityId) {
                 $q->where('Cit_Id', $cityId);
             });
         }
-
         if ($request->filled('area')) {
             $areaId = decodeId($request->area);
             $query->whereHas('area', function ($q) use ($areaId) {
@@ -416,7 +404,6 @@ class HomeController extends Controller
                 $q->where('PStatus', '=', '0'); // Ensure properties are active
             })
             ->get();
-
         $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
             ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
             ->where('WebInf_Status', '=', '0')
@@ -443,5 +430,145 @@ class HomeController extends Controller
                 ->get();
             return response()->json($areas);
         }
+    }
+    public function Pstore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'PType' => 'required',
+            'PSta_Id' => 'required',
+            'PCit_Id' => 'required',
+            'PPTyp_Id' => 'required',
+            'PAmount' => 'required',
+            'PTitle' => 'required',
+            'PNumber' => 'required',
+        ]);
+        try {
+            $property = new Property();
+            $lastProperty = Property::orderBy('PPropertycode', 'desc')->first();
+            $property->PReg_Id = $request->input('PReg_Id', $this->clientId);
+            $newPropertyCode = $lastProperty ? $lastProperty->PPropertycode + 1 : 1000;
+            $property->PType = $request->PType;
+            $property->PSta_Id = $request->PSta_Id;
+            $property->PCit_Id = $request->PCit_Id;
+            $property->PAre_Id = $request->PAre_Id ?? null;
+            $property->PPTyp_Id = $request->PPTyp_Id;
+            $property->PPFea_Id = json_encode($request->PPFea_Id);
+            $property->PPropertycode = $newPropertyCode;
+            $property->PShortDesc = $request->PShortDesc;
+            $property->PNumber = $request->PNumber;
+            $property->PTag = $request->PTag;
+            $property->PSqureFeet = $request->PSqureFeet;
+            $property->PMapLink = $request->PMapLink;
+            $property->PAddress = $request->PAddress;
+            $property->PBedRoom = $request->PBedRoom ?? 0;
+            $property->PBathRoom = $request->PBathRoom ?? 0;
+            $property->PTitle = $request->PTitle;
+            $property->PAmount = $request->PAmount ?? 0;
+            $property->PFullDesc = $request->PFullDesc;
+            $property->PStatus = 1;
+            $property->PCreatedDate = Carbon::now('Asia/Kolkata');
+            if ($request->hasFile('PImages') && is_array($request->file('PImages'))) {
+                if (count($request->file('PImages')) > 10) {
+                    return redirect()->back()->with('error', 'You can only upload a maximum of 10 images at once.');
+                }
+            }
+            if ($request->hasFile('PPlansImage') && is_array($request->file('PPlansImage'))) {
+                if (count($request->file('PPlansImage')) > 10) {
+                    return redirect()->back()->with('error', 'You can only upload a maximum of 10 images at once.');
+                }
+            }
+            // Handle property images
+            if ($request->hasFile('PImages')) {
+                foreach ($request->file('PImages') as $file) {
+                    if ($file->isValid()) {
+                        $extension = strtolower($file->getClientOriginalExtension());
+                        if (in_array($extension, ['jpg', 'jpeg', 'png', 'svg', 'webp'])) {
+                            $subfolderName = $this->clientId;
+                            $folderName = 'Gallery_images';
+                            $destinationPath = public_path("uploads/{$subfolderName}/{$folderName}");
+                            if (!file_exists($destinationPath)) {
+                                mkdir($destinationPath, 0777, true);
+                            }
+                            $fileName = time() . '_' . $file->getClientOriginalName();
+                            $file->move($destinationPath, $fileName);
+                            $images[] = "{$subfolderName}/{$folderName}/{$fileName}";
+                        }
+                    }
+                }
+                $property->PImages = implode(',', $images);
+            }
+
+            // Handle plan images
+            if ($request->hasFile('PPlansImage')) {
+                foreach ($request->file('PPlansImage') as $file) {
+                    if ($file->isValid()) {
+                        $extension = strtolower($file->getClientOriginalExtension());
+                        if (in_array($extension, ['jpg', 'jpeg', 'png', 'svg', 'webp'])) {
+                            $subfolderName = $this->clientId;
+                            $folderName = 'Plan_images';
+                            $destinationPath = public_path("uploads/{$subfolderName}/{$folderName}");
+                            if (!file_exists($destinationPath)) {
+                                mkdir($destinationPath, 0777, true);
+                            }
+                            $fileName = time() . '_' . $file->getClientOriginalName();
+                            $file->move($destinationPath, $fileName);
+                            $planImages[] = "{$subfolderName}/{$folderName}/{$fileName}";
+                        }
+                    }
+                }
+                $property->PPlansImage = implode(',', $planImages);
+            }
+
+            // Save property
+            $property->save();
+            // Redirect back with success message
+            return back()->with('success', 'Property added successfully.');
+        } catch (\Exception $e) {
+            session()->flash('sticky_error', $e->getMessage());
+            return back()
+                ->withInput()
+                ->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+    public function storeImage(Request $request)
+    {
+        // Validate incoming request data
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        try {
+            // Store the image
+            $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images', $imageName);
+            // Save image data to database if needed
+            $image = new Image();
+            $image->filename = $imageName;
+            $image->save();
+            return back()->with('success', 'Image uploaded successfully.');
+        } catch (\Exception $e) {
+            return back()
+                ->withInput()
+                ->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+    public function propertyListing(Request $request)
+    {
+        $StateModel = State::where('Sta_Status', '=', 0)->get();
+        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)
+            ->where('PTyp_Reg_Id', $this->clientId)
+            ->get();
+        $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
+        $CityModel = City::where('Cit_Status', '=', 0)->orderBy('Cit_CreatedDate', 'desc')->get();
+        $AreaModel = Area::where('Are_Status', '=', 0)->orderBy('Are_CreatedDate', 'desc')->get();
+        $lastSelectedPSta_Id = $request->session()->get('lastSelectedPSta_Id');
+        $lastSelectedPCit_Id = $request->session()->get('lastSelectedPCit_Id');
+        $lastSelectedPAre_Id = $request->session()->get('lastSelectedPAre_Id');
+        $lastSelectedPPTyp_Id = $request->session()->get('lastSelectedPPTyp_Id');
+        $lastSelectedPFeatured = $request->session()->get('lastSelectedPFeatured');
+        $lastSelectedPBedRoom = $request->session()->get('lastSelectedPBedRoom');
+        $lastSelectedPBathRoom = $request->session()->get('lastSelectedPBathRoom');
+        $lastSelectedPType = $request->session()->get('lastSelectedPType');
+        $ImgMaxSizeModel = getImgMaxSizeModel();
+        return view('frontend.propertyListing', compact('lastSelectedPType', 'lastSelectedPBedRoom', 'lastSelectedPBathRoom', 'lastSelectedPFeatured', 'lastSelectedPPTyp_Id', 'lastSelectedPAre_Id', 'lastSelectedPCit_Id', 'lastSelectedPSta_Id', 'AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
 }

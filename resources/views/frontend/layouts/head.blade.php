@@ -50,3 +50,4 @@ $MetaTagsModel = MetaTags::where('Met_Status', '=', 0)->where('Met_Reg_Id', '=',
     // Append link element to HTML head
     head.appendChild(link);
 </script>
+<script src="https://cdn.ckeditor.com/4.16.2/standard-all/ckeditor.js"></script>

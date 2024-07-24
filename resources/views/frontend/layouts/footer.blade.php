@@ -33,6 +33,9 @@ $CityModel = City::where('Cit_Status', '=', 0)
             width: 175px !important;
         }
     }
+    .cke_notification_warning{
+    display:none;
+    }
 </style>
 <section id="contact" class="bg-color-red">
     <div class="container">
@@ -254,3 +257,44 @@ $CityModel = City::where('Cit_Status', '=', 0)
         cursor: default;
     }
 </style>
+
+<script>
+     document.querySelectorAll('.applyCK').forEach(function(element) {
+        CKEDITOR.replace(element, {
+            filebrowserUploadUrl: "{{ route('admin.images.upload') }}",
+            filebrowserUploadMethod: 'form',
+            filebrowserImageBrowseUrl: "{{ route('admin.images.browse') }}",
+            filebrowserImageBrowseMethod: 'get',
+            height: 300,
+            extraPlugins: 'colorbutton,justify,font,smiley,link,templates',
+            colorButton_enableMore: true,
+            colorButton_colors: '00BCD4,8BC34A,FFC107,FF5722,673AB7,F44336,2196F3,4CAF50',
+            toolbar: [
+                ['Source', 'Bold', 'Italic', 'Underline', 'TextColor', 'BGColor', 'NumberedList',
+                    'BulletedList', 'Link', 'Unlink', 'Blockquote', 'JustifyLeft', 'JustifyCenter',
+                    'JustifyRight', 'JustifyBlock', 'Indent', 'Outdent', 'RemoveFormat', 'Subscript',
+                    'Superscript', 'HorizontalRule', 'SpecialChar', 'Image', 'Table', 'Smiley', 'Styles',
+                    'Format', 'Font', 'FontSize', 'Maximize', 'PasteText', 'PasteFromWord', 'Undo', 'Redo'
+                ],
+                ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'],
+                ['Templates', 'CodeSnippet'] // Add 'CodeSnippet' for source tool button
+            ],
+            templates: 'default',
+            fontSize_sizes: '8/8px;9/9px;10/10px;11/11px;12/12px;14/14px;16/16px;18/18px;20/20px;22/22px;24/24px;28/28px;32/32px;36/36px',
+            filebrowserImageUploadUrl: "{{ route('admin.images.upload') }}",
+            filebrowserImageBrowseUrl: "{{ route('admin.images.browse') }}",
+            filebrowserImageBrowseMethod: 'get',
+            filebrowserUploadMethod: function(url, result, formData) {
+                result = JSON.parse(result);
+                if (result.uploaded) {
+                    return result.url;
+                } else {
+                    console.error('Error uploading image:', result.error.message);
+                    return '';
+                }
+            },
+        });
+    });
+</script>
+
+

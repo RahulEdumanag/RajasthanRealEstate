@@ -130,3 +130,8 @@ Route::get('/property', [HomeController::class, 'property'])->name('property');
 Route::get('/get-areas-by-city', [HomeController::class, 'getAreasByCity'])->name('getAreasByCity');
 Route::post('/send-contact-form', [MailController::class, 'sendContactForm'])->name('sendContactForm');
  
+
+Route::get('/propertyListing', [HomeController::class, 'propertyListing'])->name('propertyListing');
+
+Route::post('/propertyListing/Pstore', [HomeController::class, 'Pstore'])->name('propertyListing.Pstore');
+ 

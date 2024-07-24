@@ -24,6 +24,18 @@
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="row g-3">
+
+                                <div class="col-sm-12">
+                                    <label for="Met_Type" class="form-label">Type</label>
+                                    <select class="form-control" id="Met_Type" name="Met_Type">
+                                        <option value="1"
+                                            {{ old('Met_Type', $model->Met_Type) == '1' ? 'selected' : '' }}>Name</option>
+                                        <option value="2"
+                                            {{ old('Met_Type', $model->Met_Type) == '2' ? 'selected' : '' }}>Property
+                                        </option>
+                                    </select>
+                                </div>
+
                                 <div class="col-sm-12">
                                     <label for="Keywords" class="form-label">Keywords<span
                                             style="color:red">*</span></label>

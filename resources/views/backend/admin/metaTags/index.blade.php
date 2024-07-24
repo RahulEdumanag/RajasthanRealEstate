@@ -37,13 +37,12 @@
                         <span class="text-muted fw-light">Meta Tags /</span> List
                     </h5>
                 </div>
-                @if ($model->isEmpty())
-                    <div class="page-title-actions">
-                        <a href="{{ URL::to('admin/metaTags/create') }}" class="btn btn-primary">
-                            <i class="bi bi-plus-lg"></i> Add Meta Tags
-                        </a>
-                    </div>
-                @endif
+
+                <div class="page-title-actions">
+                    <a href="{{ URL::to('admin/metaTags/create') }}" class="btn btn-primary">
+                        <i class="bi bi-plus-lg"></i> Add Meta Tags
+                    </a>
+                </div>
             </div>
         </div>
         <div>

@@ -14,6 +14,7 @@ class MetaTagsController extends Controller
         $model = MetaTags::where('Met_Status', '!=', 2)
             ->where(['Met_Reg_Id' => getSelectedValue()])
             ->get();
+            // dd($model);
         return view('backend.admin.metaTags.index', compact('model'));
     }
 
@@ -30,6 +31,7 @@ class MetaTagsController extends Controller
             $model = new MetaTags();
 
             $model->Met_Reg_Id = getSelectedValue();
+            $model->Met_Type = $request->Met_Type;
             $model->Met_Keywords = $request->Met_Keywords;
             $model->Met_Description = $request->Met_Description;
             $model->Met_OgTitle = $request->Met_OgTitle;
@@ -57,6 +59,7 @@ class MetaTagsController extends Controller
         $request->validate([]);
         try {
             $model = MetaTags::findOrFail($Met_id);
+            $model->Met_Type = $request->Met_Type;
             $model->Met_Keywords = $request->Met_Keywords;
             $model->Met_Description = $request->Met_Description;
             $model->Met_OgTitle = $request->Met_OgTitle;

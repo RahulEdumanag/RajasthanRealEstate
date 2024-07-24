@@ -33,6 +33,19 @@
                             method="post" accept-charset="utf-8">
                             @csrf
                             <div class="row g-3">
+
+                                <div class="col-sm-12 form-group">
+                                    <label class="form-label" for="Met_Type"> Type <span style="color:red">*</span></label>
+                                    <select class="form-control" id="Met_Type" name="Met_Type">
+                                        <option  selected disabled>Select</option>
+                                        <option value="1">Name</option>
+                                        <option value="2">Property</option>
+                                    </select>
+                                    <span id="Met_Type-error" class="error" style="color: red;"></span>
+
+                                </div>
+
+
                                 <div class="col-sm-12">
                                     <label class="form-label" for="Keywords">Keywords <span
                                             style="color:red">*</span></label>
@@ -106,12 +119,16 @@
             $("#register-form").validate({
                 rules: {
 
-                    Met_Keywords: "required"
+                    Met_Keywords: "required",
+                    Met_Type: "required"
+
 
                 },
                 messages: {
 
-                    Met_Keywords: "This field is required"
+                    Met_Keywords: "This field is required",
+                    Met_Type: "This field is required"
+
                 },
                 errorPlacement: function(error, element) {
                     var fieldName = element.attr("name");
@@ -126,7 +143,9 @@
                 }
             });
             var fieldErrorMap = {
-                Met_Keywords: "#Met_Keywords-error"
+                Met_Keywords: "#Met_Keywords-error",
+                Met_Type: "#Met_Type-error"
+
             };
         });
     </script>

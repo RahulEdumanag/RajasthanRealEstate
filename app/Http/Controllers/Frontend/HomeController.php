@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Models\{PropertyFeatures, State, Area, PropertyType, City, Property, Page, SubMenu, Menu, Enquirie, Blog, Gallery, ContactCategory, Contact, GalleryCategory, WebInfo, VisitorCounter};
 use Illuminate\Support\{Carbon, Facades\Artisan, Facades\Mail};
 use App\Mail\ContactFormMail;
+use App\Mail\PropertyAdded;
+
 use Illuminate\Http\Request;
 use View;
 use App\Mail\ThankYouMessage;
@@ -465,7 +467,7 @@ class HomeController extends Controller
             $property->PTitle = $request->PTitle;
             $property->PAmount = $request->PAmount ?? 0;
             $property->PFullDesc = $request->PFullDesc;
-            $property->PStatus = 1;
+            $property->PStatus = 3;
             $property->PCreatedDate = Carbon::now('Asia/Kolkata');
             if ($request->hasFile('PImages') && is_array($request->file('PImages'))) {
                 if (count($request->file('PImages')) > 10) {
@@ -521,6 +523,18 @@ class HomeController extends Controller
 
             // Save property
             $property->save();
+
+            // Check if WebInf_EmailId exists and send email if it does
+            $WebInfoModel = WebInfo::orderBy('WebInf_CreatedDate', 'desc')
+                ->where('tbl_website_information.WebInf_Reg_Id', '=', $this->clientId)
+                ->where('WebInf_Status', '=', '0')
+                ->first();
+            if ($WebInfoModel && filter_var($WebInfoModel->WebInf_EmailId, FILTER_VALIDATE_EMAIL)) {
+                Mail::to($WebInfoModel->WebInf_EmailId)->send(new PropertyAdded($property));
+            } else {
+                return back()->withErrors(['email' => 'Invalid email address.']);
+            }
+
             // Redirect back with success message
             return back()->with('success', 'Property added successfully.');
         } catch (\Exception $e) {

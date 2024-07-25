@@ -19,33 +19,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\AdminCredentials;
 use Illuminate\Support\Facades\Mail;
-class PropertyController extends Controller
+class PropertyListingController extends Controller
 {
     public function index(Request $request)
     {
-        $model = Property::where('PStatus', '!=', 2)->where('PStatus', '!=', 3)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
-        return view('backend.admin.property.index', compact('model'));
+        $model = Property::where('PStatus', 3)
+                         ->where('PReg_Id', getSelectedValue())
+                         ->orderBy('PCreatedDate', 'desc')
+                         ->get();
+        
+        return view('backend.admin.propertyListing.index', compact('model'));
     }
+    
     public function create(Request $request)
     {
-        $StateModel = State::where('Sta_Status', '=', 0)->get();
-        $PropertyTypeModel = PropertyType::where('PTyp_Status', '=', 0)->where('PTyp_Reg_Id', getSelectedValue())->get();
-        $PropertyFeaturesModel = PropertyFeatures::where('PFea_Status', '=', 0)->get();
-        $CityModel = City::where('Cit_Status', '=', 0)->orderBy('Cit_CreatedDate', 'desc')->get();
-        $AreaModel = Area::where('Are_Status', '=', 0)->orderBy('Are_CreatedDate', 'desc')->get();
+        $model = Property::where('PStatus', '=', 3)->where('PReg_Id', getSelectedValue())->orderBy('PCreatedDate', 'desc')->get();
 
-        $lastSelectedPSta_Id = $request->session()->get('lastSelectedPSta_Id');
-        $lastSelectedPCit_Id = $request->session()->get('lastSelectedPCit_Id');
-        $lastSelectedPAre_Id = $request->session()->get('lastSelectedPAre_Id');
-        $lastSelectedPPTyp_Id = $request->session()->get('lastSelectedPPTyp_Id');
-        $lastSelectedPFeatured = $request->session()->get('lastSelectedPFeatured');
-        $lastSelectedPBedRoom = $request->session()->get('lastSelectedPBedRoom');
-        $lastSelectedPBathRoom = $request->session()->get('lastSelectedPBathRoom');
-        $lastSelectedPType = $request->session()->get('lastSelectedPType');
-
-        $ImgMaxSizeModel = getImgMaxSizeModel();
-        //    dd($PropertyFeaturesModel);
-        return view('backend.admin.property.create', compact('lastSelectedPType','lastSelectedPBedRoom','lastSelectedPBathRoom','lastSelectedPFeatured', 'lastSelectedPPTyp_Id', 'lastSelectedPAre_Id', 'lastSelectedPCit_Id', 'lastSelectedPSta_Id', 'AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
+        return view('backend.admin.propertyListing.create', compact('model'));
     }
     public function getCitiesByState(Request $request)
     {
@@ -169,7 +159,7 @@ class PropertyController extends Controller
             $request->session()->flash('lastSelectedPBathRoom', $request->PBathRoom);
             $request->session()->flash('lastSelectedPType', $request->PType);
 
-            return redirect()->route('admin.property.create')->with('success', 'Record added successfully.');
+            return redirect()->route('admin.propertyListing.create')->with('success', 'Record added successfully.');
         } catch (Exception $e) {
             session()->flash('sticky_error', $e->getMessage());
             print_r($e->getMessage());
@@ -187,10 +177,11 @@ class PropertyController extends Controller
         $ImgMaxSizeModel = getImgMaxSizeModel();
         $PId = decodeId($hashedId);
         $model = Property::with('city.state')->where('PId', $PId)->first();
+        // dd( $model );
         $AreaModel = $model->city ? $model->city->areas : collect();
         $selectedCityId = $model->PCit_Id; // Get the selected city ID
 
-        return view('backend.admin.property.edit', compact('AreaModel', 'StateModel', 'model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel', 'selectedCityId'));
+        return view('backend.admin.propertyListing.edit', compact('AreaModel', 'StateModel', 'model', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel', 'selectedCityId'));
     }
     public function update(Request $request, $PId)
     {
@@ -264,7 +255,7 @@ class PropertyController extends Controller
                 $model->PPlansImage = implode(',', $planImages);
             }
             $model->save();
-            return redirect()->route('admin.property.index')->with('success', 'Record updated successfully.');
+            return redirect()->route('admin.propertyListing.index')->with('success', 'Record updated successfully.');
         } catch (Exception $e) {
             session()->flash('sticky_error', $e->getMessage());
             return back();
@@ -315,7 +306,7 @@ class PropertyController extends Controller
         try {
             $page = Property::findOrFail($id);
             $page->update(['PStatus' => '1']);
-            return redirect()->route('admin.property.index')->with('success', 'Property marked as inactive.');
+            return redirect()->route('admin.propertyListing.index')->with('success', 'Property marked as inactive.');
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
         }
@@ -325,9 +316,15 @@ class PropertyController extends Controller
         try {
             $page = Property::findOrFail($id);
             $page->update(['PStatus' => '0']);
-            return redirect()->route('admin.property.index')->with('success', 'Property marked as active.');
+            return redirect()->route('admin.propertyListing.index')->with('success', 'Property marked as active.');
         } catch (\Exception $e) {
             return back()->with('error', 'Error: ' . $e->getMessage());
         }
     }
+
+    public function show($propertyId) {
+        $property = Property::findOrFail($propertyId); // Adjust this based on your Property model and logic
+        return view('backend.admin.propertyListing.modal_content', compact('property'));
+    }
+    
 }

@@ -75,8 +75,7 @@ Route::resources([
     'propertyType' => 'PropertyTypeController',
     'propertyFeatures' => 'PropertyFeaturesController',
     'area' => 'AreaController',
- 
-
+    'propertyListing' => 'PropertyListingController',
 ]);
 Route::post('/admin/slider/updateOrder', 'SliderController@updateOrder')->name('admin.slider.updateOrder');
 
@@ -121,13 +120,13 @@ $controllers = [
     'ProductController' => 'product',
     'NewsletterController' => 'newsletter',
     'SettingController' => 'settings',
- 
+
     'MasterController' => 'master',
     'SubMasterController' => 'submaster',
     'ImgsizeController' => 'imgsize',
     'DashboardController' => 'home',
     'EnquirieController' => 'enquirie',
-    'ContactCategoryController' => 'contactCategory', 
+    'ContactCategoryController' => 'contactCategory',
     'MetaTagsController' => 'metaTags',
     'ImgsizeController' => 'imgsize',
     'CounsellingController' => 'counselling',
@@ -138,7 +137,7 @@ $controllers = [
     'PropertyTypeController' => 'propertyType',
     'PropertyFeaturesController' => 'propertyFeatures',
     'AreaController' => 'area',
-
+    'PropertyListingController' => 'propertyListing',
 ];
 
 // Active and Inactive Status get routes
@@ -166,6 +165,7 @@ Route::post('/set-session-variable', function () {
 
     return response()->json(['status' => 'success']);
 });
+Route::get('/admin/propertyListing/{propertyId}', 'PropertyListingController@show')->name('admin.propertyListing.show');
 
 // Test routes
 

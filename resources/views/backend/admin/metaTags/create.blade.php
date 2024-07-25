@@ -63,27 +63,7 @@
                                         </textarea>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 form-group ">
-                                    <label class="form-label" for="Og: Title">Og: Title</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="text" id="Met_OgTitle" name="Met_OgTitle" class="form-control"
-                                            autocomplete="off" placeholder="Enter your Og: Title"
-                                            aria-describedby="name2" />
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-sm-12 form-group">
-                                    <label class="form-label" for="Og: Description">Og: Description</label>
-                                    <div class="input-group input-group-merge">
-                                        <textarea id="Met_OgDescription" name="Met_OgDescription" class="form-control" autocomplete="off"
-                                            placeholder="Enter your Description" aria-describedby="name2">
-                                        </textarea>
-                                    </div>
-                                </div>
-
-
+                                
 
 
                                 <div class="form-group mt-3">

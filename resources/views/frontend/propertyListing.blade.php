@@ -11,13 +11,13 @@
     <div class="page-title page-main-section parallaxie">
         <div class="container padding-bottom-top-120 text-uppercase text-center">
             <div class="main-title">
-                <h1>propertyListing</h1>
+                <h1>ADD PROPERTY</h1>
                 <h5>40 Years Of Experience!</h5>
                 <div class="line_4"></div>
                 <div class="line_5"></div>
                 <div class="line_6"></div>
                 <a href="{{ URL::to('/') }}">home</a><span><i class="fa fa-angle-double-right"
-                        aria-hidden="true"></i></span><a href="{{ URL::to('/contact') }}">propertyListing</a>
+                        aria-hidden="true"></i></span><a href="{{ URL::to('/propertyListing') }}">Add Property</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="bottom40">
-                                    <h2 class="text-uppercase">Send us a<span class="color_red"> message </span>
+                                    <h2 class="text-uppercase">Add a<span class="color_red"> PROPERTY FOR LISTING                                    </span>
                                         @if (session('success'))
                                             <div class="alert alert-success">
                                                 {{ session('success') }}

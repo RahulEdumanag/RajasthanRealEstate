@@ -49,16 +49,7 @@
                                 </div>
 
 
-                                <div class="col-sm-12">
-                                    <label for="Og: Title" class="form-label">Og: Title</label>
-                                    <input type="text" class="form-control" id="Met_OgTitle" name="Met_OgTitle"
-                                        value="{{ old('Met_OgTitle', $model->Met_OgTitle) }}" placeholder="">
-                                </div>
-                                <div class="col-sm-12">
-                                    <label for="Og: Description" class="form-label">Og: Description</label>
-                                    <textarea class="form-control" id="Met_OgDescription" name="Met_OgDescription" placeholder="">{{ old('Met_OgDescription', $model->Met_OgDescription) }}</textarea>
-                                </div>
-
+                                
 
 
 

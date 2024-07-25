@@ -19,14 +19,9 @@ $MetaTagsModel = MetaTags::where('Met_Status', '=', 0)->where('Met_Reg_Id', '=',
 <!-- Meta Tags -->
 @foreach ($MetaTagsModel as $metaTag)
     @if ($metaTag->Met_Type === 1)
-        <meta name="keywords" content="{{ $metaTag->Met_Keywords }}">
-        <meta name="description" content="{{ $metaTag->Met_Description }}">
+        <meta name="{{ $metaTag->Met_Keywords }}" content="{{ $metaTag->Met_Description }}">
     @elseif ($metaTag->Met_Type === 2)
-        <meta name="keywords" content="{{ $metaTag->Met_Keywords }}">
-        <meta name="description" content="{{ $metaTag->Met_Description }}">
-
-        <meta property="og:title" content="{{ $metaTag->Met_OgTitle ?? 'N/A' }}">
-        <meta property="og:description" content="{{ $metaTag->Met_OgDescription ?? 'N/A' }}">
+        <meta property="{{ $metaTag->Met_Keywords }}" content="{{ $metaTag->Met_Description }}">
     @endif
 @endforeach
 

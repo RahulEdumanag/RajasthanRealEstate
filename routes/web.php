@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Admin\GalleryController;
 use App\Http\Controllers\Backend\Admin\PropertyController;
 use App\Http\Controllers\Backend\Admin\AreaController;
 use App\Http\Controllers\Backend\Admin\ContactController;
+use App\Http\Controllers\Backend\Admin\PropertyListingController;
 
 
 Route::group(
@@ -134,4 +135,11 @@ Route::post('/send-contact-form', [MailController::class, 'sendContactForm'])->n
 Route::get('/propertyListing', [HomeController::class, 'propertyListing'])->name('propertyListing');
 
 Route::post('/propertyListing/Pstore', [HomeController::class, 'Pstore'])->name('propertyListing.Pstore');
- 
+Route::get('/admin/propertyListing/{propertyId}', 'PropertyListingController@show')->name('admin.propertyListing.show');
+
+Route::get('/admin/propertyListing', [PropertyListingController::class, 'index'])->name('admin.propertyListing.index');
+Route::get('/admin/propertyListing/{id}', [PropertyListingController::class, 'getPropertyDetails'])->name('admin.propertyListing.details');
+
+
+Route::post('/getCitiesByState', [HomeController::class, 'getCitiesByState'])->name('getCitiesByState');
+Route::post('/getAreasByCity', [HomeController::class, 'getAreasByCity'])->name('getAreasByCity');

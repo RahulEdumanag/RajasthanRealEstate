@@ -415,7 +415,7 @@
             $('#PSta_Id').on('change', function() {
                 var stateId = $(this).val();
                 $.ajax({
-                    url: "{{ route('admin.area.getCitiesByState') }}",
+                    url: "{{ route('getCitiesByState') }}",
                     type: 'POST',
                     data: {
                         _token: "{{ csrf_token() }}",
@@ -430,7 +430,7 @@
             $('#PCit_Id').on('change', function() {
                 var cityId = $(this).val();
                 $.ajax({
-                    url: "{{ route('admin.area.getAreasByCity') }}",
+                    url: "{{ route('getAreasByCity') }}",
                     type: 'POST',
                     data: {
                         _token: "{{ csrf_token() }}",

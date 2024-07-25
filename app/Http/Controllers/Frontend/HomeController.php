@@ -424,15 +424,9 @@ class HomeController extends Controller
         }
         return response()->json([]);
     }
-    public function getAreasByCity(Request $request)
-    {
-        if ($request->ajax()) {
-            $areas = Area::where('Are_Cit_Id', decodeId($request->CityId))
-                ->where('Are_Status', 0)
-                ->get();
-            return response()->json($areas);
-        }
-    }
+   
+    
+
     public function Pstore(Request $request)
     {
         $validatedData = $request->validate([
@@ -585,4 +579,36 @@ class HomeController extends Controller
         $ImgMaxSizeModel = getImgMaxSizeModel();
         return view('frontend.propertyListing', compact('lastSelectedPType', 'lastSelectedPBedRoom', 'lastSelectedPBathRoom', 'lastSelectedPFeatured', 'lastSelectedPPTyp_Id', 'lastSelectedPAre_Id', 'lastSelectedPCit_Id', 'lastSelectedPSta_Id', 'AreaModel', 'StateModel', 'ImgMaxSizeModel', 'PropertyTypeModel', 'PropertyFeaturesModel', 'CityModel'));
     }
+
+    public function getCitiesByState(Request $request)
+    {
+        $stateId = $request->input('stateId');
+        $cities = City::where('Cit_Sta_Id', $stateId)->where('Cit_Status', '=', 0)->get();
+        $options = '<option selected disabled>Select City</option>';
+        foreach ($cities as $city) {
+            $options .= '<option value="' . $city->Cit_Id . '">' . $city->Cit_Name . '</option>';
+        }
+        return $options;
+    }
+ 
+
+public function getAreasByCity(Request $request)
+{
+    try {
+        $cityId = $request->cityId;
+        $areas = Area::where('Are_Status', '=', 0)
+            ->where('Are_Cit_Id', $cityId)
+            ->get();
+        
+        $options = '<option selected disabled>Select Area</option>';
+        foreach ($areas as $area) {
+            $options .= "<option value='{$area->Are_Id}'>{$area->Are_Name}</option>";
+        }
+        
+        return response($options);
+    } catch (\Exception $e) {
+        \Log::error('Error fetching areas: ' . $e->getMessage());
+        return response()->json(['error' => 'Error fetching areas'], 500);
+    }
+}
 }

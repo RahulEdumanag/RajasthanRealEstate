@@ -6,6 +6,22 @@
             color: black;
             opacity: 1;
         }
+
+        #register-form {
+            margin: 20px 0;
+        }
+
+        legend {
+            display: block;
+            width: 7%;
+            padding: 0;
+            margin-bottom: 20px;
+            font-size: 21px;
+            line-height: inherit;
+            color: #333;
+            border: 0;
+            /* border-bottom: 1px solid #e5e5e5; */
+        }
     </style>
     <!--===== PAGE TITLE =====-->
     <div class="page-title page-main-section parallaxie">
@@ -29,7 +45,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="bottom40">
-                                    <h2 class="text-uppercase">Add a<span class="color_red"> PROPERTY FOR LISTING                                    </span>
+                                    <h2 class="text-uppercase">Add a<span class="color_red"> PROPERTY FOR LISTING </span>
                                         @if (session('success'))
                                             <div class="alert alert-success">
                                                 {{ session('success') }}
@@ -45,17 +61,15 @@
                                     <div class="line_2"></div>
                                     <div class="line_3"></div>
                                 </div>
-
                                 <form id="register-form" action="{{ route('propertyListing.Pstore') }}"
                                     enctype="multipart/form-data" method="post" accept-charset="utf-8">
                                     @csrf
                                     <div class="row g-3">
-
                                         <div class="col-sm-6 form-group ">
                                             <label class="form-label" for="type">Type<span
                                                     style="color:red">*</span></label>
-                                            <select class="form-control" id="PType" name="PType">
-                                                <option selected disabled>Select Type</option>
+                                            <select class="form-control" id="PType" name="PType" required>
+                                                <option value="" disabled selected>Select Type</option>
                                                 <option value='1'
                                                     {{ isset($lastSelectedPType) && $lastSelectedPType == '1' ? 'selected' : '' }}>
                                                     Rent</option>
@@ -67,12 +81,11 @@
                                                 <span class="error" style="color: red;">this field is required</span>
                                             @enderror
                                         </div>
-
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="PSta_Id">State Name<span
                                                     style="color:red">*</span></label>
-                                            <select class="form-control" id="PSta_Id" name="PSta_Id" reui>
-                                                <option selected disabled>Select State</option>
+                                            <select class="form-control" id="PSta_Id" name="PSta_Id" required>
+                                                <option value="" selected disabled>Select State</option>
                                                 @foreach ($StateModel as $state)
                                                     <option value='{{ $state->Sta_Id }}'
                                                         @if ($state->Sta_Id == $lastSelectedPSta_Id) selected @endif>
@@ -86,8 +99,8 @@
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="PCit_Id">City Name<span
                                                     style="color:red">*</span></label>
-                                            <select class="form-control" id="PCit_Id" name="PCit_Id">
-                                                <option selected disabled>Select City</option>
+                                            <select class="form-control" id="PCit_Id" name="PCit_Id" required>
+                                                <option value="" selected disabled>Select City</option>
                                                 @if (isset($CityModel) && $lastSelectedPSta_Id)
                                                     @foreach ($CityModel as $city)
                                                         <option value='{{ $city->Cit_Id }}'
@@ -115,14 +128,15 @@
                                                     @endforeach
                                                 @endif
                                             </select>
-                                            <span> &nbsp </span>
+
+                                            <span>&nbsp</span>
 
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                            <label class="form-label" for="type"> Property Type <span
+                                            <label class="form-label" for="type"> Property Type<span
                                                     style="color:red">*</span></label>
-                                            <select class="form-control" id="PPTyp_Id" name="PPTyp_Id">
-                                                <option selected disabled>Select Property Type</option>
+                                            <select class="form-control" id="PPTyp_Id" name="PPTyp_Id" required>
+                                                <option selected disabled value=''> Select Property Type</option>
                                                 @foreach ($PropertyTypeModel as $propertyType)
                                                     <option value='{{ $propertyType->PTyp_Id }}'
                                                         {{ isset($lastSelectedPPTyp_Id) && $lastSelectedPPTyp_Id == $propertyType->PTyp_Id ? 'selected' : '' }}>
@@ -134,64 +148,56 @@
                                                 <span class="error" style="color: red;">this field is required</span>
                                             @enderror
                                         </div>
-
-
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                            <label class="form-label" for="Title">Title <span
+                                            <label class="form-label" for="Title">Title<span
                                                     style="color:red">*</span></label>
                                             <div class="">
                                                 <input type="text" id="PTitle" name="PTitle" class="form-control"
-                                                    autocomplete="off" placeholder="Enter Title" aria-describedby="name2" />
+                                                    autocomplete="off" placeholder="Enter Title" aria-describedby="name2"
+                                                    required />
                                             </div>
                                             @error('PTitle')
                                                 <span class="error" style="color: red;">this field is required</span>
                                             @enderror
                                         </div>
-
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                            <label class="form-label" for="Map">Amount <span
+                                            <label class="form-label" for="Map">Amount<span
                                                     style="color:red">*</span></label>
                                             <div class="">
                                                 <input type="number" id="PAmount" name="PAmount" class="form-control"
                                                     autocomplete="off" placeholder="Enter Amount"
-                                                    aria-describedby="name2" />
+                                                    aria-describedby="name2" required />
                                             </div>
                                             @error('PAmount')
                                                 <span class="error" style="color: red;">this field is required</span>
                                             @enderror
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                            <label class="form-label" for="Map">Mobile Number <span
+                                            <label class="form-label" for="Map">Mobile Number<span
                                                     style="color:red">*</span></label>
                                             <div class="">
                                                 <input type="number" id="PNumber" name="PNumber" class="form-control"
                                                     autocomplete="off" placeholder="Enter Mobile Number"
-                                                    aria-describedby="name2" />
+                                                    aria-describedby="name2" required />
                                             </div>
                                             @error('PNumber')
                                                 <span class="error" style="color: red;">this field is required</span>
                                             @enderror
                                         </div>
-
-
                                         <!-- <div class="col-sm-6 form-group ">
-                                                                                                            <label class="form-label" for="type"> Featured <span
-                                                                                                                    style="color:red">*</span> </label>
-                                                                                                            <select class="form-control" id="PFeatured" name="PFeatured">
-                                                                                                                <option selected disabled>Select Featured</option>
-
-
-                                                                                                                <option value='1'
-                                                                                                                    {{ isset($lastSelectedPFeatured) && $lastSelectedPFeatured == '1' ? 'selected' : '' }}>
-                                                                                                                    Yes</option>
-                                                                                                                <option value='0'
-                                                                                                                    {{ isset($lastSelectedPFeatured) && $lastSelectedPFeatured == '2' ? 'selected' : '' }}>
-                                                                                                                    No</option>
-
-
-                                                                                                            </select>
-                                                                                                            <span id="PFeatured-error" class="error" style="color: red;"></span>
-                                                                                                        </div> -->
+                                                                                                                                <label class="form-label" for="type"> Featured <span
+                                                                                                                                        style="color:red">*</span> </label>
+                                                                                                                                <select class="form-control" id="PFeatured" name="PFeatured">
+                                                                                                                                    <option selected disabled>Select Featured</option>
+                                                                                                                                    <option value='1'
+                                                                                                                                        {{ isset($lastSelectedPFeatured) && $lastSelectedPFeatured == '1' ? 'selected' : '' }}>
+                                                                                                                                        Yes</option>
+                                                                                                                                    <option value='0'
+                                                                                                                                        {{ isset($lastSelectedPFeatured) && $lastSelectedPFeatured == '2' ? 'selected' : '' }}>
+                                                                                                                                        No</option>
+                                                                                                                                </select>
+                                                                                                                                <span id="PFeatured-error" class="error" style="color: red;"></span>
+                                                                                                                            </div> -->
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="type">Bath Room</label>
                                             <select class="form-control" id="PBathRoom" name="PBathRoom">
@@ -212,8 +218,6 @@
                                                     {{ isset($lastSelectedPBathRoom) && $lastSelectedPBathRoom == '5' ? 'selected' : '' }}>
                                                     5</option>
                                             </select>
-                                            <span> &nbsp </span>
-
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="type">Bed Room </label>
@@ -244,13 +248,7 @@
                                                     {{ isset($lastSelectedPBedRoom) && $lastSelectedPBedRoom == '8' ? 'selected' : '' }}>
                                                     8</option>
                                             </select>
-                                            <span> &nbsp </span>
                                         </div>
-
-
-
-
-
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="Tag">Tag</label>
                                             <div class="">
@@ -258,8 +256,6 @@
                                                     autocomplete="off" placeholder="Enter your Tag"
                                                     aria-describedby="name2" />
                                             </div>
-                                            <span> &nbsp </span>
-
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="SqureFeet">Built Up Area (Squre Feet)</label>
@@ -268,8 +264,6 @@
                                                     class="form-control" autocomplete="off"
                                                     placeholder="Enter Built Up Area" aria-describedby="name2" />
                                             </div>
-                                            <span> &nbsp </span>
-
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <label class="form-label" for="Map">Map Link</label>
@@ -278,8 +272,6 @@
                                                     class="form-control" autocomplete="off" placeholder="Enter Map Link"
                                                     aria-describedby="name2" />
                                             </div>
-                                            <span> &nbsp </span>
-
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label class="form-label" for="Address">Address </label>
@@ -287,16 +279,13 @@
                                                 <textarea id="PAddress" name="PAddress" class="form-control" autocomplete="off" placeholder="Enter your Address"
                                                     aria-describedby="name2"></textarea>
                                             </div>
-                                            <span> &nbsp </span>
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <label class="form-label" for="Short Desc">Short Desc </label>
                                             <textarea id="PShortDesc" name="PShortDesc" class="form-control" autocomplete="off" placeholder="Enter Short Info"
                                                 aria-describedby="name2"></textarea>
-                                            <span> &nbsp </span>
                                         </div>
                                         <div class="col-sm-12 form-group">
-
                                             <fieldset
                                                 style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                                 <legend style="  color: #6a6a6af5;">Property Features</legend>
@@ -322,15 +311,12 @@
                                                     </div>
                                                 </div>
                                             </fieldset>
-
                                         </div>
-
                                         <div class="col-sm-12 form-group ">
                                             <label class="form-label" for="Full Desc">Full Desc</label>
                                             <textarea class="applyCK form-control" id="PFullDesc" name="PFullDesc" class="form-control"></textarea>
                                             <span id="PFullDesc-error" class="error" style="color: red;"></span>
                                         </div>
-
                                         <fieldset
                                             style="border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px;">
                                             <legend style="  color: #6a6a6af5;">Images</legend>
@@ -342,7 +328,7 @@
                                                     <!-- (upload a maximum of 10 images) -->
                                                     <div class="input-group">
                                                         <input id="photo" type="file" name="PImages[]"
-                                                            style="display:none"  data-rule-maxsize="10240"
+                                                            style="display:none" data-rule-maxsize="10240"
                                                             onchange="displaySelectedImages(this, 'SelectedFileNames', 'selectedImagesPreview')">
                                                         <div class="input-group-prepend">
                                                             <a class="btn btn-dark text-white"
@@ -364,7 +350,7 @@
                                                     <!-- (upload a maximum of 10 images) -->
                                                     <div class="input-group">
                                                         <input id="photo2" type="file" name="PPlansImage[]"
-                                                            style="display:none"  data-rule-maxsize="10240"
+                                                            style="display:none" data-rule-maxsize="10240"
                                                             onchange="displaySelectedImages2(this, 'SelectedFileNames2', 'selectedImagesPreview2')">
                                                         <div class="input-group-prepend">
                                                             <a class="btn btn-dark text-white"
@@ -382,7 +368,6 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-
                                         <div class="form-group mt-3">
                                             <div class=" d-flex col-xl-6">
                                                 <div class="col-xl-3 col-md-6 col-sm-12 mb-4">
@@ -393,15 +378,12 @@
                                                         Save
                                                     </button>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -423,6 +405,8 @@
                     },
                     success: function(response) {
                         $('#PCit_Id').html(response);
+                        $('#PCit_Id').prop('disabled', false); // Ensure the select is enabled
+
                     }
                 });
             });
@@ -444,24 +428,19 @@
             });
         });
     </script>
-
     <script>
         function displaySelectedImages(input, fileNameElementId, previewElementId) {
             var files = input.files;
             var fileNameList = [];
-
             // Get file names
             for (var i = 0; i < files.length; i++) {
                 fileNameList.push(files[i].name);
             }
-
             // Update file names input field
             document.getElementById(fileNameElementId).value = fileNameList.join(', ');
-
             // Display selected images preview
             var previewContainer = document.getElementById(previewElementId);
             previewContainer.innerHTML = '';
-
             // Create img elements for preview
             for (var i = 0; i < files.length; i++) {
                 var img = document.createElement('img');
@@ -470,10 +449,8 @@
                 img.style.marginRight = '5px';
                 previewContainer.appendChild(img);
             }
-
             previewContainer.style.display = 'flex'; // Corrected display style
         }
-
 
         function displaySelectedImages2(input, fileNameElementId, previewElementId) {
             var files = input.files;
@@ -494,5 +471,18 @@
             previewContainer.style.display = 'flex';
         }
     </script>
-
+    <!-- JavaScript to auto-scroll to the form -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('register-form');
+            if (form) {
+                form.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Optionally adjust scroll position for better visibility
+                window.scrollBy(0, -60); // Adjust value as needed to avoid too much space
+            }
+        });
+    </script>
 @endsection

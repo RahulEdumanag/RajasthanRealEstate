@@ -584,7 +584,7 @@ class HomeController extends Controller
     {
         $stateId = $request->input('stateId');
         $cities = City::where('Cit_Sta_Id', $stateId)->where('Cit_Status', '=', 0)->get();
-        $options = '<option selected disabled>Select City</option>';
+        $options = '<option selected disabled value="" >Select City</option>';
         foreach ($cities as $city) {
             $options .= '<option value="' . $city->Cit_Id . '">' . $city->Cit_Name . '</option>';
         }
@@ -600,7 +600,7 @@ public function getAreasByCity(Request $request)
             ->where('Are_Cit_Id', $cityId)
             ->get();
         
-        $options = '<option selected disabled>Select Area</option>';
+        $options = '<option selected disabled>Not Exists</option>';
         foreach ($areas as $area) {
             $options .= "<option value='{$area->Are_Id}'>{$area->Are_Name}</option>";
         }

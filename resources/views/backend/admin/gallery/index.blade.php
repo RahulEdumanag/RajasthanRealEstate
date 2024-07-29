@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('title', 'Gallery')
 @section('content')
- <style>
+    <style>
         .image-column {
             display: flex;
             align-items: center;
@@ -51,7 +51,6 @@
                             <span class="text-muted fw-light">Gallery /</span> List
                         </h5>
                     </div>
-
                     <div class="page-title-actions">
                         <a href="{{ URL::to('admin/gallery/create') }}" class="btn btn-primary">
                             <i class="bi bi-plus-lg"></i> Add Gallery
@@ -59,8 +58,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div>
                 <div class="card-datatable table-responsive">
                     <table class="invoice-list-table table border-top" id="footerDataTable">
@@ -68,6 +65,7 @@
                             <tr>
                                 <th>#</th>
                                 <!-- <th>Name</th> -->
+                                <th>Gallery Category Name</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -76,22 +74,21 @@
                             @foreach ($model as $value)
                                 <tr>
                                     <td class="serial-number"> {{ $loop->iteration }}</td>
+                                    <td> {{ $value->galleryCat->GallCat_Name }}</td>
+
                                     <td style="position: relative;">
                                         <div>
                                             <?php
                                             $userImages = $value->Gall_Image ? explode(',', $value->Gall_Image) : []; // Assuming Gall_Image is a comma-separated string
                                             $defaultImage = '/assets/images/default.jpg';
                                             $firstImagePath = count($userImages) > 0 ? '/uploads/' . $userImages[0] : $defaultImage;
-                                            
                                             if (!file_exists(public_path($firstImagePath))) {
                                                 $firstImagePath = $defaultImage;
                                             }
                                             ?>
-
                                             <img src="{{ URL::to($firstImagePath) }}" alt=""
                                                 class="img-fluid rounded shadow-sm mx-auto d-block"
                                                 style="width: 50%; height: 100px; object-fit: cover;">
-
                                         </div>
                                         @if (count($userImages) > 1)
                                             <div class="imageText">
@@ -103,7 +100,6 @@
                                         <a href="{{ route('admin.gallery.edit', encodeId($value->Gall_Id)) }}"
                                             class="btn btn-primary me-2">
                                             <i class="fa fa-pencil"></i>
-
                                         </a>
                                         <span class='me-2'>
                                             @if ($value->Gall_Status == 0)
@@ -120,14 +116,12 @@
                                                 <span class="badge badge-warning">Unknown</span>
                                             @endif
                                         </span>
-
                                         <form action="{{ route('admin.gallery.destroy', $value->Gall_Id) }}" method="POST"
                                             id="deleteForm">
                                             @method('DELETE')
                                             @csrf
                                             <button type="button" class="btn btn-danger" onclick="confirmDelete(this)">
                                                 <i class="fa fa-trash-alt"></i>
-
                                             </button>
                                         </form>
                                     </td>
@@ -138,5 +132,4 @@
                 </div>
             </div>
         </div>
-
     @stop

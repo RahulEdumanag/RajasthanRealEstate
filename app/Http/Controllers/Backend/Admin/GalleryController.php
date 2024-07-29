@@ -20,8 +20,10 @@ class GalleryController extends Controller
     {
         $model = Gallery::where('Gall_Status', '!=', 2)
             ->where(['Gall_Reg_Id' => getSelectedValue()])
+            ->with('galleryCat') // Eager load the relationship to optimize performance
+
             ->get();
-        return view('backend.admin.gallery.index', compact('model'));
+         return view('backend.admin.gallery.index', compact('model'));
     }
 
     public function create()

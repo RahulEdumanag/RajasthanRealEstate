@@ -13,5 +13,16 @@ class GalleryCategory extends Model
     public $timestamps = false;
     protected $primaryKey = 'GallCat_Id';
 
-    protected $fillable = ['GallCat_Status'];
+    
+    protected $fillable = [
+        'GallCat_Reg_Id',
+        'GallCat_Name',
+        'GallCat_FullDesc',
+        'GallCat_Image',
+        'GallCat_Status',
+        'GallCat_CreatedBy',
+        'GallCat_CreatedDate',
+        'GallCat_UpdatedBy',
+        'GallCat_UpdatedDate'
+    ];
 }

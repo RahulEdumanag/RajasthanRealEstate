@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2024 at 02:24 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: Jul 29, 2024 at 11:29 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -38,7 +37,7 @@ CREATE TABLE `admins` (
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -56,7 +55,7 @@ CREATE TABLE `blogs` (
   `status` tinyint(4) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -71,7 +70,7 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -83,7 +82,7 @@ CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -116,7 +115,7 @@ CREATE TABLE `model_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -128,7 +127,7 @@ CREATE TABLE `model_has_roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL,
   `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -146,7 +145,7 @@ CREATE TABLE `oauth_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `expires_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -161,7 +160,7 @@ CREATE TABLE `oauth_auth_codes` (
   `scopes` text DEFAULT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -181,7 +180,7 @@ CREATE TABLE `oauth_clients` (
   `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -194,7 +193,7 @@ CREATE TABLE `oauth_personal_access_clients` (
   `client_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -207,7 +206,7 @@ CREATE TABLE `oauth_refresh_tokens` (
   `access_token_id` varchar(100) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
   `expires_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -219,7 +218,7 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -233,7 +232,7 @@ CREATE TABLE `permissions` (
   `guard_name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -247,7 +246,7 @@ CREATE TABLE `roles` (
   `guard_name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -258,7 +257,7 @@ CREATE TABLE `roles` (
 CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -282,7 +281,7 @@ CREATE TABLE `settings` (
   `running_year` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -301,7 +300,7 @@ CREATE TABLE `tbl_adminmenu` (
   `AddMen_CreatedDate` datetime DEFAULT NULL,
   `AddMen_UpdatedBy` int(20) DEFAULT NULL,
   `AddMen_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_adminmenu`
@@ -337,7 +336,8 @@ INSERT INTO `tbl_adminmenu` (`AddMen_Id`, `AddMen_Reg_Id`, `AddMen_Name`, `AddMe
 (37, 38, 'Property', '27', 'property', '0', 1, '2024-05-17 14:27:53', 1, '2024-05-22 10:40:49'),
 (38, 38, 'Property Type', '25', 'propertyType', '0', 1, '2024-05-17 16:58:02', 1, '2024-05-22 10:40:22'),
 (39, 38, 'Property Features', '26', 'propertyFeatures', '0', 1, '2024-05-17 17:07:14', 1, '2024-05-22 10:40:31'),
-(40, 38, 'Area', '1111', 'area', '0', 1, '2024-05-24 17:11:06', NULL, NULL);
+(40, 38, 'Area', '28', 'area', '0', 1, '2024-05-24 17:11:06', 1, '2024-07-24 15:36:59'),
+(41, 38, 'Property Listing', '29', 'propertyListing', '0', 1, '2024-07-24 15:37:41', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -354,7 +354,7 @@ CREATE TABLE `tbl_adminmenuallotment` (
   `Add_MenAllo_CreatedDate` datetime DEFAULT NULL,
   `Add_MenAllo_UpdatedBy` int(20) DEFAULT NULL,
   `Add_MenAllo_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_adminmenuallotment`
@@ -366,8 +366,9 @@ INSERT INTO `tbl_adminmenuallotment` (`Add_MenAllo_Id`, `Add_MenAllo_Reg_Id`, `A
 (7, 28, '1,9,10,13,15,17,3,33,4,20,7,8', 0, 28, '2024-02-14 11:23:10', 28, '2024-04-05 17:33:00'),
 (10, 29, '9,10,11,13,15,17,28,30,3,34,4,20,5,6,7,8', 0, 29, '2024-03-08 12:21:19', 29, '2024-04-15 16:04:27'),
 (15, 30, '9,31,13,17,32,3,4,7', 0, 30, '2024-04-01 13:50:23', 30, '2024-04-02 16:00:39'),
-(27, 1, '1,9,10,11,12,13,15,16,17,28,30,32,3,33,26,4,20,5,6,7,8', 0, 1, '2024-04-06 11:31:53', 1, '2024-04-08 10:54:32'),
-(28, 38, '9,40,13,15,3,33,35,36,38,39,37,4,20,7,8', 0, 38, '2024-05-16 15:55:42', 38, '2024-05-24 17:11:26');
+(27, 1, '1,9,10,40,11,12,13,15,16,17,28,30,3,32,33,34,35,36,38,39,37,26,4,20,5,6,7,8', 0, 1, '2024-04-06 11:31:53', 1, '2024-06-21 10:48:11'),
+(28, 38, '9,13,15,3,33,35,36,38,39,37,40,41,4,20,7,8', 0, 38, '2024-05-16 15:55:42', 38, '2024-07-24 15:38:30'),
+(29, 41, '9,13,17,3,33,4,20,5,6,7,8', 0, 41, '2024-07-15 15:34:32', 41, '2024-07-17 11:49:08');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,7 @@ CREATE TABLE `tbl_area` (
   `Are_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Are_UpdatedBy` int(11) DEFAULT 0,
   `Are_UpdatedDate` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_area`
@@ -397,8 +398,59 @@ INSERT INTO `tbl_area` (`Are_Id`, `Are_Sta_Id`, `Are_Cit_Id`, `Are_Name`, `Are_C
 (16, 1, 2, 'a', 'a', 2, 1, '2024-05-27 14:28:25', 0, '2024-05-27 14:28:25'),
 (17, 1, 1, 'Area1', NULL, 0, 1, '2024-05-27 14:29:51', 1, '2024-05-28 11:12:29'),
 (18, 1, 2, 'Area2', NULL, 0, 1, '2024-05-27 15:52:53', 1, '2024-05-28 11:12:43'),
-(19, 2, 3, 'hr', NULL, 0, 1, '2024-05-27 16:48:24', 1, '2024-05-28 11:13:17'),
-(20, 1, 2, 'aaaa', NULL, 0, 1, '2024-05-30 17:29:21', 0, '2024-05-30 17:29:21');
+(19, 2, 3, 'hr', NULL, 2, 1, '2024-05-27 16:48:24', 1, '2024-05-28 11:13:17'),
+(20, 1, 2, 'aaaa', NULL, 2, 1, '2024-05-30 17:29:21', 0, '2024-05-30 17:29:21'),
+(21, 2, 3, 'Area 1', '2321', 0, 1, '2024-07-24 10:47:26', 0, '2024-07-24 10:47:26'),
+(22, 2, 3, 'Area 1', '2321', 2, 1, '2024-07-24 10:47:27', 0, '2024-07-24 10:47:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_career`
+--
+
+CREATE TABLE `tbl_career` (
+  `Car_Id` int(20) NOT NULL,
+  `Car_Job_Id` int(20) NOT NULL DEFAULT 0,
+  `Car_ConInf_Id` int(20) NOT NULL DEFAULT 0,
+  `Car_Name` varchar(255) DEFAULT NULL,
+  `Car_Email` varchar(255) DEFAULT NULL,
+  `Car_Number` varchar(255) DEFAULT NULL,
+  `Car_Address` text DEFAULT NULL,
+  `Car_Experince` varchar(255) DEFAULT NULL,
+  `Car_Attachment` text DEFAULT NULL,
+  `Car_KeySkills` text DEFAULT NULL,
+  `Car_Status` int(20) NOT NULL DEFAULT 0,
+  `Car_CreatedBy` int(20) NOT NULL DEFAULT 0,
+  `Car_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Car_UpdatedBy` int(20) NOT NULL DEFAULT 0,
+  `Car_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_career`
+--
+
+INSERT INTO `tbl_career` (`Car_Id`, `Car_Job_Id`, `Car_ConInf_Id`, `Car_Name`, `Car_Email`, `Car_Number`, `Car_Address`, `Car_Experince`, `Car_Attachment`, `Car_KeySkills`, `Car_Status`, `Car_CreatedBy`, `Car_CreatedDate`, `Car_UpdatedBy`, `Car_UpdatedDate`) VALUES
+(1, 2, 3, 'Rahul Soni', 'rahulsoni@gmai.com', '9588871256', 'Ajmer(Rajsthan)', '1/5 year', 'N/A', 'PHP(Laravel)', 1, 0, '2024-06-05 17:22:32', 0, '2024-06-05 17:22:32'),
+(23, 2, 3, '.A', 'H@GMAIL', '3243243232', 'A', '15', 'Attachments/1718347999_666be8dfee668.pdf', '2,3', 2, 0, '2024-06-14 12:23:19', 0, '2024-06-14 12:23:19'),
+(26, 2, 3, '0', '0@gmail.com', '000000000000', '0', '14', 'Attachments/1718348265_666be9e981050.pdf', '1', 2, 0, '2024-06-14 12:27:45', 0, '2024-06-14 12:27:45'),
+(27, 2, 3, '1', '1@gmail', '1111111111', '1', '17', 'Attachments/1718348380_666bea5c7d23a.pdf', '1,3', 2, 0, '2024-06-14 12:29:40', 0, '2024-06-14 12:29:40'),
+(28, 2, 3, 'Testing', 'testing@gmail.com', '9998989898', 'Jodhpur', '14', 'Attachments/1718348984_666becb832cdd.pdf', '8,5,6,2,4,rahul', 2, 0, '2024-06-14 12:39:44', 0, '2024-06-14 12:39:44'),
+(29, 2, 3, '1', '1@gmaill', '111111111111', '1', '1', 'Attachments/1718349663_666bef5fd9d6c.pdf', '1', 2, 0, '2024-06-14 12:51:03', 0, '2024-06-14 12:51:03'),
+(30, 2, 3, 'test', 'test@gmail.com', '7987987987', 'AJMER', '9', 'Attachments/1718349755_666befbb08029.pdf', '2,4,AAAAAAAAAAAA,6,8', 2, 0, '2024-06-14 12:52:35', 0, '2024-06-14 12:52:35'),
+(31, 2, 3, 'rahul', 'rahuledumanag@gmail.com', '9588871256', 'Ajmer', '13', 'Attachments/1718356396_666c09ac640dc.pdf', '2', 0, 0, '2024-06-14 14:43:16', 0, '2024-06-14 14:43:16'),
+(32, 2, 3, 'rr', 'rahuledumanag@gmail.com', '9588871256', 'Ajmer', '16', 'Attachments/1718356490_666c0a0a4d078.pdf', '2', 0, 0, '2024-06-14 14:44:50', 0, '2024-06-14 14:44:50'),
+(33, 2, 3, 'Rahul', 'rahuledumanag@gmail.com', '9588871256', 'Ajmer', '6', 'Attachments/1718356590_666c0a6ed8ad5.pdf', NULL, 0, 0, '2024-06-14 14:46:30', 0, '2024-06-14 14:46:30'),
+(34, 2, 3, 'TEST', 'rahuledumanag@gmail.com', '9588871256', 'Ajmer', '13', 'Attachments/1718356673_666c0ac1362a8.pdf', NULL, 0, 0, '2024-06-14 14:47:53', 0, '2024-06-14 14:47:53'),
+(35, 2, 3, 'Rahul Sony', 'rahuledumanag@gmail.com', '9588871256', 'Ajmer', '13', 'Attachments/1718356950_666c0bd6c9891.pdf', 'sa', 0, 0, '2024-06-14 14:52:30', 0, '2024-06-14 14:52:30'),
+(36, 2, 3, 'Gouri Bansal', 'rahuledumanag@gmail.com', '9588871256', 'Ajmer', '13', 'Attachments/1718357099_666c0c6b3e1a1.pdf', NULL, 0, 0, '2024-06-14 14:54:59', 0, '2024-06-14 14:54:59'),
+(37, 2, 3, 'd', 'as@gmail.com', '8799879877', 'ajmer', '15', 'Attachments/1718435503_666d3eafdbe08.pdf', NULL, 0, 0, '2024-06-15 12:41:43', 0, '2024-06-15 12:41:43'),
+(38, 2, 3, 'a', 'a@gmail', '7896547896', 'Ajmert', '12', 'Attachments/1718435792_666d3fd09c014.pdf', NULL, 0, 0, '2024-06-15 12:46:32', 0, '2024-06-15 12:46:32'),
+(39, 2, 3, 'aa', 'a@gmail.com', '7897897897', 'Ajmer', '15', 'Attachments/1718436110_666d410ea1559.pdf', NULL, 0, 0, '2024-06-15 12:51:50', 0, '2024-06-15 12:51:50'),
+(40, 2, 3, 'aa', 'a@gmail', '4564444444', '444', '4', 'Attachments/1718439159_666d4cf703f38.pdf', NULL, 0, 0, '2024-06-15 13:42:39', 0, '2024-06-15 13:42:39'),
+(41, 2, 3, 'sdasd', 'a@gmail', '3244444423', '32', '14', 'Attachments/1718439324_666d4d9c2d41b.pdf', NULL, 0, 0, '2024-06-15 13:45:24', 0, '2024-06-15 13:45:24'),
+(42, 11, 3, 'test', 't@gail.com', '7897897897', '12', '12', 'Attachments/1718779953_6672803174b0a.pdf', NULL, 0, 0, '2024-06-19 12:22:33', 0, '2024-06-19 12:22:33');
 
 -- --------------------------------------------------------
 
@@ -416,7 +468,7 @@ CREATE TABLE `tbl_city` (
   `Cit_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Cit_UpdatedBy` int(11) DEFAULT 0,
   `Cit_UpdatedDate` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_city`
@@ -447,7 +499,7 @@ CREATE TABLE `tbl_clients` (
   `Cli_CreatedDate` datetime DEFAULT current_timestamp(),
   `Cli_UpdatedBy` int(11) DEFAULT NULL,
   `Cli_UpdatedDate` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -465,14 +517,23 @@ CREATE TABLE `tbl_contact` (
   `Con_Email` varchar(255) NOT NULL,
   `Con_Number` varchar(255) NOT NULL,
   `Con_Number2` varchar(255) DEFAULT NULL,
-  `Con_Date` varchar(255) DEFAULT NULL,
+  `Con_Date` int(255) DEFAULT NULL,
+  `Con_Month` int(20) NOT NULL DEFAULT 0,
   `Con_Desc` text DEFAULT NULL,
-  `Con_Status` int(11) DEFAULT NULL,
+  `Con_Status` int(11) DEFAULT 0,
   `Con_CreatedBy` int(11) DEFAULT NULL,
   `Con_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Con_UpdatedBy` int(11) DEFAULT NULL,
   `Con_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_contact`
+--
+
+INSERT INTO `tbl_contact` (`Con_Id`, `Con_Reg_Id`, `Con_ConCat_Id`, `Con_PId`, `Con_Attachment`, `Con_Name`, `Con_Email`, `Con_Number`, `Con_Number2`, `Con_Date`, `Con_Month`, `Con_Desc`, `Con_Status`, `Con_CreatedBy`, `Con_CreatedDate`, `Con_UpdatedBy`, `Con_UpdatedDate`) VALUES
+(1, 41, NULL, NULL, NULL, 'new', '1@gmai.com', '1', NULL, NULL, 0, 'm', 2, NULL, '2024-07-17 15:41:24', NULL, '2024-07-17 15:41:24'),
+(2, 38, NULL, 1, NULL, 'Rahul Sony', 'rahuledumanag@gmail.com', '9588871256', '9588871256', NULL, 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, NULL, '2024-07-25 12:19:27', NULL, '2024-07-25 12:19:27');
 
 -- --------------------------------------------------------
 
@@ -490,7 +551,7 @@ CREATE TABLE `tbl_contactcategory` (
   `ConCat_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ConCat_UpdatedBy` int(20) DEFAULT NULL,
   `ConCat_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_contactcategory`
@@ -498,7 +559,87 @@ CREATE TABLE `tbl_contactcategory` (
 
 INSERT INTO `tbl_contactcategory` (`ConCat_Id`, `ConCat_Reg_Id`, `ConCat_Title`, `ConCat_Value`, `ConCat_Status`, `ConCat_CreatedBy`, `ConCat_CreatedDate`, `ConCat_UpdatedBy`, `ConCat_UpdatedDate`) VALUES
 (1, 30, '21', '12', 0, 1, '2024-04-03 11:21:24', NULL, '2024-04-03 11:21:24'),
-(2, 28, 'Become a partner', NULL, 0, 1, '2024-04-03 17:03:09', NULL, '2024-04-03 17:03:09');
+(2, 28, 'Become a partner', NULL, 0, 1, '2024-04-03 17:03:09', NULL, '2024-04-03 17:03:09'),
+(3, 1, 'new', NULL, 0, 1, '2024-06-21 11:08:49', NULL, '2024-06-21 11:08:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_contactinformation`
+--
+
+CREATE TABLE `tbl_contactinformation` (
+  `ConInf_Id` int(20) NOT NULL,
+  `ConInf_PerInf_Id` int(20) NOT NULL DEFAULT 0,
+  `ConInf_Cit_Id` int(20) NOT NULL DEFAULT 0,
+  `ConInf_Name` varchar(255) DEFAULT NULL,
+  `ConInf_Address` text DEFAULT NULL,
+  `ConInf_Number` varchar(255) DEFAULT NULL,
+  `ConInf_Email` varchar(255) DEFAULT NULL,
+  `ConInf_Remark` varchar(255) DEFAULT NULL,
+  `ConInf_Status` int(20) NOT NULL DEFAULT 0,
+  `ConInf_CreatedBy` int(20) NOT NULL DEFAULT 0,
+  `ConInf_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `ConInf_UpdatedBy` int(20) NOT NULL DEFAULT 0,
+  `ConInf_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_contactinformation`
+--
+
+INSERT INTO `tbl_contactinformation` (`ConInf_Id`, `ConInf_PerInf_Id`, `ConInf_Cit_Id`, `ConInf_Name`, `ConInf_Address`, `ConInf_Number`, `ConInf_Email`, `ConInf_Remark`, `ConInf_Status`, `ConInf_CreatedBy`, `ConInf_CreatedDate`, `ConInf_UpdatedBy`, `ConInf_UpdatedDate`) VALUES
+(3, 1, 4, 'shruti', '33 & 33A, Rama Road, Industrial Area, Near Kirti Nagar Metro Station', '9856985698', 'test@gmail.com', 'remark', 0, 1, '2024-06-05 14:22:11', 0, '2024-06-05 14:22:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_contacts`
+--
+
+CREATE TABLE `tbl_contacts` (
+  `Con_Id` int(11) NOT NULL,
+  `Con_Pro_Id` int(11) NOT NULL DEFAULT 0,
+  `Con_ProCat_Id` int(20) NOT NULL DEFAULT 0,
+  `Con_Ser_Id` int(20) DEFAULT 0,
+  `Con_Name` varchar(255) DEFAULT NULL,
+  `Con_Email` varchar(255) DEFAULT NULL,
+  `Con_Mobile` varchar(255) DEFAULT NULL,
+  `Con_Address` text DEFAULT NULL,
+  `Con_Subject` varchar(255) DEFAULT NULL,
+  `Con_Message` text DEFAULT NULL,
+  `Con_Status` int(11) DEFAULT 0,
+  `Con_CreatedBy` int(11) DEFAULT NULL,
+  `Con_CreatedDate` datetime DEFAULT current_timestamp(),
+  `Con_UpdatedBy` int(11) DEFAULT NULL,
+  `Con_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_country`
+--
+
+CREATE TABLE `tbl_country` (
+  `Cou_Id` int(11) NOT NULL,
+  `Cou_Name` varchar(255) DEFAULT NULL,
+  `Cou_Code` varchar(255) DEFAULT NULL,
+  `Cou_Status` int(11) NOT NULL DEFAULT 0,
+  `Cou_CreatedBy` int(11) NOT NULL DEFAULT 0,
+  `Cou_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Cou_UpdatedBy` int(11) NOT NULL DEFAULT 0,
+  `Cou_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_country`
+--
+
+INSERT INTO `tbl_country` (`Cou_Id`, `Cou_Name`, `Cou_Code`, `Cou_Status`, `Cou_CreatedBy`, `Cou_CreatedDate`, `Cou_UpdatedBy`, `Cou_UpdatedDate`) VALUES
+(1, 'India', '+91', 0, 1, '2024-04-12 12:14:42', 1, '2024-05-04 13:22:03'),
+(2, 'Japan', '+82', 0, 1, '2024-04-12 12:43:52', 1, '2024-05-04 13:22:09'),
+(3, 'test', '00', 0, 1, '2024-06-05 11:50:07', 0, '2024-06-05 11:50:07');
 
 -- --------------------------------------------------------
 
@@ -519,7 +660,7 @@ CREATE TABLE `tbl_credential_log` (
   `CreLog_UpdatedDate` datetime DEFAULT NULL,
   `CreLog_DeletedDate` datetime DEFAULT NULL,
   `CreLog_DeletedBy` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_credential_log`
@@ -538,7 +679,9 @@ INSERT INTO `tbl_credential_log` (`CreLog_Id`, `CreLog_Reg_Id`, `CreLog_Emp_Id`,
 (45, 30, 56, 'jyodikastro@gmail.com', '$2y$10$R4iCiwAmEZ.Hped.kNaKgev8ZI57dkcnMSZuofSgoMTYwjZI8G68a', 1, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL),
 (47, 32, 58, 'test@gmail.com', '$2y$10$3xE0Mp/nMg9iW3VOMO2m0.F9NM7QzDC9bmd402HfPXu2S7r6ZXQLm', 1, 1, '2024-05-10 12:51:12', NULL, NULL, NULL, NULL),
 (50, 37, 63, 'newuser@gmail.com', '$2y$10$4RxFx2Gpe8EIfroghchk3O5AATJkyHJDjoKdxko5g/rUI7S8hHJ8a', 1, 1, '2024-05-10 13:16:21', NULL, NULL, NULL, NULL),
-(51, 38, 64, 'rajasthanrealrstate@gmail.com', '$2y$10$1riOoPhBX/1S1EvgbVRoR.UpUZshSi7jJ/kfgkSZMgAgThV3jKX7a', 1, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL);
+(51, 38, 64, 'rajasthanrealrstate@gmail.com', '$2y$10$1riOoPhBX/1S1EvgbVRoR.UpUZshSi7jJ/kfgkSZMgAgThV3jKX7a', 1, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL),
+(52, 1, 65, 'support@domain.com', '$2y$10$84XMPhV.VXrLy4.deU.OPu0RW49O6BK54VbBgIDRZUJpvt2OloQ8W', 1, 1, '2024-07-15 15:10:22', NULL, NULL, NULL, NULL),
+(53, 41, 68, 'supportt@domain.com', '$2y$10$JwLnHDZW1lG9T.bZBx12m.g81FRm3Q4Pqd6P/S0XHSulAuvsSwIlW', 1, 1, '2024-07-15 15:14:18', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -567,7 +710,7 @@ CREATE TABLE `tbl_employee_registration` (
   `Emp_UpdatedDate` datetime DEFAULT NULL,
   `Emp_DeletedDate` datetime DEFAULT NULL,
   `Emp_DeletedBy` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_employee_registration`
@@ -580,7 +723,9 @@ INSERT INTO `tbl_employee_registration` (`Emp_Id`, `Emp_Reg_Id`, `Emp_Role`, `Em
 (54, 28, 2, 'RajasthanConsultancy', '1/Registration_images/1707820861.png', 'RajasthanConsultancy', '9876543210', 'rajasthanconsultancy@gmail.com', 'Dummy Address', 'Remark', '2024-02-14', '4', NULL, 0, 1, '2024-02-13 16:11:01', NULL, NULL, NULL, NULL),
 (55, 29, 2, 'MindsUp', '28/Registration_images/1709878922.png', 'MindsUp', '9876543210', 'mindsup@gmail.com', 'MindsUp Address', 'Remark', '2024-03-09', '111', NULL, 0, 1, '2024-03-08 11:52:02', NULL, NULL, NULL, NULL),
 (56, 30, 2, 'Astrology', '1/Registration_images/1711959406.jpg', 'Astrology', '9352398463', 'jyodikastro@gmail.com', 'NY 10018, California, USA', 'Remark', '2024-05-01', '1', NULL, 0, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL),
-(64, 38, 2, 'RajasthanRealEstate', '1/Registration_images/1715845893.png', 'Rajasthan Real Estate', '9696584562', 'rajasthanrealrstate@gmail.com', 'Ajmer(Rajasthan)', 'Remark', NULL, NULL, NULL, 0, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL);
+(64, 38, 2, 'RajasthanRealEstate', '1/Registration_images/1715845893.png', 'Rajasthan Real Estate', '9696584562', 'rajasthanrealrstate@gmail.com', 'Ajmer(Rajasthan)', 'Remark', NULL, NULL, NULL, 0, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL),
+(65, 1, 2, NULL, '1/EmployeeReg_images/1721036422.png', 'CowNGO', '1234567891', 'support@domain.com', '107, Broklyn Golden Road Street. New York,\r\nUnited States of America', 'Remark', '2024-07-09', '20', NULL, 0, 1, '2024-07-15 15:10:22', NULL, NULL, NULL, NULL),
+(68, 41, 2, 'CowNGO', '1/Registration_images/1721036658.png', 'CowNGO', '1123456789', 'supportt@domain.com', '107, Broklyn Golden Road Street. New York,\r\nUnited States of America', 'Remark', '2024-07-26', '365', NULL, 0, 1, '2024-07-15 15:14:18', 1, '2024-07-26 11:08:25', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -603,7 +748,7 @@ CREATE TABLE `tbl_enquirie` (
   `Enq_CreatedDate` datetime DEFAULT current_timestamp(),
   `Enq_UpdatedBy` int(20) DEFAULT NULL,
   `Enq_UpdatedDate` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_enquirie`
@@ -641,215 +786,41 @@ CREATE TABLE `tbl_errors` (
   `Error_UpdatedBy` bigint(20) UNSIGNED DEFAULT NULL,
   `Error_CreatedDate` datetime DEFAULT NULL,
   `Error_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_errors`
 --
 
 INSERT INTO `tbl_errors` (`Error_Id`, `Error_Title`, `Error_Reg_Id`, `Error_Message`, `Error_Status`, `Error_CreatedBy`, `Error_UpdatedBy`, `Error_CreatedDate`, `Error_UpdatedDate`) VALUES
-(1, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:33:44', NULL),
-(2, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:33:46', NULL),
-(3, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:15', NULL),
-(4, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:15', NULL),
-(5, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:16', NULL),
-(6, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:16', NULL),
-(7, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:17', NULL),
-(8, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:17', NULL),
-(9, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:19', NULL),
-(10, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:19', NULL),
-(11, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:20', NULL),
-(12, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:20', NULL),
-(13, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:20', NULL),
-(14, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:21', NULL),
-(15, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:22', NULL),
-(16, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:22', NULL),
-(17, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:23', NULL),
-(18, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:24', NULL),
-(19, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:25', NULL),
-(20, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:25', NULL),
-(21, NULL, 38, '', 0, NULL, NULL, '2024-05-23 15:34:27', NULL),
-(22, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:10:53', NULL),
-(23, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:11:21', NULL),
-(24, NULL, 38, 'Undefined variable: lastSelectedDropdownId (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\area\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:11:51', NULL),
-(25, NULL, 38, 'Undefined variable: lastSelectedDropdownId (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\area\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:12:12', NULL),
-(26, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:12:20', NULL),
-(27, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:12:21', NULL),
-(28, NULL, 38, 'Undefined variable: lastSelectedDropdownId (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\area\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:13:08', NULL),
-(29, NULL, 38, 'Undefined variable: StateModel (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\area\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:15:01', NULL),
-(30, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:15:18', NULL),
-(31, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:15:19', NULL),
-(32, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:16:15', NULL),
-(33, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:16:17', NULL),
-(34, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:16:27', NULL),
-(35, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:16:38', NULL),
-(36, NULL, 38, 'Undefined variable: states (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\property\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:32:48', NULL),
-(37, NULL, 38, 'Undefined variable: states (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\property\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:49:36', NULL),
-(38, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:49:48', NULL),
-(39, NULL, 38, '', 0, NULL, NULL, '2024-05-24 17:49:50', NULL),
-(40, NULL, 38, 'Undefined variable: AreaModel (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\property\\create.blade.php)', 0, 1, NULL, '2024-05-24 17:58:03', NULL),
-(41, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:06:32', NULL),
-(42, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:06:34', NULL),
-(43, NULL, 38, 'Undefined variable: states (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\property\\edit.blade.php)', 0, 1, NULL, '2024-05-24 18:06:45', NULL),
-(44, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:06:54', NULL),
-(45, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:06:56', NULL),
-(46, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:07:26', NULL),
-(47, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:07:27', NULL),
-(48, NULL, 38, 'Trying to get property \'state\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\property\\edit.blade.php)', 0, 1, NULL, '2024-05-24 18:07:30', NULL),
-(49, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:07:40', NULL),
-(50, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:07:41', NULL),
-(51, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:09:20', NULL),
-(52, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:09:23', NULL),
-(53, NULL, 38, 'Undefined variable: AreaModel (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\property\\edit.blade.php)', 0, 1, NULL, '2024-05-24 18:09:32', NULL),
-(54, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:10:34', NULL),
-(55, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:10:56', NULL),
-(56, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:11:12', NULL),
-(57, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:14:52', NULL),
-(58, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:15:08', NULL),
-(59, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:16:32', NULL),
-(60, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:18:15', NULL),
-(61, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:18:30', NULL),
-(62, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:18:44', NULL),
-(63, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:20:30', NULL),
-(64, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:20:43', NULL),
-(65, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:20:51', NULL),
-(66, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:21:08', NULL),
-(67, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:21:23', NULL),
-(68, NULL, 38, '', 0, NULL, NULL, '2024-05-24 18:21:39', NULL),
-(69, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:16', NULL),
-(70, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:16', NULL),
-(71, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:16', NULL),
-(72, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:17', NULL),
-(73, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:17', NULL),
-(74, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:18', NULL),
-(75, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:18', NULL),
-(76, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:18', NULL),
-(77, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:19', NULL),
-(78, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:22', NULL),
-(79, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:23', NULL),
-(80, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:23', NULL),
-(81, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:24', NULL),
-(82, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:25', NULL),
-(83, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:25', NULL),
-(84, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:28', NULL),
-(85, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:30', NULL),
-(86, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:30', NULL),
-(87, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:30', NULL),
-(88, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:31', NULL),
-(89, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:31', NULL),
-(90, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:32', NULL),
-(91, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:32', NULL),
-(92, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:33', NULL),
-(93, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:36', NULL),
-(94, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:37', NULL),
-(95, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:37', NULL),
-(96, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:44', NULL),
-(97, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:44', NULL),
-(98, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:44', NULL),
-(99, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:46', NULL),
-(100, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:46', NULL),
-(101, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:47', NULL),
-(102, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:48', NULL),
-(103, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:49', NULL),
-(104, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:57', NULL),
-(105, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:42:59', NULL),
-(106, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:43:18', NULL),
-(107, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:43:18', NULL),
-(108, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:43:19', NULL),
-(109, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:43:21', NULL),
-(110, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:43:37', NULL),
-(111, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:43:39', NULL),
-(112, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:45:27', NULL),
-(113, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:46:03', NULL),
-(114, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:46:31', NULL),
-(115, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:47:20', NULL),
-(116, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:47:30', NULL),
-(117, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:52:09', NULL),
-(118, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:52:36', NULL),
-(119, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:55:27', NULL),
-(120, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:55:55', NULL),
-(121, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:55:55', NULL),
-(122, NULL, 38, '', 0, NULL, NULL, '2024-05-25 09:55:56', NULL),
-(123, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:12:32', NULL),
-(124, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:12:44', NULL),
-(125, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:13:27', NULL),
-(126, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:13:43', NULL),
-(127, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:13:46', NULL),
-(128, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:13:48', NULL),
-(129, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:13:58', NULL),
-(130, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:15:38', NULL),
-(131, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:15:48', NULL),
-(132, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:17:57', NULL),
-(133, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:18:21', NULL),
-(134, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:18:36', NULL),
-(135, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:18:47', NULL),
-(136, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:18:59', NULL),
-(137, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:21:19', NULL),
-(138, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:21:34', NULL),
-(139, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:21:44', NULL),
-(140, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:22:40', NULL),
-(141, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:22:59', NULL),
-(142, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:23:40', NULL),
-(143, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:23:46', NULL),
-(144, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:24:04', NULL),
-(145, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:24:21', NULL),
-(146, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:24:36', NULL),
-(147, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:24:46', NULL),
-(148, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:25:25', NULL),
-(149, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:25:25', NULL),
-(150, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:25:27', NULL),
-(151, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:25:35', NULL),
-(152, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:25:35', NULL),
-(153, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:25:37', NULL),
-(154, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:10', NULL),
-(155, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:10', NULL),
-(156, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:12', NULL),
-(157, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:36', NULL),
-(158, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:36', NULL),
-(159, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:40', NULL),
-(160, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:26:54', NULL),
-(161, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:27:43', NULL),
-(162, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:27:54', NULL),
-(163, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:28:17', NULL),
-(164, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:28:37', NULL),
-(165, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:28:48', NULL),
-(166, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:29:01', NULL),
-(167, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:34:37', NULL),
-(168, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:35:07', NULL),
-(169, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:35:37', NULL),
-(170, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:43:33', NULL),
-(171, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:43:34', NULL),
-(172, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:43:34', NULL),
-(173, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:44:12', NULL),
-(174, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:44:13', NULL),
-(175, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:44:13', NULL),
-(176, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:23', NULL),
-(177, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:23', NULL),
-(178, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:24', NULL),
-(179, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:40', NULL),
-(180, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:41', NULL),
-(181, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:41', NULL),
-(182, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:53', NULL),
-(183, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:54', NULL),
-(184, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:45:54', NULL),
-(185, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:49:59', NULL),
-(186, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:49:59', NULL),
-(187, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:50:00', NULL),
-(188, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:50:28', NULL),
-(189, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:50:28', NULL),
-(190, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:50:28', NULL),
-(191, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:51:47', NULL),
-(192, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:51:47', NULL),
-(193, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:51:47', NULL),
-(194, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:52:14', NULL),
-(195, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:52:15', NULL),
-(196, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:52:15', NULL),
-(197, NULL, 38, 'Trying to get property \'Are_Name\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\frontend\\property.blade.php)', 0, NULL, NULL, '2024-05-25 10:56:01', NULL),
-(198, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:56:11', NULL),
-(199, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:56:12', NULL),
-(200, NULL, 38, '', 0, NULL, NULL, '2024-05-25 10:56:12', NULL),
-(201, NULL, 38, 'Trying to get property \'Are_Name\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\frontend\\property.blade.php)', 0, NULL, NULL, '2024-05-25 10:56:16', NULL),
-(202, NULL, 38, 'Trying to get property \'Are_Name\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\frontend\\property.blade.php)', 0, NULL, NULL, '2024-05-25 10:56:25', NULL);
+(1, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:06', NULL),
+(2, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:06', NULL),
+(3, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:06', NULL),
+(4, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:08', NULL),
+(5, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:09', NULL),
+(6, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:27', NULL),
+(7, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:27', NULL),
+(8, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:27', NULL),
+(9, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:29', NULL),
+(10, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:31', NULL),
+(11, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:48', NULL),
+(12, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:49', NULL),
+(13, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:49', NULL),
+(14, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:50', NULL),
+(15, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:46:52', NULL),
+(16, NULL, 38, '', 0, NULL, NULL, '2024-06-15 11:47:33', NULL),
+(17, NULL, 38, 'SQLSTATE[42S22]: Column not found: 1054 Unknown column \'Sli_Status\' in \'where clause\' (SQL: select * from `tbl_Menu` where `Sli_Status` != 2 order by `Sli_Order` asc)', 0, 1, NULL, '2024-06-20 17:43:51', NULL),
+(18, NULL, 38, 'SQLSTATE[42S22]: Column not found: 1054 Unknown column \'Men_Order\' in \'order clause\' (SQL: select * from `tbl_Menu` where `Men_Status` != 2 and (`Men_Reg_Id` = 38) and `Men_Status` != 2 order by `Men_SerialOrder` asc, `Men_Order` asc)', 0, 1, NULL, '2024-06-20 17:44:15', NULL),
+(19, NULL, 1, 'SQLSTATE[42S22]: Column not found: 1054 Unknown column \'Men_Status\' in \'where clause\' (SQL: select * from `tbl_imagesize` where `Img_Status` != 2 and `Men_Status` != 2 and `Men_Reg_Id` = 1 order by `Img_CreatedDate` desc)', 0, 1, NULL, '2024-06-21 10:39:49', NULL),
+(20, NULL, 4, 'SQLSTATE[42S22]: Column not found: 1054 Unknown column \'Men_Status\' in \'where clause\' (SQL: select * from `tbl_metaTags` where `Met_Status` != 2 and (`Met_Reg_Id` = 4) and `Men_Status` != 2 and `Men_Reg_Id` = 4)', 0, 1, NULL, '2024-06-21 10:43:07', NULL),
+(21, NULL, 4, 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near \' 0) ASC\' at line 1 (SQL: select * from `tbl_adminMenu` where `AddMen_Status` != 2 and `AddMen_Status` != 2 and `AddMen_Reg_Id` = 4 order by LPAD(AddMen_SerialOrder, , 0) ASC)', 0, 1, NULL, '2024-06-21 10:47:12', NULL),
+(22, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:39:53', NULL),
+(23, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:40:21', NULL),
+(24, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:42:49', NULL),
+(25, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:43:07', NULL),
+(26, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:43:21', NULL),
+(27, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:43:28', NULL),
+(28, NULL, 4, 'Trying to get property \'Reg_Role\' of non-object (View: C:\\xampp\\htdocs\\Edumanag-Projects\\RajasthanRealEstate\\resources\\views\\backend\\admin\\healthCheckup\\index.blade.php)', 0, 1, NULL, '2024-06-21 11:43:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -869,14 +840,87 @@ CREATE TABLE `tbl_expiryperiod` (
   `ExpPer_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `ExpPer_UpdatedBy` int(20) NOT NULL DEFAULT 0,
   `ExpPer_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_expiryperiod`
 --
 
 INSERT INTO `tbl_expiryperiod` (`ExpPer_Id`, `ExpPer_Reg_Id`, `ExpPer_StartDate`, `ExpPer_EndDate`, `ExpPer_Amount`, `ExpPer_Remark`, `ExpPer_Status`, `ExpPer_CreatedBy`, `ExpPer_CreatedDate`, `ExpPer_UpdatedBy`, `ExpPer_UpdatedDate`) VALUES
-(1, 38, '2024-05-16 13:21:33', '2025-05-16 13:21:33', '600', 'Remark', 0, 1, '2024-05-16 13:21:33', 1, '2024-05-21 16:39:03');
+(1, 38, '2024-05-16 13:21:33', '2025-05-16 13:21:33', '600', 'Remark', 0, 1, '2024-05-16 13:21:33', 1, '2024-05-21 16:39:03'),
+(2, 41, '2024-07-15 15:14:18', '2025-07-15 15:14:18', '0', 'Remark', 0, 1, '2024-07-15 15:14:18', 0, '2024-07-15 15:14:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_facility`
+--
+
+CREATE TABLE `tbl_facility` (
+  `Fac_Id` int(20) NOT NULL,
+  `Fac_ProCat_Id` int(20) NOT NULL,
+  `Fac_Image` varchar(255) DEFAULT NULL,
+  `Fac_InnerBanner` varchar(255) DEFAULT NULL,
+  `Fac_Name` varchar(255) DEFAULT NULL,
+  `Fac_Order` int(20) DEFAULT NULL,
+  `Fac_Desc` text DEFAULT NULL,
+  `Fac_Status` int(11) NOT NULL DEFAULT 0,
+  `Fac_CreatedBy` int(11) NOT NULL,
+  `Fac_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Fac_UpdatedBy` int(11) DEFAULT NULL,
+  `Fac_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_facility`
+--
+
+INSERT INTO `tbl_facility` (`Fac_Id`, `Fac_ProCat_Id`, `Fac_Image`, `Fac_InnerBanner`, `Fac_Name`, `Fac_Order`, `Fac_Desc`, `Fac_Status`, `Fac_CreatedBy`, `Fac_CreatedDate`, `Fac_UpdatedBy`, `Fac_UpdatedDate`) VALUES
+(1, 12, 'fas fa-tools', 'Plan_images/1714045698_662a4302748a4.jpg', 'Free Installation', 1, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:49:56', 1, '2024-04-25 17:18:18'),
+(2, 12, 'fas fa-bolt', NULL, 'Ultrafast Connect', 2, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:50:09', 1, '2024-04-04 12:30:49'),
+(3, 7, 'fas fa-tv', NULL, '4K and 8K Quality', 3, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:50:24', 1, '2024-03-28 14:03:18'),
+(4, 7, 'fas fa-headset', NULL, 'Fast Support 24/7', 4, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:50:37', 1, '2024-03-28 14:01:42'),
+(5, 8, 'fas fa-tv', NULL, '4K and 8K Quality', 3, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:50:24', 1, '2024-03-28 14:03:13'),
+(6, 8, NULL, NULL, 'Fast Support 24/7', 4, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:50:37', NULL, '2024-03-22 15:50:37'),
+(7, 8, 'fas fa-tools', NULL, 'Free Installation', 1, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:49:56', 1, '2024-03-28 14:03:33'),
+(8, 8, 'fas fa-bolt', NULL, 'Ultrafast Connect', 2, '<p>Lorem ipsum dolor sit amet them consec tetur elit sed do eiumod. Donec quam felis ies nec.</p>', 0, 1, '2024-03-22 15:50:09', 1, '2024-03-28 14:04:03'),
+(9, 12, NULL, NULL, 'dsf', 5, NULL, 0, 1, '2024-04-27 11:52:13', NULL, '2024-04-27 11:52:13'),
+(10, 12, NULL, NULL, 'a', 6, NULL, 0, 1, '2024-05-01 12:41:31', NULL, '2024-05-01 12:41:31'),
+(11, 12, 'e', NULL, 'b', 7, NULL, 0, 1, '2024-05-01 12:41:36', 1, '2024-05-01 12:42:07'),
+(12, 20, '1', NULL, '1', 1, '<p>1</p>', 0, 1, '2024-06-03 15:53:43', NULL, '2024-06-03 15:53:43'),
+(13, 20, '1', NULL, '1', 1, '<p>1</p>', 0, 1, '2024-06-03 15:55:16', 1, '2024-06-03 15:56:09'),
+(14, 21, 'a', NULL, 'aa', 8, NULL, 0, 1, '2024-06-19 15:09:57', NULL, '2024-06-19 15:09:57'),
+(15, 23, 'a', NULL, 'a', 9, NULL, 0, 1, '2024-06-19 15:10:23', NULL, '2024-06-19 15:10:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_faqs`
+--
+
+CREATE TABLE `tbl_faqs` (
+  `Faq_Id` int(11) NOT NULL,
+  `Faq_Name` varchar(255) DEFAULT NULL,
+  `Faq_Order` int(11) DEFAULT NULL,
+  `Faq_Desc` text DEFAULT NULL,
+  `Faq_Status` int(11) DEFAULT 0,
+  `Faq_CreatedBy` int(11) DEFAULT NULL,
+  `Faq_CreatedDate` datetime DEFAULT current_timestamp(),
+  `Faq_UpdatedBy` int(11) DEFAULT NULL,
+  `Faq_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_faqs`
+--
+
+INSERT INTO `tbl_faqs` (`Faq_Id`, `Faq_Name`, `Faq_Order`, `Faq_Desc`, `Faq_Status`, `Faq_CreatedBy`, `Faq_CreatedDate`, `Faq_UpdatedBy`, `Faq_UpdatedDate`) VALUES
+(1, '1', 1, '1', 2, 1, '2024-03-20 12:34:03', 1, '2024-03-20 12:34:11'),
+(2, 'What types of IT solutions does EduManag specialize in?', 1, 'EduManag excels in dynamic website and mobile app development, using diverse frameworks and cutting-edge tech for seamless integration and exceptional user experiences.', 0, 1, '2024-03-20 12:34:42', 1, '2024-03-30 12:39:04'),
+(3, 'PHP (Laravel)', NULL, NULL, 0, 1, '2024-03-20 12:34:54', 1, '2024-06-05 11:34:21'),
+(4, 'Can EduManag customize IT solutions based on specific business needs?', 3, 'Absolutely! We take pride in delivering top-notch IT solutions tailored to meet the unique needs of our clients. Whether you require a robust web platform or a responsive mobile application, we have the expertise and resources to bring your vision to life.', 0, 1, '2024-03-20 12:35:05', 1, '2024-03-30 12:28:03'),
+(5, 'What sets EduManag apart from other IT solutions providers?', 4, 'EduManag stands out due to our commitment to excellence and customer satisfaction. We work closely with our clients throughout the development process, ensuring clear communication, timely delivery, and superior quality outcomes. Our goal is to empower businesses with digital solutions that drive growth, efficiency, and success.', 0, 1, '2024-03-20 12:35:13', 1, '2024-03-30 12:28:27'),
+(6, '2', 2, '2', 2, 1, '2024-06-03 16:34:04', 1, '2024-06-03 16:34:17');
 
 -- --------------------------------------------------------
 
@@ -895,7 +939,7 @@ CREATE TABLE `tbl_gallery` (
   `Gall_CreatedDate` datetime NOT NULL,
   `Gall_UpdatedBy` int(11) DEFAULT NULL,
   `Gall_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_gallery`
@@ -916,7 +960,11 @@ INSERT INTO `tbl_gallery` (`Gall_Id`, `Gall_Reg_Id`, `Gall_GallCat_Id`, `Gall_Im
 (125, 13, 17, '', 2, NULL, 1, '2024-04-06 16:02:12', 1, '2024-04-06 16:32:47'),
 (126, 13, 17, '13/Gallery_images/1712399596_img.jpg,13/Gallery_images/1712399596_img2.jpg,13/Gallery_images/1712399596_img4.jpg,13/Gallery_images/1712399596_img7.webp,13/Gallery_images/1712399596_img10.webp', 2, NULL, 1, '2024-04-06 16:03:16', NULL, NULL),
 (127, 1, 81, '', 2, NULL, 1, '2024-04-08 11:39:45', 1, '2024-04-08 12:09:57'),
-(128, 1, 81, '1/Gallery_images/1712834676_img - Copy (2).jpg,1/Gallery_images/1712834676_img - Copy (3).jpg,1/Gallery_images/1712834676_img - Copy (4).jpg,1/Gallery_images/1712834676_img - Copy (5).jpg,1/Gallery_images/1712834676_img - Copy (6).jpg,1/Gallery_images/1712834676_img - Copy (7).jpg,1/Gallery_images/1712834676_img - Copy (8).jpg,1/Gallery_images/1712834676_img - Copy (9).jpg,1/Gallery_images/1712834676_img - Copy.jpg,1/Gallery_images/1712834676_img.jpg,1/Gallery_images/1712834676_img2 - Copy (2).jpg,1/Gallery_images/1712834676_img2 - Copy (3).jpg,1/Gallery_images/1712834676_img2 - Copy (4).jpg,1/Gallery_images/1712834676_img2 - Copy (5).jpg,1/Gallery_images/1712834676_img2 - Copy (6).jpg,1/Gallery_images/1712834676_img2 - Copy (7).jpg,1/Gallery_images/1712834676_img2 - Copy (8).jpg,1/Gallery_images/1712834676_img2 - Copy (9).jpg,1/Gallery_images/1712834676_img2 - Copy.jpg,1/Gallery_images/1712834676_img2.jpg', 0, NULL, 1, '2024-04-11 16:54:36', NULL, NULL);
+(128, 1, 81, '1/Gallery_images/1712834676_img - Copy (2).jpg,1/Gallery_images/1712834676_img - Copy (3).jpg,1/Gallery_images/1712834676_img - Copy (4).jpg,1/Gallery_images/1712834676_img - Copy (5).jpg,1/Gallery_images/1712834676_img - Copy (6).jpg,1/Gallery_images/1712834676_img - Copy (7).jpg,1/Gallery_images/1712834676_img - Copy (8).jpg,1/Gallery_images/1712834676_img - Copy (9).jpg,1/Gallery_images/1712834676_img - Copy.jpg,1/Gallery_images/1712834676_img.jpg,1/Gallery_images/1712834676_img2 - Copy (2).jpg,1/Gallery_images/1712834676_img2 - Copy (3).jpg,1/Gallery_images/1712834676_img2 - Copy (4).jpg,1/Gallery_images/1712834676_img2 - Copy (5).jpg,1/Gallery_images/1712834676_img2 - Copy (6).jpg,1/Gallery_images/1712834676_img2 - Copy (7).jpg,1/Gallery_images/1712834676_img2 - Copy (8).jpg,1/Gallery_images/1712834676_img2 - Copy (9).jpg,1/Gallery_images/1712834676_img2 - Copy.jpg,1/Gallery_images/1712834676_img2.jpg', 2, NULL, 1, '2024-04-11 16:54:36', NULL, NULL),
+(129, 41, 85, '41/Gallery_images/1721119457_book.png,41/Gallery_images/1721119457_camp.png,41/Gallery_images/1721119457_hand-love.png,41/Gallery_images/1721119457_master.png,41/Gallery_images/1721119457_paypal.png', 2, NULL, 1, '2024-07-16 14:14:17', NULL, NULL),
+(130, 1, 86, '1/Gallery_images/1722234695_img.jpg,1/Gallery_images/1722234695_img2.jpg', 0, NULL, 1, '2024-07-29 12:01:35', NULL, NULL),
+(131, 1, 87, '1/Gallery_images/1722234732_img7.webp', 0, NULL, 1, '2024-07-29 12:02:12', NULL, NULL),
+(132, 1, 88, '1/Gallery_images/1722235560_img5.jpg,1/Gallery_images/1722235560_img6.jpg', 0, NULL, 1, '2024-07-29 12:16:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -935,26 +983,18 @@ CREATE TABLE `tbl_gallerycategory` (
   `GallCat_CreatedDate` datetime DEFAULT NULL,
   `GallCat_UpdatedBy` int(11) DEFAULT NULL,
   `GallCat_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_gallerycategory`
 --
 
 INSERT INTO `tbl_gallerycategory` (`GallCat_Id`, `GallCat_Reg_Id`, `GallCat_Name`, `GallCat_FullDesc`, `GallCat_Image`, `GallCat_Status`, `GallCat_CreatedBy`, `GallCat_CreatedDate`, `GallCat_UpdatedBy`, `GallCat_UpdatedDate`) VALUES
-(9, 4, 'd', NULL, 'Arihant_Diagnostic_Images/GalleryCategory_images/1706348997.webp', 0, 59, '2024-01-22 11:35:36', 1, '2024-02-22 16:06:19'),
-(10, 4, 'Comprehensive Hematology Testing in One-Step', 'The Sysmex XP-100 is a state-of-the-art hematology analyzer. It´s a cutting-edge hematology analyzer. It can process up to 60 samples per hour. It utilizes innovative technologies to ensure precise and dependable results.', 'Arihant_Diagnostic_Images/GalleryCategory_images/1706348991.webp', 0, 59, '2024-01-22 11:37:46', 37, '2024-01-27 15:49:51'),
-(11, 4, 'Semi-Automated Biochemistry Testing Made Easy', 'The Erba Chem-7 is a powerful and versatile semi-automated biochemistry analyzer that can perform a wide range of tests with minimal operator intervention. It provide accurate and reliable results quickly and easily.', 'Arihant_Diagnostic_Images/GalleryCategory_images/1706348984.webp', 0, 59, '2024-01-22 11:38:33', 37, '2024-01-27 15:49:44'),
-(17, 13, 'Category1', 'Category1', 'AMD_Images/GalleryCategory_images/1706630902.png', 0, 1, '2024-01-29 16:26:21', 1, '2024-01-30 22:08:22'),
-(18, 13, 'Category2', 'Category2', 'AMD_Images/GalleryCategory_images/1706630913.png', 0, 1, '2024-01-29 16:26:36', 1, '2024-01-30 22:08:33'),
-(71, 1, 'Edu Catgeory 1', 'Edu Catgeory 1', '1/GalleryCategory_images/1708668354.jpg', 2, 1, '2024-02-23 11:35:54', NULL, NULL),
-(72, 1, 'Edu Catgeory 2', 'Edu Catgeory 2', '1/GalleryCategory_images/1708668365.jpg', 2, 1, '2024-02-23 11:36:05', NULL, NULL),
-(73, 13, 'amd', 'aa', '13/GalleryCategory_images/1709189470.jpg', 0, 1, '2024-02-29 12:21:10', NULL, NULL),
-(74, 1, 'aaaaaa', 'aa', '1/GalleryCategory_images/1709203301.jpg', 2, 1, '2024-02-29 16:11:41', NULL, NULL),
-(75, 13, 's', NULL, '13/GalleryCategory_images/1709289019.png', 2, 1, '2024-03-01 16:00:19', NULL, NULL),
-(79, 28, '111111111', '11111111111111111111111', '28/GalleryCategory_images/1709876603.webp', 0, 1, '2024-03-06 11:50:25', 1, '2024-03-08 11:13:23'),
-(80, 29, 'cat1', '1', '29/GalleryCategory_images/1710738535.jpg', 0, 1, '2024-03-18 10:12:05', 1, '2024-03-18 10:38:55'),
-(81, 1, 'a', 'a', '1/GalleryCategory_images/1712556347.jpg', 0, 1, '2024-04-08 11:35:06', 1, '2024-04-08 11:35:47');
+(84, 41, 'Name', 'Description', '41/GalleryCategory_images/1721118360.png', 0, 1, '2024-07-16 13:51:08', 1, '2024-07-16 13:56:00'),
+(85, 41, 'img 2', 'desc2', '41/GalleryCategory_images/1721118592.png', 0, 1, '2024-07-16 13:59:52', NULL, NULL),
+(86, 1, '1', NULL, '1/GalleryCategory_images/1722234663.jpg', 0, 1, '2024-07-29 12:01:03', NULL, NULL),
+(87, 1, '2', NULL, '1/GalleryCategory_images/1722234716.jpg', 0, 1, '2024-07-29 12:01:56', NULL, NULL),
+(88, 1, 'HD Images', NULL, '1/GalleryCategory_images/1722235548.jpg', 0, 1, '2024-07-29 12:15:48', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -971,7 +1011,7 @@ CREATE TABLE `tbl_imagesize` (
   `Img_CreatedBy` int(20) NOT NULL,
   `Img_UpdatedDate` timestamp NULL DEFAULT NULL,
   `Img_UpdatedBy` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_imagesize`
@@ -979,8 +1019,8 @@ CREATE TABLE `tbl_imagesize` (
 
 INSERT INTO `tbl_imagesize` (`Img_Id`, `Img_Title`, `Img_Value`, `Img_Status`, `Img_CreatedDate`, `Img_CreatedBy`, `Img_UpdatedDate`, `Img_UpdatedBy`) VALUES
 (1, 'Image Size', 'Image Size', '2', '2024-03-26 09:08:03', 1, NULL, NULL),
-(2, '102400', '100 KB', '0', '2024-03-26 09:08:41', 1, NULL, NULL),
-(3, '204800', '200 KB', '0', '2024-03-26 09:08:59', 1, NULL, NULL),
+(2, '102400', '100 KB', '2', '2024-03-26 09:08:41', 1, NULL, NULL),
+(3, '204800', '200 KB', '2', '2024-03-26 09:08:59', 1, NULL, NULL),
 (4, '307200', '300 KB', '0', '2024-03-26 09:09:20', 1, NULL, NULL),
 (5, '409600', '400 KB', '0', '2024-03-26 09:09:48', 1, '2024-03-26 09:14:41', 1),
 (6, '1048576', '1 MB', '0', '2024-03-26 09:15:00', 1, NULL, NULL),
@@ -1009,6 +1049,67 @@ INSERT INTO `tbl_imagesize` (`Img_Id`, `Img_Title`, `Img_Value`, `Img_Status`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_jobrole`
+--
+
+CREATE TABLE `tbl_jobrole` (
+  `JobRol_Id` int(20) NOT NULL,
+  `JobRol_Name` varchar(255) DEFAULT NULL,
+  `JobRol_Remark` varchar(255) DEFAULT NULL,
+  `JobRol_Status` int(20) NOT NULL DEFAULT 0,
+  `JobRol_CreatedBy` int(20) DEFAULT NULL,
+  `JobRol_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `JobRol_UpdatedBy` int(20) DEFAULT NULL,
+  `JobRol_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_jobrole`
+--
+
+INSERT INTO `tbl_jobrole` (`JobRol_Id`, `JobRol_Name`, `JobRol_Remark`, `JobRol_Status`, `JobRol_CreatedBy`, `JobRol_CreatedDate`, `JobRol_UpdatedBy`, `JobRol_UpdatedDate`) VALUES
+(3, 'PHP (Laravel)', 'Developer', 0, 1, '2024-06-05 11:33:22', 1, '2024-06-05 11:35:10'),
+(6, '2', '2', 2, 1, '2024-06-14 11:26:22', NULL, '2024-06-14 11:26:22'),
+(7, 'new jobs', NULL, 0, 1, '2024-06-19 12:05:33', NULL, '2024-06-19 12:05:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_jobs`
+--
+
+CREATE TABLE `tbl_jobs` (
+  `Job_Id` int(20) NOT NULL,
+  `Job_JobRol_Id` int(20) NOT NULL DEFAULT 0,
+  `Job_Cit_Id` int(20) NOT NULL DEFAULT 0,
+  `Job_ConInf_Id` int(20) NOT NULL DEFAULT 0,
+  `Job_Name` varchar(255) DEFAULT NULL,
+  `Job_Experience` varchar(255) DEFAULT NULL,
+  `Job_Package` varchar(255) DEFAULT NULL,
+  `Job_KeySkills` varchar(255) DEFAULT NULL,
+  `Job_Desc` text DEFAULT NULL,
+  `Job_ExpiryStatus` int(20) NOT NULL DEFAULT 0 COMMENT '0 / 1(Expiry Date)',
+  `Job_ExpiryDate` datetime DEFAULT NULL,
+  `Job_Status` int(20) NOT NULL DEFAULT 0,
+  `Job_CreatedBy` int(20) NOT NULL DEFAULT 0,
+  `Job_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Job_UpdatedBy` int(20) NOT NULL DEFAULT 0,
+  `Job_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_jobs`
+--
+
+INSERT INTO `tbl_jobs` (`Job_Id`, `Job_JobRol_Id`, `Job_Cit_Id`, `Job_ConInf_Id`, `Job_Name`, `Job_Experience`, `Job_Package`, `Job_KeySkills`, `Job_Desc`, `Job_ExpiryStatus`, `Job_ExpiryDate`, `Job_Status`, `Job_CreatedBy`, `Job_CreatedDate`, `Job_UpdatedBy`, `Job_UpdatedDate`) VALUES
+(2, 3, 4, 3, 'Core Php Developer (Full Time)', '3 - 7 Years', '3 Lac To 5.50 Lac P.A.', 'Good Communication Core PHP HTML CSS Javascript AJAX JQuery PHP web developer web services walk in', 'Proven Software Development Experience in Php\r\nexpert in Php, Html, Css, Javascript, Ajax, Jquery\r\nexperience of Object-oriented Php Programming\r\nproficient in Web Services\r\nstrong Debugging Skills and the Ability to Easily and Quickly Read and Modify Existing Co\r\nenthusiastic and Show Interest in all Technology Things\r\nKnowledge of Laravel is Must\r\n\r\nInterested candidates can contact on the below mention contact details\r\nShruti', 1, '2024-06-30 00:00:00', 0, 1, '2024-06-05 16:46:29', 1, '2024-06-10 11:16:31'),
+(10, 3, 1, 3, 'Test', '3 - 7 Years', '3 Lac To 5.50 Lac P.A.', 'php', 'Description', 1, '2024-06-27 00:00:00', 0, 1, '2024-06-10 15:34:24', 1, '2024-06-10 15:51:40'),
+(11, 7, 1, 3, 'aa', 'a', 'a', 'a', 'a', 1, '2024-06-21 00:00:00', 0, 1, '2024-06-19 12:06:09', 0, '2024-06-19 12:06:09'),
+(12, 7, 3, 3, 'a', '1', 'a', 'a', NULL, 0, NULL, 0, 1, '2024-06-19 12:19:16', 0, '2024-06-19 12:19:16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_login`
 --
 
@@ -1025,7 +1126,7 @@ CREATE TABLE `tbl_login` (
   `Log_UpdatedDate` datetime DEFAULT NULL,
   `Log_DeletedDate` datetime DEFAULT NULL,
   `Log_DeletedBy` int(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_login`
@@ -1038,7 +1139,8 @@ INSERT INTO `tbl_login` (`Log_Id`, `Log_Reg_Id`, `Log_Emp_Id`, `Log_Username`, `
 (77, 28, 54, 'rajasthanconsultancy@gmail.com', '$2y$10$Fhd1kFHb6f0Ej2bDznIIOOHTy2n1hdOy0wlWfgGcBTT7TrxAY5zt6', 1, 1, '2024-02-13 16:11:01', NULL, NULL, NULL, NULL),
 (78, 29, 55, 'mindsup@gmail.com', '$2y$10$DztGpgq/0n24hVk4b094le6gHp0a5mQ25DCT8wIFxAeo5Ae4XB9f6', 1, 1, '2024-03-08 11:52:02', NULL, NULL, NULL, NULL),
 (79, 30, 56, 'jyodikastro@gmail.com', '$2y$10$3lSN.krEW8o5r0sHjuXZguv7/f0.o9gNR5ni3SziM/cEBHgYRWbhy', 1, 1, '2024-04-01 13:46:46', 1, '2024-04-06 12:18:26', NULL, NULL),
-(85, 38, 64, 'realrstate@gmail.com', '$2y$10$AXvKHxnh2.DkiNiV7xLyQeE8Nk1.VpnWr2zr9Oo4tdGAAGq2zrKge', 1, 1, '2024-05-16 13:21:33', 1, '2024-05-16 13:22:49', NULL, NULL);
+(85, 38, 64, 'realrstate@gmail.com', '$2y$10$AXvKHxnh2.DkiNiV7xLyQeE8Nk1.VpnWr2zr9Oo4tdGAAGq2zrKge', 1, 1, '2024-05-16 13:21:33', 1, '2024-05-16 13:22:49', NULL, NULL),
+(87, 41, 68, 'supportt@domain.com', '$2y$10$pvZVyD8YwPxPIqHgfCwTZu74xRK/iWFGZL6Fg4nXAUp04MLG0td1i', 1, 1, '2024-07-15 15:14:18', 1, '2024-07-15 15:14:55', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1061,7 +1163,7 @@ CREATE TABLE `tbl_menu` (
   `Men_CreatedDate` datetime NOT NULL,
   `Men_UpdatedBy` int(11) DEFAULT NULL,
   `Men_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_menu`
@@ -1111,7 +1213,13 @@ INSERT INTO `tbl_menu` (`Men_Id`, `Men_Reg_Id`, `Men_Name`, `Men_URL`, `Men_SubM
 (58, 38, 'Properties', 'property', 'on', 'Properties', '<p>Properties</p>', '3', NULL, 0, 1, '2024-05-16 16:23:09', 1, '2024-05-16 17:04:06'),
 (59, 38, 'Pages', '#', 'on', 'Properties', '#', '4', NULL, 0, 1, '2024-05-16 16:23:42', 1, '2024-05-16 16:26:56'),
 (61, 38, 'Contact Us', 'contact', NULL, 'Contact Us', NULL, '6', NULL, 0, 1, '2024-05-16 16:24:25', NULL, NULL),
-(62, 38, 'Home', '/', NULL, 'WELCOME TO KUBER PROPERTIES & BUILDERS', '<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>', '7', 'on', 0, 1, '2024-05-17 13:56:14', 1, '2024-05-20 15:58:42');
+(62, 38, 'Home', '/', NULL, 'WELCOME TO KUBER PROPERTIES & BUILDERS', '<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>', '7', 'on', 0, 1, '2024-05-17 13:56:14', 1, '2024-05-20 15:58:42'),
+(64, 41, 'Home', '/', NULL, NULL, '<h2>About Us</h2>\r\n\r\n<p>Laboris anim duis sunt aliquip tempor qui. Est in nulla eiusmod ad aliqua laboris jugni lol occaecat excepteur voluptate. Eiusmod enim ea minim occaecat in occaecat occaecat. Adipisicing velit aute duis pariatur minim officia officia velit nostrud ipsum ullamco anim aute sint reprehenderit nulla enim.</p>\r\n\r\n<ul>\r\n	<li><img alt=\"icon\" src=\"http://127.0.0.1:8000/assets/frontend/img/home-5/icon/about-check.png\" />Est in nulla eiusmod ad aliqua.</li>\r\n	<li><img alt=\"icon\" src=\"http://127.0.0.1:8000/assets/frontend/img/home-5/icon/about-check.png\" />Non pariatur sint culpa.</li>\r\n</ul>\r\n\r\n<ul>\r\n	<li><img alt=\"icon\" src=\"http://127.0.0.1:8000/assets/frontend/img/home-5/icon/about-check.png\" />Eiusmod in nulla ead aliqua blul.</li>\r\n	<li><img alt=\"icon\" src=\"http://127.0.0.1:8000/assets/frontend/img/home-5/icon/about-check.png\" />Culpa nisi ullamco reprehrit et.</li>\r\n</ul>\r\n\r\n<p>Est in nulla eiusmod ad aliqua laboris jugni lol occaecat excepteur voluptate. Eiu denim ea minim occaecat in occaecat occaecat.</p>', '1', NULL, 0, 1, '2024-07-15 15:35:14', 1, '2024-07-16 15:28:25'),
+(65, 41, 'About', 'about', 'on', NULL, '<h2>A world where&nbsp;poverty<br />\r\nwill not exists</h2>\r\n\r\n<h3>We are the largest crowdfunding</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply free text dolore magna aliqua lonm andhn.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply.</p>', '2', NULL, 0, 1, '2024-07-15 15:35:35', 1, '2024-07-17 11:48:50'),
+(66, 41, 'Adopt a Cow', 'adopt-a-cow', NULL, NULL, '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n\r\n<p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\r\n\r\n<h3>Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>\r\n\r\n<h3>Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>', '3', NULL, 0, 1, '2024-07-15 15:36:21', 1, '2024-07-18 12:15:24'),
+(67, 41, 'Cow Protection', 'cow-protection', NULL, NULL, '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n\r\n<p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\r\n\r\n<h3>Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>\r\n\r\n<h3>Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>', '4', NULL, 0, 1, '2024-07-15 15:36:44', 1, '2024-07-18 12:23:24'),
+(68, 41, 'Gallery', 'gallery', NULL, NULL, NULL, '5', NULL, 0, 1, '2024-07-15 15:36:58', NULL, NULL),
+(69, 41, 'Contact', 'contact', NULL, NULL, NULL, '6', NULL, 0, 1, '2024-07-15 15:37:06', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1123,6 +1231,7 @@ CREATE TABLE `tbl_metatags` (
   `Met_Id` int(20) NOT NULL,
   `Met_Reg_Id` int(20) NOT NULL,
   `Met_Keywords` text DEFAULT NULL,
+  `Met_Type` int(20) NOT NULL DEFAULT 0,
   `Met_Description` text DEFAULT NULL,
   `Met_OgTitle` text DEFAULT NULL,
   `Met_OgDescription` text DEFAULT NULL,
@@ -1131,19 +1240,82 @@ CREATE TABLE `tbl_metatags` (
   `Met_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Met_UpdatedBy` int(11) DEFAULT NULL,
   `Met_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_metatags`
 --
 
-INSERT INTO `tbl_metatags` (`Met_Id`, `Met_Reg_Id`, `Met_Keywords`, `Met_Description`, `Met_OgTitle`, `Met_OgDescription`, `Met_Status`, `Met_CreatedBy`, `Met_CreatedDate`, `Met_UpdatedBy`, `Met_UpdatedDate`) VALUES
-(1, 1, 'HTML, CSS, JavaScript', 'Free Website Development', 'Website Development, ERP Solutions, Digital Marketing Services in Ajmer', 'Free Website Development', 0, 1, '2024-04-06 12:41:34', 1, '2024-04-06 12:54:13'),
-(2, 4, 'HTML, CSS, JavaScript', 'Free Website Development', 'Website Development, ERP Solutions, Digital Marketing Services in Ajmer', 'Free Website Development', 0, 1, '2024-04-06 12:41:34', 1, '2024-04-06 12:54:13'),
-(3, 13, 'HTML, CSS, JavaScript', 'Free Website Development', 'Website Development, ERP Solutions, Digital Marketing Services in Ajmer', 'Free Website Development', 0, 1, '2024-04-06 12:41:34', 1, '2024-04-06 12:54:13'),
-(4, 28, 'HTML, CSS, JavaScript', 'Free Website Development', 'Website Development, ERP Solutions, Digital Marketing Services in Ajmer', 'Free Website Development', 0, 1, '2024-04-06 12:41:34', 1, '2024-04-06 12:54:13'),
-(5, 29, 'HTML, CSS, JavaScript', 'Free Website Development', 'Website Development, ERP Solutions, Digital Marketing Services in Ajmer', 'Free Website Development', 0, 1, '2024-04-06 12:41:34', 1, '2024-04-06 12:54:13'),
-(6, 30, 'HTML, CSS, JavaScript', 'Free Website Development', 'Website Development, ERP Solutions, Digital Marketing Services in Ajmer', 'Free Website Development', 0, 1, '2024-04-06 12:41:34', 1, '2024-04-06 12:54:13');
+INSERT INTO `tbl_metatags` (`Met_Id`, `Met_Reg_Id`, `Met_Keywords`, `Met_Type`, `Met_Description`, `Met_OgTitle`, `Met_OgDescription`, `Met_Status`, `Met_CreatedBy`, `Met_CreatedDate`, `Met_UpdatedBy`, `Met_UpdatedDate`) VALUES
+(11, 41, 'Keywords1', 1, 'Description1', 'Og: Title1', 'Og: Description1', 0, 1, '2024-07-18 15:26:15', 1, '2024-07-18 15:29:31'),
+(12, 41, 'Keywords 2', 2, 'Description2', 'Og: Title2', 'Og: Description2', 0, 1, '2024-07-18 15:29:56', NULL, '2024-07-18 15:29:56'),
+(13, 38, 'Keywords', 2, 'Description', 'Og: Title', 'Og: Title', 2, 1, '2024-07-18 16:31:40', 1, '2024-07-18 16:47:31'),
+(14, 38, 'Keywords  name', 1, 'Description name', NULL, NULL, 1, 1, '2024-07-24 16:54:58', NULL, '2024-07-24 16:54:58'),
+(15, 38, 'pKeywords', 2, 'pDescription', NULL, NULL, 1, 1, '2024-07-24 16:57:00', NULL, '2024-07-24 16:57:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_modules`
+--
+
+CREATE TABLE `tbl_modules` (
+  `Mod_Id` int(20) NOT NULL,
+  `Mod_Pro_Id` int(20) NOT NULL DEFAULT 0,
+  `Mod_Name` varchar(255) DEFAULT NULL,
+  `Mod_Image` varchar(255) DEFAULT NULL,
+  `Mod_FullDesc` text DEFAULT NULL,
+  `Mod_Status` int(11) NOT NULL DEFAULT 0,
+  `Mod_CreatedBy` int(11) NOT NULL DEFAULT 0,
+  `Mod_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Mod_UpdatedBy` int(11) NOT NULL DEFAULT 0,
+  `Mod_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_modules`
+--
+
+INSERT INTO `tbl_modules` (`Mod_Id`, `Mod_Pro_Id`, `Mod_Name`, `Mod_Image`, `Mod_FullDesc`, `Mod_Status`, `Mod_CreatedBy`, `Mod_CreatedDate`, `Mod_UpdatedBy`, `Mod_UpdatedDate`) VALUES
+(1, 1, 'Homework Management', 'fas fa-yin-yang', '<p>&lt;p&gt;<strong>Homework Management</strong>&nbsp;is a critical module within a School Management System (SMS) or&nbsp;<strong>School ERP</strong>&nbsp;that streamlines the process of assigning, submitting, and tracking homework assignments.&lt;/p&gt;</p>', 1, 1, '2024-04-12 16:02:15', 1, '2024-04-27 11:10:44'),
+(2, 2, 'Alert Management', 'fas fa-wrench', '<p><strong>Alert Management</strong>&nbsp;is a crucial module within a School Management System (SMS)&nbsp;</p>', 1, 1, '2024-04-12 16:02:15', 1, '2024-04-27 11:15:12'),
+(3, 1, 'Fast Support 24/7', 'fas fa-wrench', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 1, 1, '2024-04-12 16:02:15', 1, '2024-04-27 11:15:29'),
+(4, 2, 'Fast Support 24/7', 'fas fa-wrench', '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 1, 1, '2024-04-12 16:02:15', 1, '2024-04-27 11:15:36'),
+(13, 1, '1', '1', '<p>1</p>', 1, 1, '2024-06-03 13:09:08', 0, '2024-06-03 13:09:08'),
+(14, 6, NULL, '1', NULL, 1, 1, '2024-06-03 13:11:40', 0, '2024-06-03 13:11:40'),
+(16, 1, 'new', 'icon', '<p>Description</p>', 0, 1, '2024-06-19 12:53:48', 0, '2024-06-19 12:53:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_newsletter`
+--
+
+CREATE TABLE `tbl_newsletter` (
+  `New_Id` int(11) NOT NULL,
+  `New_EmailId` varchar(255) DEFAULT NULL,
+  `New_Status` int(11) DEFAULT 0,
+  `New_CreatedBy` int(11) DEFAULT NULL,
+  `New_CreatedDate` datetime DEFAULT current_timestamp(),
+  `New_UpdatedBy` int(11) DEFAULT NULL,
+  `New_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_newsletter`
+--
+
+INSERT INTO `tbl_newsletter` (`New_Id`, `New_EmailId`, `New_Status`, `New_CreatedBy`, `New_CreatedDate`, `New_UpdatedBy`, `New_UpdatedDate`) VALUES
+(3, 'rahuls@gmail.com', 0, NULL, '2024-06-01 17:51:27', NULL, '2024-06-01 17:51:27'),
+(4, 'ra@gmail.com', 0, NULL, '2024-06-15 12:51:21', NULL, '2024-06-15 12:51:21'),
+(5, 'a@gmail', 0, NULL, '2024-06-15 13:40:07', NULL, '2024-06-15 13:40:07'),
+(6, 'a@gmail.com', 0, NULL, '2024-06-15 13:41:46', NULL, '2024-06-15 13:41:46'),
+(7, 'aa@gmail', 0, NULL, '2024-06-15 13:43:14', NULL, '2024-06-15 13:43:14'),
+(8, 'aaa@agmail', 0, NULL, '2024-06-15 13:44:05', NULL, '2024-06-15 13:44:05'),
+(9, 'asasa@gmail', 0, NULL, '2024-06-15 13:44:51', NULL, '2024-06-15 13:44:51'),
+(10, 'aad@gmail', 0, NULL, '2024-06-15 13:45:05', NULL, '2024-06-15 13:45:05'),
+(11, '32@gmail', 0, NULL, '2024-06-15 13:45:44', NULL, '2024-06-15 13:45:44'),
+(12, '32ad@gmail', 0, NULL, '2024-06-15 13:45:48', NULL, '2024-06-15 13:45:48');
 
 -- --------------------------------------------------------
 
@@ -1168,7 +1340,7 @@ CREATE TABLE `tbl_page` (
   `Pag_CreatedDate` datetime NOT NULL,
   `Pag_UpdatedBy` int(20) DEFAULT NULL,
   `Pag_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_page`
@@ -1373,7 +1545,7 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (386, 1, 96, NULL, NULL, NULL, NULL, '<p>sadasd</p>\r\n\r\n<p>asdasd</p>', NULL, NULL, NULL, 0, 1, '2024-03-02 13:21:26', NULL, NULL),
 (387, 1, 96, NULL, NULL, NULL, NULL, '<p>sadasd</p>\r\n\r\n<p>asdasd</p>', NULL, NULL, NULL, 0, 1, '2024-03-02 13:21:26', NULL, NULL),
 (388, 1, 96, NULL, NULL, NULL, NULL, '<p>sadasd</p>\r\n\r\n<p>asdasd</p>', NULL, NULL, NULL, 0, 1, '2024-03-02 13:21:26', NULL, NULL),
-(389, 1, 96, NULL, NULL, NULL, NULL, '<p><img alt=\"devil\" src=\"https://cdn.ckeditor.com/4.16.2/standard-all/plugins/smiley/images/devil_smile.png\" style=\"height:23px; width:23px\" title=\"devil\" />asdas</p>', NULL, NULL, NULL, 0, 1, '2024-03-02 13:26:42', NULL, NULL),
+(389, 1, 96, NULL, NULL, NULL, NULL, '<p><img alt=\"devil\" src=\"https://cdn.ckeditor.com/4.16.2/standard-all/plugins/smiley/images/devil_smile.png\" style=\"height:23px; width:23px\" title=\"devil\" />asdas</p>', NULL, NULL, NULL, 2, 1, '2024-03-02 13:26:42', NULL, NULL),
 (390, 28, 94, 'Linkedin', '#', '<i class=\"fab fa-linkedin-in\"></i>', NULL, NULL, 6, NULL, NULL, 0, 28, '2024-03-05 15:59:03', NULL, NULL),
 (391, 28, 93, 'a', 'aaa', '28/Slider_images/1709710818.jpg', 'aa', '<p>aa</p>', 5, NULL, NULL, 0, 1, '2024-03-05 18:21:14', 1, '2024-03-06 13:10:18'),
 (392, 28, 106, 'Icons', 'fa fa-check-square', NULL, 'Icon', '<p>Icon</p>', 7, NULL, NULL, 0, 1, '2024-03-07 15:21:45', 1, '2024-03-07 15:36:36'),
@@ -1436,7 +1608,7 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (448, 1, 95, 'ff', NULL, '1/Testimonial_images/1710242343.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae congue nulla. Integer eleifend arcu tempor mauris egestas, et hendrerit mauris posuere. Pellentesque vestibulum nibh massa, sit amet tempor diam gravida id. Nullam molestie ex at finibus venenatis. Donec feugiat diam sit amet orci rhoncus, quis tincidunt tellus pharetra. Pellentesque rutrum nec orci ut porttitor. Morbi velit lorem, posuere eu nisl quis, fringilla convallis nibh. In hac habitasse platea dictumst. Donec nec elit pellentesque, faucibus sem semper, viverra nisi. Vivamus sit amet enim vel mi lobortis sollicitudin.\r\n\r\nAenean sodales, quam non pellentesque elementum, orci justo lacinia dolor, at egestas ex libero a felis. Morbi commodo pulvinar enim vitae finibus. Duis ultricies, sem sed sollicitudin convallis, neque nisl gravida tortor, nec finibus ligula urna facilisis orci. Vestibulum quam est, mollis ut erat at, sollicitudin fermentum dolor. Duis ligula magna, pulvinar nec eros scelerisque, accumsan pharetra mi. Nullam eu leo risus. Cras fringilla massa mi, vel rhoncus elit tempor vel. Mauris augue elit, venenatis quis tellus a, tempus placerat risus. Vivamus ultricies neque in vestibulum ultrices. Mauris consectetur ex nec ex finibus, ut porta mauris vulputate. Integer sit amet fermentum sem. Suspendisse eget est nec velit ullamcorper ullamcorper ac nec ipsum. Proin sit amet massa non ante dictum tincidunt id ac sem.\r\n\r\nDonec congue lorem ac felis ultrices faucibus. Fusce semper purus vel metus efficitur consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse pharetra interdum molestie. Nam non nulla nulla.', NULL, 4, NULL, NULL, 0, 1, '2024-03-12 16:49:03', NULL, NULL),
 (449, 1, 95, 'sdf', NULL, '1/Testimonial_images/1710242394.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in mattis ante. Proin porttitor eleifend metus ac rutrum. Nam nec nibh porta, rhoncus odio ac, egestas ligula. Nulla facilisi. Nulla condimentum urna non mi blandit, id tincidunt nisi facilisis. In mollis est sed turpis tempor, vitae elementum mauris pulvinar. Nunc dignissim, ante quis cursus volutpat, ante nunc hendrerit purus, euismod luctus justo sem vitae tortor. Maecenas eleifend tellus sit amet neque pretium malesuada. Vivamus urna libero, sagittis in purus vitae, molestie malesuada nibh. Sed posuere est arcu, ac consectetur elit sollicitudin eget. Phasellus semper sapien sit amet pellentesque imperdiet. Nullam ultricies mauris et commodo finibus. Nunc sodales nulla quis elit auctor, nec auctor lorem commodo. Duis at dictum metus, quis tempor arcu.\r\n\r\nInteger tristique sollicitudin vehicula. Integer auctor sapien sit amet neque feugiat, ac tempus sem hendrerit. Maecenas in tincidunt nibh, eu dapibus lorem. Morbi ac commodo erat, a tempus mauris. Nunc iaculis purus metus, eu mattis metus varius posuere. Phasellus id nisl tempor, hendrerit tellus sit amet, faucibus purus. Ut gravida dictum ipsum vitae ullamcorper. Suspendisse potenti. Maecenas sit amet hendrerit justo. Sed volutpat non mi eget vestibulum. In faucibus at dolor in aliquam. Curabitur finibus volutpat nibh at ornare. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti.\r\n\r\nCras commodo odio vel iaculis hendrerit. Fusce nisi nulla, blandit non pharetra non, efficitur varius ligula. Praesent luctus lorem at scelerisque laoreet. Duis venenatis sapien viverra odio scelerisque gravida. Sed gravida risus dui, quis facilisis eros congue in. Vivamus eleifend felis enim, eget hendrerit est.', NULL, 5, NULL, NULL, 0, 1, '2024-03-12 16:49:54', NULL, NULL),
 (450, 1, 95, 'aa', NULL, '1/Testimonial_images/1710242402.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in mattis ante. Proin porttitor eleifend metus ac rutrum. Nam nec nibh porta, rhoncus odio ac, egestas ligula. Nulla facilisi. Nulla condimentum urna non mi blandit, id tincidunt nisi facilisis. In mollis est sed turpis tempor, vitae elementum mauris pulvinar. Nunc dignissim, ante quis cursus volutpat, ante nunc hendrerit purus, euismod luctus justo sem vitae tortor. Maecenas eleifend tellus sit amet neque pretium malesuada. Vivamu', NULL, 6, NULL, NULL, 0, 1, '2024-03-12 16:50:02', 1, '2024-03-12 16:55:29'),
-(451, 1, 94, 'Instagram', 'https://www.linkedin.com/in/rajasthan-consultancy-services-5974bb26b/', 'aa', NULL, NULL, 1, NULL, NULL, 0, 1, '2024-03-13 10:53:48', 1, '2024-04-05 14:15:48'),
+(451, 1, 94, 'Instagram', 'https://www.linkedin.com/in/rajasthan-consultancy-services-5974bb26b/', 'fa fa-instagram', NULL, NULL, 1, NULL, NULL, 0, 1, '2024-03-13 10:53:48', 1, '2024-06-01 11:23:43'),
 (452, 29, 106, 'Personalized Learning', NULL, '29/Testimonial_images/1713168498.jpg', 'Get certified, master modern tech skills, and level up your career whether you’re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.', '<p>Get certified, master modern tech skills, and level up your career whether you&rsquo;re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.</p>', 5, NULL, NULL, 0, 1, '2024-03-13 12:46:53', 1, '2024-04-15 13:38:18'),
 (453, 1, 99, '1', NULL, '1/Package_images/1710739710.png', NULL, NULL, NULL, NULL, NULL, 2, 1, '2024-03-18 10:57:24', 1, '2024-03-18 10:58:30'),
 (454, 1, NULL, 'a', NULL, '1/Blog_images/1710739864.png', 'a', '<p>s</p>', 1, NULL, NULL, 0, 1, '2024-03-18 11:01:04', NULL, NULL),
@@ -1468,7 +1640,7 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (480, 30, 94, 'YouTube', '#', '<i class=\"fab fa-youtube\"></i>', NULL, NULL, 3, NULL, NULL, 0, 30, '2024-04-01 17:47:08', NULL, NULL),
 (481, 30, NULL, 'Indias First & Oldest Vedic Astrolgy', NULL, '30/Slider_images/1712033963.png', 'Know The Solution to All Your Problems Now 100% Effective', 'Jyoti is established in 1920 in Pushkar Rajasthan.', 1, NULL, NULL, 0, 1, '2024-04-02 10:29:23', NULL, NULL),
 (482, 30, 93, 'Indias First & Oldest Vedic Astrolgy', NULL, '30/Slider_images/1712034064.png', 'Know The Solution to All Your Problems Now 100% Effective', '<p>Jyoti was established in 1920 in Pushkar Rajasthan.</p>', 1, NULL, 'on', 0, 1, '2024-04-02 10:31:04', 1, '2024-04-02 10:31:51'),
-(483, 30, 93, 'What’s Your Sign ?', NULL, '30/Slider_images/1712034100.png', 'Read Your Daily  Horoscope Today', 'Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore etesde dolore magna aliquapspendisse and the gravida.', 2, NULL, 'on', 0, 1, '2024-04-02 10:31:40', NULL, NULL),
+(483, 30, 93, 'What’s Your Sign ?', NULL, '30/Slider_images/1712034100.png', 'Read Your Daily  Horoscope Today', 'Consectetur adipiscing elit, sed do eiusmod tempor incididuesdeentiut labore etesde dolore magna aliquapspendisse and the gravida.', 2, NULL, 'on', 1, 1, '2024-04-02 10:31:40', NULL, NULL),
 (484, 30, 105, 'Jyotish Devshankar', NULL, '30/Team_images/1712034698.jpg', 'Chat Now', NULL, 1, NULL, NULL, 0, 1, '2024-04-02 10:41:38', NULL, NULL),
 (485, 30, 105, 'Brham Bhushan Ji', NULL, '30/Team_images/1712034737.jpg', 'Chat Now', NULL, 2, NULL, NULL, 0, 1, '2024-04-02 10:42:17', NULL, NULL),
 (486, 30, 105, 'Satpal Tiwari', NULL, '30/Team_images/1712034751.jpg', 'Chat Now', NULL, 3, NULL, NULL, 0, 1, '2024-04-02 10:42:31', NULL, NULL),
@@ -1512,9 +1684,9 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (535, 28, 109, 'Prime Technologies', NULL, '28/Clients_images/1712298266.jpg', NULL, NULL, 7, NULL, NULL, 1, 1, '2024-04-05 11:54:26', 1, '2024-04-05 12:38:30'),
 (536, 28, 109, 'Visionary Ventures Ltd.', NULL, '28/Clients_images/1712298273.jpg', NULL, NULL, 8, NULL, NULL, 1, 1, '2024-04-05 11:54:33', 1, '2024-04-05 12:38:36'),
 (537, 28, 105, 'new', NULL, '28/Team_images/1712299051.webp', 'new', NULL, 4, NULL, NULL, 0, 1, '2024-04-05 12:07:31', NULL, NULL),
-(538, 1, 94, 'Linkedin', 'a', 'a', NULL, NULL, 2, NULL, NULL, 0, 1, '2024-04-05 14:10:18', 1, '2024-04-05 14:10:35'),
+(538, 1, 94, 'Telegram', 'a', 'fa fa-telegram', NULL, NULL, 2, NULL, NULL, 0, 1, '2024-04-05 14:10:18', 1, '2024-06-01 11:24:04'),
 (539, 30, 94, 'Twitter', 'a', NULL, NULL, NULL, 4, NULL, NULL, 0, 30, '2024-04-05 14:42:21', 1, '2024-04-05 14:45:47'),
-(540, 1, 94, 'Telegram', 'a', NULL, NULL, NULL, 3, NULL, NULL, 0, 1, '2024-04-05 14:51:56', NULL, NULL),
+(540, 1, 94, 'Youtube', 'a', 'fa fa-youtube', NULL, NULL, 3, NULL, NULL, 0, 1, '2024-04-05 14:51:56', 1, '2024-06-01 11:24:20'),
 (541, 28, 93, 'email', 'v', '28/Slider_images/1712314707.jpg', 'v', 'sa', 6, NULL, NULL, 0, 1, '2024-04-05 16:28:27', NULL, NULL),
 (542, 30, 95, NULL, NULL, NULL, NULL, NULL, 7, NULL, NULL, 2, 1, '2024-04-08 10:37:38', NULL, NULL),
 (543, 1, 109, 'a', NULL, '1/Clients_images/1712554213.webp', NULL, NULL, 1, NULL, NULL, 0, 1, '2024-04-08 11:00:13', 1, '2024-04-08 12:20:32'),
@@ -1523,7 +1695,7 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (546, 1, 98, 'a', NULL, '1/Blog_images/1712557415.webp', 'a', NULL, 1, NULL, NULL, 0, 1, '2024-04-08 11:53:35', NULL, NULL),
 (547, 1, NULL, 'a', NULL, '1/Horoscope_images/1712557664.webp', 'a', NULL, 1, NULL, NULL, 0, 1, '2024-04-08 11:57:44', NULL, NULL),
 (548, 1, 108, 'h', NULL, '1/Horoscope_images/1712557712.webp', 'a', NULL, 1, NULL, NULL, 0, 1, '2024-04-08 11:58:32', 1, '2024-04-08 12:01:49'),
-(549, 4, 93, NULL, NULL, NULL, NULL, NULL, 11, NULL, NULL, 0, 1, '2024-04-08 12:15:33', NULL, NULL),
+(549, 4, 93, NULL, NULL, NULL, NULL, NULL, 11, NULL, NULL, 0, 1, '2024-04-08 12:15:33', 1, '2024-06-25 11:50:48'),
 (550, 4, 93, NULL, NULL, NULL, NULL, NULL, 12, NULL, NULL, 0, 1, '2024-04-08 12:15:39', 1, '2024-04-08 12:15:53'),
 (551, 4, 93, NULL, NULL, NULL, NULL, NULL, 13, NULL, NULL, 0, 1, '2024-04-08 12:16:31', NULL, NULL),
 (552, 4, 95, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, 0, 1, '2024-04-08 12:16:44', NULL, NULL),
@@ -1540,7 +1712,7 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (563, 30, 96, NULL, NULL, NULL, NULL, '<p>websiteHelp</p>', NULL, NULL, NULL, 0, 1, '2024-04-08 13:14:54', NULL, NULL),
 (565, 1, 112, NULL, NULL, NULL, NULL, '<p>d</p>', NULL, NULL, NULL, 0, 1, '2024-04-08 13:17:44', NULL, NULL),
 (566, 1, NULL, NULL, NULL, NULL, NULL, '<p>a</p>', NULL, NULL, NULL, 0, 1, '2024-04-08 13:19:27', NULL, NULL),
-(567, 30, 93, 'New Slider', 'New Slider', '30/Slider_images/1712646996.webp', 'New Slider', 'New Slider', 3, NULL, NULL, 0, 1, '2024-04-09 12:46:36', NULL, NULL),
+(567, 30, 93, 'New Slider', 'New Slider', '30/Slider_images/1712646996.webp', 'New Slider', 'New Slider', 3, NULL, NULL, 2, 1, '2024-04-09 12:46:36', NULL, NULL),
 (568, 28, NULL, 'df', 'dsfsd', '28/Slider_images/1712647456.webp', 'dfsd', 'fsdf', 7, NULL, NULL, 0, 1, '2024-04-09 12:54:16', NULL, NULL),
 (569, 28, NULL, 'newpagecategory1', 'newpagecategory1', '28/Slider_images/1712647622.webp', 'newpagecategory1', 'newpagecategory1', 7, NULL, NULL, 0, 1, '2024-04-09 12:57:02', NULL, NULL),
 (570, 28, 93, 'Jay Shree Ram', 'Jay Shree Ram', '28/Slider_images/1712647777.webp', 'Jay Shree Ram', '<p>Jay Shree Ram</p>', 7, NULL, NULL, 0, 1, '2024-04-09 12:59:37', 1, '2024-04-09 12:59:58'),
@@ -1549,7 +1721,7 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (573, 30, NULL, 'aaa', NULL, '30/Testimonial_images/1712648052.jpg', 'aaa', NULL, 8, NULL, NULL, 0, 1, '2024-04-09 13:04:12', NULL, NULL),
 (574, 30, 95, 'aa', NULL, '30/Testimonial_images/1712648087.webp', 'aa', NULL, 8, NULL, NULL, 2, 1, '2024-04-09 13:04:47', NULL, NULL),
 (575, 30, 95, 's', NULL, '30/Testimonial_images/1712648400.webp', 's', NULL, 9, NULL, NULL, 2, 1, '2024-04-09 13:10:00', NULL, NULL),
-(576, 1, 93, 'a', 'a', '1/Slider_images/1712725108.webp', 'a', 'a', 5, NULL, NULL, 0, 1, '2024-04-10 10:28:28', NULL, NULL),
+(576, 1, 93, 'a', 'a', '1/Slider_images/1712725108.webp', 'a', 'a', 5, NULL, NULL, 2, 1, '2024-04-10 10:28:28', NULL, NULL),
 (577, 1, NULL, 'a', 'a', '1/Slider_images/1712725154.webp', 'a', 'a', 6, NULL, NULL, 0, 1, '2024-04-10 10:29:14', NULL, NULL),
 (578, 1, NULL, 'test', NULL, '1/Testimonial_images/1712725471.webp', 'd', NULL, 7, NULL, NULL, 0, 1, '2024-04-10 10:34:31', NULL, NULL),
 (579, 1, 95, 'test', NULL, '1/Testimonial_images/1712725495.webp', 'd', NULL, 7, NULL, NULL, 0, 1, '2024-04-10 10:34:55', NULL, NULL),
@@ -1564,10 +1736,10 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (588, 29, 106, 'Personalized Learning', NULL, '29/Testimonial_images/1713255934.webp', 'Get certified, master modern tech skills, and level up your career whether you’re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.', '<p>Get certified, master modern tech skills, and level up your career whether you&rsquo;re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.Get certified, master modern tech skills, and level up your career whether you&rsquo;re starting out or a seasoned pro. 95% of eLearning learners report our hands-on content directly helped their careers.</p>', 6, NULL, NULL, 0, 1, '2024-04-16 13:55:34', NULL, NULL),
 (589, 29, 115, 'Thrive in a Work Environment', NULL, '29/Counselling_images/1713332904.jpg', 'Many people don’t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.', '<p>Many people don&rsquo;t know how to navigate in a work environment. Our counsellors can teach you how to excel at work.</p>', 4, NULL, NULL, 0, 1, '2024-04-17 11:18:24', NULL, NULL),
 (590, 38, 93, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, 1, '2024-05-16 15:56:08', NULL, NULL),
-(591, 38, 93, 'Slider 1', NULL, '38/Slider_images/1715855340.jpg', 'We Complete Your Dreams', NULL, 2, NULL, NULL, 0, 1, '2024-05-16 15:59:00', NULL, NULL),
-(592, 38, 93, 'Slider 2', NULL, '38/Slider_images/1715855363.jpg', 'We Complete Your Dreams', NULL, 3, NULL, NULL, 0, 1, '2024-05-16 15:59:23', NULL, NULL),
+(591, 38, 93, 'Slider 1', NULL, '38/Slider_images/1715855340.jpg', 'We Complete Your Dreams', NULL, 2, NULL, NULL, 1, 1, '2024-05-16 15:59:00', NULL, NULL),
+(592, 38, 93, 'Slider 2', NULL, '38/Slider_images/1715855363.jpg', 'We Complete Your Dreams', NULL, 3, NULL, NULL, 1, 1, '2024-05-16 15:59:23', NULL, NULL),
 (593, 38, 93, 'Slider 3', NULL, '38/Slider_images/1715855381.jpg', 'We Complete Your Dreams', NULL, 4, NULL, NULL, 1, 1, '2024-05-16 15:59:41', NULL, NULL),
-(594, 38, 93, 'Slider 4', NULL, '38/Slider_images/1715855400.jpg', 'We Complete Your Dreams', NULL, 5, NULL, NULL, 1, 1, '2024-05-16 16:00:00', NULL, NULL),
+(594, 38, 93, 'Slider 4', NULL, '38/Slider_images/1715855400.jpg', 'We Complete Your Dreams', NULL, 5, NULL, NULL, 0, 1, '2024-05-16 16:00:00', NULL, NULL),
 (595, 38, 106, 'Wide Range of Properties', 'icon-select-an-objecto-tool', NULL, 'Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbi', '<p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 1, NULL, NULL, 0, 1, '2024-05-16 17:42:27', NULL, NULL),
 (596, 38, 106, '14 Agents for Your Service', 'icon-user-tie', NULL, 'Aliquam gravida magna et fringilla convallis. Pellentesque habitant morAliquam gravida magna et fringilla convallis. Pellentesque habitant morbibi', '<p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 2, NULL, NULL, 0, 1, '2024-05-16 17:43:01', 1, '2024-05-23 17:18:36'),
 (597, 38, 106, 'Best Price Guarantee', 'fa fa-money', NULL, 'Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi', '<p>Aliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbiAliquam gravida magna et fringilla convallis. Pellentesque habitant morbi</p>', 3, NULL, NULL, 0, 1, '2024-05-16 17:43:29', 1, '2024-05-23 17:19:17'),
@@ -1593,19 +1765,62 @@ INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pa
 (617, 38, 109, 'p7', NULL, '38/Clients_images/1716277636.png', NULL, NULL, 6, NULL, NULL, 0, 1, '2024-05-21 13:17:16', NULL, NULL),
 (618, 38, 109, 'p8', NULL, '38/Clients_images/1716278010.png', NULL, NULL, 7, NULL, NULL, 0, 1, '2024-05-21 13:23:30', NULL, NULL),
 (619, 38, 96, NULL, NULL, NULL, NULL, '<h2><strong>EduManag</strong>:&nbsp;<strong>Empowering Your Web&nbsp;Customization&nbsp;Journey...&nbsp;<img alt=\"heart\" src=\"https://cdn.ckeditor.com/4.16.2/standard-all/plugins/smiley/images/heart.png\" title=\"heart\" /></strong></h2>\r\n\r\n<p>The <strong>Slider </strong>image dimension should be <strong>1900 x 831 px</strong></p>\r\n\r\n<p>The P<strong>roperties&nbsp;</strong>image dimension should be <strong>360 &times; 247 px</strong></p>\r\n\r\n<p>The <strong>Plan </strong>image dimension should be <strong>339 &times; 261 px</strong></p>\r\n\r\n<p>The <strong>Client&nbsp;</strong>image dimension should be<strong>&nbsp;148 x 70 px</strong></p>\r\n\r\n<p>The T<strong>estimonial </strong>image dimension should be<strong>&nbsp;63 x 63 px&nbsp;&nbsp;&nbsp;</strong></p>', NULL, NULL, NULL, 0, 1, '2024-05-22 11:09:21', 1, '2024-05-23 11:35:57'),
-(620, 38, 101, 'Morbi vehicula mauris vel bibendum molestie. Ut varius purus in odio elementum ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 1, NULL, NULL, 0, 1, '2024-05-22 11:15:32', NULL, NULL),
-(621, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 2, NULL, NULL, 0, 1, '2024-05-22 11:15:41', NULL, NULL),
-(622, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 3, NULL, NULL, 0, 1, '2024-05-22 11:15:50', NULL, NULL);
+(620, 38, 101, 'Morbi vehicula mauris vel bibendum molestie. Ut varius purus in odio elementum ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 1, NULL, NULL, 1, 1, '2024-05-22 11:15:32', NULL, NULL),
+(621, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 2, NULL, NULL, 1, 1, '2024-05-22 11:15:41', NULL, NULL),
+(622, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 3, NULL, NULL, 1, 1, '2024-05-22 11:15:50', NULL, NULL);
 INSERT INTO `tbl_page` (`Pag_Id`, `Pag_Reg_Id`, `Pag_PagCat_Id`, `Pag_Name`, `Pag_URL`, `Pag_Image`, `Pag_ShortDesc`, `Pag_FullDesc`, `Pag_SerialOrder`, `Pag_Date`, `Pag_AdminExists`, `Pag_Status`, `Pag_CreatedBy`, `Pag_CreatedDate`, `Pag_UpdatedBy`, `Pag_UpdatedDate`) VALUES
-(623, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 4, NULL, NULL, 0, 1, '2024-05-22 11:15:59', NULL, NULL),
-(624, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 5, NULL, NULL, 0, 1, '2024-05-22 11:16:20', NULL, NULL),
-(625, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 6, NULL, NULL, 0, 1, '2024-05-22 11:16:31', NULL, NULL),
-(626, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 7, NULL, NULL, 0, 1, '2024-05-22 11:16:39', NULL, NULL),
-(627, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 8, NULL, NULL, 0, 1, '2024-05-22 11:16:51', NULL, NULL),
-(628, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 9, NULL, NULL, 0, 1, '2024-05-22 11:16:59', NULL, NULL),
-(629, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 10, NULL, NULL, 0, 1, '2024-05-22 11:46:54', NULL, NULL),
-(630, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 11, NULL, NULL, 0, 1, '2024-05-22 11:47:00', NULL, NULL),
-(631, 38, 106, 'test', 'test', NULL, 'test', '<p>test</p>', 5, NULL, NULL, 0, 1, '2024-05-30 15:53:01', NULL, NULL);
+(623, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 4, NULL, NULL, 1, 1, '2024-05-22 11:15:59', NULL, NULL),
+(624, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 5, NULL, NULL, 1, 1, '2024-05-22 11:16:20', NULL, NULL),
+(625, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 6, NULL, NULL, 1, 1, '2024-05-22 11:16:31', NULL, NULL),
+(626, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 7, NULL, NULL, 1, 1, '2024-05-22 11:16:39', NULL, NULL),
+(627, 38, 101, 'Donec condimentum neque est, quis finibus velit laoreet vel. ?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 8, NULL, NULL, 1, 1, '2024-05-22 11:16:51', NULL, NULL),
+(628, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 9, NULL, NULL, 1, 1, '2024-05-22 11:16:59', NULL, NULL),
+(629, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 10, NULL, NULL, 1, 1, '2024-05-22 11:46:54', NULL, NULL),
+(630, 38, 101, 'Suspendisse et enim semper, porta nunc ut, ullamcorper magna.?', NULL, NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec cursus orci, id pulvinar arcu. Proin pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer molestie viverra neque sit amet posuere. Nullam eget ultricies mi. Proin pulvinar quam porttitor consequat pulvinar. Etiam non neque et quam euismod cursus. Praesent eu sem interdum, pharetra metus sed, sollicitudin sem. Curabitur tincidunt dolor quis dolor iaculis, ut maximus ante fermentum', NULL, 11, NULL, NULL, 1, 1, '2024-05-22 11:47:00', NULL, NULL),
+(631, 38, 106, 'test', 'test', NULL, 'test', '<p>test</p>', 5, NULL, NULL, 0, 1, '2024-05-30 15:53:01', NULL, NULL),
+(632, 1, 94, 'Facebook', '#', 'fa fa-facebook', NULL, NULL, 4, NULL, NULL, 0, 1, '2024-06-01 11:24:40', NULL, NULL),
+(633, 1, 96, NULL, NULL, NULL, NULL, '<p>z</p>', NULL, NULL, NULL, 0, 1, '2024-06-21 11:02:53', NULL, NULL),
+(634, 1, 93, 's', NULL, NULL, 'a', NULL, 4, NULL, NULL, 0, 1, '2024-06-21 11:36:10', NULL, NULL),
+(635, 1, 111, 'a', NULL, NULL, '1', NULL, NULL, NULL, NULL, 0, 1, '2024-06-21 12:07:26', NULL, NULL),
+(636, 1, 111, 'a', NULL, NULL, '3', NULL, NULL, NULL, NULL, 0, 1, '2024-06-21 12:07:52', NULL, NULL),
+(637, 13, 95, 'a', NULL, NULL, 'a', NULL, 4, NULL, NULL, 0, 1, '2024-06-21 12:23:10', NULL, NULL),
+(638, 13, 95, 'ww', NULL, NULL, 'ww', NULL, 5, NULL, NULL, 0, 42, '2024-06-21 12:23:20', NULL, NULL),
+(639, 38, 93, '1', '1', '38/Slider_images/1718956561.jpg', '1', NULL, 6, NULL, NULL, 1, 1, '2024-06-21 13:26:01', NULL, NULL),
+(640, 30, NULL, '0000000000', '123', '30/Slider_images/1719301333.jpg', '132', '13241', 4, NULL, NULL, 0, 1, '2024-06-25 13:12:13', NULL, NULL),
+(641, 1, 106, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 0, 1, '2024-07-05 17:01:42', NULL, NULL),
+(642, 1, 106, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 2, 1, '2024-07-05 17:01:42', NULL, NULL),
+(643, 1, 106, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 0, 1, '2024-07-05 17:01:43', NULL, NULL),
+(644, 1, 106, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 0, 1, '2024-07-05 17:01:43', NULL, NULL),
+(645, 1, 106, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 0, 1, '2024-07-05 17:01:43', NULL, NULL),
+(646, 1, 106, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, 0, 1, '2024-07-05 17:05:09', NULL, NULL),
+(647, 1, 106, '12', NULL, NULL, '12', NULL, 4, NULL, NULL, 0, 1, '2024-07-05 17:05:46', NULL, NULL),
+(648, 41, 94, 'Instagram', '#', 'fab fa-instagram', NULL, NULL, 1, NULL, NULL, 0, 41, '2024-07-15 16:30:50', 1, '2024-07-15 16:58:24'),
+(649, 41, 94, 'Instagram', '#', 'fab fa-youtube', NULL, NULL, 2, NULL, NULL, 0, 41, '2024-07-15 16:31:04', 1, '2024-07-15 16:57:06'),
+(650, 41, 94, 'Telegram', '#', 'fab fa-telegram', NULL, NULL, 3, NULL, NULL, 0, 41, '2024-07-15 16:31:32', 1, '2024-07-15 16:56:54'),
+(651, 41, NULL, 'slider', NULL, '41/Slider_images/1721119725.png', 'title', NULL, 1, NULL, NULL, 0, 1, '2024-07-16 14:18:45', NULL, NULL),
+(652, 41, 117, 'Slider 1', NULL, '41/Slider_images/1721119803.png', 'Title', NULL, 1, NULL, NULL, 1, 1, '2024-07-16 14:20:03', NULL, NULL),
+(653, 41, 117, 'Slider 2', NULL, '41/Slider_images/1721119878.png', 'Title', NULL, 2, NULL, NULL, 1, 1, '2024-07-16 14:21:18', NULL, NULL),
+(654, 41, 105, 'team1', NULL, '41/Team_images/1721121187.png', 'developer', NULL, 1, NULL, NULL, 0, 1, '2024-07-16 14:43:07', NULL, NULL),
+(655, 41, 109, '1', NULL, '41/Clients_images/1721121433.png', NULL, NULL, 1, NULL, NULL, 0, 1, '2024-07-16 14:46:54', 1, '2024-07-16 14:47:13'),
+(656, 41, 109, '2', NULL, '41/Clients_images/1721121446.png', NULL, NULL, 2, NULL, NULL, 0, 1, '2024-07-16 14:47:26', NULL, NULL),
+(657, 41, 109, '3', NULL, '41/Clients_images/1721121451.png', NULL, NULL, 3, NULL, NULL, 0, 1, '2024-07-16 14:47:31', NULL, NULL),
+(658, 41, 109, '4', NULL, '41/Clients_images/1721121457.png', NULL, NULL, 4, NULL, NULL, 0, 1, '2024-07-16 14:47:37', NULL, NULL),
+(659, 41, 109, '5', NULL, '41/Clients_images/1721121462.png', NULL, NULL, 5, NULL, NULL, 0, 1, '2024-07-16 14:47:42', NULL, NULL),
+(660, 41, 109, '6', NULL, '41/Clients_images/1721121468.png', NULL, NULL, 6, NULL, NULL, 0, 1, '2024-07-16 14:47:48', NULL, NULL),
+(661, 41, 109, '7', NULL, '41/Clients_images/1721121474.png', NULL, NULL, 7, NULL, NULL, 0, 1, '2024-07-16 14:47:54', NULL, NULL),
+(662, 41, 95, 'Testimonial1', NULL, '41/Testimonial_images/1721122461.png', 'ShortDesc', NULL, 1, NULL, NULL, 0, 1, '2024-07-16 15:04:21', NULL, NULL),
+(663, 41, 95, 'User', NULL, '41/Testimonial_images/1721123828.png', 'Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusm tempor incididunt ut labore et simply free text dolore magna aliqua andhn.', NULL, 2, NULL, NULL, 0, 1, '2024-07-16 15:09:59', 1, '2024-07-16 15:27:08'),
+(664, 41, 106, 'Cow Protection', NULL, '41/Testimonial_images/1721125201.png', 'Rroident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.', '<p><a href=\"http://127.0.0.1:8000/#!\">Rroident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.</a><a href=\"http://127.0.0.1:8000/service-details/Ral2AjP9KwWxyGvjAGJ65VBMNQEZzd\">Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.</a></p>', 1, NULL, NULL, 0, 1, '2024-07-16 15:50:01', 1, '2024-07-17 10:48:24'),
+(665, 41, 106, 'Adoption', NULL, '41/Testimonial_images/1721125231.png', 'Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.', '<p><a href=\"http://127.0.0.1:8000/#!\">Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.</a></p>', 2, NULL, NULL, 0, 1, '2024-07-16 15:50:31', NULL, NULL),
+(666, 41, 106, 'Donation', NULL, '41/Testimonial_images/1721125253.png', 'Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.', '<p><a href=\"http://127.0.0.1:8000/#!\">Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.</a></p>', 3, NULL, NULL, 0, 1, '2024-07-16 15:50:53', NULL, NULL),
+(667, 41, 117, 'new', 'ew', '41/Slider_images/1721281192.png', 'we', NULL, 3, NULL, NULL, 0, 1, '2024-07-17 10:26:12', 1, '2024-07-18 11:09:52'),
+(668, 41, 92, 'Adopt a Cow', NULL, NULL, NULL, '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Why do we use it?</h2>\r\n\r\n<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>\r\n\r\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>\r\n\r\n<h2>Where can I get some?</h2>\r\n\r\n<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>', 1, NULL, NULL, 0, 41, '2024-07-17 11:46:58', 1, '2024-07-17 12:00:08'),
+(669, 41, 92, 'Adopt a Cow', 'Adopt a Cow', NULL, NULL, '<table>\r\n	<tbody>\r\n		<tr>\r\n			<td>Adopt a Cow</td>\r\n		</tr>\r\n	</tbody>\r\n</table>', 2, NULL, NULL, 0, 41, '2024-07-17 17:51:02', NULL, NULL),
+(670, 41, 117, 'test', NULL, '41/Slider_images/1721280995.png', 'test', NULL, 4, NULL, NULL, 0, 1, '2024-07-18 11:04:18', 1, '2024-07-18 11:06:35'),
+(671, 41, 106, 'Cow Protection', NULL, '41/Testimonial_images/1721381103.jpg', 'Rroident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.', '<p>Rroident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.Proident culpa deserunt consequat nisi veniam cillum eu labore laborum laborum. Reprehenderit veniam ex non sit magna pariatur officia sunt.</p>', 4, NULL, NULL, 0, 1, '2024-07-19 14:55:03', NULL, NULL),
+(672, 41, 106, 'A world where poverty', NULL, '41/Testimonial_images/1721383174.jpg', 'Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore.  Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply free text dolore magna aliqua lonm andhn.  Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply.', '<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply free text dolore magna aliqua lonm andhn.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply free text dolore magna aliqua lonm andhn.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply free text dolore magna aliqua lonm andhn.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt ut labore et simply.</p>', 5, NULL, NULL, 0, 1, '2024-07-19 15:29:34', NULL, NULL),
+(673, 41, 105, 'f', NULL, '41/Team_images/1721994551.webp', 'd', NULL, 2, NULL, NULL, 0, 1, '2024-07-26 17:19:11', NULL, NULL),
+(674, 41, 105, 'jh', NULL, '41/Team_images/1721994567.jpg', 'jk', NULL, 3, NULL, NULL, 0, 1, '2024-07-26 17:19:27', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1630,7 +1845,7 @@ CREATE TABLE `tbl_pagecategory` (
   `PagCat_CreatedDate` datetime NOT NULL,
   `PagCat_UpdatedBy` int(11) DEFAULT NULL,
   `PagCat_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_pagecategory`
@@ -1640,7 +1855,7 @@ INSERT INTO `tbl_pagecategory` (`PagCat_Id`, `PagCat_Reg_Id`, `PagCat_Name`, `Pa
 (78, 29, 'News', NULL, NULL, '<p>News</p>', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-03-09 14:26:30', NULL, NULL),
 (91, 1, 'Pages', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-09 12:13:18', NULL, NULL),
 (92, 2, 'UsefulLink', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-09 12:13:18', NULL, NULL),
-(93, 3, 'Slider', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-09 12:13:18', NULL, NULL),
+(93, 3, 'Slider', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 1, 1, '2024-04-09 12:13:18', NULL, NULL),
 (94, 4, 'SocialLink', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-09 12:13:18', NULL, NULL),
 (95, 5, 'Testimonial', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-09 12:13:18', NULL, NULL),
 (96, 6, 'WebsiteHelp', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-09 12:13:18', NULL, NULL),
@@ -1656,8 +1871,154 @@ INSERT INTO `tbl_pagecategory` (`PagCat_Id`, `PagCat_Reg_Id`, `PagCat_Name`, `Pa
 (110, 13, 'Announcement', 'Announcement', NULL, '<p>Announcement</p>', NULL, '7', 'Announcement', NULL, NULL, 0, 1, '2024-01-30 10:43:19', NULL, '2024-01-30 10:43:19'),
 (111, 4, 'HealthCheckup', 'HealthCheckup', NULL, '<p>HealthCheckup</p>', NULL, '10', 'HealthCheckup', NULL, NULL, 0, 1, '2024-02-12 14:26:20', NULL, '2024-02-12 14:26:20'),
 (112, 29, 'Covid', NULL, NULL, '<p>Covid</p>', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-03-09 16:51:34', NULL, NULL),
-(114, 1, 'a', NULL, NULL, '<p>a</p>', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-10 10:36:02', NULL, NULL),
-(115, 1, 'Counselling', NULL, NULL, '<p>Counselling Helps</p>', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-15 16:00:16', 1, '2024-04-15 16:02:12');
+(114, 1, 'a', NULL, NULL, '<p>a</p>', NULL, NULL, NULL, NULL, NULL, 2, 1, '2024-04-10 10:36:02', NULL, NULL),
+(115, 1, 'Counselling', NULL, NULL, '<p>Counselling Helps</p>', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-04-15 16:00:16', 1, '2024-04-15 16:02:12'),
+(117, 41, 'Slider', NULL, NULL, '<p>Slider</p>\r\n\r\n<p>&nbsp;</p>', NULL, NULL, NULL, NULL, NULL, 0, 1, '2024-07-16 14:19:36', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_personalinformation`
+--
+
+CREATE TABLE `tbl_personalinformation` (
+  `PerInf_Id` int(11) NOT NULL,
+  `PerInf_Name` varchar(255) DEFAULT NULL,
+  `PerInf_Emails` varchar(255) DEFAULT NULL,
+  `PerInf_Contacts` varchar(255) DEFAULT NULL,
+  `PerInf_Address` text DEFAULT NULL,
+  `PerInf_Map` text DEFAULT NULL,
+  `PerInf_QR` text DEFAULT NULL,
+  `PerInf_Playstore` text DEFAULT NULL,
+  `PerInf_AppStore` text DEFAULT NULL,
+  `PerInf_About` text DEFAULT NULL,
+  `PerInf_Timings` varchar(255) DEFAULT NULL,
+  `PerInf_FavIcon` varchar(255) DEFAULT NULL,
+  `PerInf_HeaderLogo` varchar(255) DEFAULT NULL,
+  `PerInf_FooterLogo` varchar(255) DEFAULT NULL,
+  `PerInf_Status` int(11) DEFAULT 0,
+  `PerInf_CreatedBy` int(11) DEFAULT NULL,
+  `PerInf_CreatedDate` datetime DEFAULT current_timestamp(),
+  `PerInf_UpdatedBy` int(11) DEFAULT NULL,
+  `PerInf_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_personalinformation`
+--
+
+INSERT INTO `tbl_personalinformation` (`PerInf_Id`, `PerInf_Name`, `PerInf_Emails`, `PerInf_Contacts`, `PerInf_Address`, `PerInf_Map`, `PerInf_QR`, `PerInf_Playstore`, `PerInf_AppStore`, `PerInf_About`, `PerInf_Timings`, `PerInf_FavIcon`, `PerInf_HeaderLogo`, `PerInf_FooterLogo`, `PerInf_Status`, `PerInf_CreatedBy`, `PerInf_CreatedDate`, `PerInf_UpdatedBy`, `PerInf_UpdatedDate`) VALUES
+(1, 'EduManag IT Solution Private Limited', 'rahuledumanag@gmail.com', '1234567890,2234567890', '14, First Floor Cine Mall, Vaishali Nagar, Ajmer (Rajasthan)', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.22241227081!2d74.62883122265946!3d26.480782788025493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1710850593112!5m2!1sen!2sin', 'Qr', 'play store', 'app Store', 'Company refers to a business that specializes in information technology (IT) services, software development, and technology solutions for various industries and clients.', '10:00 to 06:00', 'Personalinfo_images/1714045272_662a4158e3cf2.jpg', 'Personalinfo_images/1711715224_6606b39804520.png', 'Personalinfo_images/1711715224_6606b398048f1.png', 0, 1, '2024-03-16 13:33:09', 1, '2024-04-25 17:11:12'),
+(2, 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', NULL, NULL, NULL, 2, 1, '2024-06-03 15:08:16', 1, '2024-06-03 15:08:35');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_plan`
+--
+
+CREATE TABLE `tbl_plan` (
+  `Pla_Id` int(11) NOT NULL,
+  `Pla_PlaCat_Id` int(11) DEFAULT NULL,
+  `Pla_Name` varchar(255) DEFAULT NULL,
+  `Pla_Order` int(11) DEFAULT NULL,
+  `Pla_Icon` varchar(255) DEFAULT NULL,
+  `Pla_Status` int(11) DEFAULT 0,
+  `Pla_CreatedBy` int(11) DEFAULT NULL,
+  `Pla_CreatedDate` datetime DEFAULT current_timestamp(),
+  `Pla_UpdatedBy` int(11) DEFAULT NULL,
+  `Pla_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_plan`
+--
+
+INSERT INTO `tbl_plan` (`Pla_Id`, `Pla_PlaCat_Id`, `Pla_Name`, `Pla_Order`, `Pla_Icon`, `Pla_Status`, `Pla_CreatedBy`, `Pla_CreatedDate`, `Pla_UpdatedBy`, `Pla_UpdatedDate`) VALUES
+(1, 1, 'Internet with a 100Mbps', 1, NULL, 0, 1, '2024-04-27 10:37:05', NULL, '2024-04-27 10:37:05'),
+(2, 1, 'WiFi router & prevention', 2, NULL, 0, 1, '2024-04-27 10:37:15', NULL, '2024-04-27 10:37:15'),
+(3, 2, 'Connect multiple users', 3, NULL, 0, 1, '2024-04-27 10:37:28', NULL, '2024-04-27 10:37:28'),
+(4, 2, 'Unlimited devices', 4, NULL, 0, 1, '2024-04-27 10:37:35', NULL, '2024-04-27 10:37:35'),
+(5, 2, 'Internet with a 100Mbps', 5, NULL, 0, 1, '2024-04-27 10:50:01', NULL, '2024-04-27 10:50:01'),
+(6, 3, 'gc', 6, NULL, 2, 1, '2024-04-27 11:38:02', NULL, '2024-04-27 11:38:02'),
+(7, 1, 'Internet with a 100Mbps', 6, NULL, 0, 1, '2024-04-27 11:40:20', NULL, '2024-04-27 11:40:20'),
+(8, 1, 'Internet with a 100Mbps', 7, NULL, 0, 1, '2024-04-27 11:40:46', NULL, '2024-04-27 11:40:46'),
+(9, 2, 'Internet with a 100Mbps', 8, NULL, 0, 1, '2024-04-27 11:40:51', NULL, '2024-04-27 11:40:51'),
+(10, 1, '1', 91, NULL, 2, 1, '2024-06-03 14:24:30', NULL, '2024-06-03 14:24:30'),
+(11, 1, 'Internet with a 100Mbps', 1, NULL, 0, 1, '2024-04-27 10:37:05', NULL, '2024-04-27 10:37:05'),
+(12, 1, 'WiFi router & prevention', 2, NULL, 0, 1, '2024-04-27 10:37:15', NULL, '2024-04-27 10:37:15'),
+(13, 2, 'Connect multiple users', 3, NULL, 0, 1, '2024-04-27 10:37:28', NULL, '2024-04-27 10:37:28'),
+(14, 2, 'Unlimited devices', 4, NULL, 0, 1, '2024-04-27 10:37:35', NULL, '2024-04-27 10:37:35'),
+(15, 2, 'Internet with a 100Mbps', 5, NULL, 0, 1, '2024-04-27 10:50:01', NULL, '2024-04-27 10:50:01'),
+(16, 3, 'gc', 6, NULL, 2, 1, '2024-04-27 11:38:02', NULL, '2024-04-27 11:38:02'),
+(17, 1, 'Internet with a 100Mbps', 6, NULL, 0, 1, '2024-04-27 11:40:20', NULL, '2024-04-27 11:40:20'),
+(18, 1, 'Internet with a 100Mbps', 7, NULL, 0, 1, '2024-04-27 11:40:46', NULL, '2024-04-27 11:40:46'),
+(19, 2, 'Internet with a 100Mbps', 8, NULL, 0, 1, '2024-04-27 11:40:51', NULL, '2024-04-27 11:40:51'),
+(20, 1, '1', 91, NULL, 2, 1, '2024-06-03 14:24:30', NULL, '2024-06-03 14:24:30'),
+(21, 1, 'Internet with a 100Mbps', 1, NULL, 0, 1, '2024-04-27 10:37:05', NULL, '2024-04-27 10:37:05'),
+(22, 2, 'Internet with a 100Mbps', 5, NULL, 0, 1, '2024-04-27 10:50:01', NULL, '2024-04-27 10:50:01'),
+(23, 3, 'gc', 6, NULL, 2, 1, '2024-04-27 11:38:02', NULL, '2024-04-27 11:38:02'),
+(24, 1, 'Internet with a 100Mbps', 6, NULL, 0, 1, '2024-04-27 11:40:20', NULL, '2024-04-27 11:40:20'),
+(25, 1, 'Internet with a 100Mbps', 7, NULL, 0, 1, '2024-04-27 11:40:46', NULL, '2024-04-27 11:40:46'),
+(26, 2, 'Internet with a 100Mbps', 8, NULL, 0, 1, '2024-04-27 11:40:51', NULL, '2024-04-27 11:40:51'),
+(27, 2, 'Unlimited devices', 4, NULL, 0, 1, '2024-04-27 10:37:35', NULL, '2024-04-27 10:37:35'),
+(28, 2, 'Internet with a 100Mbps', 5, NULL, 0, 1, '2024-04-27 10:50:01', NULL, '2024-04-27 10:50:01'),
+(29, 3, 'gc', 6, NULL, 2, 1, '2024-04-27 11:38:02', NULL, '2024-04-27 11:38:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_plancategory`
+--
+
+CREATE TABLE `tbl_plancategory` (
+  `PlaCat_Id` int(11) NOT NULL,
+  `PlaCat_ProCat_Id` int(11) DEFAULT NULL,
+  `PlaCat_Name` varchar(255) DEFAULT NULL,
+  `PlaCat_Order` int(11) DEFAULT NULL,
+  `PlaCat_Amount` decimal(10,2) DEFAULT NULL,
+  `PlaCat_ShortDesc` text DEFAULT NULL,
+  `PlaCat_FullDesc` text DEFAULT NULL,
+  `PlaCat_Image` varchar(255) DEFAULT NULL,
+  `PlaCat_InnerBanner` varchar(255) DEFAULT NULL,
+  `PlaCat_Status` int(11) DEFAULT 0,
+  `PlaCat_CreatedBy` int(11) DEFAULT NULL,
+  `PlaCat_CreatedDate` datetime DEFAULT current_timestamp(),
+  `PlaCat_UpdatedBy` int(11) DEFAULT NULL,
+  `PlaCat_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_plancategory`
+--
+
+INSERT INTO `tbl_plancategory` (`PlaCat_Id`, `PlaCat_ProCat_Id`, `PlaCat_Name`, `PlaCat_Order`, `PlaCat_Amount`, `PlaCat_ShortDesc`, `PlaCat_FullDesc`, `PlaCat_Image`, `PlaCat_InnerBanner`, `PlaCat_Status`, `PlaCat_CreatedBy`, `PlaCat_CreatedDate`, `PlaCat_UpdatedBy`, `PlaCat_UpdatedDate`) VALUES
+(1, 21, 'q', 1, 1.00, '1', NULL, NULL, NULL, 0, 1, '2024-06-19 13:48:58', NULL, '2024-06-19 13:48:58'),
+(2, 22, '11', 2, 1.00, NULL, NULL, NULL, NULL, 0, 1, '2024-06-19 13:49:05', NULL, '2024-06-19 13:49:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_product`
+--
+
+CREATE TABLE `tbl_product` (
+  `Pro_Id` int(11) NOT NULL,
+  `Pro_Cli_Id` int(11) DEFAULT NULL,
+  `Pro_ProCat_Id` int(11) DEFAULT NULL,
+  `Pro_Name` varchar(255) DEFAULT NULL,
+  `Pro_Link` text DEFAULT NULL,
+  `Pro_ShortDesc` text DEFAULT NULL,
+  `Pro_FullDesc` text DEFAULT NULL,
+  `Pro_Order` int(11) DEFAULT NULL,
+  `Pro_Image` varchar(255) DEFAULT NULL,
+  `Pro_InnerBanner` varchar(255) DEFAULT NULL,
+  `Pro_Status` int(11) DEFAULT 0,
+  `Pro_CreatedBy` int(11) DEFAULT NULL,
+  `Pro_CreatedDate` datetime DEFAULT current_timestamp(),
+  `Pro_UpdatedBy` int(11) DEFAULT NULL,
+  `Pro_UpdatedDate` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1675,6 +2036,7 @@ CREATE TABLE `tbl_property` (
   `PAre_Id` int(20) DEFAULT NULL,
   `PPropertycode` int(20) DEFAULT 0,
   `PTitle` varchar(255) DEFAULT NULL,
+  `PNumber` varchar(255) DEFAULT NULL,
   `PShortDesc` text DEFAULT NULL,
   `PFullDesc` text DEFAULT NULL,
   `PAddress` varchar(255) DEFAULT NULL,
@@ -1685,6 +2047,7 @@ CREATE TABLE `tbl_property` (
   `PSqureFeet` varchar(255) DEFAULT NULL,
   `PMapLink` text DEFAULT NULL,
   `PAmount` int(20) NOT NULL DEFAULT 0,
+  `PType` int(20) NOT NULL DEFAULT 0,
   `PImages` text DEFAULT NULL,
   `PPlansImage` text DEFAULT NULL,
   `PStatus` int(20) NOT NULL DEFAULT 0,
@@ -1692,33 +2055,26 @@ CREATE TABLE `tbl_property` (
   `PCreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `PUpdatedBy` int(20) NOT NULL DEFAULT 0,
   `PUpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_property`
 --
 
-INSERT INTO `tbl_property` (`PId`, `PReg_Id`, `PPTyp_Id`, `PPFea_Id`, `PSta_Id`, `PCit_Id`, `PAre_Id`, `PPropertycode`, `PTitle`, `PShortDesc`, `PFullDesc`, `PAddress`, `PTag`, `PFeatured`, `PBedRoom`, `PBathRoom`, `PSqureFeet`, `PMapLink`, `PAmount`, `PImages`, `PPlansImage`, `PStatus`, `PCreatedBy`, `PCreatedDate`, `PUpdatedBy`, `PUpdatedDate`) VALUES
-(1, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(2, 38, 2, NULL, 2, 3, NULL, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(3, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(4, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(5, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(6, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(7, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(8, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(9, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(10, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(11, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(12, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(13, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(14, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(15, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(16, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(17, 38, 2, NULL, 1, 1, 17, 1001, '1', NULL, NULL, NULL, NULL, NULL, 5, 3, '400', NULL, 1, '', '', 0, 1, '2024-05-29 10:24:58', 0, '2024-05-29 10:24:58'),
-(18, 38, 1, NULL, 2, 3, 19, 1000, '1', NULL, NULL, NULL, 'Tag', NULL, 0, 0, '1', NULL, 1, '', '', 0, 1, '2024-05-28 17:26:06', 0, '2024-05-28 17:26:06'),
-(19, 38, 1, '[\"1\"]', 1, 1, 17, 1002, 'new', '1', NULL, '1', '1', NULL, 3, 1, '1', '1', 1, '', '', 2, 1, '2024-05-30 16:18:48', 0, '2024-05-30 16:18:48'),
-(20, 38, 2, NULL, 1, 2, 18, 1003, '1111111111', NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, 1, '', '', 0, 1, '2024-05-30 16:28:29', 0, '2024-05-30 16:28:29');
+INSERT INTO `tbl_property` (`PId`, `PReg_Id`, `PPTyp_Id`, `PPFea_Id`, `PSta_Id`, `PCit_Id`, `PAre_Id`, `PPropertycode`, `PTitle`, `PNumber`, `PShortDesc`, `PFullDesc`, `PAddress`, `PTag`, `PFeatured`, `PBedRoom`, `PBathRoom`, `PSqureFeet`, `PMapLink`, `PAmount`, `PType`, `PImages`, `PPlansImage`, `PStatus`, `PCreatedBy`, `PCreatedDate`, `PUpdatedBy`, `PUpdatedDate`) VALUES
+(1, 38, 1, 'null', 1, 2, NULL, 1000, 'a', '1', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 1, 1, NULL, NULL, 2, 0, '2024-07-24 18:12:20', 0, '2024-07-24 18:12:20'),
+(2, 38, 1, '[\"4\",\"6\",\"10\",\"11\"]', 1, 1, 17, 1001, 'new home', '9588871256', 'short', '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n\r\n<p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\r\n\r\n<h3>Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>\r\n\r\n<h3>Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>', 'Ajmer', 'new', 0, 0, 0, '20-40', 'jodhpur', 5000, 2, NULL, NULL, 0, 0, '2024-07-25 10:55:33', 0, '2024-07-25 10:55:33'),
+(3, 38, 5, '[\"4\",\"6\",\"10\",\"11\"]', 2, 3, 21, 1002, 'New Home', '9588871256', 'The standard Lorem Ipsum passage, used since the 1500s\r\n\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\r\n\r\nSection 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC\r\n\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"\r\n\r\n1914 translation by H. Rackham\r\n\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"\r\n\r\nSection 1.10.33 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC\r\n\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"\r\n\r\n1914 translation by H. Rackham\r\n\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"', '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n\r\n<p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\r\n\r\n<h3>Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;</p>\r\n\r\n<h3>Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC</h3>\r\n\r\n<p>&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;</p>\r\n\r\n<h3>1914 translation by H. Rackham</h3>\r\n\r\n<p>&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;</p>', 'ajemr', 'new', 0, 8, 5, '10000-50000', 'Jodhpurt', 1000000, 2, '38/Gallery_images/1721885218_img - Copy (3) - Copy - Copy - Copy - Copy - Copy.jpg', '38/Plan_images/1721885218_img7 - Copy (5).webp', 0, 0, '2024-07-25 10:56:58', 0, '2024-07-25 10:56:58'),
+(4, 38, 1, '[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\"]', 1, 1, 17, 1003, 'Sale My House', '9879879879', '1', '<p>Full Desc</p>', '1', 'tag', 0, 4, 1, '54', '1', 500000, 2, '38/Gallery_images/1721889050_img - Copy (3) - Copy - Copy - Copy - Copy - Copy - Copy - Copy.jpg', '38/Plan_images/1721889050_img10 - Copy (6).webp', 3, 0, '2024-07-25 12:00:50', 0, '2024-07-25 12:00:50'),
+(5, 38, 1, '[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\"]', 1, 1, 17, 1004, 'Sale My House', '9879879879', '1', '<p>Full Desc</p>', '1', 'tag', 0, 4, 1, '54', '1', 500000, 2, '38/Gallery_images/1721889066_img - Copy (3) - Copy - Copy - Copy - Copy - Copy - Copy - Copy.jpg', '38/Plan_images/1721889066_img10 - Copy (6).webp', 3, 0, '2024-07-25 12:01:06', 0, '2024-07-25 12:01:06'),
+(6, 38, 1, '[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\"]', 1, 1, 17, 1005, 'Sale My House', '9879879879', '1', '<p>Full Desc</p>', '1', 'tag', 0, 4, 1, '54', '1', 500000, 2, '38/Gallery_images/1721889091_img - Copy (3) - Copy - Copy - Copy - Copy - Copy - Copy - Copy.jpg', '38/Plan_images/1721889091_img10 - Copy (6).webp', 3, 0, '2024-07-25 12:01:31', 0, '2024-07-25 12:01:31'),
+(7, 38, 1, '[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\"]', 1, 1, 17, 1006, 'Sale My House', '9879879879', '1', '<p>Full Desc</p>', '1', 'tag', 0, 4, 1, '54', '1', 500000, 2, '38/Gallery_images/1721889279_img - Copy (3) - Copy - Copy - Copy - Copy - Copy - Copy - Copy.jpg', '38/Plan_images/1721889279_img10 - Copy (6).webp', 3, 0, '2024-07-25 12:04:39', 0, '2024-07-25 12:04:39'),
+(8, 38, 1, '[\"1\",\"2\",\"5\",\"6\",\"7\",\"8\"]', 1, 1, 17, 1007, 'Sale My House', '9879879879', '1', '<p>Full Desc</p>', '1', 'tag', 0, 4, 1, '54', '1', 500000, 2, '38/Gallery_images/1721889433_img - Copy (3) - Copy - Copy - Copy - Copy - Copy - Copy - Copy.jpg', '38/Plan_images/1721889433_img10 - Copy (6).webp', 3, 0, '2024-07-25 12:07:13', 0, '2024-07-25 12:07:13'),
+(9, 38, 4, '[\"5\",\"9\"]', 1, 1, 17, 1008, 'Sale my hotel', '9588871256', 'Short Desc', '<p>&nbsp;</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Ajmer', 'ta', 0, 3, 3, '45', '41', 1000, 2, NULL, NULL, 3, 0, '2024-07-25 12:29:02', 0, '2024-07-25 12:29:02'),
+(10, 38, 1, '[\"1\",\"2\",\"3\",\"4\"]', 1, 1, 17, 1009, 'Sale Thik House', '9588871256', '1', '<p>Description&nbsp;</p>', '1', '1', 0, 1, 1, '1', '1', 5400000, 2, '38/Gallery_images/1721891271_default.webp', '38/Plan_images/1721891271_371697.png', 0, 0, '2024-07-25 12:37:51', 0, '2024-07-25 12:37:51'),
+(11, 38, 2, '[\"1\",\"5\",\"10\"]', 1, 1, 17, 1010, 'Title', '9588871255', 'Short Desc', '<p>&nbsp;</p>\r\n\r\n<p>Full Desc</p>\r\n\r\n<p>&nbsp;</p>', 'Enter  Address', 'Tag', 0, 5, 3, '25/50', 'Map Link', 100000, 1, NULL, NULL, 3, 0, '2024-07-25 12:47:09', 0, '2024-07-25 12:47:09'),
+(12, 38, 2, 'null', 1, 1, NULL, 1011, '1', '1', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 3, 1, NULL, NULL, 3, 0, '2024-07-26 15:36:12', 0, '2024-07-26 15:36:12'),
+(13, 38, 1, 'null', 1, 2, NULL, 1012, '6', '5', NULL, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 6, 1, NULL, NULL, 3, 0, '2024-07-26 15:58:07', 0, '2024-07-26 15:58:07');
 
 -- --------------------------------------------------------
 
@@ -1735,7 +2091,7 @@ CREATE TABLE `tbl_propertyfeatures` (
   `PFea_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `PFea_UpdatedBy` int(20) NOT NULL DEFAULT 0,
   `PFea_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_propertyfeatures`
@@ -1769,7 +2125,7 @@ CREATE TABLE `tbl_propertytype` (
   `PTyp_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `PTyp_UpdatedBy` int(20) NOT NULL DEFAULT 0,
   `PTyp_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_propertytype`
@@ -1782,7 +2138,7 @@ INSERT INTO `tbl_propertytype` (`PTyp_Id`, `PTyp_Reg_Id`, `PTyp_Name`, `PTyp_Sta
 (4, 38, 'Residential', 0, 1, '2024-05-20 12:48:09', 0, '2024-05-20 12:48:09'),
 (5, 38, 'Luxury', 0, 1, '2024-05-20 12:48:13', 0, '2024-05-20 12:48:13'),
 (6, 4, 'Property Type Name', 0, 1, '2024-05-23 17:39:43', 0, '2024-05-23 17:39:43'),
-(7, 38, 'Property Type Name Property Property', 0, 1, '2024-05-27 12:09:24', 0, '2024-05-27 12:09:24');
+(7, 38, '1', 1, 1, '2024-05-27 12:09:24', 1, '2024-07-06 15:18:39');
 
 -- --------------------------------------------------------
 
@@ -1812,7 +2168,7 @@ CREATE TABLE `tbl_registration` (
   `Reg_DeletedBy` int(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `tbl_registration`
@@ -1825,7 +2181,8 @@ INSERT INTO `tbl_registration` (`Reg_Id`, `Reg_Organization_Name`, `Reg_Logo`, `
 (28, 'RajasthanConsultancy', '1/Registration_images/1707820861.png', 'RajasthanConsultancy', '9876543210', 'rajasthanconsultancy@gmail.com', 'Dummy Address', 'Remark', '2024-02-14', '4', NULL, NULL, 0, 1, '2024-02-13 16:11:01', NULL, NULL, NULL, NULL, NULL, NULL),
 (29, 'MindsUp', '1/Registration_images/1710739447.png', 'MindsUp', '9876543210', 'mindsup@gmail.com', 'MindsUp Address', 'Remark', '2024-03-09', '111', NULL, NULL, 0, 1, '2024-03-08 11:52:02', 1, '2024-03-18 10:54:07', NULL, NULL, NULL, NULL),
 (30, 'Astrology', '1/Registration_images/1711959406.jpg', 'Astrology', '9352398463', 'jyodikastro@gmail.com', 'NY 10018, California, USA', 'Remark', '2024-05-01', '1', NULL, NULL, 0, 1, '2024-04-01 13:46:46', NULL, NULL, NULL, NULL, NULL, NULL),
-(38, 'RajasthanRealEstate', '1/Registration_images/1715845893.png', 'Rajasthan Real Estate', '9696584562', 'rajasthanrealrstate@gmail.com', 'Ajmer(Rajasthan)', 'Remark', NULL, NULL, NULL, '600', 0, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL, NULL, NULL);
+(38, 'RajasthanRealEstate', '1/Registration_images/1715845893.png', 'Rajasthan Real Estate', '9696584562', 'rajasthanrealrstate@gmail.com', 'Ajmer(Rajasthan)', 'Remark', NULL, NULL, NULL, '600', 0, 1, '2024-05-16 13:21:33', NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 'CowNGO', '1/Registration_images/1721036658.png', 'CowNGO', '1123456789', 'supportt@domain.com', '107, Broklyn Golden Road Street. New York,\r\nUnited States of America', 'Remark', NULL, NULL, NULL, '0', 0, 1, '2024-07-15 15:14:18', 1, '2024-07-26 10:57:46', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1843,7 +2200,7 @@ CREATE TABLE `tbl_setting` (
   `Set_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Set_UpdatedBy` int(20) DEFAULT NULL,
   `Set_UpdatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_setting`
@@ -1851,8 +2208,11 @@ CREATE TABLE `tbl_setting` (
 
 INSERT INTO `tbl_setting` (`Set_Id`, `Set_Reg_Id`, `Set_Img_Id`, `Set_Website`, `Set_Status`, `Set_CreatedBy`, `Set_CreatedDate`, `Set_UpdatedBy`, `Set_UpdatedDate`) VALUES
 (1, 30, 2, '0', 0, 1, '2024-04-08 17:28:52', 1, '2024-04-08 17:29:02'),
-(2, 29, 2, '0', 0, 1, '2024-04-15 10:50:07', NULL, '2024-04-15 10:50:07'),
-(3, 38, 6, '0', 0, 1, '2024-05-16 15:56:28', 1, '2024-05-21 16:37:12');
+(2, 29, 5, '0', 0, 1, '2024-04-15 10:50:07', 1, '2024-06-24 16:16:39'),
+(3, 38, 6, '0', 0, 1, '2024-05-16 15:56:28', 1, '2024-05-21 16:37:12'),
+(4, 4, 4, '0', 0, 1, '2024-06-25 11:51:06', NULL, '2024-06-25 11:51:06'),
+(5, 1, 4, '0', 0, 1, '2024-07-05 17:05:23', NULL, '2024-07-05 17:05:23'),
+(6, 41, 4, '0', 0, 1, '2024-07-16 11:49:29', 1, '2024-07-18 11:05:42');
 
 -- --------------------------------------------------------
 
@@ -1870,14 +2230,14 @@ CREATE TABLE `tbl_state` (
   `Sta_CreatedDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Sta_UpdatedBy` int(11) NOT NULL DEFAULT 0,
   `Sta_UpdatedDate` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_state`
 --
 
 INSERT INTO `tbl_state` (`Sta_Id`, `Sta_Cou_Id`, `Sta_Name`, `Sta_Code`, `Sta_Status`, `Sta_CreatedBy`, `Sta_CreatedDate`, `Sta_UpdatedBy`, `Sta_UpdatedDate`) VALUES
-(1, 0, 'Rajasthan', NULL, 0, 1, '2024-05-27 13:48:21', 0, '2024-05-27 13:48:21'),
+(1, 0, 'Rajasthan', NULL, 0, 1, '2024-05-27 13:48:21', 1, '2024-06-24 12:44:31'),
 (2, 0, 'hr', NULL, 0, 1, '2024-05-27 14:29:30', 0, '2024-05-27 14:29:30');
 
 -- --------------------------------------------------------
@@ -1901,7 +2261,7 @@ CREATE TABLE `tbl_submenu` (
   `SubMen_CreatedDate` datetime DEFAULT NULL,
   `SubMen_UpdatedBy` int(20) DEFAULT NULL,
   `SubMen_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_submenu`
@@ -1939,7 +2299,13 @@ INSERT INTO `tbl_submenu` (`SubMen_Id`, `SubMen_Reg_Id`, `SubMen_Men_Id`, `SubMe
 (36, 38, 60, 'Search by Category', '', 'Search by Category', NULL, '10', NULL, 1, 1, '2024-05-16 16:31:30', NULL, NULL),
 (37, 38, 60, 'Search by Type', '', 'Search by Type', NULL, '11', NULL, 0, 1, '2024-05-16 16:31:41', 1, '2024-05-16 16:32:29'),
 (38, 38, 58, 'new', NULL, NULL, NULL, '10', NULL, 2, 1, '2024-05-16 16:59:44', NULL, NULL),
-(39, 38, 58, 'new', '/', NULL, NULL, '10', NULL, 2, 1, '2024-05-16 17:00:00', NULL, NULL);
+(39, 38, 58, 'new', '/', NULL, NULL, '10', NULL, 2, 1, '2024-05-16 17:00:00', NULL, NULL),
+(40, 38, 59, '1', '1', NULL, NULL, '10', NULL, 0, 1, '2024-06-21 13:02:03', NULL, NULL),
+(41, 38, 59, 'new', NULL, NULL, NULL, '10', NULL, 0, 1, '2024-06-21 13:04:54', NULL, NULL),
+(42, 38, 58, 'a', NULL, NULL, NULL, '10', NULL, 0, 1, '2024-06-21 13:05:36', NULL, NULL),
+(43, 38, 59, 'aqaq', 'aqaq', NULL, NULL, '10', NULL, 0, 1, '2024-06-21 13:07:16', NULL, NULL),
+(44, 38, 58, 'aabbcc', NULL, NULL, NULL, '10', NULL, 0, 1, '2024-06-21 13:09:45', NULL, NULL),
+(45, 41, 65, '1', NULL, NULL, '<h2>What is Lorem Ipsum?</h2>\r\n\r\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<h2>Why do we use it?</h2>\r\n\r\n<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Where does it come from?</h2>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>\r\n\r\n<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>\r\n\r\n<h2>Where can I get some?</h2>\r\n\r\n<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>', '1', NULL, 1, 1, '2024-07-17 11:49:21', 1, '2024-07-17 11:50:43');
 
 -- --------------------------------------------------------
 
@@ -1955,7 +2321,7 @@ CREATE TABLE `tbl_visitorcounter` (
   `Vis_Region` varchar(255) DEFAULT NULL,
   `Vis_City` varchar(255) DEFAULT NULL,
   `Vis_CreatedDate` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_visitorcounter`
@@ -2004,7 +2370,43 @@ INSERT INTO `tbl_visitorcounter` (`id`, `Vis_Reg_Id`, `Vis_Ip`, `Vis_Country`, `
 (40, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-27 10:59:33'),
 (41, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-28 10:31:17'),
 (42, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-29 11:04:08'),
-(43, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-30 15:06:38');
+(43, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-30 15:06:38'),
+(44, 38, '127.0.0.1', NULL, NULL, NULL, '2024-05-31 14:38:34'),
+(45, 1, '127.0.0.1', NULL, NULL, NULL, '2024-05-31 16:30:58'),
+(46, 1, '127.0.0.1', NULL, NULL, NULL, '2024-06-03 10:18:27'),
+(47, 14, '127.0.0.1', NULL, NULL, NULL, '2024-06-03 10:19:56'),
+(48, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-03 10:20:37'),
+(49, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-07 10:27:50'),
+(50, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-08 15:35:44'),
+(51, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-15 11:45:40'),
+(52, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-20 17:40:47'),
+(53, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-24 11:20:50'),
+(54, 11, '127.0.0.1', NULL, NULL, NULL, '2024-06-24 15:37:47'),
+(55, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-25 17:51:16'),
+(56, 38, '127.0.0.1', NULL, NULL, NULL, '2024-06-28 13:11:15'),
+(57, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-01 10:11:56'),
+(58, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-05 14:36:50'),
+(59, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-06 15:02:35'),
+(60, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-08 13:53:28'),
+(61, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-10 10:28:35'),
+(62, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-15 10:42:09'),
+(63, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-15 15:42:26'),
+(64, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-16 15:27:26'),
+(65, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-16 17:18:15'),
+(66, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-17 14:58:55'),
+(67, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-18 14:58:03'),
+(68, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-18 15:19:20'),
+(69, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-19 14:53:44'),
+(70, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-24 10:34:45'),
+(71, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-25 10:21:07'),
+(72, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-25 17:23:06'),
+(73, 28, '127.0.0.1', NULL, NULL, NULL, '2024-07-25 17:32:02'),
+(74, 29, '127.0.0.1', NULL, NULL, NULL, '2024-07-25 17:38:57'),
+(75, 30, '127.0.0.1', NULL, NULL, NULL, '2024-07-25 17:42:13'),
+(76, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-26 10:32:47'),
+(77, 41, '127.0.0.1', NULL, NULL, NULL, '2024-07-26 17:09:52'),
+(78, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-27 12:09:05'),
+(79, 38, '127.0.0.1', NULL, NULL, NULL, '2024-07-29 10:29:14');
 
 -- --------------------------------------------------------
 
@@ -2035,21 +2437,22 @@ CREATE TABLE `tbl_website_information` (
   `WebInf_CreatedDate` datetime DEFAULT NULL,
   `WebInf_UpdatedBy` int(20) DEFAULT NULL,
   `WebInf_UpdatedDate` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_website_information`
 --
 
 INSERT INTO `tbl_website_information` (`WebInf_Id`, `WebInf_Reg_Id`, `WebInf_Name`, `WebInf_Address`, `WebInf_Tagline`, `WebInf_HeaderLogo`, `WebInf_FooterLogo`, `WebInf_EmailId`, `WebInf_ContactNo`, `WebInf_Map`, `WebInf_Favicon`, `WebInf_ShortInfo1`, `WebInf_ShortInfo2`, `WebInf_ShortInfo3`, `WebInf_ShortInfo4`, `WebInf_About`, `WebInf_openingHours`, `WebInf_Status`, `WebInf_CreatedBy`, `WebInf_CreatedDate`, `WebInf_UpdatedBy`, `WebInf_UpdatedDate`) VALUES
-(1, 1, 'EduManag', 'th Street, near Patanjali Store, Bihari Ganj, Ajmer, Rajasthan 305001', 'Tagline', '1/WebInformation_images/1706519262_65b76adeee7ef.png', '1706182849_65b248c1b31d8.png', 'info@edumang@gmail.com', '092520 89089', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14290.965952420249!2d74.6491126!3d26.4318177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d255a71059%3A0x659cccb15ddd9beb!2sEduManag!5e0!3m2!1sen!2sin!4v1706182811411!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '1706182849_65b248c1b39ab.png', '320', '10', '320', '10', 'About', NULL, 0, NULL, '2024-01-23 11:58:33', 1, '2024-01-29 15:07:42'),
+(1, 1, 'EduManag', 'th Street, near Patanjali Store, Bihari Ganj, Ajmer, Rajasthan 305001', 'Tagline', '1/WebInformation_images/1706519262_65b76adeee7ef.png', '1706182849_65b248c1b31d8.png', 'rahuledumanag@gmail.com', '092520 89089', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14290.965952420249!2d74.6491126!3d26.4318177!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d255a71059%3A0x659cccb15ddd9beb!2sEduManag!5e0!3m2!1sen!2sin!4v1706182811411!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', '1706182849_65b248c1b39ab.png', '320', '10', '320', '10', 'About', NULL, 0, NULL, '2024-01-23 11:58:33', 1, '2024-01-29 15:07:42'),
 (2, 4, 'Arihant Diagnostics', '660, Near Pancholi Choraha, Opposite Postal Store Depot, BK Kaul Nagar,Ajmer, Rajasthan 305004', 'Tagline', '4/WebInformation_images/1707382706_65c497b20920b.png', '4/WebInformation_images/1708595537_65d71951042e0.jpg', 'arihantdiagnostics1@gmail.com', '+91 9773346701 , +91 9773346702', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.5752226869654!2d74.60761331065287!3d26.469417976817926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be77130691009%3A0x548ee3a06921abad!2sArihant%20Diagnostics%20Center!5e0!3m2!1sen!2sin!4v1705481308782!5m2!1sen!2sin', '4/WebInformation_images/1712310873_660fca59d75b5.png', '320', '10', '320', '10', 'About', 'Every day: 9:00am - 6:00pm', 0, NULL, '2024-01-23 11:58:33', 1, '2024-04-05 15:24:33'),
 (4, 13, 'AMD', 'AMD Career Shapers & Training Solutions\r\nZee Cinemall,shop No FF-34,Gauravpath\r\nOpposite .Samsung Street Talk ,\r\nVaishali Nagar,Ajmer', 'Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.', '1/WebInformation_images/1706511320_65b74bd818465.png', 'AMD_Images/WebInformation_images/1706511320_65b74bd818075.png', 'amdtrainingsolutions@gmail.com', '9983252676', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446.40281920302226!2d74.63073397055268!3d26.480778235624072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1709108006474!5m2!1sen!2sin', '13/WebInformation_images/1712310834_660fca326f5b3.png', '300', '1700', '11900', '157', 'About', 'Mon – Sat: 8.00 – 18.30', 0, 1, '2024-01-29 12:55:20', 1, '2024-04-05 15:23:54'),
 (10, 28, 'Rajasthan Consultancy', 'Dummy Address', 'RAJASTHAN CONSULTANCY SERVICES', '28/WebInformation_images/1709710719_65e81d7f74fe4.jpeg', '28/WebInformation_images/1709641608_65e70f883baab.jpeg', 'rajasthanconsultancy@gmai.com', '9876543210,9829999193', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d892.8056402350932!2d74.631249!3d26.480778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1709632572837!5m2!1sen!2sin', '28/WebInformation_images/1712310896_660fca709777a.png', '24', '95', '5', '05', 'Dummy About', 'Mon – Sat: 8.00 – 18.00', 0, 1, '2024-02-13 16:14:32', 1, '2024-04-10 16:57:21'),
-(11, 1, 'a', 'd', 's', '1/WebInformation_images/1712310995_660fcad34162a.png', '1/WebInformation_images/1712310995_660fcad3411b7.png', 'ra@gmail.com', '1211111111', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d892.8056402350932!2d74.631249!3d26.480778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1709632572837!5m2!1sen!2sin', '1/WebInformation_images/1712311073_660fcb214e935.png', 'd', 'd', 'd', 'd', 'd', 'd', 2, 1, '2024-02-29 16:07:09', 1, '2024-04-05 15:27:53'),
+(11, 1, 'a', 'd', 's', '1/WebInformation_images/1712310995_660fcad34162a.png', '1/WebInformation_images/1712310995_660fcad3411b7.png', 'rahulsoni95888@gmail.com', '1211111111', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d892.8056402350932!2d74.631249!3d26.480778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be7af02f0af91%3A0xee6b7e71510742e6!2sCine%20Mall!5e0!3m2!1sen!2sin!4v1709632572837!5m2!1sen!2sin', '1/WebInformation_images/1712311073_660fcb214e935.png', 'd', 'd', 'd', 'd', 'd', 'd', 2, 1, '2024-02-29 16:07:09', 1, '2024-05-31 16:30:13'),
 (12, 29, 'MindsUp', 'MindsUp Address', 'MindsUp MindsUp', '29/WebInformation_images/1712565361_6613ac712d65d.png', '29/WebInformation_images/1712310922_660fca8a06014.png', 'mindsup@gmail.com', '9876543210', 'MindsUp map link', '29/WebInformation_images/1712310922_660fca8a06850.png', '1', '2', '3', '4', 'MindsUp About', '8:00am to 9:00pm', 0, 1, '2024-03-08 11:56:01', 1, '2024-04-08 14:06:01'),
 (13, 30, 'Astrology', 'Jyodik Astro & Gemstone (opc) Pvt Ltd\r\n 1.) 20 LIC Colony Anasagar \r\nCircular Road, Vaishali Nagar,\r\nAjmer Rajasthan 305001\r\n\r\n 2.) B 58 Friends Colony\r\nNear Lions Club\r\nVaishali Nagar, Ajmer', 'Astrology', '30/WebInformation_images/1712560662_66139a163d2b1.jpg', '30/WebInformation_images/1712310954_660fcaaa0c422.png', 'jyodikastro@gmail.com', '9352398463', 'N/A', '30/WebInformation_images/1712310954_660fcaaa0c9d2.png', '100', '30', '55', '90', 'Astrology', '24Hrs Open', 0, 1, '2024-04-01 13:49:15', 1, '2024-04-15 14:47:31'),
-(14, 38, 'Rajasthan Real Estate', 'Babu Molalla kasier gunj Ajmer', 'Tagline', '38/WebInformation_images/1716636905_6651cce9bca67.png', '38/WebInformation_images/1716636905_6651cce9bc590.png', 'rajasthanrealrstate@gmail.com', '9666985658', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114306.4675799101!2d74.6357137!3d26.453243199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716289175582!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '38/WebInformation_images/1715846276_6645bc84c571a.png', '1', '2', '3', '4', 'We are Best in Town With 40 years of Experience.', 'Mon - Tues :6.00 am - 10.00 pm', 0, 1, '2024-05-16 13:27:56', 1, '2024-05-27 11:08:54');
+(14, 38, 'Rajasthan Real Estate', 'Babu Molalla kasier gunj Ajmer', 'Tagline', '38/WebInformation_images/1719560818_667e6a72e7c57.jpeg', '38/WebInformation_images/1719560818_667e6a72e7531.jpeg', 'rahuledumanag@gmail.com', '9666985658', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114306.4675799101!2d74.6357137!3d26.453243199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1716289175582!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '38/WebInformation_images/1715846276_6645bc84c571a.png', '1', '2', '3', '4', 'We are Best in Town With 40 years of Experience.', 'Mon - Tues :6.00 am - 10.00 pm', 0, 1, '2024-05-16 13:27:56', 1, '2024-06-28 13:16:58'),
+(15, 41, 'CowNGO', '107, Broklyn Golden Road Street. New York,\r\nUnited States of America', 'Tagline', '41/WebInformation_images/1721036817_6694f01185bc3.png', '41/WebInformation_images/1721036817_6694f011857ec.png', 'support@domain.com', '1233456789', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114306.4675799101!2d74.6357137!3d26.453243199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be6d8fcb7cd01%3A0xcbaf8f12eb8100ee!2sAjmer%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1721106722525!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade', '41/WebInformation_images/1721036817_6694f01185f1a.png', '1', '2', '3', '4', 'About', '8:00am to 9:00pm', 0, 1, '2024-07-15 15:16:57', 1, '2024-07-16 10:44:12');
 
 -- --------------------------------------------------------
 
@@ -2068,7 +2471,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -2427,19 +2830,19 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `tbl_adminmenu`
 --
 ALTER TABLE `tbl_adminmenu`
-  MODIFY `AddMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `AddMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_adminmenuallotment`
 --
 ALTER TABLE `tbl_adminmenuallotment`
-  MODIFY `Add_MenAllo_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Add_MenAllo_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_area`
 --
 ALTER TABLE `tbl_area`
-  MODIFY `Are_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Are_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_city`
@@ -2457,25 +2860,25 @@ ALTER TABLE `tbl_clients`
 -- AUTO_INCREMENT for table `tbl_contact`
 --
 ALTER TABLE `tbl_contact`
-  MODIFY `Con_Id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Con_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_contactcategory`
 --
 ALTER TABLE `tbl_contactcategory`
-  MODIFY `ConCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ConCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_credential_log`
 --
 ALTER TABLE `tbl_credential_log`
-  MODIFY `CreLog_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `CreLog_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `tbl_employee_registration`
 --
 ALTER TABLE `tbl_employee_registration`
-  MODIFY `Emp_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `Emp_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tbl_enquirie`
@@ -2487,25 +2890,25 @@ ALTER TABLE `tbl_enquirie`
 -- AUTO_INCREMENT for table `tbl_errors`
 --
 ALTER TABLE `tbl_errors`
-  MODIFY `Error_Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+  MODIFY `Error_Id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_expiryperiod`
 --
 ALTER TABLE `tbl_expiryperiod`
-  MODIFY `ExpPer_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ExpPer_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallery`
 --
 ALTER TABLE `tbl_gallery`
-  MODIFY `Gall_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `Gall_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `tbl_gallerycategory`
 --
 ALTER TABLE `tbl_gallerycategory`
-  MODIFY `GallCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `GallCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tbl_imagesize`
@@ -2517,37 +2920,37 @@ ALTER TABLE `tbl_imagesize`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `Log_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `Log_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `Men_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `Men_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `tbl_metatags`
 --
 ALTER TABLE `tbl_metatags`
-  MODIFY `Met_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Met_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_page`
 --
 ALTER TABLE `tbl_page`
-  MODIFY `Pag_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=632;
+  MODIFY `Pag_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=675;
 
 --
 -- AUTO_INCREMENT for table `tbl_pagecategory`
 --
 ALTER TABLE `tbl_pagecategory`
-  MODIFY `PagCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `PagCat_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `tbl_property`
 --
 ALTER TABLE `tbl_property`
-  MODIFY `PId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `PId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_propertyfeatures`
@@ -2565,13 +2968,13 @@ ALTER TABLE `tbl_propertytype`
 -- AUTO_INCREMENT for table `tbl_registration`
 --
 ALTER TABLE `tbl_registration`
-  MODIFY `Reg_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `Reg_Id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_setting`
 --
 ALTER TABLE `tbl_setting`
-  MODIFY `Set_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Set_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_state`
@@ -2583,19 +2986,19 @@ ALTER TABLE `tbl_state`
 -- AUTO_INCREMENT for table `tbl_submenu`
 --
 ALTER TABLE `tbl_submenu`
-  MODIFY `SubMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `SubMen_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_visitorcounter`
 --
 ALTER TABLE `tbl_visitorcounter`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `tbl_website_information`
 --
 ALTER TABLE `tbl_website_information`
-  MODIFY `WebInf_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `WebInf_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`

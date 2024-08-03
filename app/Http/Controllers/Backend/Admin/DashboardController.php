@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use App\Models\Contact;
+use App\Models\Contacts;
 use App\Models\Registration;
 use App\Models\EmpRegistration;
 use App\Models\WebInfo;
@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
         //display for Admin
         $EnquirieContact = Enquirie::where('Enq_Reg_Id', getSelectedValue())->count();
-         $contact = Contact::where('Con_Reg_Id', getSelectedValue())->where('Con_Status', '!=', '2')->count();
+         $contact = Contacts::where('Con_Reg_Id', getSelectedValue())->where('Con_Status', '!=', '2')->count();
 
         $MenuModel = Menu::where('Men_Reg_Id', getSelectedValue())->count();
         $SubMenuModel = SubMenu::where('SubMen_Reg_Id', getSelectedValue())->count();

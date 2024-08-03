@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Session;
 use App\Models\Enquirie;
-use App\Models\Contact;
+use App\Models\Contacts;
 use App\Models\WebInfo;
 use App\Models\Error;
 use App\Models\AdminMenuAllotment;
@@ -16,7 +16,7 @@ $AdminMenuAllotmentModel = AdminMenuAllotment::with('adminMenu')
     ->orderBy('Add_MenAllo_CreatedDate', 'asc')
     ->get();
 $ErrorCount = Error::where('Error_Status', '=', '0')->where('Error_Status', '!=', '2')->count();
-$ContactCount = Contact::where('Con_Reg_Id', getSelectedValue())->where('Con_Status', '!=', '2')->count();
+$ContactCount = Contacts::where('Con_Reg_Id', getSelectedValue())->where('Con_Status', '!=', '2')->count();
 $EnquirieCount = Enquirie::where('Enq_Reg_Id', getSelectedValue())->where('Enq_Status', '!=', '2')->count();
 
 ?>
@@ -217,8 +217,8 @@ $EnquirieCount = Enquirie::where('Enq_Reg_Id', getSelectedValue())->where('Enq_S
                 @endforeach
                 @if ($ContactCount > 0)
                     <li class="menu-item">
-                        <a href="{{ URL::to('/admin/contact') }}"
-                            class="nav-link  menu-link  @if (request()->is('admin/contact')) active @endif">
+                        <a href="{{ URL::to('/admin/contacts') }}"
+                            class="nav-link  menu-link  @if (request()->is('admin/contacts')) active @endif">
                             <div
                                 data-i18n="Enquiries (<span style='color:{{ $ContactCount > 0 ? '#b00000' : 'black' }};'><b>{{ $ContactCount }}</b></span>)">
                                 Enquiries{{ $ContactCount }} (<span

@@ -9,8 +9,7 @@ use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\GalleryController;
 use App\Http\Controllers\Backend\Admin\PropertyController;
 use App\Http\Controllers\Backend\Admin\AreaController;
-use App\Http\Controllers\Backend\Admin\ContactController;
-use App\Http\Controllers\Backend\Admin\PropertyListingController;
+ use App\Http\Controllers\Backend\Admin\PropertyListingController;
 
 
 Route::group(
@@ -22,8 +21,7 @@ Route::group(
         require base_path('routes/frontend/frontend.php');
     },
 );
- Route::delete('admin/contact/soft-delete', [ContactController::class, 'softDelete'])->name('admin.contact.soft-delete');
-
+ 
 // Bakcend
 Route::get('admin/images/browse', [ImageController::class, 'browse'])->name('admin.images.browse');
 Route::post('admin/images/upload', [ImageController::class, 'upload'])->name('admin.images.upload');

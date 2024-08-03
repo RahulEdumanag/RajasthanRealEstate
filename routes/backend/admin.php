@@ -13,8 +13,7 @@ Route::get('/clear-cache', function () {
 // Delete routes
 Route::delete('backups/delete/{file_name}', 'BackupController@delete');
 Route::delete('/admin/user/{id}', 'UserController@destroy')->name('admin.user.destroy');
-Route::delete('admin/contact/soft-delete', 'Backend\Admin\ContactController@softDelete')->name('admin.contact.soft-delete');
-
+ 
 // Resources routes
 Route::resources([
     'adminMenu' => 'AdminMenuController',
@@ -24,8 +23,9 @@ Route::resources([
     'blog' => 'BlogController',
     'clientMaster' => 'ClientMasterController',
     'clients' => 'ClientsController',
-    'contact' => 'ContactController',
-    'dashboard' => 'DashboardController',
+    'contacts' => 'ContactsController',
+
+     'dashboard' => 'DashboardController',
     'empRegistration' => 'EmpRegistrationController',
     'error' => 'ErrorController',
     'errorsView' => 'ErrorViewController',
@@ -110,8 +110,9 @@ $controllers = [
     'WebsiteHelpController' => 'websiteHelp',
     'ClientMasterController' => 'clientMaster',
     'WebInfoController' => 'webInfo',
-    'ContactController' => 'contact',
-    'ErrorViewController' => 'errorsView',
+    'ContactsController' => 'contacts',
+
+     'ErrorViewController' => 'errorsView',
     'AdminController' => 'profile',
     'PersonalinfoController' => 'personalinfo',
     'PlanCategoryController' => 'plancategory',

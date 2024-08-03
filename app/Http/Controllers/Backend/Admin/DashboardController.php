@@ -26,7 +26,8 @@ class DashboardController extends Controller
 
         //display for Admin
         $EnquirieContact = Enquirie::where('Enq_Reg_Id', getSelectedValue())->count();
-        $contact = Contact::where('Con_Reg_Id', getSelectedValue())->count();
+         $contact = Contact::where('Con_Reg_Id', getSelectedValue())->where('Con_Status', '!=', '2')->count();
+
         $MenuModel = Menu::where('Men_Reg_Id', getSelectedValue())->count();
         $SubMenuModel = SubMenu::where('SubMen_Reg_Id', getSelectedValue())->count();
         $UserEmpRegistrationModel = EmpRegistration::where('Emp_Id', '!=', 1)->where('Emp_Reg_Id', getSelectedValue())->count();

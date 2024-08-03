@@ -58,6 +58,7 @@
                             <th>#</th>
                             <th>Reg Organization Name</th>
                             <th>Erorr Meaasge</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -67,6 +68,8 @@
                                 <td class="serial-number"> {{ $loop->iteration }}</td>
                                 <td>{{ $value->registration->Reg_Organization_Name ?? 'N/A' }}</td>
                                 <td class="truncate" title="{{ $value->Error_Message }}">{{ $value->Error_Message }}</td>
+                                <td class="truncate">{{ $value->Error_CreatedDate }}</td>
+
                                 <td class="d-flex">
                                     <a href="{{ route('admin.errorsView.edit', encodeId($value->Error_Id)) }}"
                                         class="btn btn-primary me-2">

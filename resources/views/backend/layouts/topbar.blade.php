@@ -16,6 +16,7 @@ $WebsiteHelpModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id',
 
 ?>
 <style>
+   
     .select2-container--default .select2-search--dropdown .select2-search__field {
         margin-top: 20px !important;
         outline-offset: 0px !important;
@@ -70,7 +71,7 @@ $WebsiteHelpModel = Page::leftJoin('tbl_pagecategory', 'tbl_page.Pag_PagCat_Id',
 
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar">
+                    <div class="avatar" style="  color: #7367f0;">
 
                         {{ Auth::user()->Log_Username }}
                         <i class="fa fa-chevron-down"></i>

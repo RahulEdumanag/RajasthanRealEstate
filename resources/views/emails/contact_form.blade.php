@@ -102,6 +102,17 @@
             <tr>
                 <td>{{ $data['Mail_Email'] }}</td>
             </tr>
+
+
+            <tr>
+                <th>Contact Number</th>
+            </tr>
+
+            <tr>
+                <td>{{ $data['Mail_Number'] }}</td>
+            </tr>
+
+
             <tr>
                 <th>Message</th>
             </tr>

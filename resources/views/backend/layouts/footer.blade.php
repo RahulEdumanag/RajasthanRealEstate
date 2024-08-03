@@ -5,7 +5,7 @@
                  ©
                  2024
                  , made with ❤️ by
-                 <a href="https://edumanag.com/" target="_blank" class="fw-medium">Edumanag</a>
+                 <a href="https://edumanag.com/" target="_blank" class="fw-medium" style="  color: #7367f0;">Edumanag</a>
              </div>
          </div>
      </div>

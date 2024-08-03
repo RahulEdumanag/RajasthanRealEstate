@@ -246,6 +246,7 @@ class HomeController extends Controller
             $model->save();
             $contactData = [
                 'Mail_Name' => $model->Con_Name,
+                'Mail_Number' => $model->Con_Number,
                 'Mail_Email' => $model->Con_Email,
                 'Mail_Message' => $model->Con_Desc,
             ];
@@ -424,8 +425,6 @@ class HomeController extends Controller
         }
         return response()->json([]);
     }
-   
-    
 
     public function Pstore(Request $request)
     {
@@ -590,25 +589,22 @@ class HomeController extends Controller
         }
         return $options;
     }
- 
 
-public function getAreasByCity(Request $request)
-{
-    try {
-        $cityId = $request->cityId;
-        $areas = Area::where('Are_Status', '=', 0)
-            ->where('Are_Cit_Id', $cityId)
-            ->get();
-        
-        $options = '<option selected disabled>Not Exists</option>';
-        foreach ($areas as $area) {
-            $options .= "<option value='{$area->Are_Id}'>{$area->Are_Name}</option>";
+    public function getAreasByCity(Request $request)
+    {
+        try {
+            $cityId = $request->cityId;
+            $areas = Area::where('Are_Status', '=', 0)->where('Are_Cit_Id', $cityId)->get();
+
+            $options = '<option selected disabled>Not Exists</option>';
+            foreach ($areas as $area) {
+                $options .= "<option value='{$area->Are_Id}'>{$area->Are_Name}</option>";
+            }
+
+            return response($options);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching areas: ' . $e->getMessage());
+            return response()->json(['error' => 'Error fetching areas'], 500);
         }
-        
-        return response($options);
-    } catch (\Exception $e) {
-        \Log::error('Error fetching areas: ' . $e->getMessage());
-        return response()->json(['error' => 'Error fetching areas'], 500);
     }
-}
 }
